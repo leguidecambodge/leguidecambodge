@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.leguidecambodge.com/sitemap.xml
+
+# Ressources statiques
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /*.json
+Allow: /*.xml
+Allow: /*.svg
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.webp
+
+# Service Worker
+Allow: /sw.js
