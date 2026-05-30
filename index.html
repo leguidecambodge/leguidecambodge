@@ -1167,6 +1167,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 
 .cmo-resto-card{background:rgba(44,21,7,.45);border:1px solid rgba(212,150,26,.14);padding:20px 22px;margin-bottom:12px;display:grid;grid-template-columns:44px 1fr;gap:16px;transition:border-color .22s;}
 .cmo-resto-card:hover{border-color:rgba(212,150,26,.36);}
+.cmo-resto-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.cmo-resto-btn{display:inline-block;padding:5px 12px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.08em;text-decoration:none;border-radius:3px;transition:all .2s;white-space:nowrap;}
+.cmo-resto-btn-maps{background:rgba(66,133,244,.15);border:1px solid rgba(66,133,244,.4);color:rgba(150,200,255,.9);}
+.cmo-resto-btn-maps:hover{background:rgba(66,133,244,.3);border-color:rgba(66,133,244,.7);}
+.cmo-resto-btn-site{background:rgba(212,150,26,.12);border:1px solid rgba(212,150,26,.35);color:rgba(245,210,120,.9);}
+.cmo-resto-btn-site:hover{background:rgba(212,150,26,.25);border-color:rgba(212,150,26,.6);}
 .cmo-resto-emoji{font-size:1.8rem;line-height:1.1;padding-top:2px;}
 .cmo-resto-name{font-family:'Cinzel',serif;font-size:.9rem;font-weight:600;color:var(--creme);margin-bottom:3px;}
 .cmo-resto-badge{display:inline-block;font-size:.6rem;letter-spacing:.1em;padding:2px 8px;background:rgba(212,150,26,.14);border:1px solid rgba(212,150,26,.3);color:var(--or);margin-bottom:7px;}
@@ -7239,7 +7245,7 @@ var CITIES = {
       restaurants: [
         {emoji:'🍽', nom:'Cuisine Wat Damnak', badge:'Gastronomie Khmère ⭐⭐⭐', adresse:'Street 7 Makara, Siem Reap', prix:'~35 USD/pers', horaires:'Mar–Sam · 18h30–21h30', desc:'La table de référence du Cambodge. Menu dégustation 5 plats en harmonie avec les saisons et les producteurs locaux. Réservation obligatoire.'},
         {emoji:'🍲', nom:'Mahob Restaurant', badge:'Cuisine Traditionnelle ⭐⭐', adresse:'Vieille ville, près Pub Street', prix:'8–14 USD/plat', horaires:'Tous les jours · 11h–22h', desc:'Bœuf lok lak, amok de poisson en cocotte de coco, curry rouge maison. Décor élégant dans une villa coloniale restaurée.'},
-        {emoji:'🫙', nom:'Haven Restaurant', badge:'Social Enterprise ⭐⭐', adresse:'Phum Treang, Siem Reap', prix:'6–10 USD/plat', horaires:'Lun–Sam · 11h–21h', desc:'Restaurant-école formant des jeunes défavorisés. Amok signature, samlor korkor, currys. Cuisine authentique et engagée.'},
+        {emoji:'🫙', nom:'Haven Restaurant', badge:'Social Enterprise ⭐⭐', adresse:'Phum Treang, Siem Reap', prix:'6–10 USD/plat', horaires:'Lun–Sam · 11h–21h', desc:'Restaurant-école formant des jeunes défavorisés. Amok signature, samlor korkor, currys. Cuisine authentique et engagée.', site:'https://havencambodia.com'},
         {emoji:'🔥', nom:'Khmer BBQ — Night Market', badge:'Street Food Khmère ⭐', adresse:'Night Market, Pub Street area', prix:'5–10 USD/pers', horaires:'Tous les jours · 17h–23h', desc:'Brochettes de viandes et fruits de mer sur charbon. Ambiance animée, tables en plein air, bières Angkor fraîches.'},
         {emoji:'🌶️', nom:'Sambo — Khmer & Thai Cuisine', badge:'Nouveauté 2026 ⭐⭐', adresse:'Quartier Wat Damnak, Siem Reap', prix:'3–7 USD/plat', horaires:'Tous les jours · 11h–22h', desc:'Adresse tendance 2026 tenue par une cheffe khmère combinant techniques locales et touches d\'Asie du Sud-Est. Amok de poisson revisité et options végétariennes haut de gamme à petit prix.'}
       ],
@@ -7293,8 +7299,8 @@ var CITIES = {
         {nom:'Tuk-tuk nocturne dans BKK1', sub:'Restaurants branchés, galeries d\'art, rooftop bars · Ambiance cosmopolite'}
       ],
       restaurants: [
-        {emoji:'🌿', nom:'Romdeng', badge:'Cuisine Khmère Régionale ⭐⭐⭐', adresse:'Street 278, BKK1, Phnom Penh', prix:'10–18 USD/plat', horaires:'Lun–Sam · 11h–21h', desc:'Spécialités régionales rares dans une villa coloniale magnifique. Araignées frites, anguilles, grenouilles au basilic. Projet social formant d\'anciens enfants des rues.'},
-        {emoji:'🍜', nom:'Friends Restaurant (Mith Samlanh)', badge:'Social Enterprise ⭐⭐', adresse:'Street 13, Riverside, Phnom Penh', prix:'6–12 USD/plat', horaires:'Tous les jours · 11h–21h30', desc:'Tapas khmères inventives et plats traditionnels revisités. Cadre colonial, service par d\'anciens jeunes de la rue. L\'une des meilleures adresses de la ville.'},
+        {emoji:'🌿', nom:'Romdeng', badge:'Cuisine Khmère Régionale ⭐⭐⭐', adresse:'Street 278, BKK1, Phnom Penh', prix:'10–18 USD/plat', horaires:'Lun–Sam · 11h–21h', desc:'Spécialités régionales rares dans une villa coloniale magnifique. Araignées frites, anguilles, grenouilles au basilic. Projet social formant d\'anciens enfants des rues.', site:'https://romdeng.com'},
+        {emoji:'🍜', nom:'Friends Restaurant (Mith Samlanh)', badge:'Social Enterprise ⭐⭐', adresse:'Street 13, Riverside, Phnom Penh', prix:'6–12 USD/plat', horaires:'Tous les jours · 11h–21h30', desc:'Tapas khmères inventives et plats traditionnels revisités. Cadre colonial, service par d\'anciens jeunes de la rue. L\'une des meilleures adresses de la ville.', site:'https://friends-international.org'},
         {emoji:'🏛', nom:'Embassy Restaurant', badge:'Cuisine Authentique ⭐⭐', adresse:'Tonle Bassac Quarter, Phnom Penh', prix:'7–13 USD/plat', horaires:'Tous les jours · 12h–22h', desc:'Amok à la coco, samlor m\'chu, bœuf au poivre kampot. Décor traditionnel khmer, musique live le week-end.'},
         {emoji:'🫕', nom:'Khmer Surin Restaurant', badge:'Famille & Tradition ⭐', adresse:'Preah Sihanouk Blvd, Phnom Penh', prix:'5–9 USD/plat', horaires:'Tous les jours · 10h–22h', desc:'Cuisine familiale khmère sans fioriture. Porc sauté au gingembre, soupe de banane verte, riz gluant à la mangue. Prix locaux.'}
       ],
@@ -7348,7 +7354,7 @@ var CITIES = {
         {nom:'Coucher de soleil sur le fleuve Sangker', sub:'Terrasses de bar en bord de rivière · Bières artisanales locales · Atmosphère paisible'}
       ],
       restaurants: [
-        {emoji:'🌱', nom:'Jaan Bai', badge:'Cuisine Khmère Raffinée ⭐⭐⭐', adresse:'Street 2, Old Market, Battambang', prix:'5–9 USD/plat', horaires:'Mar–Dim · 10h–21h', desc:'Restaurant social formant des jeunes défavorisés. Cuisine traditionnelle khmère revisitée avec soin : amok de crevettes, soupe lemon grass, desserts coconut. L\'adresse incontournable de Battambang.'},
+        {emoji:'🌱', nom:'Jaan Bai', badge:'Cuisine Khmère Raffinée ⭐⭐⭐', adresse:'Street 2, Old Market, Battambang', prix:'5–9 USD/plat', horaires:'Mar–Dim · 10h–21h', desc:'Restaurant social formant des jeunes défavorisés. Cuisine traditionnelle khmère revisitée avec soin : amok de crevettes, soupe lemon grass, desserts coconut. L\'adresse incontournable de Battambang.', site:'https://jaanbai.com'},
         {emoji:'🏡', nom:'Riverside Balcony Bar', badge:'Vue Rivière ⭐⭐', adresse:'Bord du fleuve Sangker, Battambang', prix:'6–10 USD/plat', horaires:'Tous les jours · 11h–23h', desc:'Vue directe sur la rivière. Amok de poisson, lok lak bœuf, bières Angkor. Terrasse parfaite pour le coucher de soleil.'},
         {emoji:'🥢', nom:'Smokin\' Pot', badge:'Cuisine Locale ⭐', adresse:'Street 1.5, Battambang', prix:'4–8 USD/plat', horaires:'Lun–Sam · 12h–21h', desc:'Petit restaurant tenu par une famille khmer. Sauces à base d\'herbes fraîches, curry maison au tamarin. Menu du jour à 4 USD.'},
         {emoji:'🍵', nom:'White Rose Restaurant', badge:'Spécialités du Nord ⭐', adresse:'Central Market area, Battambang', prix:'3–6 USD/plat', horaires:'Tous les jours · 6h30–21h', desc:'Cuisine de Battambang : soupe de canard, gâteaux de riz vapeur, pâtes de riz fraîches au marché du matin.'}
@@ -7403,7 +7409,7 @@ var CITIES = {
       restaurants: [
         {emoji:'🌶', nom:'Rikitikitavi', badge:'Fusion Khmer-Méditerranéen ⭐⭐⭐', adresse:'Riverside Road, Kampot', prix:'8–15 USD/plat', horaires:'Tous les jours · 11h–22h30', desc:'L\'adresse de référence de Kampot. Amok de poisson signature au lait de coco, poulet grillé au poivre kampot, cocktails thaïs. Vue rivière depuis la terrasse.', lien:'https://www.booking.com/hotel/kh/rikitikitavi.html', agoda:'https://www.agoda.com/search?textToSearch=Rikitikitavi+Kampot+Cambodia'},
         {emoji:'🫚', nom:'Naga House', badge:'Poivre Kampot Signature ⭐⭐', adresse:'Centre-ville, Kampot', prix:'5–11 USD/plat', horaires:'Mer–Lun · 11h–21h30', desc:'Tous les plats cuisinés avec le fameux poivre de Kampot. Bœuf au poivre frais vert, poulet au poivre rouge, curry de canard. Terrasse de jardin charmante.'},
-        {emoji:'☕', nom:'Epic Arts Café', badge:'Social Enterprise ⭐', adresse:'Rue du Marché, Kampot', prix:'4–8 USD/plat', horaires:'Mar–Dim · 7h30–17h', desc:'Café-restaurant formant des personnes handicapées. Sandwichs, salades fraîches, currys khmers légers. Ambiance détendue, garden cafe verdoyant.'},
+        {emoji:'☕', nom:'Epic Arts Café', badge:'Social Enterprise ⭐', adresse:'Rue du Marché, Kampot', prix:'4–8 USD/plat', horaires:'Mar–Dim · 7h30–17h', desc:'Café-restaurant formant des personnes handicapées. Sandwichs, salades fraîches, currys khmers légers. Ambiance détendue, garden cafe verdoyant.', site:'https://epicarts.org.uk'},
         {emoji:'🐟', nom:'Bokor Mountain Club', badge:'Cuisine Locale & Fruits de Mer ⭐', adresse:'Riverside, Kampot', prix:'5–10 USD/plat', horaires:'Tous les jours · 12h–22h', desc:'Poissons de rivière frais, crevettes sautées au basilic, soupe de tamarin. Ancienne bâtisse coloniale, vue sur le fleuve.'}
       ],
       evenements: [
@@ -8046,6 +8052,11 @@ function transportItem(icon, main, detail){
        + '<div class="cmo-transport-detail">' + (detail||'') + '</div></div></div>';
 }
 function restoCard(r){
+  var mapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(r.nom + ' ' + r.adresse);
+  var btns = '<div class="cmo-resto-btns">'
+           + '<a href="' + mapsUrl + '" target="_blank" rel="noopener noreferrer" class="cmo-resto-btn cmo-resto-btn-maps">📍 Google Maps</a>';
+  if(r.site){ btns += '<a href="' + r.site + '" target="_blank" rel="noopener noreferrer" class="cmo-resto-btn cmo-resto-btn-site">🌐 Site web</a>'; }
+  btns += '</div>';
   return '<div class="cmo-resto-card">'
        + '<div class="cmo-resto-emoji">' + r.emoji + '</div>'
        + '<div><div class="cmo-resto-name">' + r.nom + '</div>'
@@ -8055,7 +8066,7 @@ function restoCard(r){
        + '<span class="cmo-resto-info">📍 ' + r.adresse + '</span>'
        + '<span class="cmo-resto-info">💰 ' + r.prix + '</span>'
        + '<span class="cmo-resto-info">🕐 ' + r.horaires + '</span>'
-       + '</div></div></div>';
+       + '</div>' + btns + '</div></div>';
 }
 function eventCard(e){
   return '<div class="cmo-event-card">'
