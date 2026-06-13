@@ -1249,11 +1249,23 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 .lex-cat-btn.active,.lex-cat-btn:hover{background:rgba(212,150,26,.18);border-color:rgba(212,150,26,.5);color:var(--creme);}
 
 #carte-interactive{background:linear-gradient(180deg,#1E0E04,#2A1005);padding:90px 48px;}
-#gc-map{height:520px;max-width:1100px;margin:0 auto;border:1px solid rgba(212,150,26,.2);position:relative;z-index:1;}
+#gc-map{height:640px;max-width:1100px;margin:0 auto;border:1px solid rgba(212,150,26,.2);border-radius:8px;position:relative;z-index:1;overflow:hidden;}
+.carte-search-wrap{max-width:1100px;margin:0 auto 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.carte-search{flex:1;min-width:200px;padding:9px 14px 9px 38px;background:rgba(44,21,7,.65);border:1px solid rgba(212,150,26,.22);border-radius:6px;color:var(--creme);font-size:.82rem;outline:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(212,150,26,.55)' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;}
+.carte-search:focus{border-color:rgba(212,150,26,.55);}
+.carte-search::placeholder{color:rgba(245,233,208,.3);font-style:italic;}
+.carte-counter{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;color:rgba(212,150,26,.65);white-space:nowrap;}
 .carte-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1100px;margin:0 auto 24px;}
 .carte-filter-btn{padding:7px 18px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;background:rgba(44,21,7,.5);border:1px solid rgba(212,150,26,.2);color:rgba(245,233,208,.6);cursor:pointer;transition:all .2s;}
 .carte-filter-btn.active,.carte-filter-btn:hover{background:rgba(212,150,26,.18);border-color:rgba(212,150,26,.5);color:var(--creme);}
-@media(max-width:640px){#gc-map{height:340px;}#lexique,#carte-interactive{padding:60px 20px;}.lex-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}.lex-card{padding:14px 12px;}}
+.gc-popup .leaflet-popup-content-wrapper{background:#2A1005;border:1px solid rgba(212,150,26,.3);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.65);padding:0;}
+.gc-popup .leaflet-popup-content{margin:14px 16px;}
+.gc-popup .leaflet-popup-tip{background:#2A1005;}
+.gc-popup-link{display:inline-block;margin-top:9px;padding:5px 14px;background:rgba(212,150,26,.12);border:1px solid rgba(212,150,26,.35);border-radius:4px;color:#DDA422!important;font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;text-decoration:none;transition:background .2s;}
+.gc-popup-link:hover{background:rgba(212,150,26,.28);}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{border-radius:50%!important;background:rgba(44,21,7,.6)!important;border:2px solid rgba(212,150,26,.5)!important;}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:rgba(212,150,26,.8)!important;color:#1A0A02!important;font-weight:700;font-size:.72rem;border-radius:50%!important;}
+@media(max-width:640px){#gc-map{height:390px;}#lexique,#carte-interactive{padding:60px 20px;}.lex-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}.lex-card{padding:14px 12px;}}
 
 .resto-photo{height:180px;background-size:cover;background-position:center;margin:-28px -28px 22px;position:relative;overflow:hidden;}
 .resto-photo::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(to top,rgba(44,21,7,1),rgba(44,21,7,0));}
@@ -5249,6 +5261,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">Toutes les villes, restaurants, hôtels et activités sur une seule carte</p>
   </div>
 
+  <div class="carte-search-wrap fade-in">
+    <input type="search" id="carte-search" class="carte-search" placeholder="Rechercher un lieu, restaurant, temple…" autocomplete="off" aria-label="Rechercher sur la carte">
+    <span id="carte-counter" class="carte-counter" aria-live="polite"></span>
+  </div>
+
   <div class="carte-filters" role="group" aria-label="Filtrer la carte">
     <button class="carte-filter-btn active" data-type="tous">Tous</button>
     <button class="carte-filter-btn" data-type="ville">🏙 Villes</button>
@@ -8986,10 +9003,24 @@ if('serviceWorker' in navigator){
     css.rel = 'stylesheet'; css.crossOrigin = '';
     css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
     document.head.appendChild(css);
+    var css2 = document.createElement('link');
+    css2.rel = 'stylesheet'; css2.crossOrigin = '';
+    css2.href = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css';
+    document.head.appendChild(css2);
+    var css3 = document.createElement('link');
+    css3.rel = 'stylesheet'; css3.crossOrigin = '';
+    css3.href = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css';
+    document.head.appendChild(css3);
     var s = document.createElement('script');
     s.crossOrigin = '';
-    s.onload = initMap;
     s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    s.onload = function(){
+      var s2 = document.createElement('script');
+      s2.crossOrigin = '';
+      s2.src = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js';
+      s2.onload = initMap;
+      document.head.appendChild(s2);
+    };
     document.head.appendChild(s);
   }, {rootMargin:'300px 0px', threshold:0}).observe(mapEl);
 
@@ -9010,6 +9041,19 @@ if('serviceWorker' in navigator){
     subdomains: 'abcd',
     maxZoom: 20
   }).addTo(map);
+
+  /* ── Bouton Recentrer ── */
+  var ResetCtrl = L.Control.extend({
+    onAdd: function(m){
+      var btn = L.DomUtil.create('button');
+      btn.innerHTML = '⛶';
+      btn.title = 'Recentrer sur le Cambodge';
+      btn.style.cssText = 'width:34px;height:34px;background:#2C1507;border:2px solid rgba(212,150,26,.45);color:rgba(212,150,26,.9);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:4px;margin-top:6px;';
+      L.DomEvent.on(btn,'click',function(e){ L.DomEvent.stopPropagation(e); m.setView([12.1,104.8],6); });
+      return btn;
+    }
+  });
+  new ResetCtrl({position:'topright'}).addTo(map);
 
   /* ── Icônes personnalisées ── */
   function mkIcon(emoji, color){
@@ -9267,18 +9311,42 @@ if('serviceWorker' in navigator){
     {type:'ambassade', lat:11.5610, lng:104.9240, nom:'🏛 Ambassade du Canada', desc:'<strong>Ambassade du Canada</strong><br>Tél : <strong>+855 23 213 470</strong><br>Phnom Penh (hébergée à l\'Ambassade d\'Australie)<br>Urgences consulaires 24h/24 : <strong>+1 613 996 8885</strong><br>Pour les ressortissants canadiens en difficulté.'}
   ];
 
-  /* ── Groupes de couches ── */
-  var layers = {};
-  var types = ['ville','temple','restaurant','hotel','activite','plage','scooter','urgence','hopital','ambassade'];
-  types.forEach(function(t){ layers[t] = L.layerGroup().addTo(map); });
+  /* ── Liens guides + compteur ── */
+  var GUIDE_LINKS = {'Siem Reap':'siem-reap/','Phnom Penh':'phnom-penh/','Angkor Wat':'angkor-wat/','Battambang':'battambang/','Kampot':'kampot/','Koh Rong':'koh-rong/'};
+  var counterEl = document.getElementById('carte-counter');
 
+  /* ── Clusters par type ── */
+  var clusterOpts = {maxClusterRadius:55,showCoverageOnHover:false,spiderfyOnMaxZoom:true,animate:true};
+  var layers = {};
+  var allMarkers = [];
+  var types = ['ville','temple','restaurant','hotel','activite','plage','scooter','urgence','hopital','ambassade'];
+  types.forEach(function(t){ layers[t] = L.markerClusterGroup(clusterOpts); map.addLayer(layers[t]); });
+
+  /* ── Créer marqueurs avec popups enrichis ── */
   MARKERS.forEach(function(m){
-    var popup = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#1A0A02;font-weight:700;margin-bottom:5px;">'+m.nom+'</div>'
-              + '<div style="font-size:.76rem;color:#444;line-height:1.6;">'+m.desc+'</div>';
-    L.marker([m.lat, m.lng], {icon: ICONS[m.type]})
-      .bindPopup(popup, {maxWidth:240, className:'gc-popup'})
-      .addTo(layers[m.type]);
+    var html = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#DDA422;font-weight:700;margin-bottom:6px;">'+m.nom+'</div>'
+             + '<div style="font-size:.75rem;color:rgba(245,233,208,.85);line-height:1.65;">'+m.desc+'</div>';
+    if(GUIDE_LINKS[m.nom]) html += '<a href="'+GUIDE_LINKS[m.nom]+'" class="gc-popup-link" target="_blank">📖 Voir le guide →</a>';
+    var lm = L.marker([m.lat,m.lng],{icon:ICONS[m.type]}).bindPopup(html,{maxWidth:260,className:'gc-popup'});
+    allMarkers.push({data:m,leaflet:lm});
   });
+
+  /* ── Rebuild dynamique (filtre + recherche) ── */
+  var currentFilter = 'tous', currentSearch = '';
+  function rebuildLayers(){
+    types.forEach(function(t){ layers[t].clearLayers(); });
+    var q = currentSearch.toLowerCase().trim();
+    var count = 0;
+    allMarkers.forEach(function(item){
+      var m = item.data;
+      if(currentFilter !== 'tous' && m.type !== currentFilter) return;
+      if(q && m.nom.toLowerCase().indexOf(q)===-1 && m.desc.toLowerCase().indexOf(q)===-1) return;
+      layers[m.type].addLayer(item.leaflet);
+      count++;
+    });
+    if(counterEl) counterEl.textContent = count + ' lieu' + (count!==1?'x':'') + ' affiché' + (count!==1?'s':'');
+  }
+  rebuildLayers();
 
   /* ── Filtres ── */
   var filterBtns = document.querySelectorAll('.carte-filter-btn');
@@ -9286,16 +9354,21 @@ if('serviceWorker' in navigator){
     btn.addEventListener('click', function(){
       filterBtns.forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
-      var t = btn.dataset.type;
-      types.forEach(function(type){
-        if(t === 'tous' || t === type){
-          if(!map.hasLayer(layers[type])) map.addLayer(layers[type]);
-        } else {
-          if(map.hasLayer(layers[type])) map.removeLayer(layers[type]);
-        }
-      });
+      currentFilter = btn.dataset.type;
+      rebuildLayers();
     });
   });
+
+  /* ── Recherche live ── */
+  var searchInput = document.getElementById('carte-search');
+  if(searchInput){
+    var searchTimer;
+    searchInput.addEventListener('input', function(){
+      clearTimeout(searchTimer);
+      var val = this.value;
+      searchTimer = setTimeout(function(){ currentSearch = val; rebuildLayers(); }, 250);
+    });
+  }
 
   /* ── Ajuster la taille si la section devient visible ── */
   var sizeObs = new IntersectionObserver(function(entries){
@@ -9315,9 +9388,9 @@ if('serviceWorker' in navigator){
       m.setView([lat, lng], 15);
       var icon = window.gcIcons && window.gcIcons.bonplan ? window.gcIcons.bonplan : null;
       var marker = icon ? L.marker([lat, lng], {icon: icon}) : L.marker([lat, lng]);
-      var popup = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#1A0A02;font-weight:700;margin-bottom:4px;">'+titre+'</div>'
-                + '<div style="font-size:.72rem;color:#555;">'+badge+'</div>';
-      marker.bindPopup(popup, {maxWidth:220}).addTo(m).openPopup();
+      var popup = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#DDA422;font-weight:700;margin-bottom:4px;">'+titre+'</div>'
+                + '<div style="font-size:.72rem;color:rgba(245,233,208,.8);">'+badge+'</div>';
+      marker.bindPopup(popup, {maxWidth:220, className:'gc-popup'}).addTo(m).openPopup();
     }
     setTimeout(doShow, 600);
   };
