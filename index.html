@@ -55,7 +55,7 @@
   img-src 'self' data: blob: https:;
   connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://formspree.io https://unpkg.com https://translate.googleapis.com https://api.open-meteo.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net;
   media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
-  frame-src https://www.openstreetmap.org https://translate.google.com https://translate.googleapis.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.youtube.com https://www.youtube-nocookie.com;
+  frame-src https://www.openstreetmap.org https://www.google.com https://maps.google.com https://translate.google.com https://translate.googleapis.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.youtube.com https://www.youtube-nocookie.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self' https://formspree.io;
@@ -1258,6 +1258,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 .carte-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1100px;margin:0 auto 24px;}
 .carte-filter-btn{padding:7px 18px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;background:rgba(44,21,7,.5);border:1px solid rgba(212,150,26,.2);color:rgba(245,233,208,.6);cursor:pointer;transition:all .2s;}
 .carte-filter-btn.active,.carte-filter-btn:hover{background:rgba(212,150,26,.18);border-color:rgba(212,150,26,.5);color:var(--creme);}
+.carte-tabs{display:flex;gap:0;max-width:1100px;margin:0 auto 28px;border-bottom:1px solid rgba(212,150,26,.2);}
+.carte-tab{padding:11px 28px;background:none;border:none;border-bottom:2px solid transparent;color:rgba(245,233,208,.45);font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:all .22s;}
+.carte-tab.active{color:var(--or);border-bottom-color:var(--or);}
+.carte-tab:hover:not(.active){color:rgba(245,233,208,.75);}
+#gc-google-map{max-width:1100px;display:block;margin:0 auto;border:0;border-radius:8px;height:640px;width:100%;}
+@media(max-width:640px){#gc-google-map{height:390px;}}
 .gc-popup .leaflet-popup-content-wrapper{background:#2A1005;border:1px solid rgba(212,150,26,.3);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.65);padding:0;}
 .gc-popup .leaflet-popup-content{margin:14px 16px;}
 .gc-popup .leaflet-popup-tip{background:#2A1005;}
@@ -5261,26 +5267,43 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">Toutes les villes, restaurants, hôtels et activités sur une seule carte</p>
   </div>
 
-  <div class="carte-search-wrap fade-in">
-    <input type="search" id="carte-search" class="carte-search" placeholder="Rechercher un lieu, restaurant, temple…" autocomplete="off" aria-label="Rechercher sur la carte">
-    <span id="carte-counter" class="carte-counter" aria-live="polite"></span>
+  <div class="carte-tabs" role="tablist" aria-label="Sélectionner la carte">
+    <button class="carte-tab active" id="tab-leaflet" role="tab" aria-selected="true" aria-controls="carte-panel-leaflet" onclick="switchCarteTab('leaflet')">🗺 Nos recommandations</button>
+    <button class="carte-tab" id="tab-google" role="tab" aria-selected="false" aria-controls="carte-panel-google" onclick="switchCarteTab('google')">🔍 Google Maps</button>
   </div>
 
-  <div class="carte-filters" role="group" aria-label="Filtrer la carte">
-    <button class="carte-filter-btn active" data-type="tous">Tous</button>
-    <button class="carte-filter-btn" data-type="ville">🏙 Villes</button>
-    <button class="carte-filter-btn" data-type="temple">🏯 Temples</button>
-    <button class="carte-filter-btn" data-type="restaurant">🍽 Restaurants</button>
-    <button class="carte-filter-btn" data-type="hotel">🏨 Hôtels</button>
-    <button class="carte-filter-btn" data-type="activite">🎭 Activités</button>
-    <button class="carte-filter-btn" data-type="plage">🏖 Plages</button>
-    <button class="carte-filter-btn" data-type="scooter">🛵 Scooters</button>
-    <button class="carte-filter-btn" data-type="urgence">🚨 Urgences</button>
-    <button class="carte-filter-btn" data-type="hopital">🏥 Hôpitaux</button>
-    <button class="carte-filter-btn" data-type="ambassade">🏛 Ambassades</button>
+  <div id="carte-panel-leaflet" role="tabpanel">
+    <div class="carte-search-wrap fade-in">
+      <input type="search" id="carte-search" class="carte-search" placeholder="Rechercher un lieu, restaurant, temple…" autocomplete="off" aria-label="Rechercher sur la carte">
+      <span id="carte-counter" class="carte-counter" aria-live="polite"></span>
+    </div>
+
+    <div class="carte-filters" role="group" aria-label="Filtrer la carte">
+      <button class="carte-filter-btn active" data-type="tous">Tous</button>
+      <button class="carte-filter-btn" data-type="ville">🏙 Villes</button>
+      <button class="carte-filter-btn" data-type="temple">🏯 Temples</button>
+      <button class="carte-filter-btn" data-type="restaurant">🍽 Restaurants</button>
+      <button class="carte-filter-btn" data-type="hotel">🏨 Hôtels</button>
+      <button class="carte-filter-btn" data-type="activite">🎭 Activités</button>
+      <button class="carte-filter-btn" data-type="plage">🏖 Plages</button>
+      <button class="carte-filter-btn" data-type="scooter">🛵 Scooters</button>
+      <button class="carte-filter-btn" data-type="urgence">🚨 Urgences</button>
+      <button class="carte-filter-btn" data-type="hopital">🏥 Hôpitaux</button>
+      <button class="carte-filter-btn" data-type="ambassade">🏛 Ambassades</button>
+    </div>
+
+    <div id="gc-map" aria-label="Carte interactive du Cambodge" role="region"></div>
   </div>
 
-  <div id="gc-map" aria-label="Carte interactive du Cambodge" role="region"></div>
+  <div id="carte-panel-google" role="tabpanel" hidden>
+    <iframe
+      id="gc-google-map"
+      src="https://www.google.com/maps?q=Cambodge&ll=12.5,104.8&z=7&output=embed&hl=fr"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Google Maps — Cambodge"></iframe>
+  </div>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -9395,6 +9418,18 @@ if('serviceWorker' in navigator){
     setTimeout(doShow, 600);
   };
 })();
+
+/* ── Switch onglets carte ── */
+window.switchCarteTab = function(tab){
+  ['leaflet','google'].forEach(function(p){
+    var panel = document.getElementById('carte-panel-'+p);
+    var btn   = document.getElementById('tab-'+p);
+    var active = p === tab;
+    if(panel){ if(active){ panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden',''); } }
+    if(btn){ btn.classList.toggle('active', active); btn.setAttribute('aria-selected', active); }
+  });
+  if(tab === 'leaflet' && window.gcMap) setTimeout(function(){ window.gcMap.invalidateSize(); }, 150);
+};
 
 </script>
 
