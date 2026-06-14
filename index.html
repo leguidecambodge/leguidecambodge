@@ -49,11 +49,11 @@
 <!-- Content Security Policy — sources précises et minimales -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'none';
-  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://translate.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googleadservices.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net https://tpc.googlesyndication.com;
+  script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://maps.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://unpkg.com https://translate.google.com https://translate.googleapis.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://www.googleadservices.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net https://tpc.googlesyndication.com;
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://translate.googleapis.com;
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' data: blob: https:;
-  connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://formspree.io https://unpkg.com https://translate.googleapis.com https://api.open-meteo.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net;
+  connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://www.google-analytics.com https://analytics.google.com https://formspree.io https://unpkg.com https://translate.googleapis.com https://api.open-meteo.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net;
   media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
   frame-src https://www.openstreetmap.org https://www.google.com https://maps.google.com https://translate.google.com https://translate.googleapis.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.youtube.com https://www.youtube-nocookie.com;
   object-src 'none';
@@ -1258,19 +1258,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 .carte-filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1100px;margin:0 auto 24px;}
 .carte-filter-btn{padding:7px 18px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;background:rgba(44,21,7,.5);border:1px solid rgba(212,150,26,.2);color:rgba(245,233,208,.6);cursor:pointer;transition:all .2s;}
 .carte-filter-btn.active,.carte-filter-btn:hover{background:rgba(212,150,26,.18);border-color:rgba(212,150,26,.5);color:var(--creme);}
-.carte-tabs{display:flex;gap:0;max-width:1100px;margin:0 auto 28px;border-bottom:1px solid rgba(212,150,26,.2);}
-.carte-tab{padding:11px 28px;background:none;border:none;border-bottom:2px solid transparent;color:rgba(245,233,208,.45);font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:all .22s;}
-.carte-tab.active{color:var(--or);border-bottom-color:var(--or);}
-.carte-tab:hover:not(.active){color:rgba(245,233,208,.75);}
-#gc-google-map{max-width:1100px;display:block;margin:0 auto;border:0;border-radius:8px;height:640px;width:100%;}
-@media(max-width:640px){#gc-google-map{height:390px;}}
-.gc-popup .leaflet-popup-content-wrapper{background:#2A1005;border:1px solid rgba(212,150,26,.3);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.65);padding:0;}
-.gc-popup .leaflet-popup-content{margin:14px 16px;}
-.gc-popup .leaflet-popup-tip{background:#2A1005;}
-.gc-popup-link{display:inline-block;margin-top:9px;padding:5px 14px;background:rgba(212,150,26,.12);border:1px solid rgba(212,150,26,.35);border-radius:4px;color:#DDA422!important;font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;text-decoration:none;transition:background .2s;}
-.gc-popup-link:hover{background:rgba(212,150,26,.28);}
-.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{border-radius:50%!important;background:rgba(44,21,7,.6)!important;border:2px solid rgba(212,150,26,.5)!important;}
-.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:rgba(212,150,26,.8)!important;color:#1A0A02!important;font-weight:700;font-size:.72rem;border-radius:50%!important;}
+.gc-popup-link{display:inline-block;margin-top:8px;padding:5px 12px;background:#DDA422;border-radius:4px;color:#fff!important;font-size:.65rem;letter-spacing:.05em;text-decoration:none;}
+.gc-popup-link:hover{background:#c48f1a;}
 @media(max-width:640px){#gc-map{height:390px;}#lexique,#carte-interactive{padding:60px 20px;}.lex-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}.lex-card{padding:14px 12px;}}
 
 .resto-photo{height:180px;background-size:cover;background-position:center;margin:-28px -28px 22px;position:relative;overflow:hidden;}
@@ -5267,43 +5256,26 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">Toutes les villes, restaurants, hôtels et activités sur une seule carte</p>
   </div>
 
-  <div class="carte-tabs" role="tablist" aria-label="Sélectionner la carte">
-    <button class="carte-tab active" id="tab-leaflet" role="tab" aria-selected="true" aria-controls="carte-panel-leaflet" onclick="switchCarteTab('leaflet')">🗺 Nos recommandations</button>
-    <button class="carte-tab" id="tab-google" role="tab" aria-selected="false" aria-controls="carte-panel-google" onclick="switchCarteTab('google')">🔍 Google Maps</button>
+  <div class="carte-search-wrap fade-in">
+    <input type="search" id="carte-search" class="carte-search" placeholder="Rechercher un lieu, restaurant, temple…" autocomplete="off" aria-label="Rechercher sur la carte">
+    <span id="carte-counter" class="carte-counter" aria-live="polite"></span>
   </div>
 
-  <div id="carte-panel-leaflet" role="tabpanel">
-    <div class="carte-search-wrap fade-in">
-      <input type="search" id="carte-search" class="carte-search" placeholder="Rechercher un lieu, restaurant, temple…" autocomplete="off" aria-label="Rechercher sur la carte">
-      <span id="carte-counter" class="carte-counter" aria-live="polite"></span>
-    </div>
-
-    <div class="carte-filters" role="group" aria-label="Filtrer la carte">
-      <button class="carte-filter-btn active" data-type="tous">Tous</button>
-      <button class="carte-filter-btn" data-type="ville">🏙 Villes</button>
-      <button class="carte-filter-btn" data-type="temple">🏯 Temples</button>
-      <button class="carte-filter-btn" data-type="restaurant">🍽 Restaurants</button>
-      <button class="carte-filter-btn" data-type="hotel">🏨 Hôtels</button>
-      <button class="carte-filter-btn" data-type="activite">🎭 Activités</button>
-      <button class="carte-filter-btn" data-type="plage">🏖 Plages</button>
-      <button class="carte-filter-btn" data-type="scooter">🛵 Scooters</button>
-      <button class="carte-filter-btn" data-type="urgence">🚨 Urgences</button>
-      <button class="carte-filter-btn" data-type="hopital">🏥 Hôpitaux</button>
-      <button class="carte-filter-btn" data-type="ambassade">🏛 Ambassades</button>
-    </div>
-
-    <div id="gc-map" aria-label="Carte interactive du Cambodge" role="region"></div>
+  <div class="carte-filters" role="group" aria-label="Filtrer la carte">
+    <button class="carte-filter-btn active" data-type="tous">Tous</button>
+    <button class="carte-filter-btn" data-type="ville">🏙 Villes</button>
+    <button class="carte-filter-btn" data-type="temple">🏯 Temples</button>
+    <button class="carte-filter-btn" data-type="restaurant">🍽 Restaurants</button>
+    <button class="carte-filter-btn" data-type="hotel">🏨 Hôtels</button>
+    <button class="carte-filter-btn" data-type="activite">🎭 Activités</button>
+    <button class="carte-filter-btn" data-type="plage">🏖 Plages</button>
+    <button class="carte-filter-btn" data-type="scooter">🛵 Scooters</button>
+    <button class="carte-filter-btn" data-type="urgence">🚨 Urgences</button>
+    <button class="carte-filter-btn" data-type="hopital">🏥 Hôpitaux</button>
+    <button class="carte-filter-btn" data-type="ambassade">🏛 Ambassades</button>
   </div>
 
-  <div id="carte-panel-google" role="tabpanel" hidden>
-    <iframe
-      id="gc-google-map"
-      src="https://www.google.com/maps?q=Cambodge&ll=12.5,104.8&z=7&output=embed&hl=fr"
-      allowfullscreen
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Google Maps — Cambodge"></iframe>
-  </div>
+  <div id="gc-map" aria-label="Carte interactive du Cambodge" role="region"></div>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -9018,72 +8990,43 @@ if('serviceWorker' in navigator){
   var mapEl = document.getElementById('gc-map');
   if(!mapEl) return;
 
-  /* Charger Leaflet uniquement quand la carte entre dans le viewport (économie ~200KB mobile) */
-  new IntersectionObserver(function(entries, lazyObs){
+  /* Charger Google Maps + MarkerClusterer en lazy (viewport) */
+  new IntersectionObserver(function(entries, obs){
     if(!entries[0].isIntersecting) return;
-    lazyObs.disconnect();
-    var css = document.createElement('link');
-    css.rel = 'stylesheet'; css.crossOrigin = '';
-    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-    document.head.appendChild(css);
-    var css2 = document.createElement('link');
-    css2.rel = 'stylesheet'; css2.crossOrigin = '';
-    css2.href = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css';
-    document.head.appendChild(css2);
-    var css3 = document.createElement('link');
-    css3.rel = 'stylesheet'; css3.crossOrigin = '';
-    css3.href = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css';
-    document.head.appendChild(css3);
-    var s = document.createElement('script');
-    s.crossOrigin = '';
-    s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-    s.onload = function(){
+    obs.disconnect();
+    var s1 = document.createElement('script');
+    s1.src = 'https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js';
+    s1.onload = function(){
       var s2 = document.createElement('script');
-      s2.crossOrigin = '';
-      s2.src = 'https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js';
-      s2.onload = initMap;
+      s2.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD6Tu0TuP3MJs6Tbe0gDsoBkeyMq4g6yeM&callback=initGoogleMap&loading=async&language=fr';
       document.head.appendChild(s2);
     };
-    document.head.appendChild(s);
+    document.head.appendChild(s1);
   }, {rootMargin:'300px 0px', threshold:0}).observe(mapEl);
 
-  function initMap(){
-  /* ── Initialiser la carte centrée sur le Cambodge ── */
-  var map = L.map('gc-map', {
-    center: [12.1, 104.8],
-    zoom: 6,
-    zoomControl: true,
-    attributionControl: true,
-    minZoom: 5,
-    maxZoom: 18
+  window.initGoogleMap = function(){
+  var map = new google.maps.Map(mapEl, {
+    center: {lat:12.1, lng:104.8},
+    zoom: 7,
+    gestureHandling: 'cooperative',
+    streetViewControl: false,
+    fullscreenControl: true,
+    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR, position: google.maps.ControlPosition.TOP_LEFT}
   });
   window.gcMap = map;
 
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions" rel="noopener">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 20
-  }).addTo(map);
-
   /* ── Bouton Recentrer ── */
-  var ResetCtrl = L.Control.extend({
-    onAdd: function(m){
-      var btn = L.DomUtil.create('button');
-      btn.innerHTML = '⛶';
-      btn.title = 'Recentrer sur le Cambodge';
-      btn.style.cssText = 'width:34px;height:34px;background:#2C1507;border:2px solid rgba(212,150,26,.45);color:rgba(212,150,26,.9);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:4px;margin-top:6px;';
-      L.DomEvent.on(btn,'click',function(e){ L.DomEvent.stopPropagation(e); m.setView([12.1,104.8],6); });
-      return btn;
-    }
-  });
-  new ResetCtrl({position:'topright'}).addTo(map);
+  var resetBtn = document.createElement('button');
+  resetBtn.innerHTML = '⛶';
+  resetBtn.title = 'Recentrer sur le Cambodge';
+  resetBtn.style.cssText = 'margin:6px;width:40px;height:40px;background:#2C1507;border:2px solid rgba(212,150,26,.5);color:rgba(212,150,26,.9);font-size:1.1rem;cursor:pointer;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);';
+  resetBtn.onclick = function(){ map.setCenter({lat:12.1,lng:104.8}); map.setZoom(7); };
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(resetBtn);
 
-  /* ── Icônes personnalisées ── */
+  /* ── Icônes personnalisées (SVG emoji) ── */
   function mkIcon(emoji, color){
-    return L.divIcon({
-      html: '<div style="background:'+color+';width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;border:2px solid rgba(255,255,255,.7);box-shadow:0 2px 8px rgba(0,0,0,.4);">'+emoji+'</div>',
-      iconSize: [34,34], iconAnchor: [17,17], popupAnchor: [0,-18], className: ''
-    });
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="18" cy="18" r="16" fill="'+color+'" stroke="rgba(255,255,255,0.8)" stroke-width="2"/><text x="18" y="23" text-anchor="middle" font-size="14">'+emoji+'</text></svg>';
+    return {url:'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg),scaledSize:new google.maps.Size(36,36),anchor:new google.maps.Point(18,18)};
   }
 
   var ICONS = {
@@ -9337,69 +9280,62 @@ if('serviceWorker' in navigator){
   /* ── Liens guides + compteur ── */
   var GUIDE_LINKS = {'Siem Reap':'siem-reap/','Phnom Penh':'phnom-penh/','Angkor Wat':'angkor-wat/','Battambang':'battambang/','Kampot':'kampot/','Koh Rong':'koh-rong/'};
   var counterEl = document.getElementById('carte-counter');
-
-  /* ── Clusters par type ── */
-  var clusterOpts = {maxClusterRadius:55,showCoverageOnHover:false,spiderfyOnMaxZoom:true,animate:true};
-  var layers = {};
+  var iw = new google.maps.InfoWindow({maxWidth:290});
   var allMarkers = [];
-  var types = ['ville','temple','restaurant','hotel','activite','plage','scooter','urgence','hopital','ambassade'];
-  types.forEach(function(t){ layers[t] = L.markerClusterGroup(clusterOpts); map.addLayer(layers[t]); });
 
-  /* ── Créer marqueurs avec popups enrichis ── */
+  /* ── Créer marqueurs Google Maps ── */
   MARKERS.forEach(function(m){
-    var html = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#DDA422;font-weight:700;margin-bottom:6px;">'+m.nom+'</div>'
-             + '<div style="font-size:.75rem;color:rgba(245,233,208,.85);line-height:1.65;">'+m.desc+'</div>';
-    if(GUIDE_LINKS[m.nom]) html += '<a href="'+GUIDE_LINKS[m.nom]+'" class="gc-popup-link" target="_blank">📖 Voir le guide →</a>';
-    var lm = L.marker([m.lat,m.lng],{icon:ICONS[m.type]}).bindPopup(html,{maxWidth:260,className:'gc-popup'});
-    allMarkers.push({data:m,leaflet:lm});
+    var gm = new google.maps.Marker({position:{lat:m.lat,lng:m.lng}, icon:ICONS[m.type], title:m.nom});
+    gm.addListener('click', function(){
+      var html = '<div style="padding:6px 2px 2px;">'
+               + '<div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:5px;">'+m.nom+'</div>'
+               + '<div style="font-size:.77rem;color:#555;line-height:1.6;max-width:240px;">'+m.desc+'</div>';
+      if(GUIDE_LINKS[m.nom]) html += '<a href="'+GUIDE_LINKS[m.nom]+'" target="_blank" class="gc-popup-link">📖 Voir le guide →</a>';
+      html += '</div>';
+      iw.setContent(html);
+      iw.open(map, gm);
+    });
+    allMarkers.push({data:m, gmarker:gm});
   });
 
-  /* ── Rebuild dynamique (filtre + recherche) ── */
-  var currentFilter = 'tous', currentSearch = '';
-  function rebuildLayers(){
-    types.forEach(function(t){ layers[t].clearLayers(); });
+  /* ── Rebuild (filtre + recherche) ── */
+  var currentFilter = 'tous', currentSearch = '', clusterer = null;
+  function rebuildMap(){
+    if(clusterer){ clusterer.clearMarkers(); clusterer = null; }
+    allMarkers.forEach(function(i){ i.gmarker.setMap(null); });
     var q = currentSearch.toLowerCase().trim();
-    var count = 0;
+    var visible = [];
     allMarkers.forEach(function(item){
       var m = item.data;
       if(currentFilter !== 'tous' && m.type !== currentFilter) return;
       if(q && m.nom.toLowerCase().indexOf(q)===-1 && m.desc.toLowerCase().indexOf(q)===-1) return;
-      layers[m.type].addLayer(item.leaflet);
-      count++;
+      visible.push(item.gmarker);
     });
-    if(counterEl) counterEl.textContent = count + ' lieu' + (count!==1?'x':'') + ' affiché' + (count!==1?'s':'');
+    clusterer = new markerClusterer.MarkerClusterer({map:map, markers:visible});
+    if(counterEl) counterEl.textContent = visible.length+' lieu'+(visible.length!==1?'x':'')+' affiché'+(visible.length!==1?'s':'');
   }
-  rebuildLayers();
+  rebuildMap();
 
   /* ── Filtres ── */
-  var filterBtns = document.querySelectorAll('.carte-filter-btn');
-  filterBtns.forEach(function(btn){
+  document.querySelectorAll('.carte-filter-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.carte-filter-btn').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
       currentFilter = btn.dataset.type;
-      rebuildLayers();
+      rebuildMap();
     });
   });
 
   /* ── Recherche live ── */
   var searchInput = document.getElementById('carte-search');
   if(searchInput){
-    var searchTimer;
+    var t;
     searchInput.addEventListener('input', function(){
-      clearTimeout(searchTimer);
-      var val = this.value;
-      searchTimer = setTimeout(function(){ currentSearch = val; rebuildLayers(); }, 250);
+      clearTimeout(t); var v = this.value;
+      t = setTimeout(function(){ currentSearch = v; rebuildMap(); }, 250);
     });
   }
-
-  /* ── Ajuster la taille si la section devient visible ── */
-  var sizeObs = new IntersectionObserver(function(entries){
-    if(entries[0].isIntersecting){ map.invalidateSize(); sizeObs.disconnect(); }
-  }, {threshold: 0.1});
-  var carteSection = document.getElementById('carte-interactive');
-  if(carteSection) sizeObs.observe(carteSection);
-  } // fin initMap
+  }; // fin initGoogleMap
 
   window.voirSurCarte = function(lat, lng, titre, badge){
     var section = document.getElementById('carte-interactive');
@@ -9407,29 +9343,19 @@ if('serviceWorker' in navigator){
     function doShow(){
       var m = window.gcMap;
       if(!m){ setTimeout(doShow, 300); return; }
-      m.invalidateSize();
-      m.setView([lat, lng], 15);
-      var icon = window.gcIcons && window.gcIcons.bonplan ? window.gcIcons.bonplan : null;
-      var marker = icon ? L.marker([lat, lng], {icon: icon}) : L.marker([lat, lng]);
-      var popup = '<div style="font-family:Cinzel,serif;font-size:.85rem;color:#DDA422;font-weight:700;margin-bottom:4px;">'+titre+'</div>'
-                + '<div style="font-size:.72rem;color:rgba(245,233,208,.8);">'+badge+'</div>';
-      marker.bindPopup(popup, {maxWidth:220, className:'gc-popup'}).addTo(m).openPopup();
+      m.setCenter({lat:lat, lng:lng});
+      m.setZoom(15);
+      var icon = window.gcIcons && window.gcIcons.bonplan ? window.gcIcons.bonplan : undefined;
+      var marker = new google.maps.Marker({position:{lat:lat,lng:lng}, map:m, icon:icon});
+      var popup = new google.maps.InfoWindow({
+        content:'<div style="padding:4px 2px;"><div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:4px;">'+titre+'</div><div style="font-size:.75rem;color:#555;">'+badge+'</div></div>',
+        maxWidth:220
+      });
+      popup.open(m, marker);
     }
     setTimeout(doShow, 600);
   };
 })();
-
-/* ── Switch onglets carte ── */
-window.switchCarteTab = function(tab){
-  ['leaflet','google'].forEach(function(p){
-    var panel = document.getElementById('carte-panel-'+p);
-    var btn   = document.getElementById('tab-'+p);
-    var active = p === tab;
-    if(panel){ if(active){ panel.removeAttribute('hidden'); } else { panel.setAttribute('hidden',''); } }
-    if(btn){ btn.classList.toggle('active', active); btn.setAttribute('aria-selected', active); }
-  });
-  if(tab === 'leaflet' && window.gcMap) setTimeout(function(){ window.gcMap.invalidateSize(); }, 150);
-};
 
 </script>
 
