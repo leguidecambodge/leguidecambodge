@@ -6108,31 +6108,55 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 })();
 
 /* ═══════════════════════════════════════════════════
-   AFFILIATION — IDs à remplacer par les vôtres
-   1. Inscrivez-vous sur partner.booking.com → remplacez BOOKING_AFF_ID
+   AFFILIATION
+   Booking.com passe par CJ Affiliate (Publisher ID 7994608, site "Le Guide
+   Cambodge" 101812079). Chaque lien booking.com est réécrit vers l'URL de
+   redirection CJ, qui encode l'URL Booking.com d'origine en paramètre ?url=.
+   Beaucoup de liens (fiches hôtels par ville) sont générés dynamiquement
+   après coup (rendu JS au clic sur une ville) : un MutationObserver rattrape
+   ces liens en plus du passage initial, pour ne rien manquer.
    2. Inscrivez-vous sur partners.agoda.com → remplacez AGODA_AFF_ID
-   3. Inscrivez-vous sur partner.getyourguide.com → remplacez GYG_PARTNER_ID
 ═══════════════════════════════════════════════════ */
 (function(){
-  var BOOKING_AFF_ID = 'BOOKING_AFF_ID'; /* ← Votre aid= Booking.com */
-  var AGODA_AFF_ID   = 'AGODA_AFF_ID';   /* ← Votre cid= Agoda */
-  /* Ajoute automatiquement l'ID affilié sur tous les liens booking/agoda */
-  document.querySelectorAll('a[href*="booking.com"]').forEach(function(a){
-    if(BOOKING_AFF_ID === 'BOOKING_AFF_ID') return;
-    try{
-      var u = new URL(a.href);
-      u.searchParams.set('aid', BOOKING_AFF_ID);
-      a.href = u.toString();
-    }catch(e){}
-  });
-  document.querySelectorAll('a[href*="agoda.com"]').forEach(function(a){
+  var CJ_WEBSITE_ID = '101812079';
+  var CJ_LINK_ID    = '12677526';
+  var AGODA_AFF_ID  = 'AGODA_AFF_ID';   /* ← Votre cid= Agoda */
+
+  function collectAnchors(root, selector){
+    var found = [];
+    if(root.matches && root.matches(selector)) found.push(root);
+    if(root.querySelectorAll) found.push.apply(found, root.querySelectorAll(selector));
+    return found;
+  }
+
+  function rewriteAffiliateLinks(root){
+    collectAnchors(root, 'a[href*="booking.com"]:not([data-cj-done])').forEach(function(a){
+      try{
+        a.href = 'https://www.tkqlhce.com/click-' + CJ_WEBSITE_ID + '-' + CJ_LINK_ID + '?url=' + encodeURIComponent(a.href);
+        a.setAttribute('data-cj-done', '1');
+      }catch(e){}
+    });
     if(AGODA_AFF_ID === 'AGODA_AFF_ID') return;
-    try{
-      var u = new URL(a.href);
-      u.searchParams.set('cid', AGODA_AFF_ID);
-      a.href = u.toString();
-    }catch(e){}
-  });
+    collectAnchors(root, 'a[href*="agoda.com"]:not([data-agoda-done])').forEach(function(a){
+      try{
+        var u = new URL(a.href);
+        u.searchParams.set('cid', AGODA_AFF_ID);
+        a.href = u.toString();
+        a.setAttribute('data-agoda-done', '1');
+      }catch(e){}
+    });
+  }
+
+  rewriteAffiliateLinks(document.body);
+
+  new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(node){
+        if(node.nodeType !== 1) return;
+        rewriteAffiliateLinks(node);
+      });
+    });
+  }).observe(document.body, {childList:true, subtree:true});
 })();
 
 /* ── Particules ── */
