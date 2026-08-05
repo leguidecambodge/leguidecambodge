@@ -1,0 +1,35 @@
+name: Mise à jour des dates du sitemap
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/index.html'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # historique complet nécessaire pour "git log" par fichier
+
+      - name: Synchroniser les dates lastmod avec l'historique git
+        run: node scripts/update-sitemap-dates.js
+
+      - name: Committer et pousser si changement
+        run: |
+          if git diff --quiet; then
+            echo "Aucun changement, rien à committer."
+            exit 0
+          fi
+          git config user.name "leguidecambodge"
+          git config user.email "leguidecambodge@gmail.com"
+          git add sitemap.xml
+          git commit -m "chore: synchronise les dates lastmod du sitemap avec l'historique git"
+          git push
