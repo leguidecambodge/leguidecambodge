@@ -57,5 +57,3 @@ if (DRY_RUN) {
 } else {
   console.log('\nRien à changer, fichier non touché.');
 }
-
-process.exitCode = changedCount > 0 ? 1 : 0; // sert au workflow pour savoir s'il doit committer
