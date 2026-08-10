@@ -3395,9 +3395,20 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 /* ── Header scroll + Scroll-spy + Barre de progression (fusionnés) ── */
 (function(){
   const hdr = document.getElementById('site-header');
+  const alerte = document.getElementById('alerte-saison');
   const sections = Array.from(document.querySelectorAll('section[id]'));
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const progressBar = document.getElementById('read-progress');
+
+  /* Empêche le header (position fixed) de chevaucher la bannière d'alerte
+     saisonnière (position relative, en flux normal) : décale le header
+     de la hauteur de la bannière tant qu'elle est visible et pas encore
+     défilée hors champ. */
+  window.gcSyncHeaderTop = function(){
+    if(!hdr) return;
+    const ah = (alerte && alerte.classList.contains('visible')) ? alerte.offsetHeight : 0;
+    hdr.style.top = Math.max(0, ah - window.scrollY) + 'px';
+  };
 
   let _rafPending = false;
   const onScroll = () => {
@@ -3407,6 +3418,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
       _rafPending = false;
       const sy = window.scrollY;
       if(hdr) hdr.classList.toggle('scrolled', sy > 50);
+      window.gcSyncHeaderTop();
       if(progressBar){
         const docH = document.documentElement.scrollHeight - window.innerHeight;
         const pct = docH > 0 ? Math.round((sy / docH) * 100) : 0;
@@ -3421,6 +3433,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
   };
 
   window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', window.gcSyncHeaderTop, {passive:true});
   onScroll();
 })();
 
@@ -6018,10 +6031,12 @@ if('serviceWorker' in navigator){
   if(!a) return;
   txt.textContent = a.msg;
   el.classList.add(a.cls, 'visible');
+  if(window.gcSyncHeaderTop) window.gcSyncHeaderTop();
 
   if(btn){
     btn.addEventListener('click', function(){
       el.classList.remove('visible');
+      if(window.gcSyncHeaderTop) window.gcSyncHeaderTop();
       try{ sessionStorage.setItem('gc_alerte_closed','1'); }catch(e){}
     });
   }
