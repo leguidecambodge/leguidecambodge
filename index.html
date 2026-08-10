@@ -728,11 +728,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 .cookie-decline:hover{border-color:rgba(245,233,208,.4);color:var(--creme)}
 
 @media(max-width:900px){
-  nav[role="navigation"]{padding:14px 20px}
+  nav[role="navigation"]{padding:14px 8px}
   .nav-links{display:none}
-  .kh-clock{border-right:none;padding-right:0;margin-right:0}
-  .kh-clock-date{display:none}
-  .kh-clock-time{font-size:.72rem}
+  .kh-clock{display:none}
+  .nav-right{gap:2px}
+  .lang-switcher-btn{padding:6px 4px}
+  .lang-switcher-btn #lang-code,.lang-switcher-btn span:last-child{display:none}
   .hamburger{display:flex}
   section{padding:64px 20px}
   .cities-grid{grid-template-columns:repeat(2,1fr)}
@@ -746,6 +747,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
   .hotels-grid{grid-template-columns:1fr}
   .hero-stats{gap:24px}
   .floating-contact{bottom:calc(20px + env(safe-area-inset-bottom, 0px));right:16px}
+}
+@media(max-width:340px){
+  nav[role="navigation"]{padding:14px 2px}
+  .nav-right{gap:0}
+  .lang-switcher-btn{padding:6px 2px}
+  #fav-toggle-btn{padding:6px 3px!important}
+  #theme-toggle{width:26px!important;height:26px!important}
 }
 @media(max-width:600px){
   .footer-top{grid-template-columns:1fr}
@@ -1079,6 +1087,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 #fav-toggle-btn{font-family:'Cinzel',serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;background:none;border:1px solid rgba(212,150,26,.3);color:rgba(245,233,208,.6);padding:6px 14px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:5px;}
 #fav-toggle-btn:hover{border-color:var(--or);color:var(--or-clair);}
 #fav-count{background:var(--or);color:#1a0900;font-size:.55rem;font-weight:700;min-width:16px;height:16px;border-radius:8px;align-items:center;justify-content:center;padding:0 4px;display:none;}
+@media(max-width:900px){
+  #fav-toggle-btn{padding:6px 5px}
+  #theme-toggle{width:30px;height:30px}
+}
 
 #qp-rain{position:absolute;inset:0;pointer-events:none;display:none;overflow:hidden;z-index:1;}
 #qp-rain .rp{position:absolute;width:1px;background:linear-gradient(to bottom,transparent,rgba(180,220,255,.55));border-radius:1px;animation:rpFall linear infinite;}
