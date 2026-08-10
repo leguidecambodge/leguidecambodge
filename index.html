@@ -1590,9 +1590,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
       <li><a href="#villes">Villes</a></li>
       <li><a href="hotels/">Hôtels</a></li>
       <li><a href="vols/">Vols</a></li>
-      <li><a href="#activites">Activités</a></li>
+      <li><a href="activites/">Activités</a></li>
       <li><a href="#evenements">Événements</a></li>
-      <li><a href="#angkor-guide">Angkor</a></li>
+      <li><a href="angkor/">Angkor</a></li>
       <li class="nav-dropdown">
         <button class="nav-dropdown-btn" id="nav-tout-btn" aria-expanded="false">Tout le site ↓</button>
         <div class="nav-dropdown-menu" id="nav-tout-menu">
@@ -1608,11 +1608,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
           <a href="visa-cambodge/">✈️ Visa Cambodge</a>
           <a href="budget-voyage-cambodge/">💰 Budget Voyage</a>
           <div class="nav-dropdown-sep"></div>
-          <a href="#quartiers" onclick="closeNavDropdown()">Quartiers</a>
+          <a href="quartiers/">🏘️ Quartiers</a>
           <a href="#quand-partir" onclick="closeNavDropdown()">Quand Partir</a>
           <a href="transports/">🚌 Transports</a>
           <a href="scooters/">🛵 Scooters</a>
-          <a href="#plats-khmers" onclick="closeNavDropdown()">Cuisine</a>
+          <a href="cuisine-khmere/">🍜 Cuisine</a>
           <div class="nav-dropdown-sep"></div>
           <a href="#visa" onclick="closeNavDropdown()">Visa</a>
           <a href="#sante" onclick="closeNavDropdown()">Santé</a>
@@ -1628,7 +1628,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
           <a href="#bons-plans" onclick="closeNavDropdown()">Bons Plans</a>
           <a href="#newsletter" onclick="closeNavDropdown()">Newsletter</a>
           <div class="nav-dropdown-sep"></div>
-          <a href="#blog" onclick="closeNavDropdown()">Blog</a>
+          <a href="blog/">📰 Blog</a>
           <a href="#conseils" onclick="closeNavDropdown()">Conseils</a>
           <a href="#contact" onclick="closeNavDropdown()">Contact</a>
           <a href="mentions-legales/">⚖️ Mentions légales</a>
@@ -1685,15 +1685,15 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <a href="budget-voyage-cambodge/">💰 Budget</a>
     <div style="font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.14em;color:rgba(212,150,26,.6);text-transform:uppercase;padding:8px 0 2px;">✦ Sur cette page</div>
     <a href="#villes">Villes</a>
-    <a href="#quartiers">Quartiers</a>
+    <a href="quartiers/">🏘️ Quartiers</a>
     <a href="#quand-partir">Quand Partir</a>
     <a href="transports/">🚌 Transports</a>
     <a href="vols/">✈️ Vols</a>
-    <a href="#plats-khmers">Cuisine</a>
+    <a href="cuisine-khmere/">🍜 Cuisine</a>
     <a href="scooters/">🛵 Scooters</a>
     <a href="hotels/">🏨 Hôtels</a>
-    <a href="#activites">Activités</a>
-    <a href="#angkor-guide">Angkor</a>
+    <a href="activites/">🎯 Activités</a>
+    <a href="angkor/">🏯 Angkor</a>
     <a href="#visa">Visa</a>
     <a href="#sante">Santé</a>
     <a href="#sim-internet">SIM &amp; Net</a>
@@ -1703,7 +1703,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <a href="histoire-cambodge/">Histoire</a>
     <a href="#partir-france">Le Guide</a>
     <a href="#newsletter">Newsletter</a>
-    <a href="#blog">Blog</a>
+    <a href="blog/">📰 Blog</a>
     <a href="#photos-videos">Photos &amp; Vidéos</a>
     <a href="#evenements">Événements</a>
     <a href="#bons-plans">Bons Plans</a>
@@ -1733,9 +1733,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <div class="hero-ornament" aria-hidden="true">✦ 🪷 ✦</div>
     <p class="hero-subtitle">Temples millénaires, saveurs authentiques, aventures inoubliables<br>Découvrez le Royaume de l'Étonnement</p>
     <div class="hero-badges">
-      <a href="#angkor-guide" class="hero-badge">🏛️ Angkor Wat</a>
+      <a href="angkor/" class="hero-badge">🏛️ Angkor Wat</a>
       <a href="#villes" class="hero-badge">🌴 Koh Rong</a>
-      <a href="#plats-khmers" class="hero-badge">🍜 Cuisine Khmère</a>
+      <a href="cuisine-khmere/" class="hero-badge">🍜 Cuisine Khmère</a>
       <a href="#conseils" class="hero-badge">🗺️ Guide Complet</a>
     </div>
   </div>
@@ -2030,513 +2030,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 
 <div class="khmer-border" aria-hidden="true"></div>
 
-<section id="quartiers" aria-labelledby="quartiers-title" style="background:linear-gradient(180deg,#1E0A02,#2C1508);padding:90px 48px;">
-  <div class="section-header fade-in">
-    <span class="section-label">✦ Vie Locale</span>
-    <h2 class="section-title" id="quartiers-title">Guide des <em>Quartiers</em></h2>
-    <div class="section-divider"></div>
-    <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">Toutes les villes du Cambodge décryptées quartier par quartier — ambiance, prix, sécurité</p>
-  </div>
-  <div class="quartiers-tabs fade-in" role="tablist" aria-label="Choisir une ville">
-    <button class="quartiers-tab active" role="tab" aria-selected="true" data-city="pp" id="qtab-pp" aria-controls="qp-pp">🏙 Phnom Penh</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="sr" id="qtab-sr" aria-controls="qp-sr">🏯 Siem Reap</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="bt" id="qtab-bt" aria-controls="qp-bt">🎨 Battambang</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="sv" id="qtab-sv" aria-controls="qp-sv">🏖 Sihanoukville</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="km" id="qtab-km" aria-controls="qp-km">🌿 Kampot</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="kp" id="qtab-kp" aria-controls="qp-kp">🦀 Kep</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="kr" id="qtab-kr" aria-controls="qp-kr">🏝 Koh Rong</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="ks" id="qtab-ks" aria-controls="qp-ks">🤿 Koh Rong Sanloem</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="po" id="qtab-po" aria-controls="qp-po">🛂 Poipet</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="pu" id="qtab-pu" aria-controls="qp-pu">🌾 Pursat</button>
-    <button class="quartiers-tab" role="tab" aria-selected="false" data-city="md" id="qtab-md" aria-controls="qp-md">🐘 Mondulkiri</button>
-  </div>
-  <!-- PHNOM PENH -->
-  <div class="quartiers-panel active fade-in" id="qp-pp" role="tabpanel" aria-labelledby="qtab-pp">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Oknha_Churn_You_Hak_st%28294%29%2CSangkat_Boeng_Keng_Kang_Ti_Muoy%2C_Phnom_Penh%2C_Campuchia%2C25-06-16-Dyt_-_panoramio.jpg" alt="Rue 294 quartier BKK1 Boeung Keng Kang Phnom Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">BKK1 (Boeung Keng Kang)</div>
-        <div class="quartier-vibe">Le quartier expatrié par excellence</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🍽 Restaurants</span><span class="quartier-tag">☕ Cafés</span><span class="quartier-tag">🌙 Bars</span><span class="quartier-tag">✅ Sûr</span>
-        </div>
-        <p class="quartier-desc">BKK1 concentre les meilleurs cafés, restaurants internationaux et bars branchés. Très fréquenté par les expatriés, c'est le quartier le plus animé pour sortir. Rue 278 et rue 308 incontournables.</p>
-        <div class="quartier-prix">💰 Hôtels : 25–90 $/nuit · Restaurant moyen : 8–18 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/SisowathQuay_Above.JPG" alt="Sisowath Quay Riverside berges du Tonlé Sap Phnom Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Riverside (Sisowath Quay)</div>
-        <div class="quartier-vibe">Les berges du Tonlé Sap — touristique et vivant</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🌅 Couchers de soleil</span><span class="quartier-tag">🛥 Croisières</span><span class="quartier-tag">🛍 Marchés</span>
-        </div>
-        <p class="quartier-desc">Idéal pour se promener le soir le long du fleuve. Nombreux restaurants avec vue, boutiques de souvenirs et départs de croisières. Touristique mais incontournable pour la promenade du soir.</p>
-        <div class="quartier-prix">💰 Hôtels : 30–120 $/nuit · Vue fleuve conseillée</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Phnom_Penh_Royal_Palace_by_Night.JPG" alt="Palais Royal Phnom Penh quartier Daun Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Daun Penh (Centre historique)</div>
-        <div class="quartier-vibe">Palais Royal, musées, architecture coloniale</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🏛 Musées</span><span class="quartier-tag">🏯 Palais</span><span class="quartier-tag">📸 Photos</span>
-        </div>
-        <p class="quartier-desc">Le cœur historique de Phnom Penh : Palais Royal, Musée National, marché central Psar Thmei. Moins de vie nocturne mais indispensable pour la culture. Calme en soirée.</p>
-        <div class="quartier-prix">💰 Hôtels : 20–70 $/nuit · Accès taxi facile</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Russian_Market_area_Phnom_Penh_%2812200843206%29.jpg" alt="Russian Market Toul Tom Poung marché Phnom Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Toul Tom Poung (Russian Market)</div>
-        <div class="quartier-vibe">Authentique, artisanat, vie locale</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🛍 Shopping</span><span class="quartier-tag">🎨 Artisanat</span><span class="quartier-tag">💲 Pas cher</span>
-        </div>
-        <p class="quartier-desc">Autour du marché russe — le meilleur endroit pour l'artisanat, les vêtements et la street food locale. Moins touristique que le centre, ambiance plus authentique et prix plus bas.</p>
-        <div class="quartier-prix">💰 Hôtels : 15–45 $/nuit · Street food : 2–5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/02-Independence_Monument_Phnom_Penh-nX-3.jpg" alt="Monument de l'Indépendance quartier 7 Makara Phnom Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">7 Makara</div>
-        <div class="quartier-vibe">Quartier local résidentiel — immersion totale</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🏠 Résidentiel</span><span class="quartier-tag">🍜 Street food</span><span class="quartier-tag">💲 Budget</span>
-        </div>
-        <p class="quartier-desc">Quartier khmer authentique loin du tourisme de masse. Idéal pour les voyageurs qui veulent vraiment s'immerger dans la vie locale. Marchés de rue animés dès 6h du matin.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–20 $/nuit · Repas local : 1–3 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Chroy_Changvar_2016_1.jpg" alt="Pont Chroy Changvar péninsule Phnom Penh" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Chroy Changvar</div>
-        <div class="quartier-vibe">Péninsule moderne en plein développement</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🌆 Moderne</span><span class="quartier-tag">🌙 Nouveaux bars</span><span class="quartier-tag">🌉 Vue</span>
-        </div>
-        <p class="quartier-desc">La péninsule face au Riverside se transforme rapidement avec de nouveaux hôtels et restaurants avec vue spectaculaire sur la ville. Moins pratique sans scooter mais vue imprenable la nuit.</p>
-        <div class="quartier-prix">💰 Hôtels modernes : 40–150 $/nuit</div>
-      </div>
-    </div>
-  </div>
-  <!-- SIEM REAP -->
-  <div class="quartiers-panel fade-in" id="qp-sr" role="tabpanel" aria-labelledby="qtab-sr">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/7/77/Siem_Reap_Pub_Street_01.jpg" alt="Pub Street vie nocturne Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Pub Street & Old Market</div>
-        <div class="quartier-vibe">L'épicentre touristique et festif</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🍺 Bars</span><span class="quartier-tag">🍽 Restos</span><span class="quartier-tag">🛍 Shopping</span><span class="quartier-tag">🌙 Vie nocturne</span>
-        </div>
-        <p class="quartier-desc">Incontournable pour la vie nocturne et les souvenirs. Pub Street est piétonne le soir. Le marché couvert (Old Market) regorge d'artisanat, épices et vêtements. Touristique mais ambiance unique.</p>
-        <div class="quartier-prix">💰 Hôtels : 20–80 $/nuit · Cocktail : 3–6 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Siem_Reap_-_Preah_Prohm_Rath_%283%29.JPG" alt="Temple bouddhiste quartier Wat Bo Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Wat Bo Village</div>
-        <div class="quartier-vibe">Calme, authenticité, cafés branchés</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🏛 Temple</span><span class="quartier-tag">☕ Cafés</span><span class="quartier-tag">🌿 Tranquille</span>
-        </div>
-        <p class="quartier-desc">À 10 minutes à pied de Pub Street, Wat Bo est le quartier préféré des voyageurs lents. Boutiques locales, galeries d'art, restaurants gastronomiques et calme absolu. Idéal pour séjour long.</p>
-        <div class="quartier-prix">💰 Hôtels boutique : 30–100 $/nuit · Cafés artisans</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/d/de/A_part_of_Siem_Reap.JPG" alt="Boulevard Sivutha quartier Svay Dangkum Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Svay Dangkum (Centre local)</div>
-        <div class="quartier-vibe">Vie locale khmer authentique</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🏠 Local</span><span class="quartier-tag">🍜 Street food</span><span class="quartier-tag">💲 Budget</span>
-        </div>
-        <p class="quartier-desc">Le quartier local face au Old Market, de l'autre côté de la rivière Siem Reap. Marchés de rue le matin, guesthouses à petit prix, food stalls khmers. Loin de l'ambiance Pub Street.</p>
-        <div class="quartier-prix">💰 Guesthouses : 6–20 $/nuit · Excellent rapport qualité/prix</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/A_road_of_Siem_Reap.JPG" alt="Route nationale 6 vers Angkor Wat Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Route Nationale 6 (Vers Angkor)</div>
-        <div class="quartier-vibe">Hôtels resort, spas, piscines</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🏨 Resorts</span><span class="quartier-tag">💆 Spas</span><span class="quartier-tag">🏊 Piscines</span>
-        </div>
-        <p class="quartier-desc">L'axe principal vers Angkor Wat concentre les grands hôtels et resorts. Idéal si vous avez un véhicule ou si vous comptez visiter les temples tôt le matin. Accès direct aux temples.</p>
-        <div class="quartier-prix">💰 Resorts : 60–300 $/nuit · Navette temples incluse</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/1/12/Siem_Reap_Server_-_Cambodia.JPG" alt="Restaurant Kandal Village quartier créatif Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Kandal Village</div>
-        <div class="quartier-vibe">Le quartier créatif et bohème</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🎨 Art</span><span class="quartier-tag">🌿 Boutiques</span><span class="quartier-tag">☕ Cafés</span>
-        </div>
-        <p class="quartier-desc">Le quartier le plus branché de Siem Reap : galeries d'art contemporain, boutiques de créateurs khmers, cafés avec jardins et restaurants gastronomiques fusion. Idéal pour les amateurs de design.</p>
-        <div class="quartier-prix">💰 Hôtels boutique : 40–120 $/nuit · Expérience unique</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/0/03/Siem_Reap_Art_Center_Night_Market.jpg" alt="Art Center Night Market marché nocturne Angkor Siem Reap" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Angkor Night Market Area</div>
-        <div class="quartier-vibe">Spectacles khmers et marché nocturne</div>
-        <div class="quartier-tags">
-          <span class="quartier-tag">🎭 Spectacles</span><span class="quartier-tag">🌙 Marché</span><span class="quartier-tag">🎪 Animations</span>
-        </div>
-        <p class="quartier-desc">Autour du marché nocturne d'Angkor : spectacles de danse apsara, massages, artisanat khmer de qualité. Moins alcoolisé que Pub Street — idéal pour familles et couples en recherche de culture.</p>
-        <div class="quartier-prix">💰 Hôtels proches : 25–90 $/nuit · Spectacle danse : 12–20 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BATTAMBANG -->
-  <div class="quartiers-panel fade-in" id="qp-bt" role="tabpanel" aria-labelledby="qtab-bt">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Aerial_view_of_Battambang_city.jpg/1280px-Aerial_view_of_Battambang_city.jpg" alt="Vue aérienne centre colonial Battambang" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Centre Colonial (Phsar Nath)</div>
-        <div class="quartier-vibe">Architecture française, marché central, vie locale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏛 Colonial</span><span class="quartier-tag">🛍 Marché</span><span class="quartier-tag">📸 Photos</span></div>
-        <p class="quartier-desc">Le cœur de Battambang concentre les plus beaux bâtiments coloniaux français du Cambodge. Le marché couvert Phsar Nath est animé dès l'aube. Boutiques locales, pharmacies et cafés khmers traditionnels.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–25 $/nuit · Repas local : 1–3 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sangker_River_in_Battambang.jpg/960px-Sangker_River_in_Battambang.jpg" alt="Berges de la rivière Sangker Battambang" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Berges du Sangker (Riverside)</div>
-        <div class="quartier-vibe">Promenade fluviale, cafés, coucher de soleil</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌅 Coucher de soleil</span><span class="quartier-tag">☕ Cafés</span><span class="quartier-tag">🚶 Promenade</span></div>
-        <p class="quartier-desc">La berge du Sangker est le lieu de promenade favori des Battambangais. Cafés avec vue sur le fleuve, restaurants bohèmes et galeries d'art. L'atmosphère y est détendue et très locale, loin du tourisme de masse.</p>
-        <div class="quartier-prix">💰 Hôtels boutique : 20–60 $/nuit · Café avec vue : 2–4 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/0/05/Sun_setting_on_the_Baha%27i_Temple_in_Battambang_Cambodia_OCT_21_22_2017.jpg" alt="Temple à Battambang Cambodge au coucher du soleil" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Quartier des Artistes (Sala Khaeng)</div>
-        <div class="quartier-vibe">Art, cirque khmer, ateliers créatifs</div>
-        <div class="quartier-tags"><span class="quartier-tag">🎨 Art</span><span class="quartier-tag">🎪 Cirque</span><span class="quartier-tag">🌿 Calme</span></div>
-        <p class="quartier-desc">Battambang est la capitale artistique du Cambodge. Ce quartier abrite Phare Ponleu Selpak (cirque khmer), des ateliers de poterie, de sculpture sur bois et des galeries contemporaines. Un écosystème créatif unique.</p>
-        <div class="quartier-prix">💰 Hôtels : 15–40 $/nuit · Spectacle cirque : 12–18 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Bamboo_train_Battambang.jpg/960px-Bamboo_train_Battambang.jpg" alt="Train de bambou norry Battambang Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Route du Train de Bambou (Norry)</div>
-        <div class="quartier-vibe">Campagne, rizières, expérience rurale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🚂 Train bambou</span><span class="quartier-tag">🌾 Rizières</span><span class="quartier-tag">🛵 Campagne</span></div>
-        <p class="quartier-desc">À 7 km au nord du centre, les villages autour du train de bambou (Norry) offrent une immersion dans la campagne khmère. Rizières, buffles d'eau, temples ruraux — un contraste total avec le centre-ville colonial.</p>
-        <div class="quartier-prix">💰 Homestays ruraux : 10–20 $/nuit · Train bambou : 5 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SIHANOUKVILLE -->
-  <div class="quartiers-panel fade-in" id="qp-sv" role="tabpanel" aria-labelledby="qtab-sv">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sihanoukville._Boat_on_the_sandy_coast.jpg/960px-Sihanoukville._Boat_on_the_sandy_coast.jpg" alt="Plage Ochheuteal bateau Sihanoukville" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Plage d'Ochheuteal</div>
-        <div class="quartier-vibe">La plus longue plage — touristique et animée</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏖 Plage</span><span class="quartier-tag">🍹 Bars</span><span class="quartier-tag">🏨 Hôtels</span></div>
-        <p class="quartier-desc">La plage principale de Sihanoukville s'étend sur 2 km de sable blanc. Nombreux hôtels en bord de mer, massages sur la plage, restaurants de fruits de mer et bars avec chaises longues. Animée toute la journée.</p>
-        <div class="quartier-prix">💰 Hôtels bord de mer : 30–100 $/nuit · Massage plage : 5–8 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/2016_Sihanoukville%2C_Pla%C5%BCa_Serendipity_%2808%29.jpg/960px-2016_Sihanoukville%2C_Pla%C5%BCa_Serendipity_%2808%29.jpg" alt="Serendipity Beach Sihanoukville fête" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Serendipity Beach</div>
-        <div class="quartier-vibe">La zone fête et backpackers</div>
-        <div class="quartier-tags"><span class="quartier-tag">🎉 Fête</span><span class="quartier-tag">🎒 Backpackers</span><span class="quartier-tag">🌙 Nuit</span></div>
-        <p class="quartier-desc">La plage des noctambules et des voyageurs en sac à dos. Bars en bord de mer ouverts jusqu'à l'aube, restaurants bon marché, bungalows budget. Ambiance décontractée et internationale — à éviter si vous cherchez le calme.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–25 $/nuit · Bière locale : 1–1,5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Otres_Beach_-_Sihanoukville.jpg/960px-Otres_Beach_-_Sihanoukville.jpg" alt="Otres Beach plage tranquille Sihanoukville" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Otres Beach</div>
-        <div class="quartier-vibe">La plage tranquille et authentique</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌿 Calme</span><span class="quartier-tag">🤿 Snorkeling</span><span class="quartier-tag">🌅 Coucher de soleil</span></div>
-        <p class="quartier-desc">À 3 km du centre, Otres Beach est la meilleure alternative pour qui cherche le calme. Moins de développement, eau plus claire, bungalows bohèmes dans la végétation et restaurants de poissons frais. Idéale pour les familles.</p>
-        <div class="quartier-prix">💰 Bungalows : 15–50 $/nuit · Poissons grillés : 5–10 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Street_in_Sihanoukville.jpg/960px-Street_in_Sihanoukville.jpg" alt="Rue marché centre-ville Sihanoukville Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Centre-ville (Downtown)</div>
-        <div class="quartier-vibe">Vie locale, marché, transports</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏙 Local</span><span class="quartier-tag">🚌 Transports</span><span class="quartier-tag">💲 Budget</span></div>
-        <p class="quartier-desc">Le vrai Sihanoukville khmer, loin des plages. Marché central, restaurants locaux à 1–2 USD, gares routières pour Phnom Penh et Kampot. Point de départ des ferries pour Koh Rong. Moins touristique mais pratique.</p>
-        <div class="quartier-prix">💰 Hôtels locaux : 10–30 $/nuit · Bus Phnom Penh : 8–12 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KAMPOT -->
-  <div class="quartiers-panel fade-in" id="qp-km" role="tabpanel" aria-labelledby="qtab-km">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/2016_Kampot%2C_Old_Market_Street%2C_Domy-sklepy_%2802%29.jpg/960px-2016_Kampot%2C_Old_Market_Street%2C_Domy-sklepy_%2802%29.jpg" alt="Vieux Kampot rue coloniale Old Market Street" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Vieux Kampot (Old Town)</div>
-        <div class="quartier-vibe">Architecture coloniale française, boutiques locales</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏛 Colonial</span><span class="quartier-tag">☕ Cafés</span><span class="quartier-tag">🎨 Galeries</span></div>
-        <p class="quartier-desc">Le cœur historique de Kampot est l'un des mieux préservés du Cambodge. Bâtiments Art déco et sino-khmers sur la rue principale, cafés de spécialité, boutiques d'artisanat et restaurants branchés. Le quartier préféré des voyageurs lents.</p>
-        <div class="quartier-prix">💰 Hôtels boutique : 25–70 $/nuit · Café artisan : 2–5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/2016_Kampot%2C_Stare_budynki_na_ulicy_Riverside_%2805%29.jpg/960px-2016_Kampot%2C_Stare_budynki_na_ulicy_Riverside_%2805%29.jpg" alt="Riverside Kampot bord de rivière coucher de soleil" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Riverside (Bord de Rivière)</div>
-        <div class="quartier-vibe">Couchers de soleil, bars à cocktails, cuisine du monde</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌅 Coucher de soleil</span><span class="quartier-tag">🍹 Cocktails</span><span class="quartier-tag">🚣 Kayak</span></div>
-        <p class="quartier-desc">Le long de la rivière Kampot, une succession de bars et restaurants avec terrasses sur pilotis offrant des vues magnifiques au coucher du soleil. Ambiance bohème et internationale. Départ des excursions en kayak et des croisières coucher de soleil.</p>
-        <div class="quartier-prix">💰 Hôtels avec vue : 30–90 $/nuit · Croisière coucher de soleil : 8 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Kampot_Pepper.jpg/960px-Kampot_Pepper.jpg" alt="Plantation de poivre de Kampot Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Plantations de poivre (Campagne)</div>
-        <div class="quartier-vibe">Poivre de Kampot AOP, fermes bio, air frais</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌶 Poivre AOP</span><span class="quartier-tag">🌿 Nature</span><span class="quartier-tag">🚲 Vélo</span></div>
-        <p class="quartier-desc">À 8–15 km du centre, les plantations de poivre de Kampot produisent le poivre le plus réputé au monde (AOP depuis 2016). Visites guidées gratuites dans plusieurs fermes, dégustation incluse. Accessible à vélo depuis le centre en 30 minutes.</p>
-        <div class="quartier-prix">💰 Éco-lodges : 20–60 $/nuit · Visite plantation : gratuit à 5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Panoramic_View_from_Bokor_Hill_Station_-_Near_Kampot_-_Cambodia_%2848529020882%29.jpg/960px-Panoramic_View_from_Bokor_Hill_Station_-_Near_Kampot_-_Cambodia_%2848529020882%29.jpg" alt="Vue panoramique station Bokor montagne Kampot Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Montagne Bokor & Toek Chhou</div>
-        <div class="quartier-vibe">Nature, cascade, ville fantôme coloniale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏔 Montagne</span><span class="quartier-tag">💦 Cascade</span><span class="quartier-tag">🏚 Ville fantôme</span></div>
-        <p class="quartier-desc">Le parc national de Bokor (1 080 m) abrite une ville fantôme coloniale dans les nuages et une cascade spectaculaire. À 40 km du centre. La rivière Toek Chhou avec ses rapides est idéale pour la baignade et la pêche locale.</p>
-        <div class="quartier-prix">💰 Moto-taxi vers Bokor : 15–25 $ · Entrée parc : 3 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KEP -->
-  <div class="quartiers-panel fade-in" id="qp-kp" role="tabpanel" aria-labelledby="qtab-kp">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Fishing_Boat_off_Kep%2C_Cambodia.jpg/960px-Fishing_Boat_off_Kep%2C_Cambodia.jpg" alt="Bateau de pêche au large de Kep Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Front de Mer (Kep Beach)</div>
-        <div class="quartier-vibe">Plage principale, promenade, villas coloniales</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏖 Plage</span><span class="quartier-tag">🏚 Villas coloniales</span><span class="quartier-tag">🌅 Coucher de soleil</span></div>
-        <p class="quartier-desc">La plage principale de Kep est bordée de villas coloniales françaises en ruines, vestiges d'une ancienne station balnéaire élégante. Petite plage de sable noir, eau calme et chaude, idéale pour se baigner au lever du soleil.</p>
-        <div class="quartier-prix">💰 Hôtels bord de mer : 25–80 $/nuit · Massage plage : 5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/06-Kep_Crab_Market_Cambodia-nX-14.jpg/960px-06-Kep_Crab_Market_Cambodia-nX-14.jpg" alt="Marché aux crabes Kep Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Marché aux Crabes</div>
-        <div class="quartier-vibe">Crabes bleus frais, fruits de mer, poissonnières</div>
-        <div class="quartier-tags"><span class="quartier-tag">🦀 Crabes bleus</span><span class="quartier-tag">🍽 Fruits de mer</span><span class="quartier-tag">🐟 Frais</span></div>
-        <p class="quartier-desc">Le marché aux crabes de Kep est la spécialité absolue de la ville. Des pêcheuses vendent directement leurs prises du matin. La spécialité : crabe bleu au poivre vert frais de Kampot. Restaurants sur pilotis au-dessus de l'eau pour 5–15 USD le repas.</p>
-        <div class="quartier-prix">💰 Crabe au poivre : 8–15 $ · Poisson grillé local : 3–6 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/06-Kep_Beach_Cambodia-nX-22.jpg/960px-06-Kep_Beach_Cambodia-nX-22.jpg" alt="Plage de Kep Cambodge sable" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Parc National de Kep</div>
-        <div class="quartier-vibe">Jungle tropicale, randonnée, macaques</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌴 Jungle</span><span class="quartier-tag">🦜 Macaques</span><span class="quartier-tag">🥾 Randonnée</span></div>
-        <p class="quartier-desc">Le parc national de Kep (700 ha) s'étend sur les collines derrière la ville. Sentiers bien balisés à travers la jungle dense, rencontres avec les macaques, panoramas sur le golfe de Thaïlande et les îles. Entrée 1 $, randonnée facile en 2–3 heures.</p>
-        <div class="quartier-prix">💰 Guesthouses Kep collines : 20–60 $/nuit · Entrée parc : 1 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KOH RONG -->
-  <div class="quartiers-panel fade-in" id="qp-kr" role="tabpanel" aria-labelledby="qtab-kr">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Koh_Rong_Cambodia.jpg/960px-Koh_Rong_Cambodia.jpg" alt="Plage Long Set Koh Rong île Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Koh Touch (Village Principal)</div>
-        <div class="quartier-vibe">Vie nocturne, restaurants, point d'arrivée</div>
-        <div class="quartier-tags"><span class="quartier-tag">🎉 Fête</span><span class="quartier-tag">🍺 Bars</span><span class="quartier-tag">🚤 Ferries</span></div>
-        <p class="quartier-desc">Le village principal à l'ouest de l'île concentre toute l'activité : bars ouverts toute la nuit, restaurants de fruits de mer, bungalows de toutes catégories. Le plancton bioluminescent illumine l'eau la nuit — spectacle gratuit depuis la plage à 21h.</p>
-        <div class="quartier-prix">💰 Bungalows : 15–50 $/nuit · Soirée plancton : gratuit</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/5/50/Sok_San_Beach_bay_Koh_Rong.jpg" alt="Sok San Beach baie Koh Rong plage sauvage" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Sok San Beach (Long Beach)</div>
-        <div class="quartier-vibe">7 km de plage immaculée — presque déserte</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌴 Sauvage</span><span class="quartier-tag">🏊 Baignade</span><span class="quartier-tag">🤿 Snorkeling</span></div>
-        <p class="quartier-desc">La plus longue plage de Koh Rong (7 km) reste l'une des plus préservées. Quelques éco-lodges discrets dans la végétation, eau cristalline, pas de musique forte. Accessible en bateau-taxi (3–5 USD) depuis Koh Touch ou à pied en 45 minutes.</p>
-        <div class="quartier-prix">💰 Éco-lodges : 20–60 $/nuit · Bateau-taxi : 3–5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/d/df/Long-beach-kog-rong-cambodia.jpg" alt="Long Beach nord de Koh Rong plage isolée" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Long Beach Nord (4K Beach)</div>
-        <div class="quartier-vibe">La plage la plus isolée — accès difficile</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏝 Isolé</span><span class="quartier-tag">🌊 Vagues</span><span class="quartier-tag">🎒 Aventure</span></div>
-        <p class="quartier-desc">La plage du bout du monde de Koh Rong, accessible uniquement par bateau ou jungle trek (2h). Pas d'électricité permanente, 2–3 bungalows rustiques et une eau d'un bleu profond spectaculaire. Pour les vrais aventuriers qui cherchent la déconnexion totale.</p>
-        <div class="quartier-prix">💰 Bungalows rustiques : 15–35 $/nuit · Bateau : 10–15 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- KOH RONG SANLOEM -->
-  <div class="quartiers-panel fade-in" id="qp-ks" role="tabpanel" aria-labelledby="qtab-ks">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Saracen_Bay_panoramic_view%2C_Koh_Rong_Sanloem%2C_Cambodia%2C_June_2014.jpg/960px-Saracen_Bay_panoramic_view%2C_Koh_Rong_Sanloem%2C_Cambodia%2C_June_2014.jpg" alt="Saracen Bay panorama Koh Rong Sanloem" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Saracen Bay</div>
-        <div class="quartier-vibe">La baie principale — restaurants, plongée, calme</div>
-        <div class="quartier-tags"><span class="quartier-tag">🤿 Plongée</span><span class="quartier-tag">🌊 Baie protégée</span><span class="quartier-tag">🍽 Restaurants</span></div>
-        <p class="quartier-desc">La baie la plus développée de Koh Rong Sanloem est aussi l'une des plus belles du Cambodge. Eau turquoise protégée du vent, fond sableux idéal pour la plongée et le snorkeling. Restaurants sur pilotis, kayak, stand-up paddle. Ambiance calme et familiale.</p>
-        <div class="quartier-prix">💰 Hôtels : 30–120 $/nuit · Plongée initiation : 35–50 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lazy_Beach%2C_Koh_Rong_Sanloem.jpg/960px-Lazy_Beach%2C_Koh_Rong_Sanloem.jpg" alt="Lazy Beach plage tranquille Koh Rong Sanloem" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Lazy Beach</div>
-        <div class="quartier-vibe">La plage la plus tranquille — déconnexion totale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌴 Tranquille</span><span class="quartier-tag">🚫 Sans wifi</span><span class="quartier-tag">📖 Lecture</span></div>
-        <p class="quartier-desc">Nichée au sud-ouest de l'île, Lazy Beach est accessible uniquement en bateau ou randonnée (1h30). Un seul resort avec quelques bungalows, un bar et un restaurant. Pas de wifi, pas de musique. L'endroit idéal pour se déconnecter vraiment.</p>
-        <div class="quartier-prix">💰 Bungalows tout compris : 45–90 $/nuit · Bateau depuis Saracen : 5 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Sunset_%28206597619%29.jpeg/960px-Sunset_%28206597619%29.jpeg" alt="Coucher de soleil M Pai Bay côte ouest Koh Rong Sanloem" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">M'Pai Bay (Village de pêcheurs)</div>
-        <div class="quartier-vibe">Village authentique, vie locale, prix doux</div>
-        <div class="quartier-tags"><span class="quartier-tag">🎣 Pêcheurs</span><span class="quartier-tag">💲 Budget</span><span class="quartier-tag">🏠 Authentique</span></div>
-        <p class="quartier-desc">À l'opposé de Saracen Bay, M'Pai Bay est le village khmer traditionnel de l'île. Quelques guesthouses très simples, un hammam, des restaurants à 2 USD et une vie de village authentique. La plage y est moins belle mais l'ambiance est unique.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–20 $/nuit · Repas local : 2–4 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POIPET -->
-  <div class="quartiers-panel fade-in" id="qp-po" role="tabpanel" aria-labelledby="qtab-po">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Border_checkpoint%2C_Poipet%2C_Cambodia.jpg/960px-Border_checkpoint%2C_Poipet%2C_Cambodia.jpg" alt="Poste frontière Poipet Cambodge Thaïlande" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Zone Frontière & Casinos</div>
-        <div class="quartier-vibe">Passage frontière Cambodge–Thaïlande, casinos</div>
-        <div class="quartier-tags"><span class="quartier-tag">🛂 Frontière</span><span class="quartier-tag">🎰 Casinos</span><span class="quartier-tag">🚌 Transits</span></div>
-        <p class="quartier-desc">Poipet est principalement une ville de transit entre la Thaïlande et le reste du Cambodge. La zone frontière concentre les grands hôtels-casinos (interdits aux Cambodgiens, pour les touristes thaïs). Passage rapide recommandé — la ville n'offre pas d'intérêt touristique majeur.</p>
-        <div class="quartier-prix">💰 Hôtels transit : 15–40 $/nuit · Bus vers Siem Reap : 8–12 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Poipet%2C_Cambodia-Thai_border.jpg/1280px-Poipet%2C_Cambodia-Thai_border.jpg" alt="Marché local Poipet Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Marché Local & Centre-ville</div>
-        <div class="quartier-vibe">Commerce local, marchés de gros, vie khmère</div>
-        <div class="quartier-tags"><span class="quartier-tag">🛍 Marché</span><span class="quartier-tag">🍜 Street food</span><span class="quartier-tag">💲 Pas cher</span></div>
-        <p class="quartier-desc">Le marché local de Poipet contraste fortement avec la zone casino. Marchés de gros alimentaires, street food khmère à 1–2 USD, boutiques de produits thaïlandais moins chers qu'ailleurs. Si vous êtes bloqué en transit, c'est là qu'il faut aller manger.</p>
-        <div class="quartier-prix">💰 Guesthouses locales : 8–18 $/nuit · Repas marché : 1–2 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Aranyaprathet_border.jpg/960px-Aranyaprathet_border.jpg" alt="Passage frontière Aranyaprathet Poipet Cambodge Thaïlande" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Gare routière & Bus vers Siem Reap</div>
-        <div class="quartier-vibe">Hub de transport vers l'intérieur du Cambodge</div>
-        <div class="quartier-tags"><span class="quartier-tag">🚌 Bus</span><span class="quartier-tag">🚕 Taxis partagés</span><span class="quartier-tag">⏱ 3–4h Siem Reap</span></div>
-        <p class="quartier-desc">Après le passage de la frontière, la gare routière de Poipet propose des bus directs vers Siem Reap (3–4h, 8–12 USD), Battambang (2h, 5–8 USD) et Phnom Penh (6h, 12–15 USD). Les taxi collectifs (partagés) partent plus vite mais sont moins confortables.</p>
-        <div class="quartier-prix">💰 Bus Siem Reap : 8–12 $ · Taxi collectif : 10–15 $</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PURSAT -->
-  <div class="quartiers-panel fade-in" id="qp-pu" role="tabpanel" aria-labelledby="qtab-pu">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Pursat_Skyline.jpg/1280px-Pursat_Skyline.jpg" alt="Skyline Pursat bord de rivière Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Centre-ville & Marché Phsar Pursat</div>
-        <div class="quartier-vibe">Capitale provinciale authentique, vie locale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏙 Provincial</span><span class="quartier-tag">🛍 Marché</span><span class="quartier-tag">🍜 Street food</span></div>
-        <p class="quartier-desc">Pursat est une capitale provinciale rarement visitée, ce qui en fait l'une des villes les plus authentiques du Cambodge. Le marché central (Phsar Pursat) est l'un des meilleurs pour la sculpture sur marbre — spécialité locale depuis des siècles. Prix locaux partout.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–20 $/nuit · Repas local : 1–2 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Sompove_Meas_Island%2C_Pursat_province%2C_Cambodia.jpg" alt="Île Koh Sampovmeas rivière Pursat Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Koh Sampovmeas (Îles du Pursat)</div>
-        <div class="quartier-vibe">Îles fluviales, pique-nique, baignade locale</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏝 Îles fluviales</span><span class="quartier-tag">🏊 Baignade</span><span class="quartier-tag">🌿 Nature</span></div>
-        <p class="quartier-desc">La rivière Pursat abrite plusieurs petites îles verdoyantes accessibles en bateau à faible coût. Lieu de pique-nique favori des habitants le week-end. Hamacs, barbecues et eau douce calme. Une excursion locale authentique loin des circuits touristiques.</p>
-        <div class="quartier-prix">💰 Bateau aller-retour : 2–5 $ · Pique-nique local : 2–4 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Cardamom_Mountains_Cambodia.jpg/960px-Cardamom_Mountains_Cambodia.jpg" alt="Montagnes des Cardamomes forêt tropicale Pursat Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Monts des Cardamomes (Porte d'entrée)</div>
-        <div class="quartier-vibe">Trekking, éco-tourisme, forêt protégée</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌳 Forêt primaire</span><span class="quartier-tag">🐘 Faune sauvage</span><span class="quartier-tag">🥾 Trekking</span></div>
-        <p class="quartier-desc">Pursat est la porte d'entrée nord des montagnes des Cardamomes, la plus grande forêt tropicale préservée d'Asie du Sud-Est. Éléphants sauvages, gibbon à joues jaunes, léopards. Treks écotouristiques avec guides locaux depuis les villages au pied des montagnes.</p>
-        <div class="quartier-prix">💰 Trek guidé 2j/1n : 50–90 $ · Guide local recommandé</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MONDULKIRI -->
-  <div class="quartiers-panel fade-in" id="qp-md" role="tabpanel" aria-labelledby="qtab-md">
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/6/69/Sen_Monorom%2C_Mondulkiri%2C_Cambodia.jpg" alt="Sen Monorom capitale Mondulkiri Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Sen Monorom — Cœur des Hauts Plateaux</div>
-        <div class="quartier-vibe">Capitale provinciale, carrefour des aventuriers, marché local</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏙 Centre-ville</span><span class="quartier-tag">🛍 Marché</span><span class="quartier-tag">🍜 Restaurants</span></div>
-        <p class="quartier-desc">Sen Monorom est la capitale de la province de Mondulkiri, perchée à 800 m d'altitude dans les hauts plateaux du nord-est cambodgien. Le centre-ville concentre les agences de trekking, les guesthouses pour routards et les restaurants servant à la fois cuisine khmère et plats du peuple Bunong. Point de départ idéal pour tous les treks et visites aux éléphants.</p>
-        <div class="quartier-prix">💰 Guesthouses : 8–20 $/nuit · Hôtels : 20–60 $/nuit · Repas : 3–7 $</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Bousra_Waterfall.jpg" alt="Cascade Bou Sra Mondulkiri Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Bou Sra — Cascades & Forêt Primaire</div>
-        <div class="quartier-vibe">Jungle dense, chutes d'eau spectaculaires, villages Bunong</div>
-        <div class="quartier-tags"><span class="quartier-tag">🌊 Cascades</span><span class="quartier-tag">🌳 Forêt primaire</span><span class="quartier-tag">🥾 Trekking</span></div>
-        <p class="quartier-desc">À 43 km de Sen Monorom, les chutes de Bou Sra sont parmi les plus impressionnantes du Cambodge — un double voile d'eau de 10 et 25 mètres au cœur d'une forêt tropicale intacte. La route en scooter traverse des villages Bunong et des paysages de collines verdoyantes. Baignade possible au pied des chutes.</p>
-        <div class="quartier-prix">💰 Entrée Bou Sra : 2 $ · Tuk-tuk aller-retour : ~15 $ · Scooter : 43 km</div>
-      </div>
-    </div>
-    <div class="quartier-card">
-      <img class="quartier-img" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Bunong_ceremonial_clothing.jpg" alt="Peuple Bunong tenue cérémonielle Mondulkiri Cambodge" loading="lazy" decoding="async">
-      <div class="quartier-body">
-        <div class="quartier-name">Villages Bunong — Culture Autochtone</div>
-        <div class="quartier-vibe">Minorité ethnique, traditions ancestrales, artisanat</div>
-        <div class="quartier-tags"><span class="quartier-tag">🏡 Villages</span><span class="quartier-tag">🎋 Artisanat</span><span class="quartier-tag">🫂 Communautaire</span></div>
-        <p class="quartier-desc">Les Bunong sont le peuple autochtone de Mondulkiri, gardiens d'une relation millénaire avec les éléphants et la forêt. Leurs villages, accessibles à pied ou à scooter depuis Sen Monorom, proposent des visites guidées. Artisanat traditionnel en bambou et rotin, cérémonies communautaires pendant les fêtes — engagez un guide local Bunong pour soutenir directement la communauté.</p>
-        <div class="quartier-prix">💰 Visite de village guidée : 10–20 $ · Guide local Bunong : 15–25 $/j</div>
-      </div>
-    </div>
-  </div>
-
+<section id="quartiers" aria-labelledby="quartiers-title" style="padding:60px 48px;">
+  <a href="quartiers/" style="display:block;max-width:640px;margin:0 auto;padding:36px 32px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.25);text-decoration:none;transition:all .3s;text-align:center;" class="hover-card-lift fade-in">
+    <div style="font-size:2.4rem;margin-bottom:14px;">🏘️</div>
+    <h2 id="quartiers-title" style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:10px;font-weight:600;">Guide des <em>Quartiers</em></h2>
+    <p style="font-size:.88rem;color:rgba(245,233,208,.55);line-height:1.7;max-width:480px;margin:0 auto;">Toutes les villes du Cambodge décryptées quartier par quartier — ambiance, prix, sécurité, dans 10 destinations.</p>
+    <div style="margin-top:18px;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;">Explorer les quartiers →</div>
+  </a>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -2669,420 +2169,25 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 <div class="khmer-border" aria-hidden="true"></div>
 
 
-<section id="activites" aria-labelledby="activites-title">
-  <div class="section-header fade-in">
-    <span class="section-label">✦ À Faire</span>
-    <h2 class="section-title" id="activites-title">Activités & <em>Aventures</em></h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="act-filters fade-in" role="group" aria-label="Filtrer les activités">
-    <button class="act-filter-btn active" data-act="all">Toutes</button>
-    <button class="act-filter-btn" data-act="culture">🏛️ Culture</button>
-    <button class="act-filter-btn" data-act="nature">🌿 Nature</button>
-    <button class="act-filter-btn" data-act="aventure">🏄 Aventure</button>
-    <button class="act-filter-btn" data-act="plage">🏖️ Plage</button>
-    <button class="act-filter-btn" data-act="gastro">🍽️ Gastronomie</button>
-  </div>
-  <div class="act-grid fade-in" id="act-grid">
-
-    <article class="act-card lazy-bg" data-act="culture" data-bg="url('photos/angkor-chemin.jpg')">
-      <div class="act-top"><span class="act-price-badge">37–72 USD</span></div>
-      <h3 class="act-title-h3">Angkor Wat au lever du soleil</h3>
-      <div class="act-city">Siem Reap · Pass 1j, 3j ou 7j</div>
-      <p class="act-desc-p">La plus grande structure religieuse du monde dans une lumière dorée. Arrivez avant l'aube pour voir les tours millénaires se refléter dans les bassins sacrés — un moment gravé à vie dans la mémoire.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-culture">Culture</span><span class="activity-badge badge-aventure">Incontournable</span></div>
-        <span class="act-duration">⏱ 1–3 jours · Facile</span>
-        <a href="https://www.getyourguide.fr/siem-reap-l274/siem-reap-angkor-wat-visite-en-petit-groupe-au-lever-ou-au-coucher-du-soleil-t406206/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="aventure" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/a/a8/Bamboo_train_%28Norry%29_station_near_Battambang_in_2012.jpg')">
-      <div class="act-top"><span class="act-price-badge">5 USD</span></div>
-      <h3 class="act-title-h3">Train de bambou (Norry)</h3>
-      <div class="act-city">Battambang · 7 km au nord</div>
-      <p class="act-desc-p">Une plateforme motorisée sur les rails coloniaux français, entre rizières et villages ruraux. L'expérience la plus insolite du Cambodge — populaire, bon marché et absolument inoubliable.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-aventure">Aventure</span><span class="activity-badge badge-culture">Authentique</span></div>
-        <span class="act-duration">⏱ 2h · Facile</span>
-        <a href="https://www.getyourguide.fr/battambang-l145944/battambang-tuk-tuk-train-de-bambou-grottes-de-killingbat-coucher-de-soleil-t483124/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="nature" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/c/c0/Floating_Houses_Tonle_Sap_Lake_Cambodia_%2815573415849%29.jpg')">
-      <div class="act-top"><span class="act-price-badge">15–20 USD</span></div>
-      <h3 class="act-title-h3">Lac Tonlé Sap en bateau</h3>
-      <div class="act-city">Siem Reap · 15–45 km du centre</div>
-      <p class="act-desc-p">Naviguer sur le plus grand lac d'Asie du Sud-Est et visiter les villages flottants où des familles entières vivent sur l'eau. Coucher de soleil grandiose sur les eaux dorées.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-nature">Nature</span><span class="activity-badge badge-culture">Culture</span></div>
-        <span class="act-duration">⏱ 3–4h · Facile</span>
-        <a href="https://www.getyourguide.fr/siem-reap-l274/au-depart-de-siem-reap-tour-en-bateau-du-village-flottant-de-kampong-phluk-t404936/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="plage" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/d/df/Long-beach-kog-rong-cambodia.jpg')">
-      <div class="act-top"><span class="act-price-badge">15–25 USD (ferry)</span></div>
-      <h3 class="act-title-h3">Koh Rong & Koh Rong Sanloem</h3>
-      <div class="act-city">Sihanoukville · Ferry 45 min–1h</div>
-      <p class="act-desc-p">Sable blanc, eau turquoise et plancton bioluminescent la nuit. Koh Rong pour l'ambiance festive, Koh Rong Sanloem pour la tranquillité et le snorkeling. Les joyaux du golfe de Thaïlande.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-plage">Plage</span><span class="activity-badge badge-nature">Nature</span></div>
-        <span class="act-duration">⏱ 2–7 jours · Facile</span>
-        <a href="https://buvasea.com/" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver le ferry →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="nature" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/4/44/Elephant_conservation_and_indigenous_experiences_in_Cambodia_Project.jpg')">
-      <div class="act-top"><span class="act-price-badge">75–95 USD</span></div>
-      <h3 class="act-title-h3">Sanctuaire des Éléphants</h3>
-      <div class="act-city">Mondulkiri · Elephant Valley Project</div>
-      <p class="act-desc-p">Rencontre éthique et respectueuse avec les éléphants sauvages dans la forêt des hauts plateaux. Approche responsable — aucun équitation, aucun numéro. Une expérience transformatrice.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-nature">Nature</span><span class="activity-badge badge-aventure">Écoturisme</span></div>
-        <span class="act-duration">⏱ 1 journée · Modéré</span>
-        <a href="https://www.getyourguide.fr/cambodge-l169079/sanctuaire-d-elephants-du-cambodge-t673339/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="culture" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/d/de/Danseuses_apsara.jpg')">
-      <div class="act-top"><span class="act-price-badge">15–25 USD</span></div>
-      <h3 class="act-title-h3">Spectacle de Danse Apsara</h3>
-      <div class="act-city">Siem Reap · En soirée</div>
-      <p class="act-desc-p">Le ballet royal khmer inscrit au patrimoine immatériel de l'UNESCO. Gestes millimétrés inspirés des bas-reliefs d'Angkor Wat. Spectacles dans les restaurants et hôtels de Siem Reap.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-culture">Culture</span><span class="activity-badge badge-aventure">Spectacle</span></div>
-        <span class="act-duration">⏱ 2h soirée · Facile</span>
-        <a href="https://www.getyourguide.fr/siem-reap-l274/siem-reap-spectacle-de-danse-apsara-et-diner-avec-prise-en-charge-a-l-hotel-t561216/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="aventure plage" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/4/44/Snorkling_nanggu.jpg')">
-      <div class="act-top"><span class="act-price-badge">30–50 USD</span></div>
-      <h3 class="act-title-h3">Plongée & Snorkeling</h3>
-      <div class="act-city">Koh Rong Sanloem · M'Pai Bay</div>
-      <p class="act-desc-p">Les eaux cristallines de Koh Rong Sanloem regorgent de coraux, poissons-perroquets et raies mantas. Plusieurs centres PADI proposent sorties snorkeling et formations de plongée.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-aventure">Aventure</span><span class="activity-badge badge-plage">Plage</span></div>
-        <span class="act-duration">⏱ 4–6h · Modéré</span>
-        <a href="https://www.getyourguide.fr/province-de-sihanoukville-l202329/sortie-en-bateau-a-koh-rong-snorkeling-peche-coucher-de-soleil-et-plancton-t1119663/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="gastro culture" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Neary_Khmer%2C_2018-01-02_%28002%29.jpg')">
-      <div class="act-top"><span class="act-price-badge">25–45 USD</span></div>
-      <h3 class="act-title-h3">Cours de Cuisine Khmère</h3>
-      <div class="act-city">Siem Reap · Phnom Penh</div>
-      <p class="act-desc-p">Apprenez à cuisiner l'amok de poisson, le lok lak et le curry khmer rouge avec des chefs locaux. Visite du marché incluse pour choisir les épices. Le meilleur souvenir à ramener chez soi.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-culture">Culture</span><span class="activity-badge">Gastronomie</span></div>
-        <span class="act-duration">⏱ 3–4h · Facile</span>
-        <a href="https://www.getyourguide.fr/siem-reap-l274/cours-de-cuisine-tc107/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="aventure nature" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/5/56/Cambodia_Rice_Fields_%289731277314%29.jpg')">
-      <div class="act-top"><span class="act-price-badge">5–15 USD</span></div>
-      <h3 class="act-title-h3">Balade à Vélo dans la Campagne</h3>
-      <div class="act-city">Siem Reap · Kampot · Battambang</div>
-      <p class="act-desc-p">Pédalez entre rizières dorées, villages de pêcheurs et temples oubliés. Location facile partout, routes plates et paysages magnifiques. La meilleure façon de découvrir le Cambodge rural.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-nature">Nature</span><span class="activity-badge badge-aventure">Aventure</span></div>
-        <span class="act-duration">⏱ 3–6h · Facile</span>
-        <a href="https://www.getyourguide.fr/siem-reap-l274/siem-reap-balade-a-velo-a-la-campagne-au-coucher-du-soleil-t410481/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Réserver →</a>
-      </div>
-    </article>
-
-    <article class="act-card lazy-bg" data-act="nature" data-bg="url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Irrawaddy_Dolphin.jpg')">
-      <div class="act-top"><span class="act-price-badge">9 USD</span></div>
-      <h3 class="act-title-h3">Dauphins du Mékong à Kratie</h3>
-      <div class="act-city">Kratie · Kampi, 12 km au nord</div>
-      <p class="act-desc-p">Les dauphins d'Irrawaddy, espèce en danger critique, s'ébattent dans les eaux du Mékong. Kratie est l'un des rares endroits au monde pour les observer dans leur habitat naturel.</p>
-      <div class="act-footer">
-        <div class="act-badges"><span class="activity-badge badge-nature">Nature</span><span class="activity-badge badge-aventure">Écoturisme</span></div>
-        <span class="act-duration">⏱ 1–2h · Facile</span>
-        <a href="https://www.getyourguide.fr/cambodge-l169079/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" class="act-book-btn">Voir les excursions →</a>
-      </div>
-    </article>
-
-  </div>
-
-  <!-- GetYourGuide : activités à réserver -->
-  <div class="fade-in" style="max-width:1100px;margin:56px auto 0;background:rgba(44,21,7,.4);border:1px solid rgba(221,164,34,.2);padding:36px;">
-    <div style="text-align:center;margin-bottom:28px;">
-      <span style="font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--or);display:block;margin-bottom:8px;">✦ Réservez votre aventure</span>
-      <h3 style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:8px;">Activités & Excursions au Cambodge</h3>
-      <p style="font-size:.9rem;color:rgba(245,233,208,.55);font-style:italic;">Billets coupe-file, guides francophones, remboursement si annulation</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;">
-      <a href="https://www.getyourguide.fr/siem-reap-l274/siem-reap-angkor-wat-visite-en-petit-groupe-au-lever-ou-au-coucher-du-soleil-t406206/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">🏯</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Angkor Wat — Petit groupe lever/coucher soleil</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Guide + transport inclus · Dès 37 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-      <a href="https://www.getyourguide.fr/phnom-penh-l273/phnom-penh-palais-royal-s21-killing-fields-et-plus-encore-t495298/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">🏛</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Phnom Penh — Palais Royal · S21 · Killing Fields</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Tour guidé complet · Dès 20 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-      <a href="https://www.getyourguide.fr/siem-reap-l274/cours-de-cuisine-tc107/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">👨‍🍳</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Cours de cuisine khmère</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Marché + atelier 3h · Dès 25 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-      <a href="https://www.getyourguide.fr/province-de-sihanoukville-l202329/sortie-en-bateau-a-koh-rong-snorkeling-peche-coucher-de-soleil-et-plancton-t1119663/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">🏖️</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Koh Rong — Snorkeling · Pêche · Plancton</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Bateau + coucher de soleil · Dès 35 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-      <a href="https://www.getyourguide.fr/kampot-l126703/excursion-en-kayak-autour-de-la-cathedrale-verte-t733890/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">🛶</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Kampot — Kayak Cathédrale Verte</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Mangroves + rivière · Dès 15 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-      <a href="https://www.getyourguide.fr/battambang-l145944/battambang-tuk-tuk-train-de-bambou-grottes-de-killingbat-coucher-de-soleil-t483124/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer" style="display:block;background:rgba(44,21,7,.5);border:1px solid rgba(221,164,34,.18);padding:18px;text-decoration:none;transition:all .25s;" onmouseover="this.style.borderColor='rgba(221,164,34,.4)'" onmouseout="this.style.borderColor='rgba(221,164,34,.18)'">
-        <div style="font-size:1.8rem;margin-bottom:8px;">🚂</div>
-        <div style="font-family:'Cinzel',serif;font-size:.78rem;color:var(--creme);margin-bottom:6px;">Battambang — Train bambou · Grottes · Coucher soleil</div>
-        <div style="font-size:.75rem;color:rgba(245,233,208,.5);">Tuk-tuk + bat caves · Dès 25 USD</div>
-        <div style="margin-top:10px;font-family:'Cinzel',serif;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--or);">Réserver →</div>
-      </a>
-    </div>
-    <p style="text-align:center;margin-top:20px;font-size:.75rem;color:rgba(245,233,208,.3);font-style:italic;">* Liens partenaires GetYourGuide — Commission 8% · Prix et disponibilités en temps réel</p>
-  </div>
-
+<section id="activites" aria-labelledby="activites-title" style="padding:60px 48px;">
+  <a href="activites/" style="display:block;max-width:640px;margin:0 auto;padding:36px 32px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.25);text-decoration:none;transition:all .3s;text-align:center;" class="hover-card-lift fade-in">
+    <div style="font-size:2.4rem;margin-bottom:14px;">🎯</div>
+    <h2 id="activites-title" style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:10px;font-weight:600;">Activités & <em>Aventures</em></h2>
+    <p style="font-size:.88rem;color:rgba(245,233,208,.55);line-height:1.7;max-width:480px;margin:0 auto;">Angkor Wat au lever du soleil, train de bambou, sanctuaire des éléphants, plongée à Koh Rong — toutes les activités à réserver.</p>
+    <div style="margin-top:18px;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;">Voir les activités →</div>
+  </a>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
 
 
-<section id="angkor-guide" aria-labelledby="angkor-guide-title" style="background:linear-gradient(180deg,#1A0800,#2C1006);padding:90px 48px;">
-  <div class="section-header fade-in">
-    <span class="section-label">✦ Merveille du Monde</span>
-    <h2 class="section-title" id="angkor-guide-title">Guide Complet <em>Angkor Wat</em></h2>
-    <div class="section-divider"></div>
-  </div>
-
-  <p class="angkor-intro fade-in">
-    Le complexe d'Angkor est la plus grande structure religieuse jamais construite, s'étendant sur <strong style="color:var(--or);">400 km²</strong>. Capitale de l'empire khmer du IXe au XVe siècle, il compte plus de <strong style="color:var(--or);">1 000 temples</strong>. Angkor Wat seul est un chef-d'œuvre de l'architecture mondiale, construit entre 1113 et 1150 sous le règne de Suryavarman II. Un site que l'on ne visite pas — que l'on <em>ressent</em>.
-  </p>
-
-  <!-- Onglets de navigation -->
-  <div class="angkor-tabs fade-in" role="tablist" aria-label="Sections du guide Angkor">
-    <button class="angkor-tab active" role="tab" aria-selected="true" data-angkor="temples" id="atab-temples" aria-controls="angkor-temples">🏯 Les Temples</button>
-    <button class="angkor-tab" role="tab" aria-selected="false" data-angkor="pratique" id="atab-pratique" aria-controls="angkor-pratique">📋 Infos Pratiques</button>
-    <button class="angkor-tab" role="tab" aria-selected="false" data-angkor="itineraire" id="atab-itineraire" aria-controls="angkor-itineraire">🗺 Itinéraires</button>
-  </div>
-
-  <!-- PANEL 1 : Les Temples -->
-  <div class="angkor-panel active" id="angkor-temples" role="tabpanel" aria-labelledby="atab-temples">
-    <div class="angkor-temples fade-in">
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Angkor Wat"><picture><source srcset="photos/siem%20reap%202.webp" type="image/webp"><img loading="lazy" src="photos/siem%20reap%202.JPG" alt="Angkor Wat — les cinq tours du temple principal au lever du soleil, Cambodge" style="width:100%;height:auto;display:block;" decoding="async"></picture></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Angkor Wat</div>
-          <div class="angkor-temple-sub">Le chef-d'œuvre absolu · XIIe siècle</div>
-          <p class="angkor-temple-desc">Le plus grand temple du monde, dédié à Vishnu puis transformé en temple bouddhiste. Ses 5 tours symbolisent le mont Meru, demeure des dieux. Les bas-reliefs sur 800 mètres de galeries sont uniques au monde.</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 3–4h</span>
-            <span class="angkor-temple-tag">📸 Lever de soleil</span>
-            <span class="angkor-temple-tag">🎟 Inclus dans le pass</span>
-          </div>
-        </div>
-      </div>
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Bayon"><picture><source srcset="photos/siem%20reap%205.webp" type="image/webp"><img loading="lazy" src="photos/siem%20reap%205.JPG" alt="Temple Bayon — les 216 visages géants souriants, Angkor Thom, Cambodge" style="width:100%;height:auto;display:block;" decoding="async"></picture></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Bayon</div>
-          <div class="angkor-temple-sub">216 visages souriants · XIIe–XIIIe s.</div>
-          <p class="angkor-temple-desc">Au centre d'Angkor Thom, le Bayon fascine par ses 54 tours ornées de visages géants souriant énigmatiquement. Construit par Jayavarman VII, il mélange art bouddhiste et hindou dans une architecture labyrinthique unique.</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 1–2h</span>
-            <span class="angkor-temple-tag">🌅 Tôt le matin</span>
-            <span class="angkor-temple-tag">🎟 Inclus</span>
-          </div>
-        </div>
-      </div>
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Ta Prohm"><picture><source srcset="photos/siem%20reap%203.webp" type="image/webp"><img loading="lazy" src="photos/siem%20reap%203.JPG" alt="Ta Prohm — racines de fromagers géants envahissant les pierres millénaires, Siem Reap" style="width:100%;height:auto;display:block;" decoding="async"></picture></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Ta Prohm</div>
-          <div class="angkor-temple-sub">Les arbres mangeurs de pierres · XIIe s.</div>
-          <p class="angkor-temple-desc">Connu comme "le temple de Tomb Raider", Ta Prohm a été délibérément laissé tel que les archéologues l'ont trouvé, avec les racines de fromagers et de figuiers étranglant les pierres millénaires. Atmosphère mystique garantie.</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 1–2h</span>
-            <span class="angkor-temple-tag">📸 Instagrammable</span>
-            <span class="angkor-temple-tag">🎟 Inclus</span>
-          </div>
-        </div>
-      </div>
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Banteay Srei"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cambodge_Banteay_Srei_Temple_%282%29.jpg/960px-Cambodge_Banteay_Srei_Temple_%282%29.jpg" alt="Banteay Srei" style="width:100%;height:auto;display:block;" decoding="async"></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Banteay Srei</div>
-          <div class="angkor-temple-sub">La "Citadelle des Femmes" · Xe s.</div>
-          <p class="angkor-temple-desc">Petit temple en grès rose à 25 km d'Angkor Wat, considéré comme le joyau de l'art khmer pour la finesse exceptionnelle de ses sculptures. Ses bas-reliefs en grès rose sont les mieux conservés de tout le complexe.</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 1h</span>
-            <span class="angkor-temple-tag">🌹 Grès rose unique</span>
-            <span class="angkor-temple-tag">🎟 Inclus</span>
-          </div>
-        </div>
-      </div>
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Preah Khan"><picture><source srcset="photos/siem%20reap%208.webp" type="image/webp"><img loading="lazy" src="photos/siem%20reap%208.JPG" alt="Preah Khan — galeries et couloirs envahis par la végétation tropicale, complexe d'Angkor" style="width:100%;height:auto;display:block;" decoding="async"></picture></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Preah Khan</div>
-          <div class="angkor-temple-sub">La "Épée sacrée" · XIIe s.</div>
-          <p class="angkor-temple-desc">Vaste complexe de couloirs et de galeries en partie envahis par la végétation. Moins fréquenté qu'Angkor Wat ou Ta Prohm, Preah Khan offre une expérience d'exploration plus intime et plus "aventurière".</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 1–1h30</span>
-            <span class="angkor-temple-tag">🌿 Moins touristique</span>
-            <span class="angkor-temple-tag">🎟 Inclus</span>
-          </div>
-        </div>
-      </div>
-      <div class="angkor-temple-card">
-        <div class="angkor-temple-img" style="height:auto;background:none;padding:0;" aria-label="Beng Mealea"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Ancient_Khmer_Temple_of_Beng_Mealea_-_c.jpg/960px-Ancient_Khmer_Temple_of_Beng_Mealea_-_c.jpg" alt="Beng Mealea" style="width:100%;height:auto;display:block;" decoding="async"></div>
-        <div class="angkor-temple-body">
-          <div class="angkor-temple-name">Beng Mealea</div>
-          <div class="angkor-temple-sub">Temple de la jungle · XIIe s.</div>
-          <p class="angkor-temple-desc">À 70 km d'Angkor Wat, ce temple largement non restauré offre la sensation unique de "découverte archéologique". Des passerelles en bois permettent de naviguer au milieu des ruines envahies par la forêt.</p>
-          <div class="angkor-temple-tags">
-            <span class="angkor-temple-tag">⏱ 1–2h</span>
-            <span class="angkor-temple-tag">🌴 Jungle authentique</span>
-            <span class="angkor-temple-tag">💵 3 $ supplémentaire</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL 2 : Infos Pratiques -->
-  <div class="angkor-panel" id="angkor-pratique" role="tabpanel" aria-labelledby="atab-pratique">
-    <div class="angkor-pratique fade-in">
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">🎟 Billets & Tarifs (2025)</div>
-        <ul class="angkor-pratique-list">
-          <li><strong style="color:var(--or);">1 jour : 37 $</strong> — Idéal pour voir Angkor Wat, Bayon, Ta Prohm</li>
-          <li><strong style="color:var(--or);">3 jours : 62 $</strong> — À utiliser en 10 jours · Le plus populaire</li>
-          <li><strong style="color:var(--or);">7 jours : 72 $</strong> — À utiliser en 1 mois · Pour les passionnés</li>
-          <li>Achat uniquement au guichet officiel (Angkor Enterprise) ou en ligne</li>
-          <li>Photo sur le pass prise sur place — arriver 15 min avant</li>
-          <li>Enfants de -12 ans : entrée gratuite</li>
-        </ul>
-      </div>
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">🕐 Horaires & Lever de Soleil</div>
-        <ul class="angkor-pratique-list">
-          <li>Les temples ouvrent à <strong style="color:var(--or);">5h00</strong> (lever du soleil)</li>
-          <li>Fermeture à <strong style="color:var(--or);">17h30</strong> pour la plupart des temples</li>
-          <li>Lever de soleil sur Angkor Wat : arriver à <strong style="color:var(--or);">4h45</strong> pour avoir une bonne place</li>
-          <li>Évitez 10h–14h : chaleur intense (35–38°C en saison sèche)</li>
-          <li>Le Bayon est magnifique en fin d'après-midi (lumière dorée)</li>
-          <li>Certains temples (Bayon) ferment à 17h00</li>
-        </ul>
-      </div>
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">🚗 Comment se déplacer</div>
-        <ul class="angkor-pratique-list">
-          <li><strong style="color:var(--or);">Tuk-tuk :</strong> 12–18 $/jour · Le plus populaire · Chauffeur attend</li>
-          <li><strong style="color:var(--or);">Vélo :</strong> 3–5 $/jour · Idéal pour le petit circuit · Frais le matin</li>
-          <li><strong style="color:var(--or);">E-bike :</strong> 8–12 $/jour · Bon compromis sans effort</li>
-          <li><strong style="color:var(--or);">Voiture + chauffeur :</strong> 25–40 $/jour · Confort maximum</li>
-          <li>Le "petit circuit" (12 km) : Angkor Wat, Bayon, Ta Prohm</li>
-          <li>Le "grand circuit" (26 km) : inclut Preah Khan, Neak Pean</li>
-        </ul>
-      </div>
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">👗 Code vestimentaire</div>
-        <ul class="angkor-pratique-list">
-          <li>Épaules et genoux couverts dans <strong style="color:var(--or);">tous les temples</strong></li>
-          <li>Des sarongs sont vendus à l'entrée si besoin (1–2 $)</li>
-          <li>Chapeau ou casquette indispensable — soleil brutal</li>
-          <li>Chaussures faciles à enlever — certains sanctuaires pieds nus</li>
-          <li>Crème solaire SPF50+ recommandée fortement</li>
-          <li>Bouteille d'eau réutilisable (points de remplissage sur site)</li>
-        </ul>
-      </div>
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">🍜 Se restaurer sur place</div>
-        <ul class="angkor-pratique-list">
-          <li>Restaurants à l'entrée d'Angkor Wat et au niveau de Ta Prohm</li>
-          <li>Vendeurs ambulants de noix de coco fraîche (1 $) — indispensable</li>
-          <li>Village de Srah Srang : petits restaurants locaux + marché</li>
-          <li>Préférer manger avant 10h ou après 14h (moins chaud)</li>
-          <li>Eau en bouteille : 0,50 $ sur place — faites provision</li>
-          <li>Emporter des barres énergétiques pour les longues journées</li>
-        </ul>
-      </div>
-      <div class="angkor-pratique-card">
-        <div class="angkor-pratique-title">💡 Conseils de Pro</div>
-        <ul class="angkor-pratique-list">
-          <li>Visiter Angkor Wat à <strong style="color:var(--or);">l'intérieur</strong> en premier (moins de monde le matin)</li>
-          <li>Bayon : aller tôt (avant 8h) — il se remplit vite</li>
-          <li>Ta Prohm : visite en fin de journée (groupes partis)</li>
-          <li>Utiliser une application comme Angkor Guide (offline, gratuite)</li>
-          <li>Engager un guide local certifié pour le contexte historique</li>
-          <li>Ne pas grimper sur les structures — respect du patrimoine</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL 3 : Itinéraires Angkor -->
-  <div class="angkor-panel" id="angkor-itineraire" role="tabpanel" aria-labelledby="atab-itineraire">
-    <div class="angkor-itineraire fade-in">
-      <div class="angkor-jour">
-        <div class="angkor-jour-title">Jour 1 — Le Grand Triangle (Pass 1 jour)</div>
-        <div class="angkor-jour-list">
-          <div class="angkor-moment"><div class="angkor-moment-time">4h45</div><div>Arrivée devant le bassin ouest d'Angkor Wat — lever de soleil face au temple (le plus photographié du monde)</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">6h00</div><div>Visite intérieure d'Angkor Wat : bas-reliefs, galeries, tour centrale — compter 2h minimum</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">8h30</div><div>Petit-déjeuner au village de Srah Srang (10 min) — fruits frais, riz, café khmer</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">9h30</div><div>Angkor Thom : porte sud, Terrasse des Éléphants, Baphuon, puis le Bayon</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">12h00</div><div>Déjeuner et repos à l'ombre — la chaleur est intense entre 12h et 14h</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">14h30</div><div>Ta Prohm — la lumière de l'après-midi filtre à travers les racines, idéal pour la photo</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">16h00</div><div>Srah Srang et ses moines en robe safran — moment de sérénité</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">17h15</div><div>Retour à Angkor Wat pour le coucher de soleil côté ouest</div></div>
-        </div>
-      </div>
-      <div class="angkor-jour">
-        <div class="angkor-jour-title">Jour 2 — Temples Cachés & Grand Circuit (Pass 3 jours recommandé)</div>
-        <div class="angkor-jour-list">
-          <div class="angkor-moment"><div class="angkor-moment-time">7h00</div><div>Preah Khan : labyrinthes de galeries, arbres centenaires — plus intime qu'Angkor Wat</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">9h00</div><div>Neak Pean : île-temple sur lac artificiel — accessible via passerelle</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">10h30</div><div>Ta Som : petit temple en grès rose avec arbre géant sur la tour est</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">11h30</div><div>East Mebon : temple-montagne au milieu de l'ancien lac</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">13h00</div><div>Déjeuner et sieste — heure la plus chaude</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">15h00</div><div>Pre Rup : temple-pyramide en latérite — vue panoramique sur les rizières</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">17h00</div><div>Coucher de soleil depuis la terrasse de Pre Rup (alternative moins fréquentée)</div></div>
-        </div>
-      </div>
-      <div class="angkor-jour">
-        <div class="angkor-jour-title">Jour 3 — Excursions Loin des Foules (Pass 3 jours)</div>
-        <div class="angkor-jour-list">
-          <div class="angkor-moment"><div class="angkor-moment-time">7h30</div><div>Départ pour Banteay Srei (25 km) — le plus beau temple d'Angkor selon les archéologues</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">9h00</div><div>Banteay Srei : sculptures en grès rose d'une finesse inouïe — 1h30 minimum</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">11h00</div><div>Route de retour : Kbal Spean (rivière aux mille lingas, 1h de marche) — option randonnée</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">14h00</div><div>Déjeuner + repos — chaleur de l'après-midi</div></div>
-          <div class="angkor-moment"><div class="angkor-moment-time">16h00</div><div>Phnom Bakheng : colline-temple, sunset panoramique sur Angkor Wat au loin (réservation requise)</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA réservation -->
-  <div style="text-align:center;margin-top:48px;" class="fade-in">
-    <a href="https://www.getyourguide.fr/siem-reap-l274/siem-reap-angkor-wat-visite-en-petit-groupe-au-lever-ou-au-coucher-du-soleil-t406206/?partner_id=GLRHM45&utm_medium=online_publisher" target="_blank" rel="noopener noreferrer sponsored"
-       style="display:inline-block;padding:14px 38px;background:linear-gradient(135deg,var(--or),var(--or-clair));color:var(--brun);font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;border-radius:4px;text-decoration:none;font-weight:700;box-shadow:0 4px 20px rgba(221,164,34,.3);transition:transform .2s;">
-      🏯 Réserver une visite guidée d'Angkor →
-    </a>
-    <p style="margin-top:10px;font-size:.72rem;color:rgba(245,233,208,.35);font-style:italic;">Guide francophone · Billet coupe-file · Annulation gratuite 24h avant</p>
-  </div>
+<section id="angkor-guide" aria-labelledby="angkor-guide-title" style="padding:60px 48px;">
+  <a href="angkor/" style="display:block;max-width:640px;margin:0 auto;padding:36px 32px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.25);text-decoration:none;transition:all .3s;text-align:center;" class="hover-card-lift fade-in">
+    <div style="font-size:2.4rem;margin-bottom:14px;">🏯</div>
+    <h2 id="angkor-guide-title" style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:10px;font-weight:600;">Guide Complet <em>Angkor</em></h2>
+    <p style="font-size:.88rem;color:rgba(245,233,208,.55);line-height:1.7;max-width:480px;margin:0 auto;">Les temples incontournables, billets et tarifs, horaires et itinéraires sur 1 à 3 jours pour explorer le plus grand site religieux du monde.</p>
+    <div style="margin-top:18px;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;">Découvrir les temples →</div>
+  </a>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -3256,251 +2361,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 <div class="khmer-border" aria-hidden="true"></div>
 
 
-<section id="blog" aria-labelledby="blog-title">
-  <div class="section-header fade-in">
-    <span class="section-label">✦ Conseils & Inspirations</span>
-    <h2 class="section-title" id="blog-title">Le <em>Blog</em> Cambodge</h2>
-    <div class="section-divider"></div>
-  </div>
-  <div class="blog-grid">
-
-    <article class="blog-card fade-in">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/eb/Angkor_Wat%2C_Camboya%2C_2013-08-16%2C_DD_090.JPG');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Temple & Culture</div>
-        <h3 class="blog-title">Les 10 temples incontournables autour d'Angkor Wat</h3>
-        <p class="blog-excerpt">Au-delà du célèbre Angkor Wat, le complexe abrite des dizaines de temples moins connus mais tout aussi spectaculaires. Notre sélection des plus beaux.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>1. Angkor Wat</strong> — Le temple-montagne le plus grand au monde (1,63 km²). Arrivez avant le lever du soleil pour le reflet dans les douves. Comptez 3h minimum.</p>
-          <p><strong>2. Bayon</strong> — Au cœur d'Angkor Thom, ses 216 visages géants en pierre souriante vous observent de partout. Unique et hypnotique.</p>
-          <p><strong>3. Ta Prohm</strong> — Les racines d'arbres géants (figuiers étrangleurs) envahissent les murs. Connu pour avoir servi de décor au film Tomb Raider.</p>
-          <p><strong>4. Banteay Srei</strong> — Le "temple des femmes", taillé dans du grès rose. Bas-reliefs d'une finesse exceptionnelle. À 25 km du centre, mais vaut le détour.</p>
-          <p><strong>5. Preah Khan</strong> — Vaste temple peu fréquenté, quasi-intact, avec ses galeries labyrinthiques envahies par la végétation.</p>
-          <p><strong>6. Neak Pean</strong> — Un temple-île posé sur un lac artificiel, accessible à pied sur une passerelle en bois. Atmosphère mystique.</p>
-          <p><strong>7. Ta Som</strong> — Plus petit, moins visité, mais magnifique avec son gopura est avalé par un figuier étrangleur centenaire.</p>
-          <p><strong>8. Baphuon</strong> — Restauré après des décennies de travaux, il offre une vue panoramique du haut de sa terrasse sur la forêt d'Angkor.</p>
-          <p><strong>9. Terrace of the Elephants</strong> — Terrasse royale décorée de 300 m de bas-reliefs d'éléphants. Ancienne tribune des rois khmers.</p>
-          <p><strong>10. Phnom Bakheng</strong> — Temple-colline perché à 65 m. Le meilleur point de vue pour le coucher de soleil sur Angkor Wat. Arrivez 1h avant le coucher du soleil.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">🎟️ Pass 1 jour : 37 USD · 3 jours : 62 USD · 7 jours : 72 USD (2026)</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Siem Reap</span><span>8 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.1s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5c/2016_Phnom_Penh%2C_Amok_trey_%2801%29.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Gastronomie</div>
-        <h3 class="blog-title">Guide complet de la cuisine khmère : que manger au Cambodge ?</h3>
-        <p class="blog-excerpt">Amok, lok lak, bai sach chrouk, kuy teav… Découvrez les plats incontournables de la cuisine cambodgienne et où les goûter à leur meilleur.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🍛 Amok Trey</strong> — Le plat national. Poisson cuit à la vapeur dans une mousse de lait de coco parfumée au kroeung (pâte khmère) et servi dans une feuille de bananier. Doux, crémeux, inoubliable.</p>
-          <p><strong>🥩 Lok Lak</strong> — Bœuf sauté à la sauce huître et poivre de Kampot, servi sur lit de salade avec un œuf au plat et la sauce citron-poivre caractéristique. Incontournable.</p>
-          <p><strong>🍚 Bai Sach Chrouk</strong> — Le petit-déjeuner cambodgien par excellence : porc mariné grillé au charbon de bois, servi avec du riz blanc et une soupe légère. 1–2 USD dans les marchés.</p>
-          <p><strong>🍲 Kuy Teav</strong> — Soupe de nouilles de riz au bouillon de porc ou bœuf, garnie de ciboulette, germes de soja et viande. Le pho cambodgien, servi à toute heure.</p>
-          <p><strong>🥗 Papaye Verte (Bok L'Hong)</strong> — Salade de papaye verte écrasée au mortier, avec citron vert, piment, crevettes séchées et cacahuètes. Piquante et rafraîchissante.</p>
-          <p><strong>🦀 Crabe au Poivre de Kep</strong> — Spécialité de Kep : crabes bleus du golfe du Siam sautés au poivre vert frais de Kampot. Un festival de saveurs.</p>
-          <p><strong>🌿 Nom Banh Chok</strong> — Nouilles de riz fermentées au curry vert de poisson, recouvertes de légumes crus et herbes fraîches. Servi le matin dans tous les marchés.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💡 Astuce : pour manger local à moins de 2 USD, dirigez-vous vers les marchés du matin (Phsar) dans chaque ville.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Toutes villes</span><span>6 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.2s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/a3/Cambodia_%2824207512922%29.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Plages & Îles</div>
-        <h3 class="blog-title">Koh Rong vs Koh Rong Sanloem : quelle île choisir ?</h3>
-        <p class="blog-excerpt">Les deux îles phares du Cambodge sont voisines mais très différentes. Fête et animation d'un côté, tranquillité et plongée de l'autre. On compare tout.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🎉 Koh Rong — L'île festive</strong><br>La plus grande île (78 km²), avec le village de Koh Touch, ses bars sur la plage et ses soirées qui durent jusqu'à l'aube. Plages de sable blanc, bioluminescence en saison, snorkeling. Pour les voyageurs qui veulent l'ambiance et la rencontre.</p>
-          <p><strong>🌿 Koh Rong Sanloem — L'île tranquille</strong><br>Moins développée, avec seulement quelques villages. La plage de Saracen Bay est l'une des plus belles du Cambodge. Pas de vie nocturne, eau cristalline, plongée et kayak. Pour ceux qui cherchent la déconnexion totale.</p>
-          <p><strong>📊 Comparatif rapide :</strong></p>
-          <p>🏖️ Plages : égalité parfaite — toutes deux magnifiques<br>🎵 Vie nocturne : Koh Rong ✓✓ · Koh Rong Sanloem ✗<br>🤿 Plongée/Snorkeling : Sanloem légèrement meilleure<br>💰 Prix : Koh Rong légèrement moins cher<br>👨‍👩‍👦 Familles : Sanloem fortement recommandée<br>🎒 Solo/20-30 ans : Koh Rong recommandée</p>
-          <p><strong>🚢 Comment y aller :</strong><br>Ferry depuis le port de Sihanoukville. Trajet 45 min (Koh Rong) à 1h15 (Sanloem). Opérateurs : Speed Ferry Cambodia, GTVC — environ 25 USD A/R.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">📅 Meilleure saison : novembre à mai (saison sèche). Évitez juillet-octobre (mousson).</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Sihanoukville</span><span>5 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.3s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/66/Phnom_penh_airport.JPG');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Pratique & Visa</div>
-        <h3 class="blog-title">Visa Cambodge 2026 : tout ce qu'il faut savoir avant de partir</h3>
-        <p class="blog-excerpt">e-Visa en ligne, visa à l'arrivée, visa touristique ou business… Le point complet sur les démarches pour entrer au Cambodge en 2026, avec les prix et délais.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🖥️ e-Visa (recommandé) — 30 USD</strong><br>Demande en ligne sur le site officiel du gouvernement cambodgien. Délai : 3 jours ouvrés. Valide 90 jours à compter de la délivrance, séjour maximum 30 jours (extensible). Compatible avec toutes les nationalités éligibles. Évite les files à l'aéroport.</p>
-          <p><strong>✈️ Visa à l'arrivée — 35 USD</strong><br>Disponible aux aéroports de Phnom Penh, Siem Reap et Sihanoukville, ainsi qu'à la plupart des frontières terrestres. Valable 30 jours. Prévoir des photos d'identité et 35 USD en espèces (USD uniquement). Attente possible de 30 à 60 minutes.</p>
-          <p><strong>💼 Visa Business (EB) — 35 USD</strong><br>Permet des séjours plus longs et l'exercice d'une activité professionnelle. Extensions possibles jusqu'à 12 mois.</p>
-          <p><strong>🔄 Extension de visa</strong><br>Extension touristique : 45 USD pour 30 jours supplémentaires. À effectuer au bureau d'immigration de Phnom Penh avant expiration.</p>
-          <p><strong>📋 Documents requis :</strong><br>— Passeport valide 6 mois après la date d'entrée<br>— Photo d'identité récente (fond blanc, 4×6 cm)<br>— Billet de retour ou de continuation<br>— Preuve de moyens financiers suffisants</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">⚠️ Attention : certains pays limitrophes (Thaïlande, Vietnam) imposent leurs propres conditions aux ressortissants faisant des "visa runs". Vérifiez auprès de votre ambassade.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Toutes villes</span><span>7 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.4s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d1/Cambodian_farmers_planting_rice.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Itinéraires</div>
-        <h3 class="blog-title">14 jours au Cambodge : l'itinéraire parfait du nord au sud</h3>
-        <p class="blog-excerpt">Comment organiser deux semaines au Cambodge pour ne rien manquer ? Angkor, Phnom Penh, Kampot et les îles — un circuit complet et réaliste.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>Jours 1–4 · Siem Reap & Angkor</strong><br>Arrivée à Siem Reap. J1 : récupération, marché nocturne de Pub Street. J2 : Angkor Wat au lever du soleil + Bayon + Ta Prohm (pass 3 jours). J3 : temples extérieurs — Banteay Srei, Preah Khan, Neak Pean. J4 : Phnom Kulen ou village flottant de Tonlé Sap.</p>
-          <p><strong>Jours 5–6 · Battambang</strong><br>Bus ou bateau (5h) depuis Siem Reap. Visite de la ville coloniale française, des bamboo trains, des temples sur colline (Wat Banan). Spécialité locale : vin de palme.</p>
-          <p><strong>Jours 7–9 · Phnom Penh</strong><br>Bus (3h). Palais Royal, Musée National, Tuol Sleng (S-21) et Choeung Ek — histoire poignante du génocide khmer rouge. Riverside, restaurants gastronomiques, vie nocturne.</p>
-          <p><strong>Jours 10–11 · Kampot & Kep</strong><br>Bus (3h). Architecture coloniale de Kampot, balade en bateau sur la rivière, plantations de poivres. Excursion à Kep : crabe frais au marché de Kep.</p>
-          <p><strong>Jours 12–14 · Koh Rong ou Koh Rong Sanloem</strong><br>Ferry depuis Sihanoukville (1–2h). Plage, farniente, snorkeling et bioluminescence la nuit. Retour à Sihanoukville + vol retour ou continuation vers la Thaïlande.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💰 Budget estimé sur 14 jours : 600–900 USD (hébergement + transport + repas + activités) pour un voyageur en budget confort.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Tout le Cambodge</span><span>10 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.5s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/01/Kampot_Riverfront_Scene_-_Kampot_-_Cambodia_%2848501740381%29.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Destination Secrète</div>
-        <h3 class="blog-title">Kampot, la perle cachée du Cambodge : tout ce qu'il faut voir</h3>
-        <p class="blog-excerpt">Moins connue que Siem Reap ou Phnom Penh, Kampot séduit les voyageurs qui cherchent l'authenticité : architecture coloniale, rivière, plantations de poivres et couchers de soleil inoubliables.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🏛️ Architecture coloniale française</strong><br>Kampot est l'une des villes les mieux préservées de l'époque coloniale au Cambodge. Déambulez dans les rues autour du marché central pour admirer les façades jaunes et turquoise du XIXe siècle.</p>
-          <p><strong>🌶️ Le poivre de Kampot — le meilleur du monde</strong><br>Le poivre de Kampot bénéficie d'une Indication Géographique Protégée (IGP). Visitez les plantations de La Plantation ou Sothy's Pepper Farm pour voir la récolte et déguster noir, rouge, blanc et vert. En vente dans toutes les épiceries locales.</p>
-          <p><strong>🚣 Balade en bateau sur la rivière Kampot</strong><br>Louez un bateau au coucher du soleil (5–8 USD) pour descendre la rivière vers la mangrove. Les lucioles apparaissent à la tombée de la nuit en saison sèche.</p>
-          <p><strong>🏕️ Bokor Hill Station</strong><br>À 35 km de Kampot, sur le plateau de Bokor (1 079 m), les ruines d'une station de villégiature coloniale fantôme : casino abandonné, palais du roi, église en ruine. Vue sur le golfe de Thaïlande.</p>
-          <p><strong>🦀 Kep, à 25 km</strong><br>Village de crabe à 30 minutes. Le marché des crabes de Kep est l'un des marchés aux fruits de mer les plus authentiques du Cambodge. 6–10 USD pour un crabe entier au poivre vert.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">🚌 Accès : bus depuis Phnom Penh (3h, 8 USD) ou Sihanoukville (2h, 6 USD). Idéal à vélo ou en scooter (3 USD/jour).</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Kampot</span><span>9 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.1s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/1d/Phnom_Penh_-_Phsar_Thom_Thmei_-_2009_-_01.JPG');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Phnom Penh</div>
-        <h3 class="blog-title">Les marchés de Phnom Penh : guide complet</h3>
-        <p class="blog-excerpt">Phnom Penh compte des dizaines de marchés, chacun avec sa personnalité. Du marché Central Art Déco au Russian Market des antiquités, voici comment les explorer sans se perdre.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🏛️ Phsar Thmei — Marché Central</strong> — Impossible de le manquer : sa coupole Art Déco jaune dorée de 1937 trône au cœur de la ville. Quatre ailes rayonnantes remplies de bijoux en or, de soieries khmères, d'épices et de street food. Ouvert tôt le matin, ambiance maximale avant 10h.</p>
-          <p><strong>🪆 Phsar Tuol Tom Poung — Russian Market</strong> — Le paradis des voyageurs. Vêtements de marques (surplus d'usine), sculptures khmères, argent artisanal, épices rares et curiosités. Prix à négocier. Meilleur le matin, bondé le week-end. Rejoignez le quartier Tuol Sleng juste après.</p>
-          <p><strong>🌙 Phsar Night Market — Marché Nocturne Riverside</strong> — Face au Palais Royal, ce marché de nuit s'étire le long du fleuve chaque soir. Artisanat local, nourriture de rue, vêtements colorés. Ambiance familiale cambodgienne, pas de faux guides. Ouvert 17h–23h.</p>
-          <p><strong>🛒 Phsar O'Russei — Marché des locaux</strong> — Le marché le moins touristique de Phnom Penh. Denrées alimentaires, produits ménagers, vêtements à petits prix. Idéal pour observer la vie quotidienne cambodgienne. Situé dans le quartier 7 Makara.</p>
-          <p><strong>🎨 Phsar Orussey Art Market</strong> — Petit marché d'art et d'artisanat récent, axé sur les créations de jeunes artistes khmers. Peintures, photos, céramiques, bijoux modernes. Une bonne alternative aux souvenirs génériques.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💡 Astuce : arrivez avant 8h dans les marchés alimentaires pour les produits les plus frais — et les prix les plus bas.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Phnom Penh</span><span>5 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.2s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/ae/06-Kep_Crab_Market_Cambodia-nX-3.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Côte & Gastronomie</div>
-        <h3 class="blog-title">Kep : la perle oubliée de la côte cambodgienne</h3>
-        <p class="blog-excerpt">À l'ombre de Kampot et de Sihanoukville, Kep-sur-Mer reste méconnue des touristes pressés. Pourtant cette ancienne station balnéaire française cache des trésors gastronomiques et une douceur de vivre rare.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🦀 Le marché aux crabes — L'institution</strong> — Dès l'aube, les pêcheurs déchargent leurs filets remplis de crabes bleus du golfe de Siam. Des dizaines de cuisinières les préparent à la minute sur des réchauds de fortune : sautés au poivre vert frais de Kampot, à l'ail, au gingembre. Le repas de rue le plus savoureux du Cambodge, pour 3–8 USD.</p>
-          <p><strong>🌶️ Le poivre de Kampot — Trésor classé à l'UNESCO</strong> — Les plantations de poivre entourant Kep et Kampot produisent l'un des meilleurs poivres au monde. Blanc, rouge, noir ou vert frais — chaque variété a ses arômes uniques. Visite des plantations (Sothy's Pepper Farm, La Plantation) avec dégustation incluse.</p>
-          <p><strong>🏖️ La plage de Kep — Tranquillité garantie</strong> — Une petite plage de galets et de sable fin, jamais bondée, avec des eaux calmes et peu profondes. Quelques restaurants de bord de mer proposent poissons grillés et fruits de mer frais. Ambiance bout du monde.</p>
-          <p><strong>🐚 Rabbit Island (Koh Tonsay)</strong> — À 15 minutes en bateau depuis le débarcadère de Kep. Cette île minuscule abrite quelques familles de pêcheurs et des plages de sable blanc quasi-désertes. Bungalows rustiques pour passer la nuit. Eau transparente, zéro réseau, 100% dépaysement.</p>
-          <p><strong>🏛️ Les villas coloniales en ruine</strong> — Dans les années 1960, Kep était la Côte d'Azur de l'élite khmère. Les Khmers Rouges ont tout abandonné. Aujourd'hui, des dizaines de villas modernistes des années 60 se cachent dans la végétation — une balade fascinante à faire à pied ou à vélo.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💡 Combinaison parfaite : Kep le matin (crabes + marché) + Kampot l'après-midi (rivière + poivre) + coucher de soleil depuis le bord de rivière kampotien.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Kep · Kampot</span><span>7 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.3s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d9/Cambodian_skewers_%2823687297234%29.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Gastronomie</div>
-        <h3 class="blog-title">Street food cambodgienne : le guide ultime des plats à goûter</h3>
-        <p class="blog-excerpt">La vraie cuisine cambodgienne ne se trouve pas dans les restaurants touristiques — elle se mange dans la rue, debout, pour moins de 2 dollars. Voici les plats incontournables et où les trouver.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🌅 Le matin : Bai Sach Chrouk</strong> — À 6h du matin, des centaines de vendeurs installent leurs grils au charbon de bois. Tranches de porc marinées dans du lait de coco et de l'ail, cuites lentement, servies sur du riz jasmin blanc avec une soupe légère. Le petit-déjeuner du Cambodge. Prix : 1–1,5 USD.</p>
-          <p><strong>🍜 En-cas à toute heure : Nom Banh Chok</strong> — Nouilles de riz fermentées maison, recouvertes d'un curry vert de poisson parfumé à la citronnelle et aux feuilles de kaffir. Garni de concombre, pousses de soja, fleurs de bananier et basilic thai. Servi froid le matin dans les marchés. 1 USD.</p>
-          <p><strong>🥩 Le déjeuner : Lok Lak</strong> — Dés de bœuf sautés à la sauce huître et au poivre noir, servis sur une salade verte avec un œuf au plat et une sauce citron-poivre. L'équivalent khmer du steak-frites. Dans les marchés : 2–3 USD.</p>
-          <p><strong>🫙 Le goûter : Num Pang</strong> — Le sandwich cambodgien — baguette française croustillante héritée de la colonisation, garnie de viande de porc rôtie, pâté, légumes marinés, piment et coriandre. Une fusion franco-khmère unique. 50 cents–1 USD.</p>
-          <p><strong>🦗 Pour les aventuriers : insectes frits</strong> — Criquets, vers à soie, araignées, scorpions — les marchés nocturnes proposent une faune entomologique impressionnante. Les criquets frits sont croustillants, légèrement salés et réellement délicieux. À goûter au moins une fois.</p>
-          <p><strong>🍹 Pour se désaltérer : Tuk Ampov</strong> — Jus de canne à sucre pressé sur place, servi froid avec de la glace et un trait de citron vert. Sucré, frais, ultra-énergisant. 0,50 USD partout. Autre option : coco fraîche découpée à la machette (1 USD).</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💡 Règle d'or : mangez où les locaux mangent. Un stand avec queue = qualité garantie. Évitez les adresses trop proches des sites touristiques dont les prix sont souvent 3 à 5 fois supérieurs.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Toutes villes</span><span>6 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.4s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/66/Throne_Hall%2C_Royal_Palace%2C_Phnom_Penh%2C_Cambodia.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Itinéraire Phnom Penh</div>
-        <h3 class="blog-title">Phnom Penh en 3 jours : que voir, où manger et où dormir ?</h3>
-        <p class="blog-excerpt">Comment bien organiser un séjour de 3 jours à Phnom Penh ? Palais Royal, Tuol Sleng, Russian Market, gastronomie locale et nuits animées — le programme complet.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🌅 Jour 1 · Histoire & Mémoire</strong><br>Matinée : Palais Royal (entrée 10 USD) et la Pagode d'Argent — les joyaux architecturaux de la ville. Déjeuner local au marché Phsar Thmei. Après-midi : Musée du Génocide de Tuol Sleng (S-21) puis le Mémorial de Choeung Ek (Killing Fields). Une journée dense mais indispensable pour comprendre le Cambodge contemporain. Soirée : Riverside, promenade au coucher du soleil, dîner face au Mékong.</p>
-          <p><strong>🛒 Jour 2 · Culture & Shopping</strong><br>Matinée : Musée National du Cambodge (5 USD) — chef-d'œuvre de l'art khmer des 5e–13e siècles. Pause café quartier BKK1. Après-midi : Russian Market (Phsar Tuol Tom Poung) pour les souvenirs et l'artisanat. Visite du marché de nuit Riverside le soir. Dîner à Romdeng (restaurant de l'association Friends, cuisine de rue khmère raffinée) ou Chez Sophea (budget).</p>
-          <p><strong>🌿 Jour 3 · Escapade & Décompression</strong><br>Visite du temple de Wat Phnom (la colline sacrée de la ville, 1 USD). Déjeuner au marché O'Russey pour une immersion parmi les locaux. Optionnel : Koh Dach (île de la Soie) à 20 min en bateau depuis le Riverside (5 USD A/R) — tisserands et rizières à l'écart de la ville.</p>
-          <p><strong>🏨 Où dormir à Phnom Penh ?</strong><br>— <strong>Luxe :</strong> Raffles Hotel Le Royal (200–450 $) · Rosewood (300–600 $)<br>— <strong>Confort :</strong> Plantation Urban Resort (80–150 $) · Kabiki (100–180 $, familles)<br>— <strong>Budget :</strong> Mad Monkey Hostel (8–25 $) · The Common Tiger (20–40 $)</p>
-          <p><strong>🚕 Se déplacer dans Phnom Penh</strong><br>Grab est la solution la plus pratique et la moins chère (2–4 $ pour la plupart des trajets). Le tuk-tuk reste une option mais négociez le prix avant de monter. Évitez les motos-taxis non référencés en soirée.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">💡 Conseil : consacrez la matinée du J1 aux Killing Fields — les groupes affluent l'après-midi et l'émotion est bien plus forte dans le calme du matin.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Phnom Penh</span><span>9 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.5s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/e0/All_that_will_make_up_your_train%21_%2814265438977%29.jpg');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Itinéraire Battambang</div>
-        <h3 class="blog-title">Battambang en 2 jours : temples, train de bambou et art khmer</h3>
-        <p class="blog-excerpt">Deuxième ville du Cambodge, Battambang est un bijou méconnu — architecture coloniale, galeries d'art vivant et l'expérience la plus insolite du pays : le train de bambou dans les rizières.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>🚂 Le Norry — Train de bambou (incontournable)</strong><br>À 7 km au nord du centre, des plateformes motorisées artisanales circulent sur les rails de l'époque coloniale française à travers les rizières. Aller-retour pour 5 USD. Expérience unique et surprenante — l'une des activités les plus photographiées du Cambodge hors d'Angkor.</p>
-          <p><strong>🏛️ L'architecture coloniale du centre-ville</strong><br>Battambang est la ville la mieux préservée de l'ère coloniale française. Le quartier autour du marché central regorge de bâtiments à arcades jaunes et turquoise de la fin du XIXe siècle. Location de vélos (2–3 USD/jour) pour explorer à votre rythme.</p>
-          <p><strong>🎭 L'art et les galeries khmères</strong><br>Battambang abrite la scène artistique la plus dynamique du Cambodge hors de Phnom Penh. Phare Ponleu Selpak (école des arts du cirque) propose des spectacles le soir (5 USD). Nombreuses galeries et ateliers dans les rues adjacentes au vieux marché.</p>
-          <p><strong>🦇 Grotte aux chauves-souris de Phnom Sampeau</strong><br>À 15 km du centre, au coucher du soleil, des millions de chauves-souris s'élèvent en spirale dans le ciel pendant 30 minutes — un spectacle naturel saisissant. Le site abrite aussi des temples rupestres et une vue panoramique sur les rizières.</p>
-          <p><strong>🍷 Vin de palme & spécialités locales</strong><br>La région est connue pour son vin de palme (toddy palm wine) et ses oranges — les meilleures du Cambodge. Demandez dans les marchés locaux.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">🚌 Accès : bus depuis Siem Reap (3h, 6 USD) ou bateau lent sur la rivière Sangker (8h, ambiance unique, selon saison). Phnom Penh → Battambang : 5h en bus (8 USD).</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Battambang</span><span>7 min de lecture</span></div>
-      </div>
-    </article>
-
-    <article class="blog-card fade-in" style="transition-delay:.1s">
-      <div class="blog-thumb" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/a/a2/Traffic_in_Cambodia..JPG');" aria-hidden="true"></div>
-      <div class="blog-body">
-        <div class="blog-category">Sécurité & Conseils</div>
-        <h3 class="blog-title">Sécurité au Cambodge : ce que les voyageurs doivent vraiment savoir</h3>
-        <p class="blog-excerpt">Le Cambodge est l'un des pays les plus sûrs d'Asie du Sud-Est — mais quelques précautions basiques permettent de voyager l'esprit tranquille. Le point complet, sans alarmisme.</p>
-        <div class="blog-full" aria-hidden="true">
-          <p><strong>✅ Dans l'ensemble : un pays très sûr</strong><br>Le Cambodge affiche un taux de criminalité contre les touristes très faible. Les voyageurs seuls, les femmes et les familles y circulent sans problème dans les zones touristiques. La grande majorité des visiteurs rentrent sans avoir vécu le moindre incident.</p>
-          <p><strong>🛵 Les arnaques courantes (et comment les éviter)</strong><br>— <em>"Le temple est fermé aujourd'hui"</em> : toujours faux, aller directement au guichet officiel<br>— <em>Tuk-tuk qui propose "d'abord passer chez mon ami"</em> : refuser poliment<br>— <em>Taxi non-métré à l'aéroport</em> : utiliser Grab ou les taxis officiels avec compteur<br>— <em>Faux billets pour Angkor</em> : n'acheter QUE au guichet officiel sur place</p>
-          <p><strong>🚗 Sécurité routière — le vrai risque</strong><br>La circulation cambodgienne est chaotique. Les accidents de scooter sont la principale cause d'hospitalisation chez les touristes. Portez toujours un casque, roulez prudemment, évitez la nuit. En tuk-tuk ou voiture, attachez la ceinture si disponible.</p>
-          <p><strong>💊 Santé — précautions de base</strong><br>Eau du robinet non potable (bouteille ou filtre). Protégez-vous des moustiques (dengue, présente toute l'année, surtout en saison des pluies). Crème solaire haute protection indispensable. Les hôpitaux demandent un paiement comptant — assurance voyage obligatoire.</p>
-          <p><strong>⚠️ Zones sensibles</strong><br>Les frontières avec la Thaïlande dans certaines provinces rurales (Oddar Meanchey) peuvent avoir des mines non déminées — restez sur les chemins balisés. À Sihanoukville, certains quartiers proches des casinos sont à éviter la nuit.</p>
-          <p style="margin-top:12px;font-style:italic;color:rgba(245,233,208,.55);">🆘 Numéros utiles : Police 117 · Ambulance 119 · Ambassade de France à Phnom Penh : +855 23 430 020. Enregistrez ces numéros avant de partir.</p>
-        </div>
-        <button class="blog-read-more" aria-expanded="false">Lire la suite ▼</button>
-        <div class="blog-meta"><span>Toutes villes</span><span>8 min de lecture</span></div>
-      </div>
-    </article>
-
-  </div>
+<section id="blog" aria-labelledby="blog-title" style="padding:60px 48px;">
+  <a href="blog/" style="display:block;max-width:640px;margin:0 auto;padding:36px 32px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.25);text-decoration:none;transition:all .3s;text-align:center;" class="hover-card-lift fade-in">
+    <div style="font-size:2.4rem;margin-bottom:14px;">📰</div>
+    <h2 id="blog-title" style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:10px;font-weight:600;">Le <em>Blog</em> Cambodge</h2>
+    <p style="font-size:.88rem;color:rgba(245,233,208,.55);line-height:1.7;max-width:480px;margin:0 auto;">Conseils, itinéraires détaillés, sécurité et bonnes adresses — nos articles pour bien préparer votre voyage.</p>
+    <div style="margin-top:18px;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;">Lire les articles →</div>
+  </a>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -4121,124 +2988,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
 <div class="khmer-border" aria-hidden="true"></div>
 
 
-<section id="plats-khmers" aria-labelledby="plats-title" style="background:linear-gradient(180deg,#3E1C06,#2A1005);padding:90px 48px;">
-  <div class="section-header fade-in">
-    <span class="section-label">✦ Saveurs du Cambodge</span>
-    <h2 class="section-title" id="plats-title">Guide des <em>Plats Khmers</em></h2>
-    <div class="section-divider"></div>
-    <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">La cuisine khmère est l'une des plus subtiles d'Asie du Sud-Est — herbes fraîches, lait de coco et épices douces</p>
-  </div>
-
-  <div class="plat-grid fade-in">
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/8/84/Fish_Amok-_Khmer_specialty.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Amok Trei</div>
-        <div class="plat-ph">អាម៉ុកត្រី · Amok de poisson</div>
-        <div class="plat-desc">Le plat national du Cambodge. Filets de poisson du Tonlé Sap cuits à la vapeur dans du lait de coco avec du kroeung (pâte d'épices khmère), servis dans une feuille de bananier. Doux, crémeux, parfumé.</div>
-        <div class="plat-price">💰 5–12 USD · Partout au Cambodge</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d8/2016_Phnom_Penh%2C_Kambod%C5%BCa%C5%84ski_Lok_Lak_%2801%29.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Lok Lak</div>
-        <div class="plat-ph">លុកឡាក់ · Bœuf sauté</div>
-        <div class="plat-desc">Morceaux de bœuf marinés sautés à feu vif avec poivrons et oignons, servis sur riz avec sauce poivre de Kampot et œuf au plat. Saveurs intenses, texture parfaite. Un classique incontournable.</div>
-        <div class="plat-price">💰 5–10 USD · Tous les restaurants khmers</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Cambodian_Kor_Kor_Soup_with_Meatball_%2815702109867%29.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Samlor Korkor</div>
-        <div class="plat-ph">សម្លម្ជូរ · Soupe nationale</div>
-        <div class="plat-desc">Soupe traditionnelle à base de poisson fermenté (prahok), lait de coco, tiges de lotus et légumes variés. Complexe et nourrissante. Le plat que les Cambodgiens mangent depuis des siècles.</div>
-        <div class="plat-price">💰 3–7 USD · Marchés et restaurants locaux</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/2/2b/Cambodia_noodles_with_beef_%283340470241%29.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Kuy Teav</div>
-        <div class="plat-ph">គុយទាវ · Soupe de nouilles</div>
-        <div class="plat-desc">La soupe du petit-déjeuner cambodgien. Bouillon de porc ou bœuf mijoté, vermicelles de riz, herbes fraîches, germes de soja et viandes. Chaque stand a sa propre recette secrète transmise de génération en génération.</div>
-        <div class="plat-price">💰 1–3 USD · Marchés du matin</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f2/Kampot_pepper_crab.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Crabe au poivre de Kampot</div>
-        <div class="plat-ph">ក្តាមម្រេច · Crabe & poivre vert</div>
-        <div class="plat-desc">Crabes frais du golfe de Thaïlande sautés avec du poivre vert frais de Kampot (IGP). Saveur unique au monde : piquant frais et parfumé, pas brûlant. La spécialité absolue de Kep et Kampot.</div>
-        <div class="plat-price">💰 8–18 USD · Kep & Kampot uniquement</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/06/Phnom_Penh_-_Sweet_Pork_%2816613404837%29.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Bai Sach Chrouk</div>
-        <div class="plat-ph">បាយសាច់ជ្រូក · Porc & riz</div>
-        <div class="plat-desc">Le petit-déjeuner le plus populaire du Cambodge. Tranches de porc marinées dans du lait de coco et ail, grillées lentement sur charbon et servies sur riz blanc avec soupe claire et cornichons. Simple et parfait.</div>
-        <div class="plat-price">💰 1–3 USD · Marchés tôt le matin</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Cambodian_red_curry.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Curry Rouge Khmer</div>
-        <div class="plat-ph">ការីគ្រឿង · Kari Khmer</div>
-        <div class="plat-desc">Plus doux que le curry thaï, parfumé à la citronnelle, galanga et feuilles de lime. Poulet, bœuf ou crevettes dans un bouillon lait de coco, servi avec baguette (héritage français) ou riz. Saveur douce et enveloppante.</div>
-        <div class="plat-price">💰 5–10 USD · Restaurants et marchés</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/6/61/Num_Banh_Chok.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Nom Banh Chok</div>
-        <div class="plat-ph">នំបញ្ចុក · Nouilles vertes khmères</div>
-        <div class="plat-desc">Vermicelles de riz frais nappés d'un curry de poisson vert parfumé (pâte kroeung), accompagnés de concombres, fleurs de bananier et pousses de haricots. Le plat du dimanche matin des Cambodgiens.</div>
-        <div class="plat-price">💰 1–2 USD · Marchés matinaux</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Mango_sticky_rice.jpg?width=800');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Riz gluant à la mangue</div>
-        <div class="plat-ph">បាយដំណើប · Dessert national</div>
-        <div class="plat-desc">Riz gluant cuit au lait de coco sucré, servi tiède avec des tranches de mangue fraîche bien mûre. Simple, naturel, parfait. Le dessert préféré des Cambodgiens et des voyageurs depuis des décennies.</div>
-        <div class="plat-price">💰 2–4 USD · Marchés et restaurants</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/0/02/Prahok_Ang_detail.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Prahok</div>
-        <div class="plat-ph">ប្រហុក · Fromage de poisson</div>
-        <div class="plat-desc">Condiment fermenté essentiel de la cuisine khmère. Poisson du Tonlé Sap séché et fermenté plusieurs mois. Odeur puissante, saveur umami intense. La base de nombreuses sauces et plats khmers. À goûter avec courage !</div>
-        <div class="plat-price">💰 Condiment · Toute la cuisine khmère</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/d/d4/Cambodia_08_-_034_-_insects_for_snacks_at_the_market_%283198811659%29.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Insectes frits</div>
-        <div class="plat-ph">អាហារសម្រន់ · Street food audacieuse</div>
-        <div class="plat-desc">Tarentules, grillons, vers à soie et sauterelles frits dans l'huile d'ail. Spécialité de Skuon (ville à 100 km de PP). Croquants et salés — les voyageurs les plus audacieux confirment que c'est bon !</div>
-        <div class="plat-price">💰 0,5–2 USD · Marchés · Osez !</div>
-      </div>
-    </div>
-    <div class="plat-card">
-      <div class="plat-photo" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/9/99/Angkor_beer_bottle_%26_glass.jpg');"></div>
-      <div class="plat-body">
-        <div class="plat-name">Boissons locales</div>
-        <div class="plat-ph">ភេសជ្ជៈ · À boire absolument</div>
-        <div class="plat-desc"><strong>Bière Angkor</strong> (la nationale) · <strong>Palm wine</strong> (vin de palme sucré) · <strong>Sugarcane juice</strong> (jus de canne fraîche pressée devant vous) · <strong>Coconut water</strong> · <strong>Tuk ampil</strong> (jus de tamarin glacé)</div>
-        <div class="plat-price">💰 0,5–2 USD · Partout</div>
-      </div>
-    </div>
-  </div>
+<section id="plats-khmers" aria-labelledby="plats-title" style="padding:60px 48px;">
+  <a href="cuisine-khmere/" style="display:block;max-width:640px;margin:0 auto;padding:36px 32px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.25);text-decoration:none;transition:all .3s;text-align:center;" class="hover-card-lift fade-in">
+    <div style="font-size:2.4rem;margin-bottom:14px;">🍜</div>
+    <h2 id="plats-title" style="font-family:'Cinzel',serif;font-size:1.3rem;color:var(--creme);margin-bottom:10px;font-weight:600;">Guide des <em>Plats Khmers</em></h2>
+    <p style="font-size:.88rem;color:rgba(245,233,208,.55);line-height:1.7;max-width:480px;margin:0 auto;">Amok, lok lak, kuy teav, crabe au poivre de Kampot — la cuisine khmère est l'une des plus subtiles d'Asie du Sud-Est.</p>
+    <div style="margin-top:18px;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:.15em;color:var(--or);text-transform:uppercase;">Découvrir les plats →</div>
+  </a>
 </section>
 
 <div class="khmer-border" aria-hidden="true"></div>
@@ -4981,12 +3737,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
       <div>
         <div class="footer-col-title">Explorer</div>
         <ul class="footer-links">
-          <li><a href="#angkor-guide">Guide Angkor Wat</a></li>
-          <li><a href="#plats-khmers">Cuisine Khmère</a></li>
+          <li><a href="angkor/">Guide Angkor Wat</a></li>
+          <li><a href="cuisine-khmere/">Cuisine Khmère</a></li>
           <li><a href="hotels/">Hôtels</a></li>
-          <li><a href="#activites">Activités</a></li>
-          <li><a href="#quartiers">Guide des quartiers</a></li>
-          <li><a href="#blog">Blog</a></li>
+          <li><a href="activites/">Activités</a></li>
+          <li><a href="quartiers/">Guide des quartiers</a></li>
+          <li><a href="blog/">Blog</a></li>
           <li><a href="histoire-cambodge/">Histoire du Cambodge</a></li>
         </ul>
       </div>
@@ -5823,26 +4579,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   typeEl.addEventListener('change', function(){ if(typeEl.value) doSearch(); });
 })();
 
-/* ── Filtres Activités ── */
-(function(){
-  var filterBtns = document.querySelectorAll('.act-filter-btn');
-  var cards = document.querySelectorAll('#act-grid .act-card');
-  filterBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      filterBtns.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      var cat = btn.getAttribute('data-act');
-      cards.forEach(function(card){
-        if(cat === 'all' || card.getAttribute('data-act').indexOf(cat) !== -1){
-          card.classList.remove('act-hidden');
-        } else {
-          card.classList.add('act-hidden');
-        }
-      });
-    });
-  });
-})();
-
 /* ── Accordéon Itinéraires ── */
 (function(){
   document.querySelectorAll('.itin-toggle').forEach(function(btn){
@@ -6205,22 +4941,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
   }
 
-  /* ── Lazy loading images de fond des cartes villes ── */
-  const lazyBgs = document.querySelectorAll('.lazy-bg[data-bg]');
-  if('IntersectionObserver' in window){
-    const bgObs = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.style.backgroundImage = entry.target.dataset.bg;
-          bgObs.unobserve(entry.target);
-        }
-      });
-    },{rootMargin:'200px 0px'});
-    lazyBgs.forEach(function(el){ bgObs.observe(el); });
-  } else {
-    lazyBgs.forEach(function(el){ el.style.backgroundImage = el.dataset.bg; });
-  }
-
   /* ── Barre de progression de lecture ── */
   (function(){
     var bar = document.getElementById('read-progress');
@@ -6234,27 +4954,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }, {passive:true});
   })();
 
-
-  /* ── Articles de blog : accordéon + partage WhatsApp ── */
-  document.querySelectorAll('.blog-card').forEach(function(card){
-    /* Bouton accordéon */
-    var btn = card.querySelector('.blog-read-more');
-    if(btn){
-      btn.addEventListener('click', function(){
-        var full = btn.previousElementSibling;
-        var open = full.classList.toggle('open');
-        full.setAttribute('aria-hidden', open ? 'false' : 'true');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        btn.textContent = open ? 'Réduire ▲' : 'Lire la suite ▼';
-      });
-    }
-    /* Bouton partage Facebook injecté dynamiquement */
-    var shareDiv = document.createElement('div');
-    shareDiv.className = 'blog-share';
-    shareDiv.innerHTML = '<span>Partager :</span><a href="https://www.facebook.com/profile.php?id=61593270170380" class="blog-share-btn blog-share-fb" target="_blank" rel="noopener noreferrer">👍 Facebook</a>';
-    var meta = card.querySelector('.blog-meta');
-    if(meta) meta.parentNode.insertBefore(shareDiv, meta.nextSibling);
-  });
 
   /* ── Filtre restaurants par régime alimentaire ── */
   (function(){
@@ -8459,46 +7158,6 @@ if('serviceWorker' in navigator){
   });
 
   renderGrid('all');
-})();
-
-/* ════════════════════════════════════════════
-   TABS — QUARTIERS (Phnom Penh / Siem Reap)
-════════════════════════════════════════════ */
-(function(){
-  'use strict';
-  var tabs   = document.querySelectorAll('.quartiers-tab');
-  var panels = document.querySelectorAll('.quartiers-panel');
-  if(!tabs.length) return;
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      var target = document.getElementById('qp-' + tab.dataset.city);
-      if(target){ target.classList.add('active'); target.classList.add('visible'); }
-    });
-  });
-})();
-
-/* ════════════════════════════════════════════
-   TABS — ANGKOR GUIDE
-════════════════════════════════════════════ */
-(function(){
-  'use strict';
-  var tabs   = document.querySelectorAll('.angkor-tab');
-  var panels = document.querySelectorAll('.angkor-panel');
-  if(!tabs.length) return;
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      panels.forEach(function(p){ p.classList.remove('active'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      var target = document.getElementById('angkor-' + tab.dataset.angkor);
-      if(target){ target.classList.add('active'); target.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); }); }
-    });
-  });
 })();
 
 /* ── Onglets Photos / Vidéos ── */
