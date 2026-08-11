@@ -78,16 +78,12 @@
   worker-src 'self';
   upgrade-insecure-requests;
 ">
-<!-- Anti-clickjacking renforcé -->
-<meta http-equiv="X-Frame-Options" content="DENY">
-<!-- Anti-sniffing MIME -->
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<!-- Referrer strict -->
+<!-- Referrer strict — seule directive de sécurité qu'une balise <meta> peut
+     réellement appliquer ; X-Frame-Options, X-Content-Type-Options,
+     Permissions-Policy et Strict-Transport-Security exigent un vrai en-tête
+     HTTP (GitHub Pages n'en fournit pas) et sont ignorées silencieusement
+     par les navigateurs si posées en <meta> — voir mise en place Cloudflare. -->
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<!-- Permissions API désactivées — caméra, micro, géoloc, paiement -->
-<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), interest-cohort=()">
-<!-- Force HTTPS via navigateur -->
-<meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
 
 
 <!-- Google Analytics : ajouter votre ID réel ici -->
