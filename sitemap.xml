@@ -186,6 +186,20 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://www.leguidecambodge.com/carte-interactive/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leguidecambodge.com/bons-plans/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Sections hub principal -->
   <url>
     <loc>https://www.leguidecambodge.com/#villes</loc>
