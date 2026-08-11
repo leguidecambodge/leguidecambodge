@@ -68,7 +68,7 @@
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://translate.googleapis.com https://www.gstatic.com;
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' data: blob: https:;
-  connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://www.google-analytics.com https://analytics.google.com https://formspree.io https://unpkg.com https://translate.googleapis.com https://translate-pa.googleapis.com https://api.open-meteo.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net;
+  connect-src 'self' https://maps.googleapis.com https://maps.gstatic.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://formspree.io https://unpkg.com https://translate.googleapis.com https://translate-pa.googleapis.com https://api.open-meteo.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://securepubads.g.doubleclick.net;
   media-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
   frame-src 'self' https://www.openstreetmap.org https://www.google.com https://maps.google.com https://translate.google.com https://translate.googleapis.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.youtube.com https://www.youtube-nocookie.com;
   object-src 'none';
@@ -3065,7 +3065,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 })();
 
 /* ── Recherche — Overlay résultats complet ── */
-(function(){
+/* Le markup #search-overlay est plus bas dans le body : on attend
+   DOMContentLoaded pour que getElementById le trouve (sinon les
+   éléments valent null et le bloc s'arrête silencieusement). */
+document.addEventListener('DOMContentLoaded', function(){
 
   /* ════════════════════════════════════════════════
      BASE DE DONNÉES — Restaurants, Hôtels, Temples,
@@ -3634,7 +3637,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter') doSearch(); });
   cityEl.addEventListener('change', function(){ if(cityEl.value) doSearch(); });
   typeEl.addEventListener('change', function(){ if(typeEl.value) doSearch(); });
-})();
+});
 
 /* ── Accordéon Itinéraires ── */
 (function(){
@@ -5078,7 +5081,9 @@ window._gcCities = CITIES;
 /* ════════════════════════════════════════════════════
    FAVORIS — localStorage
 ════════════════════════════════════════════════════ */
-(function(){
+/* #fav-panel est plus bas dans le body : DOMContentLoaded nécessaire
+   sinon getElementById('fav-panel') renvoie null au moment du parsing. */
+document.addEventListener('DOMContentLoaded', function(){
   var FAV_KEY = 'gc-favorites';
   function getFavs(){try{return JSON.parse(localStorage.getItem(FAV_KEY)||'[]');}catch(e){return[];}}
   function saveFavs(a){localStorage.setItem(FAV_KEY,JSON.stringify(a));}
@@ -5167,12 +5172,14 @@ window._gcCities = CITIES;
     closeBtn.addEventListener('click',function(){panel.classList.remove('open');document.body.style.overflow='';});
   }
   updateBadge();
-})();
+});
 
 /* ════════════════════════════════════════════════════
    POP-UP NEWSLETTER — délai 45 secondes, une fois/session
 ════════════════════════════════════════════════════ */
-(function(){
+/* #nl-popup est plus bas dans le body : DOMContentLoaded nécessaire
+   sinon getElementById('nl-popup') renvoie null au moment du parsing. */
+document.addEventListener('DOMContentLoaded', function(){
   var NL_KEY='gc-nl-seen';
   if(sessionStorage.getItem(NL_KEY))return;
   var popup=document.getElementById('nl-popup');
@@ -5203,7 +5210,7 @@ window._gcCities = CITIES;
       }
     });
   }
-})();
+});
 
 /* ════════════════════════════════════════════════════
    BOUTON PARTAGE NATIF (Web Share API)
@@ -5546,13 +5553,15 @@ if('serviceWorker' in navigator){
 })();
 
 /* ── Bouton PDF / Impression ── */
-(function(){
+/* #print-btn est plus bas dans le body : DOMContentLoaded nécessaire
+   sinon getElementById('print-btn') renvoie null au moment du parsing. */
+document.addEventListener('DOMContentLoaded', function(){
   var btn = document.getElementById('print-btn');
   if(!btn) return;
   btn.addEventListener('click', function(){
     window.print();
   });
-})();
+});
 
 /* ── Lexique khmer : recherche + filtres ── */
 (function(){
@@ -5714,7 +5723,7 @@ function googleTranslateElementInit(){
 })();
 
 /* ── Ouverture search overlay via nav-search-btn et cmo-search-btn ── */
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var navBtn = document.getElementById('nav-search-btn');
   var overlay = document.getElementById('search-overlay');
   var input = document.getElementById('search-input');
@@ -5740,7 +5749,7 @@ function googleTranslateElementInit(){
       openSearch();
     }
   });
-})();
+});
 </script>
 
 <!-- SEARCH OVERLAY -->
