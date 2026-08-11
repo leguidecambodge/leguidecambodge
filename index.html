@@ -1614,6 +1614,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
           <a href="battambang/">🎨 Guide Battambang</a>
           <a href="kampot/">🌿 Guide Kampot</a>
           <a href="koh-rong/">🏝️ Guide Koh Rong</a>
+          <a href="sihanoukville/">🏖️ Guide Sihanoukville</a>
+          <a href="kep/">🦀 Guide Kep</a>
+          <a href="koh-rong-sanloem/">🤿 Guide Koh Rong Sanloem</a>
+          <a href="poipet/">🚏 Guide Poipet</a>
+          <a href="pursat/">🌾 Guide Pursat</a>
+          <a href="mondulkiri/">🐘 Guide Mondulkiri</a>
           <div class="nav-dropdown-sep"></div>
           <a href="itineraire-cambodge/">🗺️ Itinéraire Cambodge</a>
           <a href="meilleure-periode-cambodge/">📅 Meilleure Période</a>
@@ -1689,6 +1695,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;back
     <a href="battambang/">🎨 Battambang</a>
     <a href="kampot/">🌿 Kampot</a>
     <a href="koh-rong/">🏝️ Koh Rong</a>
+    <a href="sihanoukville/">🏖️ Sihanoukville</a>
+    <a href="kep/">🦀 Kep</a>
+    <a href="koh-rong-sanloem/">🤿 Koh Rong Sanloem</a>
+    <a href="poipet/">🚏 Poipet</a>
+    <a href="pursat/">🌾 Pursat</a>
+    <a href="mondulkiri/">🐘 Mondulkiri</a>
     <a href="itineraire-cambodge/">🗺️ Itinéraire</a>
     <a href="meilleure-periode-cambodge/">📅 Meilleure Période</a>
     <a href="visa-cambodge/">✈️ Visa</a>
@@ -5028,10 +5040,23 @@ document.querySelectorAll('.cmo-tab').forEach(function(tab){
 });
 
 /* ─── CLIC SUR LES CARTES VILLES ────────────────────────── */
+/* Chaque ville a désormais sa propre page dédiée : on y renvoie
+   directement plutôt que d'ouvrir la modale (limitée à Siem Reap). */
+var CITY_PAGES_MAP = {
+  'siem-reap':'siem-reap/', 'phnom-penh':'phnom-penh/', 'battambang':'battambang/',
+  'kampot':'kampot/', 'sihanoukville':'sihanoukville/', 'kep':'kep/',
+  'koh-rong':'koh-rong/', 'koh-rong-sanloem':'koh-rong-sanloem/',
+  'poipet':'poipet/', 'pursat':'pursat/', 'mondulkiri':'mondulkiri/'
+};
+window._cityPages = CITY_PAGES_MAP;
 document.querySelectorAll('.city-card[data-city]').forEach(function(card){
-  card.addEventListener('click', function(){ openCityModal(card.getAttribute('data-city')); });
+  var goTo = function(){
+    var key = card.getAttribute('data-city');
+    if(CITY_PAGES_MAP[key]) window.location.href = CITY_PAGES_MAP[key];
+  };
+  card.addEventListener('click', goTo);
   card.addEventListener('keydown', function(e){
-    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openCityModal(card.getAttribute('data-city')); }
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); goTo(); }
   });
 });
 
@@ -5108,10 +5133,8 @@ window._gcCities = CITIES;
           updateBadge();renderFavPanel();return;
         }
         var ok=item.getAttribute('data-open');
-        if(ok&&window.openCityModal){
-          var p=document.getElementById('fav-panel');
-          if(p){p.classList.remove('open');document.body.style.overflow='';}
-          window.openCityModal(ok);
+        if(ok&&window._cityPages&&window._cityPages[ok]){
+          window.location.href = window._cityPages[ok];
         }
       });
     });
