@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /*
- * Fait avancer d'un an les événements de STATIC_EVENTS (index.html) une fois
- * qu'ils sont passés, pour que les fêtes annuelles récurrentes restent
+ * Fait avancer d'un an les événements de STATIC_EVENTS (evenements/index.html)
+ * une fois qu'ils sont passés, pour que les fêtes annuelles récurrentes restent
  * toujours à jour. Met à jour dateModified uniquement si un événement a été
  * avancé. Exécuté par .github/workflows/update-events.yml (hebdomadaire).
  */
 const fs = require('fs');
 const path = require('path');
 
-const FILE = path.join(__dirname, '..', 'index.html');
+const FILE = path.join(__dirname, '..', 'evenements', 'index.html');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 // Comparaison en chaînes "YYYY-MM-DD" (tri lexicographique = tri chronologique),
@@ -53,7 +53,7 @@ if (DRY_RUN) {
   console.log('\n[--dry-run] Aucun fichier écrit.');
 } else if (changedCount > 0) {
   fs.writeFileSync(FILE, html);
-  console.log('\nindex.html mis à jour.');
+  console.log('\nevenements/index.html mis à jour.');
 } else {
   console.log('\nRien à changer, fichier non touché.');
 }

@@ -26,6 +26,6 @@ jobs:
           fi
           git config user.name "leguidecambodge"
           git config user.email "leguidecambodge@gmail.com"
-          git add index.html
+          git add evenements/index.html
           git commit -m "chore: avance les événements annuels passés à l'année suivante"
           git push
