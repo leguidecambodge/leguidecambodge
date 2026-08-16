@@ -652,6 +652,12 @@ if (navbar) {
   }
   }; // fin initGoogleMap
 
+  function escapeHtml(str){
+    var div = document.createElement('div');
+    div.textContent = str == null ? '' : String(str);
+    return div.innerHTML;
+  }
+
   window.voirSurCarte = function(lat, lng, titre, badge){
     var section = document.getElementById('carte-interactive');
     if(section) section.scrollIntoView({behavior:'smooth', block:'start'});
@@ -663,7 +669,7 @@ if (navbar) {
       var icon = window.gcIcons && window.gcIcons.bonplan ? window.gcIcons.bonplan : undefined;
       var marker = new google.maps.Marker({position:{lat:lat,lng:lng}, map:m, icon:icon});
       var popup = new google.maps.InfoWindow({
-        content:'<div style="padding:4px 2px;"><div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:4px;">'+titre+'</div><div style="font-size:.75rem;color:#555;">'+badge+'</div></div>',
+        content:'<div style="padding:4px 2px;"><div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:4px;">'+escapeHtml(titre)+'</div><div style="font-size:.75rem;color:#555;">'+escapeHtml(badge)+'</div></div>',
         maxWidth:220
       });
       popup.open(m, marker);
