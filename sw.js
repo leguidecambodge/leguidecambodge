@@ -4,7 +4,7 @@
    v2 — optimisé pour connexions lentes
    ============================================ */
 
-const CACHE_NAME = 'leguidecambodge-v2';
+const CACHE_NAME = 'leguidecambodge-v3';
 
 /* Ressources critiques mises en cache dès l'installation */
 const PRECACHE = [
@@ -66,6 +66,8 @@ self.addEventListener('fetch', function(event) {
   if (event.request.destination === 'video' || event.request.destination === 'audio') return;
   if (event.request.headers.get('range')) return;
   if (/\.(mp4|webm|ogg|mov|avi)(\?|$)/i.test(event.request.url)) return;
+  /* Application (HTML/CSS/JS/données du site) — toujours la version fraîche */
+  if (event.request.url.includes('/ui/')) return;
   /* Photos locales — trop lourdes pour le cache SW */
   if (event.request.url.includes('/photos/')) return;
 
