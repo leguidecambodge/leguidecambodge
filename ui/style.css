@@ -21,7 +21,7 @@ nav.top ul a.on{border-color:var(--lacq)}
 .pill{border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;background:#fff8}
 .pill.on{background:var(--ink);color:var(--cream);border-color:var(--ink)}
 .burger{display:none}
-@media(max-width:900px){.navtools .pill{padding:6px 9px;font-size:12px}#sbtn{font-size:16px;line-height:1}nav.top .wrap{gap:12px}nav.top ul{display:none}nav.top ul.open{display:flex;position:absolute;top:66px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 6vw;gap:14px;border-bottom:1px solid var(--line)}.burger{display:block}}
+@media(max-width:1100px){.navtools .pill{padding:6px 9px;font-size:12px}#sbtn{font-size:16px;line-height:1}nav.top .wrap{gap:12px}nav.top ul{display:none}nav.top ul.open{display:flex;position:absolute;top:66px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 6vw;gap:14px;border-bottom:1px solid var(--line)}.burger{display:block}}
 /* ===== HERO ===== */
 .hero{position:relative;min-height:88vh;display:grid;align-items:end;color:#fff;overflow:hidden}
 .hero .scene{position:absolute;inset:0}
@@ -181,7 +181,7 @@ footer ul{list-style:none;display:grid;gap:6px}
 .rv.in{opacity:1;transform:none}
 @media print{nav.top,#cookie-banner{display:none}}
 
-@media(max-width:900px){.sl{display:none}}
+@media(max-width:1100px){.sl{display:none}}
 
 .navtools .pill{white-space:nowrap}
 @media(max-width:900px){.logo span{display:none}nav.top .wrap{flex-wrap:nowrap}.navtools{margin-left:auto}#lang{display:none}}
@@ -257,11 +257,10 @@ footer .legal a:hover{color:var(--ink)}
 .card h3,.card small{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 @media(max-width:560px){.card.wide{grid-column:auto}.hero .stats{gap:16px 24px}.hero .stats b{font-size:26px}}
 
-/* ===== HEURE DU CAMBODGE (haut de l'accueil) ===== */
-.khbar{background:var(--ink);color:var(--cream);font-size:12.5px;letter-spacing:.03em;text-align:center;padding:9px 4vw;line-height:1.35}
-.khbar b{font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.06em}
-.khbar i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:9px;vertical-align:1px;animation:khp 2s ease-in-out infinite}
-.khbar .khd,.khbar .khu{opacity:.7}
-@keyframes khp{50%{opacity:.35}}
-@media(max-width:560px){.khbar{font-size:12px}.khbar .khu{display:none}}
-@media(prefers-reduced-motion:reduce){.khbar i{animation:none}}
+/* ===== HEURE DU CAMBODGE : sous le logo, dans la barre de menu ===== */
+.brand{display:flex;flex-direction:column;justify-content:center;flex:none}
+.logo{white-space:nowrap}
+nav.top ul a{white-space:nowrap}
+.khtime{font-size:12px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--ink2);margin:4px 0 0 36px}
+@media(max-width:1100px){.navtools{margin-left:auto}nav.top .wrap{flex-wrap:nowrap}}
+@media(max-width:900px){.khtime{margin-left:30px}}
