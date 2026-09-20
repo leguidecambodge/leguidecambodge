@@ -256,3 +256,12 @@ footer .legal a:hover{color:var(--ink)}
 .card .in{padding-top:80px;background:linear-gradient(transparent,rgba(0,0,0,.72))}
 .card h3,.card small{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 @media(max-width:560px){.card.wide{grid-column:auto}.hero .stats{gap:16px 24px}.hero .stats b{font-size:26px}}
+
+/* ===== HEURE DU CAMBODGE (haut de l'accueil) ===== */
+.khbar{background:var(--ink);color:var(--cream);font-size:12.5px;letter-spacing:.03em;text-align:center;padding:9px 4vw;line-height:1.35}
+.khbar b{font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.khbar i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:9px;vertical-align:1px;animation:khp 2s ease-in-out infinite}
+.khbar .khd,.khbar .khu{opacity:.7}
+@keyframes khp{50%{opacity:.35}}
+@media(max-width:560px){.khbar{font-size:12px}.khbar .khu{display:none}}
+@media(prefers-reduced-motion:reduce){.khbar i{animation:none}}
