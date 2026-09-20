@@ -26,7 +26,7 @@ const MEDIA={
 "t": "v",
 "f": "siem reap 16.MP4",
 "poster": "posters/siem-reap-16.webp",
-"c": "Tours en pierre aux visages sculptés et galeries de pierre",
+"c": "Tours à visages de style Bayon et galeries de pierre",
 "w": 478,
 "h": 850
 },
@@ -131,30 +131,36 @@ const MEDIA={
 {
 "t": "p",
 "f": "siem reap 9.webp",
-"c": "Bas-reliefs sculptés sur un mur de galerie",
+"c": "Angkor Wat, bas-relief : rangées de personnages sculptés sur le mur d'une galerie",
 "w": 1050,
-"h": 1400
+"h": 1400,
+"at": [
+0
+]
 },
 {
 "t": "p",
 "f": "angkor 2.webp",
-"c": "Gros plan sur un visage géant sculpté dans une tour de grès",
+"c": "Gros plan sur un visage géant sculpté dans une tour de style Bayon",
 "w": 1050,
 "h": 1400
 },
 {
 "t": "p",
 "f": "angkor 1.webp",
-"c": "Tour en ruine ornée d'un grand visage sculpté, avec des échafaudages de restauration",
+"c": "Tour en ruine ornée d'un grand visage sculpté de style Bayon, avec des échafaudages de restauration",
 "w": 1050,
 "h": 1400
 },
 {
 "t": "p",
 "f": "siem reap 7.webp",
-"c": "Étroit passage de pierre menant à une tour à visages",
+"c": "Bayon : étroit passage de pierre menant à une tour à visages",
 "w": 1050,
-"h": 1400
+"h": 1400,
+"at": [
+1
+]
 },
 {
 "t": "p",
@@ -173,7 +179,7 @@ const MEDIA={
 {
 "t": "p",
 "f": "siem reap 14.webp",
-"c": "Gardien lion de grès et tour-sanctuaire khmère",
+"c": "Baksei Chamkrong : pyramide à quatre niveaux surmontée d'une tour de brique, avec son lion gardien au premier plan",
 "w": 1050,
 "h": 1400
 },
@@ -229,14 +235,17 @@ const MEDIA={
 {
 "t": "p",
 "f": "angkor 9.webp",
-"c": "Statue drapée de tissu orange, entourée d'offrandes et de visiteurs",
+"c": "Ta Reach, statue de Vishnu à huit bras vêtue de tissu safran et or, à l'entrée du gopura ouest d'Angkor Wat, avec des offrandes",
 "w": 1050,
-"h": 1400
+"h": 1400,
+"at": [
+0
+]
 },
 {
 "t": "p",
 "f": "angkor-pluie.webp",
-"c": "Pluie sur la cour d'un temple, vue à travers les colonnes d'une galerie",
+"c": "Angkor Wat sous la pluie de mousson : cour détrempée vue à travers les colonnes d'une galerie",
 "w": 768,
 "h": 1024
 }
