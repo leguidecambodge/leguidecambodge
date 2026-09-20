@@ -134,17 +134,36 @@ function explore(){return nav("explore")+`<section class="exphero"><div class="w
  <section class="s" style="padding-top:20px"><div class="wrap"><div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div><div class="mapwrap"><div class="mapbox">${mapSVG()}</div><div class="mappanel" id="mpanel">${panel(byId("ratanakiri"))}</div></div></div></section>
  ${REG_ORDER.map(r=>`<section class="s" style="padding-top:0"><div class="wrap"><div class="shead"><h2 style="font-size:34px">${REGIONS[r]}</h2></div><div class="grid g4">${DEST.filter(d=>d.region===r).map((d,i)=>dcard(d,"",i)).join("")}</div></div></section>`).join("")}`+footer()}
 
+/* ===== galerie photos & vidéos (fichiers du dossier photos/) ===== */
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const mediaUrl=f=>"photos/"+f.split("/").map(encodeURIComponent).join("/");
+const mediaThumb=m=>mediaUrl(m.t==="v"?m.poster:m.f);
+const plural=(n,w)=>n+" "+w+(n>1?"s":"");
+function gallery(d){const m=MEDIA[d.id];if(!m||m.length<2)return "";const LIM=12,nP=m.filter(x=>x.t==="p").length,nV=m.length-nP;
+ const tile=(x,i)=>`<button class="mt${x.t==="v"?" v":""}" data-i="${i}"${i>=LIM?" hidden":""} aria-label="${x.t==="v"?"Vidéo : ":""}${esc(x.c)}"><img loading="lazy" decoding="async" src="${mediaThumb(x)}" width="${x.w}" height="${x.h}" alt="${esc(x.c)}">${x.t==="v"?'<span class="mv"><i></i>Vidéo</span>':""}<span class="mc">${x.c}</span></button>`;
+ return `<h2 id="gallery">Galerie</h2><p class="gnote">Photos et vidéos personnelles. Touchez une image pour l'agrandir.</p><div class="mgrid" data-p="${d.id}">${m.map(tile).join("")}</div>${m.length>LIM?`<button class="btn dark gmore" data-more>Voir les ${plural(nP,"photo")}${nV?" et "+plural(nV,"vidéo"):""}</button>`:""}`}
+function placeBtn(d,i){const m=(MEDIA[d.id]||[]).filter(x=>x.at&&x.at.includes(i));if(!m.length)return "";const nP=m.filter(x=>x.t==="p").length,nV=m.length-nP;
+ return `<button class="mbtn" data-pl="${d.id}:${i}">Voir ${[nP&&plural(nP,"photo"),nV&&plural(nV,"vidéo")].filter(Boolean).join(" et ")}</button>`}
+let LB={list:[],i:0};
+function lbShow(){const x=LB.list[LB.i],b=$("#lbx");
+ b.querySelector(".lbx-media").innerHTML=x.t==="v"?`<video controls playsinline autoplay preload="auto" poster="${mediaUrl(x.poster)}" src="${mediaUrl(x.f)}"></video>`:`<img src="${mediaUrl(x.f)}" alt="${esc(x.c)}">`;
+ b.querySelector(".lbx-c").textContent=x.c;b.querySelector(".lbx-k").textContent=(LB.i+1)+" / "+LB.list.length+(x.t==="v"?" · vidéo":"");
+ b.querySelector(".lbx-p").hidden=b.querySelector(".lbx-n").hidden=LB.list.length<2}
+function lbOpen(list,i){if(!list||!list.length)return;LB={list,i};const b=$("#lbx");b.hidden=false;document.body.style.overflow="hidden";lbShow();b.querySelector(".lbx-x").focus()}
+function lbClose(){const b=$("#lbx");if(!b||b.hidden)return;b.querySelector(".lbx-media").innerHTML="";b.hidden=true;document.body.style.overflow=""}
+function lbStep(n){LB.i=(LB.i+n+LB.list.length)%LB.list.length;lbShow()}
+
 /* ===== fiche province ===== */
-function dest(id){const d=byId(id);if(!d)return home();const trips=TRIPS.filter(tr=>tr.route.includes(d.id));const exps=EXPERIENCES.filter(e=>e.d.includes(d.id));const guides=GUIDES[d.id]||[];const half=Math.ceil(d.todo.length/2);
+function dest(id){const d=byId(id);if(!d)return home();const trips=TRIPS.filter(tr=>tr.route.includes(d.id));const exps=EXPERIENCES.filter(e=>e.d.includes(d.id));const guides=GUIDES[d.id]||[];const half=Math.ceil(d.todo.length/2);const gal=gallery(d);
  const sub=s=>`<h4 style="font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:10px">${s}</h4>`;
  return nav("explore")+`<header class="dhero">${vis(d,"hero",4)}<div class="wrap"><div class="crumbs"><a href="#home">Accueil</a> / <a href="#explore">Explorer</a> / ${REGIONS[d.region]}</div><h1>${d.name}</h1><div class="khname">${d.kh}</div><p style="font-size:20px;max-width:50ch;margin-top:14px;opacity:.9">${d.tag}</p></div></header>
  <div class="wrap"><div class="facts"><div><small>Durée conseillée</small><b>${d.duration}</b></div><div><small>Meilleure période</small><b>${bestShort(d)}</b></div><div><small>Région</small><b>${REGIONS[d.region]}</b></div><div><small>Idéal pour</small><b style="font-size:15px">${exps.slice(0,3).map(e=>e.name).join(" · ")}</b></div></div></div>
- <div class="wrap"><div class="ttoc">${[["intro","Introduction"],["places","Lieux incontournables"],["todo","À faire"],["food","Cuisine"],["hidden","Trésors cachés"],["stay","Où dormir"],["getthere","Y aller"],["trips","Itinéraires"]].map(([k,l])=>`<a href="#dest/${d.id}" data-go="${k}">${l}</a>`).join("")}</div>
+ <div class="wrap"><div class="ttoc">${[["intro","Introduction"],["places","Lieux incontournables"],["todo","À faire"],...(gal?[["gallery","Galerie"]]:[]),["food","Cuisine"],["hidden","Trésors cachés"],["stay","Où dormir"],["getthere","Y aller"],["trips","Itinéraires"]].map(([k,l])=>`<a href="#dest/${d.id}" data-go="${k}">${l}</a>`).join("")}</div>
  <div class="dbody"><div>
  <h2 id="intro">Pourquoi aller à ${shortName(d.name)}</h2><p class="lead">${d.intro}</p>
- <h2 id="places">Lieux incontournables</h2><ol class="plist">${d.places.map(p=>`<li>${p}</li>`).join("")}</ol>
+ <h2 id="places">Lieux incontournables</h2><ol class="plist">${d.places.map((p,i)=>`<li><span>${p}</span>${placeBtn(d,i)}</li>`).join("")}</ol>
  <h2 id="todo">À faire</h2><div class="two"><ul>${d.todo.slice(0,half).map(x=>`<li>${x}</li>`).join("")}</ul><ul>${d.todo.slice(half).map(x=>`<li>${x}</li>`).join("")}</ul></div>
- <div class="grid g2 gal" style="margin-top:30px"><div>${vis(d,"gal0",6)}</div><div>${vis(d,"gal1",7)}</div></div>
+ ${gal||`<div class="grid g2 gal" style="margin-top:30px"><div>${vis(d,"gal0",6)}</div><div>${vis(d,"gal1",7)}</div></div>`}
  <h2 id="food">Cuisine & culture</h2><div class="two"><div>${sub("À table")}<ul>${d.food.map(x=>`<li>${x}</li>`).join("")}</ul></div><div>${sub("Expériences ici")}<ul>${exps.map(e=>`<li><a href="#exp/${e.id}" style="border-bottom:1px solid var(--line)">${e.name}</a></li>`).join("")}</ul></div></div>
  <h2 id="hidden">Trésors cachés</h2><div class="gems" style="background:var(--line)">${d.hidden.map(h=>`<div class="gem" style="background:#fff;color:var(--ink)"><b style="font-size:19px">${h}</b></div>`).join("")}</div>
  <h2 id="stay">Où dormir</h2><ul class="plist" style="counter-reset:p">${d.stay.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn dark stay-cta" target="_blank" rel="sponsored noopener noreferrer" href="https://www.booking.com/searchresults.fr.html?ss=${encodeURIComponent(shortName(d.name)+", Cambodge")}">Comparer les hébergements à ${shortName(d.name)}</a><p class="tri">Lien partenaire Booking.com : sans surcoût pour vous.</p>
@@ -188,7 +207,7 @@ function favPage(){const l=[...FAV].map(byId).filter(Boolean);return nav("")+`<s
 const LEGACY={contact:"contact",newsletter:"contact",villes:"featured",quartiers:"featured",hero:"top",vols:"practical",conseils:"practical","partir-france":"practical",transports:"practical"};
 function pageTitle(h){const n=h[0]==="dest"&&byId(h[1])?byId(h[1]).name+" : que voir, que faire, où dormir":h[0]==="exp"&&EXPERIENCES.find(x=>x.id===h[1])?EXPERIENCES.find(x=>x.id===h[1]).name+" au Cambodge":h[0]==="trip"&&TRIPS.find(x=>x.id===h[1])?"Itinéraire : "+TRIPS.find(x=>x.id===h[1]).name:h[0]==="explore"?"Les 25 provinces du Cambodge":h[0]==="exp"?"Explorer le Cambodge par expérience":h[0]==="trips"?"Itinéraires au Cambodge":h[0]==="info"?"Infos pratiques Cambodge":h[0]==="fav"?"Mes favoris":"";
  return n?n+" — Le Guide Cambodge":SITE_TITLE}
-function render(keep){const h=(location.hash||"#home").slice(1).split("/");const app=$("#app");let html,goto=null;const y=window.scrollY;
+function render(keep){const h=(location.hash||"#home").slice(1).split("/");const app=$("#app");let html,goto=null;const y=window.scrollY;lbClose();
  if(h[0]==="mentions"){location.replace("mentions-legales/");return}
  if(LEGACY[h[0]]){goto=LEGACY[h[0]];html=home()}
  else switch(h[0]){case"explore":html=explore();break;case"dest":html=dest(h[1]);break;case"exp":html=h[1]?exp(h[1]):expList();break;case"trips":html=tripsPage();break;case"trip":html=trip(h[1]);break;case"info":html=info(h[1]);break;case"fav":html=favPage();break;default:html=home();if(h[0]==="map")goto="map"}
@@ -208,6 +227,9 @@ function bind(){
  document.querySelectorAll(".ttoc a[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById(a.dataset.go);el&&el.scrollIntoView({behavior:"smooth"})});
  const sb=$("#sbtn");if(sb)sb.onclick=()=>openSearch();const hs=$("#hsearch input");if(hs){hs.onfocus=()=>{openSearch(hs.value);hs.blur()}}
  const lb=$("#lang");if(lb)lb.onclick=()=>{LANG=LANG==="fr"?"kh":"fr";render(true)};const bg=$("#burger");if(bg)bg.onclick=()=>$("#menu").classList.toggle("open");
+ document.querySelectorAll(".mt").forEach(b=>b.onclick=()=>lbOpen(MEDIA[b.closest(".mgrid").dataset.p],+b.dataset.i));
+ document.querySelectorAll(".mbtn").forEach(b=>b.onclick=()=>{const [p,i]=b.dataset.pl.split(":");lbOpen(MEDIA[p].filter(x=>x.at&&x.at.includes(+i)),0)});
+ const gm=$("[data-more]");if(gm)gm.onclick=()=>{document.querySelectorAll(".mgrid .mt[hidden]").forEach(t=>t.hidden=false);gm.remove()};
  bindForms()}
 
 /* ===== recherche ===== */
@@ -271,7 +293,11 @@ function cookies(){const b=$("#cookie-banner");if(!b)return;
 window.addEventListener("hashchange",()=>render());
 document.addEventListener("DOMContentLoaded",()=>{render();cookies();
  $("#so input").oninput=e=>doSearch(e.target.value);$("#so .x").onclick=closeSearch;
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSearch()});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();lbClose()}const b=$("#lbx");if(b&&!b.hidden){if(e.key==="ArrowLeft")lbStep(-1);if(e.key==="ArrowRight")lbStep(1)}});
+ const lb=$("#lbx");if(lb){lb.querySelector(".lbx-x").onclick=lbClose;lb.querySelector(".lbx-p").onclick=()=>lbStep(-1);lb.querySelector(".lbx-n").onclick=()=>lbStep(1);
+  lb.onclick=e=>{if(e.target===lb||e.target.classList.contains("lbx-media")||e.target.tagName==="FIGURE")lbClose()};
+  let sx=null;lb.addEventListener("touchstart",e=>{sx=e.touches.length===1?e.touches[0].clientX:null},{passive:true});
+  lb.addEventListener("touchend",e=>{if(sx===null||LB.list.length<2)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60)lbStep(dx<0?1:-1)},{passive:true})}
  const q=new URLSearchParams(location.search).get("q");if(q)openSearch(q)});
 
 /* ===== PWA : service worker (identique à l'ancien site) ===== */
