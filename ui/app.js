@@ -140,14 +140,14 @@ const mediaUrl=f=>"photos/"+f.split("/").map(encodeURIComponent).join("/");
 const mediaThumb=m=>mediaUrl(m.t==="v"?m.poster:m.f);
 const plural=(n,w)=>n+" "+w+(n>1?"s":"");
 function gallery(d){const m=MEDIA[d.id];if(!m||m.length<2)return "";const LIM=12,nP=m.filter(x=>x.t==="p").length,nV=m.length-nP;
- const tile=(x,i)=>`<button class="mt${x.t==="v"?" v":""}" data-i="${i}"${i>=LIM?" hidden":""} aria-label="${x.t==="v"?"Vidéo : ":""}${esc(x.c)}"><img loading="lazy" decoding="async" src="${mediaThumb(x)}" width="${x.w}" height="${x.h}" alt="${esc(x.c)}">${x.t==="v"?'<span class="mv"><i></i>Vidéo</span>':""}<span class="mc">${x.c}</span></button>`;
+ const tile=(x,i)=>`<button class="mt${x.t==="v"?" v":""}" data-i="${i}"${i>=LIM?" hidden":""} aria-label="${x.t==="v"?"Vidéo : ":""}${esc(x.n)}"><img loading="lazy" decoding="async" src="${mediaThumb(x)}" width="${x.w}" height="${x.h}" alt="${esc(x.c)}">${x.t==="v"?'<span class="mv"><i></i>Vidéo</span>':""}<span class="mc">${x.n}</span></button>`;
  return `<h2 id="gallery">Galerie</h2><p class="gnote">Photos et vidéos personnelles. Touchez une image pour l'agrandir.</p><div class="mgrid" data-p="${d.id}">${m.map(tile).join("")}</div>${m.length>LIM?`<button class="btn dark gmore" data-more>Voir les ${plural(nP,"photo")}${nV?" et "+plural(nV,"vidéo"):""}</button>`:""}`}
 function placeBtn(d,i){const m=(MEDIA[d.id]||[]).filter(x=>x.at&&x.at.includes(i));if(!m.length)return "";const nP=m.filter(x=>x.t==="p").length,nV=m.length-nP;
  return `<button class="mbtn" data-pl="${d.id}:${i}">Voir ${[nP&&plural(nP,"photo"),nV&&plural(nV,"vidéo")].filter(Boolean).join(" et ")}</button>`}
 let LB={list:[],i:0};
 function lbShow(){const x=LB.list[LB.i],b=$("#lbx");
  b.querySelector(".lbx-media").innerHTML=x.t==="v"?`<video controls playsinline autoplay preload="auto" poster="${mediaUrl(x.poster)}" src="${mediaUrl(x.f)}"></video>`:`<img src="${mediaUrl(x.f)}" alt="${esc(x.c)}">`;
- b.querySelector(".lbx-c").textContent=x.c;b.querySelector(".lbx-k").textContent=(LB.i+1)+" / "+LB.list.length+(x.t==="v"?" · vidéo":"");
+ b.querySelector(".lbx-t").textContent=x.n;b.querySelector(".lbx-c").textContent=x.c;b.querySelector(".lbx-k").textContent=(LB.i+1)+" / "+LB.list.length+(x.t==="v"?" · vidéo":"");
  b.querySelector(".lbx-p").hidden=b.querySelector(".lbx-n").hidden=LB.list.length<2}
 function lbOpen(list,i){if(!list||!list.length)return;LB={list,i};const b=$("#lbx");b.hidden=false;document.body.style.overflow="hidden";lbShow();b.querySelector(".lbx-x").focus()}
 function lbClose(){const b=$("#lbx");if(!b||b.hidden)return;b.querySelector(".lbx-media").innerHTML="";b.hidden=true;document.body.style.overflow=""}
