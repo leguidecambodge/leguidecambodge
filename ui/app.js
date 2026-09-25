@@ -64,45 +64,42 @@ function mapSVG(small){const path=a=>a.map((p,i)=>(i?"L":"M")+PX(...p).join(" ")
  ${provs}</svg>`}
 function miniMap(d){const [x,y]=PX(d.lon,d.lat);return `<svg viewBox="0 0 880 760" style="width:100%" aria-hidden="true">${mapSVG(true).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")}<circle cx="${x}" cy="${y}" r="26" fill="#B8452B" opacity=".25"/><circle cx="${x}" cy="${y}" r="9" fill="#B8452B" stroke="#fff" stroke-width="3"/></svg>`}
 
-/* ===== vraie carte interactive (Leaflet + OpenStreetMap — gratuit, sans clé, chargé à la demande) ===== */
-let LEAFLET_READY=null;
-function loadLeaflet(){if(LEAFLET_READY)return LEAFLET_READY;
- LEAFLET_READY=new Promise((resolve,reject)=>{
-  const link=href=>{const l=document.createElement("link");l.rel="stylesheet";l.href=href;document.head.appendChild(l)};
-  link("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
-  link("https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css");
-  const s1=document.createElement("script");s1.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";s1.onerror=reject;
-  s1.onload=()=>{const s2=document.createElement("script");s2.src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js";s2.onload=()=>resolve(window.L);s2.onerror=()=>resolve(window.L);document.head.appendChild(s2)};
-  document.head.appendChild(s1)});
- return LEAFLET_READY}
-const CAMBODIA_BOUNDS=[[10.15,102.1],[14.85,107.75]];
+/* ===== vraie carte interactive (MapLibre GL + tuiles vectorielles OpenFreeMap — gratuit, sans clé, toujours nette)
+   Rendu vectoriel (comme Google/Apple Maps) : contrairement à des tuiles-images, il reste net à tout zoom et sur tout écran (Retina inclus). ===== */
+let MAPLIBRE_READY=null;
+function loadMapLibre(){if(MAPLIBRE_READY)return MAPLIBRE_READY;
+ MAPLIBRE_READY=new Promise((resolve,reject)=>{
+  const l=document.createElement("link");l.rel="stylesheet";l.href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css";document.head.appendChild(l);
+  const s=document.createElement("script");s.src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js";
+  s.onload=()=>resolve(window.maplibregl);s.onerror=reject;document.head.appendChild(s)});
+ return MAPLIBRE_READY}
+const CAMBODIA_BOUNDS=[[102.1,10.15],[107.75,14.85]]; // [ouest,sud],[est,nord] — ordre lon,lat attendu par MapLibre
+const padBounds=([[w,s],[e,n]],p)=>{const dw=(e-w)*p,dn=(n-s)*p;return [[w-dw,s-dn],[e+dw,n+dn]]};
+const GESTURE_FR={"CooperativeGesturesHandler.WindowsHelpText":"Utilisez Ctrl + molette pour zoomer sur la carte","CooperativeGesturesHandler.MacHelpText":"Utilisez ⌘ + molette pour zoomer sur la carte","CooperativeGesturesHandler.MobileHelpText":"Utilisez deux doigts pour déplacer la carte"};
 let CURRENT_MAP=null,CURRENT_MARKERS={},ACTIVE_FILTER="",MAP_GEN=0;
 function removeCurrentMap(){if(CURRENT_MAP){try{CURRENT_MAP.remove()}catch(e){}CURRENT_MAP=null;CURRENT_MARKERS={}}}
-function applyMapFilter(){const e=EXPERIENCES.find(x=>x.id===ACTIVE_FILTER);Object.entries(CURRENT_MARKERS).forEach(([id,mk])=>{const el=mk.getElement();if(el)el.classList.toggle("dim",!!e&&!e.d.includes(id))})}
+function applyMapFilter(){const e=EXPERIENCES.find(x=>x.id===ACTIVE_FILTER);Object.entries(CURRENT_MARKERS).forEach(([id,mk])=>{mk.getElement().classList.toggle("dim",!!e&&!e.d.includes(id))})}
 function initInteractiveMap(id){const el=document.getElementById(id);if(!el)return;ACTIVE_FILTER="";
  const myGen=++MAP_GEN; // annule les initialisations précédentes encore en attente (navigation rapide entre pages pendant le chargement)
- loadLeaflet().then(L=>{
+ loadMapLibre().then(ml=>{
   if(myGen!==MAP_GEN||!document.body.contains(el))return;
   removeCurrentMap();
   el.innerHTML="";el.classList.remove("loading");
-  const map=L.map(el,{gestureHandling:true,zoomControl:false,attributionControl:false});
-  L.control.zoom({position:"bottomright"}).addTo(map);
-  L.control.attribution({position:"bottomleft"}).addTo(map);
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(map);
-  const bounds=L.latLngBounds(CAMBODIA_BOUNDS);
-  map.fitBounds(bounds,{padding:[4,4],animate:false});
-  map.setMinZoom(map.getZoom());map.setMaxBounds(bounds.pad(.6));
+  const map=new ml.Map({container:el,style:"https://tiles.openfreemap.org/styles/positron",center:[104.9,12.55],zoom:6,cooperativeGestures:true,locale:GESTURE_FR,attributionControl:{compact:true},maplibreLogo:false});
+  map.fitBounds(CAMBODIA_BOUNDS,{padding:6,animate:false});
+  map.addControl(new ml.NavigationControl({showCompass:false}),"bottom-right");
+  map.on("load",()=>{if(myGen!==MAP_GEN)return;map.setMinZoom(map.getZoom());map.setMaxBounds(padBounds(CAMBODIA_BOUNDS,.6))});
   DEST.forEach(d=>{
    const left=d.lon>106.3||["kep","kandal"].includes(d.id);
-   const icon=L.divIcon({className:"gcpin",html:`<span class="pin"></span><b class="lbl${left?" l":""}">${shortName(d.name)}</b>`,iconSize:[14,14],iconAnchor:[7,7]});
-   const mk=L.marker([d.lat,d.lon],{icon,alt:d.name,keyboard:true}).addTo(map);
-   mk.bindPopup(`<div class="popc"><b>${d.name}</b> <span class="kh">${d.kh}</span><small>${d.tag}</small><a class="btn dark" href="#dest/${d.id}">Découvrir →</a></div>`,{className:"gcpop",maxWidth:240});
-   const activate=()=>{const p=$("#mpanel");if(p)p.innerHTML=panel(d);Object.values(CURRENT_MARKERS).forEach(x=>{const e=x.getElement();e&&e.classList.remove("on")});const e=mk.getElement();e&&e.classList.add("on")};
-   mk.on("click",activate);mk.on("mouseover",activate);
+   const wrap=document.createElement("div");wrap.className="gcpin";wrap.innerHTML=`<span class="pin"></span><b class="lbl${left?" l":""}">${shortName(d.name)}</b>`;
+   const popup=new ml.Popup({offset:12,maxWidth:"240px",className:"gcpop"}).setHTML(`<div class="popc"><b>${d.name}</b> <span class="kh">${d.kh}</span><small>${d.tag}</small><a class="btn dark" href="#dest/${d.id}">Découvrir →</a></div>`);
+   const mk=new ml.Marker({element:wrap,anchor:"center"}).setLngLat([d.lon,d.lat]).setPopup(popup).addTo(map);
+   const activate=()=>{const p=$("#mpanel");if(p)p.innerHTML=panel(d);Object.values(CURRENT_MARKERS).forEach(x=>x.getElement().classList.remove("on"));wrap.classList.add("on")};
+   wrap.addEventListener("click",activate);wrap.addEventListener("mouseenter",activate);
    CURRENT_MARKERS[d.id]=mk});
-  const dId=el.dataset.default,dMk=dId&&CURRENT_MARKERS[dId];if(dMk&&dMk.getElement())dMk.getElement().classList.add("on");
+  const dId=el.dataset.default,dMk=dId&&CURRENT_MARKERS[dId];if(dMk)dMk.getElement().classList.add("on");
   applyMapFilter();CURRENT_MAP=map;
-  setTimeout(()=>map.invalidateSize(),200)
+  setTimeout(()=>map.resize(),200)
  }).catch(()=>{el.classList.remove("loading");el.innerHTML=`<p style="padding:40px;text-align:center;color:var(--mute)">La carte n'a pas pu se charger. <a href="#explore">Voir la liste des provinces</a>.</p>`})}
 
 /* ===== heure du Cambodge (UTC+7 toute l'année, pas de changement d'heure) ===== */

@@ -303,14 +303,14 @@ nav.top ul a{white-space:nowrap}
 .lbx-c{display:block;font-size:14.5px;line-height:1.5;opacity:.85}
 @media(max-width:560px){.mt .mc{font-size:14px;padding:36px 10px 10px}}
 
-/* ===== VRAIE CARTE INTERACTIVE (Leaflet + OpenStreetMap, gratuit, sans clé) ===== */
+/* ===== VRAIE CARTE INTERACTIVE (MapLibre GL + tuiles vectorielles OpenFreeMap, gratuit, sans clé, toujours nette) ===== */
 .leafmap{position:relative;width:100%;height:520px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#EFE7D6,#E6DCC7)}
 .leafmap.loading:before{content:"Chargement de la carte…";position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:14px}
 @media(max-width:900px){.leafmap{height:420px}}
 @media(max-width:560px){.leafmap{height:360px}}
 /* pastilles de province */
-.gcpin{background:none!important;border:none!important}
-.pin{position:absolute;inset:0;border-radius:50%;background:var(--lacq);border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.2,1),background .18s}
+.gcpin{position:relative;width:14px;height:14px;cursor:pointer}
+.pin{position:absolute;inset:0;border-radius:50%;background:var(--lacq);border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4);transition:transform .18s cubic-bezier(.2,.8,.2,1),background .18s}
 .gcpin:hover .pin,.gcpin:focus .pin{transform:scale(1.35)}
 .gcpin.on .pin{background:var(--ink);transform:scale(1.5)}
 .gcpin.dim .pin{opacity:.25}
@@ -319,18 +319,21 @@ nav.top ul a{white-space:nowrap}
 .lbl.l{left:auto;right:14px}
 @media(max-width:560px){.lbl{display:none}} /* trop de monde sur 25 provinces en petit écran ; le nom reste dans la bulle et le panneau */
 /* bulle au clic */
-.gcpop .leaflet-popup-content-wrapper{background:var(--cream);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.28)}
-.gcpop .leaflet-popup-content{margin:14px 16px;font-family:var(--sans);min-width:170px}
-.gcpop .leaflet-popup-tip{background:var(--cream)}
-.gcpop .leaflet-popup-close-button{color:var(--mute)!important;font-size:18px!important}
+.gcpop .maplibregl-popup-content{background:var(--cream);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.28);padding:16px 18px}
+.gcpop .maplibregl-popup-tip{border-top-color:var(--cream);border-bottom-color:var(--cream)}
+.gcpop .maplibregl-popup-close-button{color:var(--mute);font-size:18px;padding:2px 6px}
+.popc{min-width:160px}
 .popc b{font-family:var(--serif);font-weight:500;font-size:19px;display:block}
 .popc .kh{font-size:14px;color:var(--mute);font-weight:400}
 .popc small{display:block;color:var(--ink2);margin:4px 0 12px;font-size:13px;line-height:1.4}
 .popc .btn{padding:8px 14px;font-size:13px;display:inline-flex}
 /* boutons + / − et attribution, dans le style du site */
-.leaflet-control-zoom{border:none!important}
-.leaflet-control-zoom a{border-radius:50%!important;width:34px!important;height:34px!important;line-height:32px!important;color:var(--ink)!important;background:var(--cream)!important;border:none!important;margin-bottom:7px!important;box-shadow:0 4px 14px rgba(0,0,0,.2)!important;font-family:var(--sans)}
-.leaflet-touch .leaflet-bar{border:none!important}
-.leaflet-control-attribution{background:rgba(246,241,232,.85)!important;font-size:10px!important;border-radius:6px 0 0 0;color:var(--mute)!important}
-.leaflet-control-attribution a{color:var(--ink2)!important}
-.leaflet-control-attribution svg.leaflet-attribution-flag{display:none!important}
+.maplibregl-ctrl-group{background:none!important;box-shadow:none!important;border-radius:0!important}
+.maplibregl-ctrl-group button{border-radius:50%!important;width:34px!important;height:34px!important;background:var(--cream)!important;margin-bottom:7px!important;box-shadow:0 4px 14px rgba(0,0,0,.2)!important}
+.maplibregl-ctrl-group button+button{border-top:none!important}
+.maplibregl-ctrl-icon{filter:invert(12%) sepia(8%) saturate(700%) hue-rotate(130deg)} /* icônes +/− teintées en encre plutôt qu'en noir pur */
+.maplibregl-ctrl-attrib{background:rgba(246,241,232,.85)!important;font-size:10px!important;border-radius:6px 0 0 0!important;color:var(--mute)}
+.maplibregl-ctrl-attrib a{color:var(--ink2)!important}
+.maplibregl-ctrl-bottom-right{display:flex;flex-direction:column;align-items:flex-end}
+.maplibregl-popup-anchor-bottom .maplibregl-popup-tip,.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip,.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip{border-top-color:var(--cream)}
+.maplibregl-popup-anchor-top .maplibregl-popup-tip,.maplibregl-popup-anchor-top-left .maplibregl-popup-tip,.maplibregl-popup-anchor-top-right .maplibregl-popup-tip{border-bottom-color:var(--cream)}
