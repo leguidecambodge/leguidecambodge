@@ -85,7 +85,7 @@ function initInteractiveMap(id){const el=document.getElementById(id);if(!el)retu
   if(myGen!==MAP_GEN||!document.body.contains(el))return;
   removeCurrentMap();
   el.innerHTML="";el.classList.remove("loading");
-  const map=new ml.Map({container:el,style:"https://tiles.openfreemap.org/styles/positron",center:[104.9,12.55],zoom:6,cooperativeGestures:true,locale:GESTURE_FR,attributionControl:{compact:true},maplibreLogo:false});
+  const map=new ml.Map({container:el,style:"https://tiles.openfreemap.org/styles/liberty",center:[104.9,12.55],zoom:6,cooperativeGestures:true,locale:GESTURE_FR,attributionControl:{compact:true},maplibreLogo:false});
   map.fitBounds(CAMBODIA_BOUNDS,{padding:6,animate:false});
   map.addControl(new ml.NavigationControl({showCompass:false}),"bottom-right");
   map.on("load",()=>{if(myGen!==MAP_GEN)return;map.setMinZoom(map.getZoom());map.setMaxBounds(padBounds(CAMBODIA_BOUNDS,.6))});
