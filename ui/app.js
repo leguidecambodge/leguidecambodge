@@ -64,6 +64,47 @@ function mapSVG(small){const path=a=>a.map((p,i)=>(i?"L":"M")+PX(...p).join(" ")
  ${provs}</svg>`}
 function miniMap(d){const [x,y]=PX(d.lon,d.lat);return `<svg viewBox="0 0 880 760" style="width:100%" aria-hidden="true">${mapSVG(true).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")}<circle cx="${x}" cy="${y}" r="26" fill="#B8452B" opacity=".25"/><circle cx="${x}" cy="${y}" r="9" fill="#B8452B" stroke="#fff" stroke-width="3"/></svg>`}
 
+/* ===== vraie carte interactive (Leaflet + OpenStreetMap — gratuit, sans clé, chargé à la demande) ===== */
+let LEAFLET_READY=null;
+function loadLeaflet(){if(LEAFLET_READY)return LEAFLET_READY;
+ LEAFLET_READY=new Promise((resolve,reject)=>{
+  const link=href=>{const l=document.createElement("link");l.rel="stylesheet";l.href=href;document.head.appendChild(l)};
+  link("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+  link("https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css");
+  const s1=document.createElement("script");s1.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";s1.onerror=reject;
+  s1.onload=()=>{const s2=document.createElement("script");s2.src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js";s2.onload=()=>resolve(window.L);s2.onerror=()=>resolve(window.L);document.head.appendChild(s2)};
+  document.head.appendChild(s1)});
+ return LEAFLET_READY}
+const CAMBODIA_BOUNDS=[[10.15,102.1],[14.85,107.75]];
+let CURRENT_MAP=null,CURRENT_MARKERS={},ACTIVE_FILTER="",MAP_GEN=0;
+function removeCurrentMap(){if(CURRENT_MAP){try{CURRENT_MAP.remove()}catch(e){}CURRENT_MAP=null;CURRENT_MARKERS={}}}
+function applyMapFilter(){const e=EXPERIENCES.find(x=>x.id===ACTIVE_FILTER);Object.entries(CURRENT_MARKERS).forEach(([id,mk])=>{const el=mk.getElement();if(el)el.classList.toggle("dim",!!e&&!e.d.includes(id))})}
+function initInteractiveMap(id){const el=document.getElementById(id);if(!el)return;ACTIVE_FILTER="";
+ const myGen=++MAP_GEN; // annule les initialisations précédentes encore en attente (navigation rapide entre pages pendant le chargement)
+ loadLeaflet().then(L=>{
+  if(myGen!==MAP_GEN||!document.body.contains(el))return;
+  removeCurrentMap();
+  el.innerHTML="";el.classList.remove("loading");
+  const map=L.map(el,{gestureHandling:true,zoomControl:false,attributionControl:false});
+  L.control.zoom({position:"bottomright"}).addTo(map);
+  L.control.attribution({position:"bottomleft"}).addTo(map);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:17,attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(map);
+  const bounds=L.latLngBounds(CAMBODIA_BOUNDS);
+  map.fitBounds(bounds,{padding:[4,4],animate:false});
+  map.setMinZoom(map.getZoom());map.setMaxBounds(bounds.pad(.6));
+  DEST.forEach(d=>{
+   const left=d.lon>106.3||["kep","kandal"].includes(d.id);
+   const icon=L.divIcon({className:"gcpin",html:`<span class="pin"></span><b class="lbl${left?" l":""}">${shortName(d.name)}</b>`,iconSize:[14,14],iconAnchor:[7,7]});
+   const mk=L.marker([d.lat,d.lon],{icon,alt:d.name,keyboard:true}).addTo(map);
+   mk.bindPopup(`<div class="popc"><b>${d.name}</b> <span class="kh">${d.kh}</span><small>${d.tag}</small><a class="btn dark" href="#dest/${d.id}">Découvrir →</a></div>`,{className:"gcpop",maxWidth:240});
+   const activate=()=>{const p=$("#mpanel");if(p)p.innerHTML=panel(d);Object.values(CURRENT_MARKERS).forEach(x=>{const e=x.getElement();e&&e.classList.remove("on")});const e=mk.getElement();e&&e.classList.add("on")};
+   mk.on("click",activate);mk.on("mouseover",activate);
+   CURRENT_MARKERS[d.id]=mk});
+  const dId=el.dataset.default,dMk=dId&&CURRENT_MARKERS[dId];if(dMk&&dMk.getElement())dMk.getElement().classList.add("on");
+  applyMapFilter();CURRENT_MAP=map;
+  setTimeout(()=>map.invalidateSize(),200)
+ }).catch(()=>{el.classList.remove("loading");el.innerHTML=`<p style="padding:40px;text-align:center;color:var(--mute)">La carte n'a pas pu se charger. <a href="#explore">Voir la liste des provinces</a>.</p>`})}
+
 /* ===== heure du Cambodge (UTC+7 toute l'année, pas de changement d'heure) ===== */
 const khTime=()=>{const k=new Date(Date.now()+7*36e5),p=v=>String(v).padStart(2,"0");return `${p(k.getUTCHours())}:${p(k.getUTCMinutes())}:${p(k.getUTCSeconds())}`};
 setInterval(()=>{const el=document.getElementById("khtime");if(el){const h=khTime();if(el.textContent!==h)el.textContent=h}},1000);
@@ -94,7 +135,7 @@ function home(){const m=new Date().getMonth();const seasons=["dry","dry","hot","
  <div class="stats"><div><b>${DEST.length}</b>provinces</div><div><b>${EXPERIENCES.length}</b>expériences</div><div><b>${TRIPS.length}</b>itinéraires</div><div><b>${PLACES_COUNT}</b>lieux à voir</div></div></div></header>
  <section class="s" id="map"><div class="wrap"><div class="shead"><div><span class="eyebrow">${t("map")}</span><h2>Touchez une province. Chacune a son histoire.</h2></div><p>Filtrez selon vos envies, puis ouvrez la fiche d'une province : lieux, cuisine, trésors cachés et itinéraires.</p></div>
  <div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.slice(0,9).map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div>
- <div class="mapwrap"><div class="mapbox">${mapSVG()}<div class="mapleg"><span><i style="background:#9FC1D6"></i>Lacs & fleuves</span><span><i style="background:#B7C9A0"></i>Montagnes</span><span><i style="background:var(--lacq)"></i>Province</span></div></div><div class="mappanel" id="mpanel">${panel(byId("kampot"))}</div></div></div></section>
+ <div class="mapwrap"><div class="mapbox"><div id="leafmap-home" class="leafmap loading" data-default="kampot" role="application" aria-label="Carte interactive du Cambodge"></div></div><div class="mappanel" id="mpanel">${panel(byId("kampot"))}</div></div></div></section>
  <section class="s" id="featured" style="padding-top:0"><div class="wrap"><div class="shead"><div><span class="eyebrow">À la une ce mois-ci</span><h2>Sept provinces, sept Cambodges très différents</h2></div><a class="link" href="#explore">Les 25 provinces</a></div>
  <div class="grid g3">${["siem-reap","kampot","mondulkiri","kratie","sihanoukville","battambang","koh-kong"].map((id,i)=>dcard(byId(id),i===0?"tall wide":i===3?"tall":"",i)).join("")}</div></div></section>
  <section class="s dark"><div class="wrap"><div class="shead"><div><span class="eyebrow" style="color:var(--gold)">Explorer par expérience</span><h2>Quel Cambodge voulez-vous ressentir ?</h2></div><a class="link" style="border-color:var(--cream)" href="#exp">Les ${EXPERIENCES.length} expériences</a></div>
@@ -131,7 +172,7 @@ function tripCards(days,list){list=list||TRIPS.filter(tr=>tr.days===days||Math.a
 
 /* ===== explorer ===== */
 function explore(){return nav("explore")+`<section class="exphero"><div class="wrap"><span class="eyebrow">${t("explore")}</span><h1>Les 25 provinces</h1><p class="lead">On réduit souvent le Cambodge à deux villes. Voici tout le pays, région par région, avec la carte qui va avec.</p></div></section>
- <section class="s" style="padding-top:20px"><div class="wrap"><div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div><div class="mapwrap"><div class="mapbox">${mapSVG()}</div><div class="mappanel" id="mpanel">${panel(byId("ratanakiri"))}</div></div></div></section>
+ <section class="s" style="padding-top:20px"><div class="wrap"><div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div><div class="mapwrap"><div class="mapbox"><div id="leafmap-explore" class="leafmap loading" data-default="ratanakiri" role="application" aria-label="Carte interactive du Cambodge"></div></div><div class="mappanel" id="mpanel">${panel(byId("ratanakiri"))}</div></div></div></section>
  ${REG_ORDER.map(r=>`<section class="s" style="padding-top:0"><div class="wrap"><div class="shead"><h2 style="font-size:34px">${REGIONS[r]}</h2></div><div class="grid g4">${DEST.filter(d=>d.region===r).map((d,i)=>dcard(d,"",i)).join("")}</div></div></section>`).join("")}`+footer()}
 
 /* ===== galerie photos & vidéos (fichiers du dossier photos/) ===== */
@@ -208,6 +249,7 @@ const LEGACY={contact:"contact",newsletter:"contact",villes:"featured",quartiers
 function pageTitle(h){const n=h[0]==="dest"&&byId(h[1])?byId(h[1]).name+" : que voir, que faire, où dormir":h[0]==="exp"&&EXPERIENCES.find(x=>x.id===h[1])?EXPERIENCES.find(x=>x.id===h[1]).name+" au Cambodge":h[0]==="trip"&&TRIPS.find(x=>x.id===h[1])?"Itinéraire : "+TRIPS.find(x=>x.id===h[1]).name:h[0]==="explore"?"Les 25 provinces du Cambodge":h[0]==="exp"?"Explorer le Cambodge par expérience":h[0]==="trips"?"Itinéraires au Cambodge":h[0]==="info"?"Infos pratiques Cambodge":h[0]==="fav"?"Mes favoris":"";
  return n?n+" — Le Guide Cambodge":SITE_TITLE}
 function render(keep){const h=(location.hash||"#home").slice(1).split("/");const app=$("#app");let html,goto=null;const y=window.scrollY;lbClose();
+ if(!(h[0]==="home"||h[0]==="explore"||h[0]==="map"||LEGACY[h[0]])){MAP_GEN++;removeCurrentMap()}
  if(h[0]==="mentions"){location.replace("mentions-legales/");return}
  if(LEGACY[h[0]]){goto=LEGACY[h[0]];html=home()}
  else switch(h[0]){case"explore":html=explore();break;case"dest":html=dest(h[1]);break;case"exp":html=h[1]?exp(h[1]):expList();break;case"trips":html=tripsPage();break;case"trip":html=trip(h[1]);break;case"info":html=info(h[1]);break;case"fav":html=favPage();break;default:html=home();if(h[0]==="map")goto="map"}
@@ -219,9 +261,8 @@ function render(keep){const h=(location.hash||"#home").slice(1).split("/");const
  document.querySelectorAll("section.s, .card, .trip, .gem").forEach(el=>{el.classList.add("rv");io.observe(el)})}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});
 function bind(){
- document.querySelectorAll(".prov").forEach(g=>{const show=()=>{const d=byId(g.dataset.id);const p=$("#mpanel");if(p){p.innerHTML=panel(d);document.querySelectorAll(".prov").forEach(x=>x.classList.remove("on"));g.classList.add("on")}};
-  g.onmouseenter=show;g.onclick=()=>{show();if(window.innerWidth<900)location.hash="dest/"+g.dataset.id};g.ondblclick=()=>location.hash="dest/"+g.dataset.id;g.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();location.hash="dest/"+g.dataset.id}}});
- document.querySelectorAll(".mapfilters .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(".mapfilters .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");const f=c.dataset.f;const e=EXPERIENCES.find(x=>x.id===f);document.querySelectorAll(".prov").forEach(g=>g.classList.toggle("dim",!!e&&!e.d.includes(g.dataset.id)))});
+ document.querySelectorAll(".mapfilters .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(".mapfilters .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");ACTIVE_FILTER=c.dataset.f;applyMapFilter()});
+ const lm=document.querySelector(".leafmap");if(lm)initInteractiveMap(lm.id);
  document.querySelectorAll("#dur button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#dur button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$("#tripgrid").innerHTML=tripCards(+b.dataset.d);affiliate($("#tripgrid"))});
  document.querySelectorAll("[data-fav]").forEach(b=>b.onclick=ev=>{ev.preventDefault();ev.stopPropagation();const id=b.dataset.fav;FAV.has(id)?FAV.delete(id):FAV.add(id);try{localStorage.setItem("gc-fav",JSON.stringify([...FAV]))}catch(e){}render(true)});
  document.querySelectorAll(".ttoc a[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById(a.dataset.go);el&&el.scrollIntoView({behavior:"smooth"})});

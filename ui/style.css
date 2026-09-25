@@ -73,7 +73,7 @@ section.s{padding:clamp(56px,8vw,110px) 0}
 .mapwrap{display:grid;grid-template-columns:1.35fr .8fr;gap:28px;align-items:stretch}
 @media(max-width:900px){.mapwrap{grid-template-columns:1fr}}
 .mapbox{background:linear-gradient(180deg,#EFE7D6,#E6DCC7);border-radius:28px;padding:18px;position:relative;border:1px solid var(--line)}
-.mapbox svg{width:100%;height:auto;display:block}
+.mapbox>svg{width:100%;height:auto;display:block}
 .prov{cursor:pointer}
 .prov circle{fill:var(--lacq);stroke:#fff;stroke-width:2.5;transition:r .2s,fill .2s}
 .prov:hover circle,.prov.on circle{r:11;fill:var(--ink)}
@@ -302,3 +302,35 @@ nav.top ul a{white-space:nowrap}
 .lbx-t{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(22px,3vw,30px);line-height:1.15;letter-spacing:-.01em;margin-bottom:8px}
 .lbx-c{display:block;font-size:14.5px;line-height:1.5;opacity:.85}
 @media(max-width:560px){.mt .mc{font-size:14px;padding:36px 10px 10px}}
+
+/* ===== VRAIE CARTE INTERACTIVE (Leaflet + OpenStreetMap, gratuit, sans clé) ===== */
+.leafmap{position:relative;width:100%;height:520px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#EFE7D6,#E6DCC7)}
+.leafmap.loading:before{content:"Chargement de la carte…";position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:14px}
+@media(max-width:900px){.leafmap{height:420px}}
+@media(max-width:560px){.leafmap{height:360px}}
+/* pastilles de province */
+.gcpin{background:none!important;border:none!important}
+.pin{position:absolute;inset:0;border-radius:50%;background:var(--lacq);border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4);cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.2,1),background .18s}
+.gcpin:hover .pin,.gcpin:focus .pin{transform:scale(1.35)}
+.gcpin.on .pin{background:var(--ink);transform:scale(1.5)}
+.gcpin.dim .pin{opacity:.25}
+.gcpin.dim .lbl{opacity:0}
+.lbl{position:absolute;top:50%;left:14px;transform:translateY(-50%);white-space:nowrap;font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:.01em;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 6px #fff,0 0 6px #fff;pointer-events:none;transition:opacity .18s}
+.lbl.l{left:auto;right:14px}
+@media(max-width:560px){.lbl{display:none}} /* trop de monde sur 25 provinces en petit écran ; le nom reste dans la bulle et le panneau */
+/* bulle au clic */
+.gcpop .leaflet-popup-content-wrapper{background:var(--cream);border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.28)}
+.gcpop .leaflet-popup-content{margin:14px 16px;font-family:var(--sans);min-width:170px}
+.gcpop .leaflet-popup-tip{background:var(--cream)}
+.gcpop .leaflet-popup-close-button{color:var(--mute)!important;font-size:18px!important}
+.popc b{font-family:var(--serif);font-weight:500;font-size:19px;display:block}
+.popc .kh{font-size:14px;color:var(--mute);font-weight:400}
+.popc small{display:block;color:var(--ink2);margin:4px 0 12px;font-size:13px;line-height:1.4}
+.popc .btn{padding:8px 14px;font-size:13px;display:inline-flex}
+/* boutons + / − et attribution, dans le style du site */
+.leaflet-control-zoom{border:none!important}
+.leaflet-control-zoom a{border-radius:50%!important;width:34px!important;height:34px!important;line-height:32px!important;color:var(--ink)!important;background:var(--cream)!important;border:none!important;margin-bottom:7px!important;box-shadow:0 4px 14px rgba(0,0,0,.2)!important;font-family:var(--sans)}
+.leaflet-touch .leaflet-bar{border:none!important}
+.leaflet-control-attribution{background:rgba(246,241,232,.85)!important;font-size:10px!important;border-radius:6px 0 0 0;color:var(--mute)!important}
+.leaflet-control-attribution a{color:var(--ink2)!important}
+.leaflet-control-attribution svg.leaflet-attribution-flag{display:none!important}
