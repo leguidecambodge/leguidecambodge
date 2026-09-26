@@ -111,7 +111,20 @@ const FOOT_LINKS=[["Histoire","histoire-cambodge/"],["Hôtels","hotels/"],["Vols
 const SITE_PAGES=[["Histoire","histoire-cambodge/"],["Hôtels","hotels/"],["Vols","vols/"],["Activités","activites/"],["Événements","evenements/"],["Angkor","angkor/"],["Angkor Wat","angkor-wat/"],["Visa","visa-cambodge/"],["Budget","budget-voyage-cambodge/"],["Quand partir","quand-partir/"],["Meilleure période","meilleure-periode-cambodge/"],["Itinéraires","itineraire-cambodge/"],["Transports","transports/"],["Scooters","scooters/"],["Quartiers","quartiers/"],["Cuisine khmère","cuisine-khmere/"],["Lexique khmer","lexique-khmer/"],["Guide pratique","guide-pratique-cambodge/"],["Blog","blog/"],["Bons plans","bons-plans/"],["Photos & vidéos","photos-videos/"],["Carte interactive","carte-interactive/"],["Siem Reap","siem-reap/"],["Phnom Penh","phnom-penh/"],["Kampot","kampot/"],["Kep","kep/"],["Battambang","battambang/"],["Sihanoukville","sihanoukville/"],["Koh Rong","koh-rong/"],["Koh Rong Sanloem","koh-rong-sanloem/"],["Mondulkiri","mondulkiri/"],["Pursat","pursat/"],["Poipet","poipet/"]];
 function nav(active){return `<nav class="top" aria-label="Navigation principale"><div class="wrap"><div class="brand"><a class="logo" href="#home" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a><div class="khtime" id="khtime" title="Heure du Cambodge (UTC+7)">${khTime()}</div></div>
  <ul id="menu">${[["home","home"],["explore","explore"],["exp","exp"],["trips","trips"],["info","info"]].map(([k,r])=>`<li><a href="#${r}" class="${active===r?"on":""}">${t(k)}</a></li>`).join("")}</ul>
- <div class="navtools"><button class="pill" id="sbtn" title="${t("search")}" aria-label="${t("search")}">⌕<span class="sl"> ${t("search")}</span></button><a class="pill" href="#fav" aria-label="${t("fav")}">♥ ${FAV.size}</a><button class="pill ${LANG==="kh"?"on":""}" id="lang" aria-label="Changer de langue">${LANG==="fr"?"ខ្មែរ":"FR"}</button><button class="burger pill" id="burger" aria-label="Menu">☰</button></div></div></nav>`}
+ <div class="navtools"><button class="pill" id="sbtn" title="${t("search")}" aria-label="${t("search")}">⌕<span class="sl"> ${t("search")}</span></button><a class="pill" href="#fav" aria-label="${t("fav")}">♥ ${FAV.size}</a>${langSwitcher()}<button class="burger pill" id="burger" aria-label="Menu">☰</button></div></div></nav>`}
+/* ===== sélecteur de langue (Google Translate — mêmes 12 langues que l'ancien site) ===== */
+const LANGS=[["fr","🇫🇷","FR","Français"],["en","🇬🇧","EN","English"],["de","🇩🇪","DE","Deutsch"],["es","🇪🇸","ES","Español"],["zh-CN","🇨🇳","ZH","中文"],["km","🇰🇭","KH","ខ្មែរ"],["ru","🇷🇺","RU","Русский"],["ms","🇲🇾","MS","Melayu"],["vi","🇻🇳","VI","Tiếng Việt"],["pt","🇵🇹","PT","Português"],["tl","🇵🇭","TL","Filipino"],["ar","🇸🇦","AR","العربية"]];
+function langSwitcher(){return `<div class="langbar" id="langbar"><button class="pill" id="langtoggle" aria-label="Changer la langue" aria-expanded="false"><span id="langflag">🇫🇷</span> <span id="langcode">FR</span> <span class="langcaret">▾</span></button>
+ <div class="langmenu" id="langmenu">${LANGS.map(([code,flag,short,name])=>`<button class="langopt${code==="fr"?" on":""}" data-lang="${code}" data-flag="${flag}" data-code="${short}">${flag} ${name}</button>`).join("")}</div></div>`}
+let GT_LOADED=false;
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:"fr",includedLanguages:"fr,en,de,es,zh-CN,km,ru,ms,vi,pt,tl,ar",autoDisplay:false},"google_translate_element")}
+window.googleTranslateElementInit=googleTranslateElementInit;
+function loadGoogleTranslate(){if(GT_LOADED)return;GT_LOADED=true;const s=document.createElement("script");s.src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";s.async=true;document.head.appendChild(s)}
+function applyLang(lang){const sel=document.querySelector(".goog-te-combo");if(!sel){let tries=0;const iv=setInterval(()=>{const s2=document.querySelector(".goog-te-combo");if(s2){clearInterval(iv);s2.value=lang==="fr"?"":lang;s2.dispatchEvent(new Event("change"))}else if(++tries>40)clearInterval(iv)},200);return}
+ sel.value=lang==="fr"?"":lang;sel.dispatchEvent(new Event("change"))}
+function bindLangSwitcher(){const bar=$("#langbar");if(!bar)return;const btn=$("#langtoggle"),menu=$("#langmenu"),flagEl=$("#langflag"),codeEl=$("#langcode");
+ btn.onclick=e=>{e.stopPropagation();loadGoogleTranslate();const open=menu.classList.toggle("open");btn.setAttribute("aria-expanded",open)};
+ document.querySelectorAll(".langopt").forEach(opt=>opt.onclick=e=>{e.stopPropagation();const lang=opt.dataset.lang;flagEl.textContent=opt.dataset.flag;codeEl.textContent=opt.dataset.code;menu.classList.remove("open");btn.setAttribute("aria-expanded","false");loadGoogleTranslate();applyLang(lang)})}
 function footer(){return `<footer><div class="wrap"><div class="cols"><div><div class="logo"><i></i>Le Guide Cambodge</div><p style="margin-top:12px;max-width:34ch">Le guide indépendant des 25 provinces du Cambodge : carte, itinéraires et conseils pratiques pour préparer votre voyage.</p></div>
  <div><h5>Destinations</h5><ul>${DEST.slice(0,8).map(d=>`<li><a href="#dest/${d.id}">${shortName(d.name)}</a></li>`).join("")}<li><a href="#explore">Les 25 provinces →</a></li></ul></div>
  <div><h5>Expériences</h5><ul>${EXPERIENCES.slice(0,8).map(e=>`<li><a href="#exp/${e.id}">${e.name}</a></li>`).join("")}</ul></div>
@@ -264,7 +277,8 @@ function bind(){
  document.querySelectorAll("[data-fav]").forEach(b=>b.onclick=ev=>{ev.preventDefault();ev.stopPropagation();const id=b.dataset.fav;FAV.has(id)?FAV.delete(id):FAV.add(id);try{localStorage.setItem("gc-fav",JSON.stringify([...FAV]))}catch(e){}render(true)});
  document.querySelectorAll(".ttoc a[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById(a.dataset.go);el&&el.scrollIntoView({behavior:"smooth"})});
  const sb=$("#sbtn");if(sb)sb.onclick=()=>openSearch();const hs=$("#hsearch input");if(hs){hs.onfocus=()=>{openSearch(hs.value);hs.blur()}}
- const lb=$("#lang");if(lb)lb.onclick=()=>{LANG=LANG==="fr"?"kh":"fr";render(true)};const bg=$("#burger");if(bg)bg.onclick=()=>$("#menu").classList.toggle("open");
+ const bg=$("#burger");if(bg)bg.onclick=()=>$("#menu").classList.toggle("open");
+ bindLangSwitcher();
  document.querySelectorAll(".mt").forEach(b=>b.onclick=()=>lbOpen(MEDIA[b.closest(".mgrid").dataset.p],+b.dataset.i));
  document.querySelectorAll(".mbtn").forEach(b=>b.onclick=()=>{const [p,i]=b.dataset.pl.split(":");lbOpen(MEDIA[p].filter(x=>x.at&&x.at.includes(+i)),0)});
  const gm=$("[data-more]");if(gm)gm.onclick=()=>{document.querySelectorAll(".mgrid .mt[hidden]").forEach(t=>t.hidden=false);gm.remove()};
@@ -330,6 +344,7 @@ function cookies(){const b=$("#cookie-banner");if(!b)return;
 /* ===== démarrage ===== */
 window.addEventListener("hashchange",()=>render());
 document.addEventListener("DOMContentLoaded",()=>{render();cookies();
+ document.addEventListener("click",()=>{const m=$("#langmenu");if(m){m.classList.remove("open");$("#langtoggle")?.setAttribute("aria-expanded","false")}});
  $("#so input").oninput=e=>doSearch(e.target.value);$("#so .x").onclick=closeSearch;
  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();lbClose()}const b=$("#lbx");if(b&&!b.hidden){if(e.key==="ArrowLeft")lbStep(-1);if(e.key==="ArrowRight")lbStep(1)}});
  const lb=$("#lbx");if(lb){lb.querySelector(".lbx-x").onclick=lbClose;lb.querySelector(".lbx-p").onclick=()=>lbStep(-1);lb.querySelector(".lbx-n").onclick=()=>lbStep(1);
