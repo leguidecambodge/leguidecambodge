@@ -105,7 +105,7 @@ function initInteractiveMap(id){const el=document.getElementById(id);if(!el)retu
 /* ===== heure du Cambodge (UTC+7 toute l'année, pas de changement d'heure) ===== */
 const KH_MONTHS=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 const khTime=()=>{const k=new Date(Date.now()+7*36e5),p=v=>String(v).padStart(2,"0");return `${p(k.getUTCHours())}:${p(k.getUTCMinutes())}:${p(k.getUTCSeconds())}`};
-const khDate=()=>{const k=new Date(Date.now()+7*36e5);return `${k.getUTCDate()} ${KH_MONTHS[k.getUTCMonth()]}`};
+const khDate=()=>{const k=new Date(Date.now()+7*36e5);return `${k.getUTCDate()} ${KH_MONTHS[k.getUTCMonth()]} ${k.getUTCFullYear()}`};
 setInterval(()=>{const el=document.getElementById("khtime");if(el){const h=khTime();if(el.textContent!==h)el.textContent=h}
  const ed=document.getElementById("khdate");if(ed){const d=khDate();if(ed.textContent!==d)ed.textContent=d}},1000);
 
