@@ -345,7 +345,7 @@ function cookies(){const b=$("#cookie-banner");if(!b)return;
 window.addEventListener("hashchange",()=>render());
 document.addEventListener("DOMContentLoaded",()=>{render();cookies();
  document.addEventListener("click",()=>{const m=$("#langmenu");if(m){m.classList.remove("open");$("#langtoggle")?.setAttribute("aria-expanded","false")}});
- $("#so input").oninput=e=>doSearch(e.target.value);$("#so .x").onclick=closeSearch;
+ $("#so input").oninput=e=>doSearch(e.target.value);$("#so .x").onclick=closeSearch;$("#so").onclick=e=>{if(e.target.id==="so")closeSearch()};
  document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeSearch();lbClose()}const b=$("#lbx");if(b&&!b.hidden){if(e.key==="ArrowLeft")lbStep(-1);if(e.key==="ArrowRight")lbStep(1)}});
  const lb=$("#lbx");if(lb){lb.querySelector(".lbx-x").onclick=lbClose;lb.querySelector(".lbx-p").onclick=()=>lbStep(-1);lb.querySelector(".lbx-n").onclick=()=>lbStep(1);
   lb.onclick=e=>{if(e.target===lb||e.target.classList.contains("lbx-media")||e.target.tagName==="FIGURE")lbClose()};
