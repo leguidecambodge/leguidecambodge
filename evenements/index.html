@@ -212,6 +212,7 @@
       <button class="evt-cat" data-cat="religion" aria-pressed="false">🙏 Religieux</button>
       <button class="evt-cat" data-cat="national" aria-pressed="false">🇰🇭 Fêtes nationales</button>
       <button class="evt-cat" data-cat="weekend" aria-pressed="false">📅 Ce week-end</button>
+      <button class="evt-cat" data-cat="bonplan" aria-pressed="false">💡 Bons plans</button>
       <button class="evt-cat" data-cat="recurring" aria-pressed="false">🔄 Hebdomadaires</button>
     </div>
     <select id="evt-ville" class="evt-ville-select" aria-label="Filtrer par ville">
@@ -293,7 +294,7 @@
   </nav>
 </footer>
 
-<script src="../ui/data-events.js?v=16"></script>
+<script src="../ui/data-events.js?v=17"></script>
 <script>
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobile-nav');
@@ -359,8 +360,8 @@ if (navbar) {
 
   const EVENTS = [...STATIC_EVENTS, ...generateRiversideEvents()];
 
-  const catColors = {festival:'#C0202E',sport:'#2A5C3F',culture:'#8A6A00',religion:'#6A3A8A',national:'#1A4A8A'};
-  const catBg     = {festival:'rgba(192,32,46,.14)',sport:'rgba(42,92,63,.14)',culture:'rgba(138,106,0,.14)',religion:'rgba(106,58,138,.14)',national:'rgba(26,74,138,.14)'};
+  const catColors = {festival:'#C0202E',sport:'#2A5C3F',culture:'#8A6A00',religion:'#6A3A8A',national:'#1A4A8A',bonplan:'#2E8B6E'};
+  const catBg     = {festival:'rgba(192,32,46,.14)',sport:'rgba(42,92,63,.14)',culture:'rgba(138,106,0,.14)',religion:'rgba(106,58,138,.14)',national:'rgba(26,74,138,.14)',bonplan:'rgba(46,139,110,.14)'};
 
   const grid    = document.getElementById('evt-grid');
   const empty   = document.getElementById('evt-empty');

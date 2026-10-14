@@ -384,7 +384,7 @@ body{top:0!important}
 .evmeta a{text-decoration:underline;text-underline-offset:2px}
 .evdesc{font-size:15px;color:var(--ink2);margin-top:6px;max-width:75ch}
 .evsrc{display:inline-block;font-size:12px;color:var(--mute);margin-top:6px;text-decoration:underline;text-underline-offset:2px}
-.ev-national{--evc:var(--mek)}.ev-religion{--evc:#7A4E8C}.ev-festival{--evc:var(--lacq)}.ev-sport{--evc:var(--jade)}.ev-culture{--evc:var(--gold)}
+.ev-national{--evc:var(--mek)}.ev-religion{--evc:#7A4E8C}.ev-festival{--evc:var(--lacq)}.ev-sport{--evc:var(--jade)}.ev-culture{--evc:var(--gold)}.ev-bonplan{--evc:#2E8B6E}
 .evnext{border-left:3px solid var(--evc,var(--gold))}
 .evnext .evwhen{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lacq);font-weight:600;margin-bottom:6px}
 .evnext h4{font-size:19px}
