@@ -36,8 +36,8 @@ function vis(d,mode,seed){const p=PH[d.id];let o=null;
 function pickVis(ids,mode,seed){for(const id of ids){const p=PH[id],o=p&&(mode==="hero"?(p.hero||p.card):p.card);if(o&&!o.fit)return ph(o,mode)}return scene(byId(ids[0]).scene,seed)}
 
 /* ===== textes de navigation ===== */
-const T={fr:{home:"Accueil",explore:"Explorer le Cambodge",exp:"Expériences",trips:"Itinéraires",info:"Infos pratiques",map:"Carte interactive",fav:"Favoris",search:"Rechercher"},
- kh:{home:"ទំព័រដើម",explore:"ស្វែងយល់កម្ពុជា",exp:"បទពិសោធន៍",trips:"ផែនការដំណើរ",info:"ព័ត៌មានធ្វើដំណើរ",map:"ផែនទី",fav:"បានរក្សាទុក",search:"ស្វែងរក"}};
+const T={fr:{home:"Accueil",explore:"Explorer le Cambodge",events:"Événements",exp:"Expériences",trips:"Itinéraires",info:"Infos pratiques",map:"Carte interactive",fav:"Favoris",search:"Rechercher"},
+ kh:{home:"ទំព័រដើម",explore:"ស្វែងយល់កម្ពុជា",events:"ព្រឹត្តិការណ៍",exp:"បទពិសោធន៍",trips:"ផែនការដំណើរ",info:"ព័ត៌មានធ្វើដំណើរ",map:"ផែនទី",fav:"បានរក្សាទុក",search:"ស្វែងរក"}};
 const t=k=>T[LANG][k]||k;
 const favBtn=id=>`<button class="fav ${FAV.has(id)?"on":""}" data-fav="${id}" title="Ajouter aux favoris" aria-label="Ajouter aux favoris">♥</button>`;
 const dcard=(d,cls="",i=0)=>`<a class="card ${cls}" href="#dest/${d.id}">${vis(d,"card",i+1)}<span class="tag">${REGIONS[d.region]}</span>${favBtn(d.id)}<div class="in"><h3>${d.name} <span class="kh" style="font-size:15px;opacity:.8">${d.kh}</span></h3><small>${d.tag}</small></div></a>`;
@@ -113,7 +113,7 @@ setInterval(()=>{const el=document.getElementById("khtime");if(el){const h=khTim
 const FOOT_LINKS=[["Histoire","histoire-cambodge/"],["Hôtels","hotels/"],["Vols","vols/"],["Activités","activites/"],["Visa","visa-cambodge/"],["Budget","budget-voyage-cambodge/"],["Blog","blog/"],["Bons plans","bons-plans/"]];
 const SITE_PAGES=[["Histoire","histoire-cambodge/"],["Hôtels","hotels/"],["Vols","vols/"],["Activités","activites/"],["Événements","evenements/"],["Angkor","angkor/"],["Angkor Wat","angkor-wat/"],["Visa","visa-cambodge/"],["Budget","budget-voyage-cambodge/"],["Quand partir","quand-partir/"],["Meilleure période","meilleure-periode-cambodge/"],["Itinéraires","itineraire-cambodge/"],["Transports","transports/"],["Scooters","scooters/"],["Quartiers","quartiers/"],["Cuisine khmère","cuisine-khmere/"],["Lexique khmer","lexique-khmer/"],["Guide pratique","guide-pratique-cambodge/"],["Blog","blog/"],["Bons plans","bons-plans/"],["Photos & vidéos","photos-videos/"],["Carte interactive","carte-interactive/"],["Siem Reap","siem-reap/"],["Phnom Penh","phnom-penh/"],["Kampot","kampot/"],["Kep","kep/"],["Battambang","battambang/"],["Sihanoukville","sihanoukville/"],["Koh Rong","koh-rong/"],["Koh Rong Sanloem","koh-rong-sanloem/"],["Mondulkiri","mondulkiri/"],["Pursat","pursat/"],["Poipet","poipet/"]];
 function nav(active){return `<nav class="top" aria-label="Navigation principale"><div class="wrap"><div class="brand"><a class="logo" href="#home" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a><div class="khwrap" title="Heure du Cambodge (UTC+7)"><span class="khtime" id="khtime">${khTime()}</span><span class="khdate" id="khdate">${khDate()}</span></div></div>
- <ul id="menu">${[["home","home"],["explore","explore"],["exp","exp"],["trips","trips"],["info","info"]].map(([k,r])=>`<li><a href="#${r}" class="${active===r?"on":""}">${t(k)}</a></li>`).join("")}</ul>
+ <ul id="menu">${[["home","home"],["explore","explore"],["events","events"],["exp","exp"],["trips","trips"],["info","info"]].map(([k,r])=>`<li><a href="#${r}" class="${active===r?"on":""}">${t(k)}</a></li>`).join("")}</ul>
  <div class="navtools"><button class="pill" id="sbtn" title="${t("search")}" aria-label="${t("search")}">⌕<span class="sl"> ${t("search")}</span></button><a class="pill" href="#fav" aria-label="${t("fav")}">♥ ${FAV.size}</a>${langSwitcher()}<button class="burger pill" id="burger" aria-label="Menu">☰</button></div></div></nav>`}
 /* ===== sélecteur de langue (Google Translate — mêmes 12 langues que l'ancien site) ===== */
 const LANGS=[["fr","🇫🇷","FR","Français"],["en","🇬🇧","EN","English"],["de","🇩🇪","DE","Deutsch"],["es","🇪🇸","ES","Español"],["zh-CN","🇨🇳","ZH","中文"],["km","🇰🇭","KH","ខ្មែរ"],["ru","🇷🇺","RU","Русский"],["ms","🇲🇾","MS","Melayu"],["vi","🇻🇳","VI","Tiếng Việt"],["pt","🇵🇹","PT","Português"],["tl","🇵🇭","TL","Filipino"],["ar","🇸🇦","AR","العربية"]];
@@ -259,13 +259,13 @@ function favPage(){const l=[...FAV].map(byId).filter(Boolean);return nav("")+`<s
 /* ===== routeur ===== */
 /* anciennes ancres de l'accueil (liens depuis les autres pages du site) */
 const LEGACY={contact:"contact",newsletter:"contact",villes:"featured",quartiers:"featured",hero:"top",vols:"practical",conseils:"practical","partir-france":"practical",transports:"practical"};
-function pageTitle(h){const n=h[0]==="dest"&&byId(h[1])?byId(h[1]).name+" : que voir, que faire, où dormir":h[0]==="exp"&&EXPERIENCES.find(x=>x.id===h[1])?EXPERIENCES.find(x=>x.id===h[1]).name+" au Cambodge":h[0]==="trip"&&TRIPS.find(x=>x.id===h[1])?"Itinéraire : "+TRIPS.find(x=>x.id===h[1]).name:h[0]==="explore"?"Les 25 provinces du Cambodge":h[0]==="exp"?"Explorer le Cambodge par expérience":h[0]==="trips"?"Itinéraires au Cambodge":h[0]==="info"?"Infos pratiques Cambodge":h[0]==="fav"?"Mes favoris":"";
+function pageTitle(h){const n=h[0]==="dest"&&byId(h[1])?byId(h[1]).name+" : que voir, que faire, où dormir":h[0]==="exp"&&EXPERIENCES.find(x=>x.id===h[1])?EXPERIENCES.find(x=>x.id===h[1]).name+" au Cambodge":h[0]==="trip"&&TRIPS.find(x=>x.id===h[1])?"Itinéraire : "+TRIPS.find(x=>x.id===h[1]).name:h[0]==="explore"?"Les 25 provinces du Cambodge":h[0]==="exp"?"Explorer le Cambodge par expérience":h[0]==="trips"?"Itinéraires au Cambodge":h[0]==="info"?"Infos pratiques Cambodge":h[0]==="fav"?"Mes favoris":h[0]==="events"?"Événements de la semaine au Cambodge":"";
  return n?n+" — Le Guide Cambodge":SITE_TITLE}
 function render(keep){const h=(location.hash||"#home").slice(1).split("/");const app=$("#app");let html,goto=null;const y=window.scrollY;lbClose();
  if(!(h[0]==="home"||h[0]==="explore"||h[0]==="map"||LEGACY[h[0]])){MAP_GEN++;removeCurrentMap()}
  if(h[0]==="mentions"){location.replace("mentions-legales/");return}
  if(LEGACY[h[0]]){goto=LEGACY[h[0]];html=home()}
- else switch(h[0]){case"explore":html=explore();break;case"dest":html=dest(h[1]);break;case"exp":html=h[1]?exp(h[1]):expList();break;case"trips":html=tripsPage();break;case"trip":html=trip(h[1]);break;case"info":html=info(h[1]);break;case"fav":html=favPage();break;default:html=home();if(h[0]==="map")goto="map"}
+ else switch(h[0]){case"explore":html=explore();break;case"dest":html=dest(h[1]);break;case"exp":html=h[1]?exp(h[1]):expList();break;case"trips":html=tripsPage();break;case"trip":html=trip(h[1]);break;case"info":html=info(h[1]);break;case"fav":html=favPage();break;case"events":html=eventsPage(parseInt(h[1],10)||0);break;default:html=home();if(h[0]==="map")goto="map"}
  app.innerHTML=html;document.title=pageTitle(h);affiliate(app);bind();
  if(keep===true)window.scrollTo(0,y);
  else if(goto){const el=document.getElementById(goto);setTimeout(()=>el&&el.scrollIntoView({behavior:goto==="top"?"auto":"smooth"}),60)}
@@ -285,7 +285,39 @@ function bind(){
  document.querySelectorAll(".mt").forEach(b=>b.onclick=()=>lbOpen(MEDIA[b.closest(".mgrid").dataset.p],+b.dataset.i));
  document.querySelectorAll(".mbtn").forEach(b=>b.onclick=()=>{const [p,i]=b.dataset.pl.split(":");lbOpen(MEDIA[p].filter(x=>x.at&&x.at.includes(+i)),0)});
  const gm=$("[data-more]");if(gm)gm.onclick=()=>{document.querySelectorAll(".mgrid .mt[hidden]").forEach(t=>t.hidden=false);gm.remove()};
+ const ep=$("#evprov");if(ep)ep.onchange=()=>{EVT_PROV=ep.value;try{localStorage.setItem("gc-evprov",EVT_PROV)}catch(e){}render(true)};
  bindForms()}
+
+/* ===== événements de la semaine (données : data-events.js) ===== */
+let EVT_PROV="";try{EVT_PROV=localStorage.getItem("gc-evprov")||""}catch(e){}
+const EVT_DAYS=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+const EVT_MONTHS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+const evtFr=s=>{const d=evtDay(s);return d.getUTCDate()+(d.getUTCDate()===1?"er":"")+" "+EVT_MONTHS[d.getUTCMonth()]};
+const evtPlace=v=>v==="all"?"Tout le Cambodge":byId(v)?`<a href="#dest/${v}">${byId(v).name}</a>`:v;
+const evtKeep=e=>!EVT_PROV||e.ville==="all"||e.ville===EVT_PROV;
+function evtItem(e,day){const c=EVT_CATS[e.cat]||["",""];let span="";
+ if(e.fin&&e.fin!==e.date){const tot=Math.round((evtDay(e.fin)-evtDay(e.date))/864e5)+1,k=Math.round((evtDay(day)-evtDay(e.date))/864e5)+1;span=`Jour ${k} sur ${tot}`}
+ const meta=[span,e.heure,e.lieu].filter(Boolean).join(" · ");
+ return `<div class="evitem ev-${e.cat}"><span class="evemo" aria-hidden="true">${e.emoji}</span><div><h4>${e.titre}</h4>${meta?`<p class="evmeta">${meta}</p>`:""}<p class="evmeta">📍 ${evtPlace(e.ville)} · ${c[0]}${e.recurring?(e.days.length===7?" · 🔄 Tous les jours":" · 🔄 Chaque semaine"):""}</p><p class="evdesc">${e.desc}</p>${e.src&&e.src[0]?`<a class="evsrc" href="${e.src[0]}" target="_blank" rel="noopener">Source</a>`:""}</div></div>`}
+function eventsPage(off){off=Math.max(-8,Math.min(60,off));
+ const today=evtToday(),mon=evtMonday(today,off),sun=evtAdd(mon,6);
+ const days=[0,1,2,3,4,5,6].map(i=>evtAdd(mon,i));
+ const ys=[...new Set([mon.slice(0,4),sun.slice(0,4)])].filter(y=>!evtYearOk(y));
+ const title=mon.slice(0,7)===sun.slice(0,7)?`Du lundi ${evtDay(mon).getUTCDate()} au dimanche ${evtFr(sun)} ${sun.slice(0,4)}`:`Du lundi ${evtFr(mon)}${mon.slice(0,4)!==sun.slice(0,4)?" "+mon.slice(0,4):""} au dimanche ${evtFr(sun)} ${sun.slice(0,4)}`;
+ const blocks=days.map((d,i)=>{const items=evtOn(d).filter(e=>evtKeep(e)&&!(e.recurring&&e.days.length===7));const isT=d===today;
+  return `<article class="evday${isT?" today":""}${d<today?" past":""}"><header><b>${EVT_DAYS[i]}</b><span>${evtFr(d)}</span>${isT?"<em>Aujourd'hui</em>":""}</header>${items.length?items.map(e=>evtItem(e,d)).join(""):`<p class="evnone">Rien de prévu${EVT_PROV?" dans cette province":""} ce jour-là.</p>`}</article>`}).join("");
+ const daily=EVT_WEEKLY.filter(e=>e.days.length===7&&evtKeep(e)&&(!e.from||e.from<=sun)&&(!e.to||e.to>=mon)).map(e=>Object.assign({recurring:true},e));
+ const next=evtBetween(evtAdd(sun,1),evtAdd(sun,400)).filter(evtKeep).slice(0,6);
+ return nav("events")+`<section class="exphero"><div class="wrap"><span class="eyebrow">Agenda</span><h1>Les événements de la semaine</h1><p class="lead">Fêtes nationales et religieuses, festivals, sport, sorties régulières : ce qui se passe au Cambodge du lundi au dimanche, pour les voyageurs comme pour les habitants.</p></div></section>
+ <section class="s" style="padding-top:10px"><div class="wrap">
+ <div class="evbar"><div class="evnav"><a class="pill" href="#events/${off-1}">‹ Semaine précédente</a>${off?`<a class="pill" href="#events">Cette semaine</a>`:""}<a class="pill" href="#events/${off+1}">Semaine suivante ›</a></div>
+ <label class="evfilter"><span>Province</span><select id="evprov"><option value="">Toutes les provinces</option>${DEST.map(d=>`<option value="${d.id}"${d.id===EVT_PROV?" selected":""}>${d.name}</option>`).join("")}</select></label></div>
+ <h2 class="evweek">${title}</h2>
+ ${ys.length?`<p class="evwarn">Les dates des fêtes lunaires de ${ys.join(" et ")} (Nouvel An khmer, Pchum Ben, fête des eaux…) ne sont pas encore publiées par le gouvernement : seuls les jours fériés à date fixe et les rendez-vous réguliers sont affichés.</p>`:""}
+ <div class="evdays">${daily.length?`<article class="evday daily"><header><b>Tous les jours</b><span>de la semaine</span></header>${daily.map(e=>evtItem(e,mon)).join("")}</article>`:""}${blocks}</div>
+ ${next.length?`<div class="shead" style="margin-top:60px"><div><span class="eyebrow">Plus loin</span><h2>Les prochains grands rendez-vous</h2></div></div><div class="grid g3">${next.map(e=>`<div class="box evnext ev-${e.cat}"><p class="evwhen">${evtFr(e.date)}${e.fin&&e.fin!==e.date?" – "+evtFr(e.fin):""} ${(e.fin||e.date).slice(0,4)}</p><h4>${e.emoji} ${e.titre}</h4><p>📍 ${evtPlace(e.ville)}</p></div>`).join("")}</div>`:""}
+ <p class="evnote">🔄 Cette page se met à jour toute seule : chaque lundi (heure du Cambodge), elle affiche la nouvelle semaine. Jours fériés : dates officielles du gouvernement cambodgien. Chaque événement indique sa source. Vous connaissez un événement qui manque ? <a href="#contact">Écrivez-nous</a>.</p>
+ </div></section>`+footer()}
 
 /* ===== recherche ===== */
 function openSearch(q){$("#so").classList.add("open");const i=$("#so input");i.value=q||"";doSearch(i.value);setTimeout(()=>i.focus(),50)}
@@ -296,6 +328,7 @@ function doSearch(q){q=norm(q).trim();const r=[];const push=(n,s,h)=>r.push(`<a 
  EXPERIENCES.forEach(e=>{if(!q||norm(e.name+e.blurb).includes(q))push(e.name,"Expérience","#exp/"+e.id)});
  TRIPS.forEach(tr=>{if(!q||norm(tr.name+tr.pitch).includes(q)||(dm&&Math.abs(tr.days-dm[1])<=2))push(tr.name,tr.days+" jours","#trip/"+tr.id)});
  INFO.forEach(i=>{if(!q||norm(i.t+i.b).includes(q))push(i.t,"Infos pratiques","#info/"+i.id)});
+ if(q){const td=evtToday(),m0=evtMonday(td);if(/evenement|agenda|fete|festival/.test(q))push(t("events"),"Agenda de la semaine","#events");evtBetween(td,evtAdd(td,400)).forEach(e=>{if(norm(e.titre).includes(q))push(e.titre,"Événement · "+evtFr(e.date)+" "+e.date.slice(0,4),"#events/"+Math.round((evtDay(evtMonday(e.date))-evtDay(m0))/6048e5))})}
  const box=$("#so .res");box.innerHTML=r.slice(0,24).join("")||`<p class="nores">Aucun résultat. Essayez une province, une activité ou « 7 jours ».</p>`;
  box.querySelectorAll("a[data-close]").forEach(a=>a.onclick=closeSearch)}
 

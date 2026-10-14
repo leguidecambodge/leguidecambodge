@@ -360,3 +360,36 @@ nav.top ul a{white-space:nowrap}
 body{top:0!important}
 @media(max-width:430px){.navtools{gap:3px}.navtools .pill{padding:6px 7px}#langcode{display:none}#langtoggle{padding:6px 7px}nav.top .wrap{gap:8px}}
 @media(max-width:370px){.navtools{gap:2px}.navtools .pill{padding:6px 6px}nav.top .wrap{gap:6px}.wrap{width:94vw}}
+/* ===== événements de la semaine ===== */
+.evbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.evnav{display:flex;gap:8px;flex-wrap:wrap}
+.evnav .pill{background:#fff;font-size:14px;padding:9px 15px}
+.evfilter{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
+.evfilter select{font:inherit;font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;max-width:62vw}
+.evweek{font-size:clamp(24px,3vw,34px);margin-bottom:22px}
+.evwarn{background:#FFF6E0;border:1px solid var(--sand);border-radius:14px;padding:12px 16px;font-size:14px;color:var(--ink2);margin-bottom:20px}
+.evdays{display:grid;gap:14px}
+.evday{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px}
+.evday header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.evday header b{font-family:var(--serif);font-size:22px;font-weight:500}
+.evday header span{color:var(--mute);font-size:14px}
+.evday header em{font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--lacq);color:#fff;border-radius:999px;padding:3px 10px;font-weight:600}
+.evday.today{border-color:var(--lacq);box-shadow:0 0 0 1px var(--lacq)}
+.evday.past{opacity:.6}
+.evnone{color:var(--mute);font-size:14px}
+.evitem{display:flex;gap:14px;padding:14px 0 4px;border-top:1px solid var(--cream2);margin-top:10px;border-left:3px solid var(--evc,var(--gold));padding-left:12px}
+.evemo{font-size:24px;line-height:1.2}
+.evitem h4{font-family:var(--serif);font-size:19px;font-weight:500;line-height:1.25}
+.evmeta{font-size:13px;color:var(--mute);margin-top:3px}
+.evmeta a{text-decoration:underline;text-underline-offset:2px}
+.evdesc{font-size:15px;color:var(--ink2);margin-top:6px;max-width:75ch}
+.evsrc{display:inline-block;font-size:12px;color:var(--mute);margin-top:6px;text-decoration:underline;text-underline-offset:2px}
+.ev-national{--evc:var(--mek)}.ev-religion{--evc:#7A4E8C}.ev-festival{--evc:var(--lacq)}.ev-sport{--evc:var(--jade)}.ev-culture{--evc:var(--gold)}
+.evnext{border-left:3px solid var(--evc,var(--gold))}
+.evnext .evwhen{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--lacq);font-weight:600;margin-bottom:6px}
+.evnext h4{font-size:19px}
+.evnote{margin-top:40px;font-size:14px;color:var(--mute);max-width:75ch}
+.evnote a{text-decoration:underline}
+@media(max-width:560px){.evday{padding:16px}.evitem{gap:10px}.evemo{font-size:20px}.evnav .pill{font-size:13px;padding:8px 12px}.evfilter{width:100%}.evfilter select{flex:1;max-width:none}}
+.evday.daily{background:var(--cream2);border-style:dashed}
+@media(max-width:1260px){nav.top ul{display:none}nav.top ul.open{display:flex;position:absolute;top:66px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 6vw;gap:14px;border-bottom:1px solid var(--line)}.burger{display:block}.navtools{margin-left:auto}} /* 6 entrées de menu depuis l'ajout des Événements : ☰ sous 1260px */
