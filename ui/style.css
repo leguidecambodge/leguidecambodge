@@ -393,3 +393,19 @@ body{top:0!important}
 @media(max-width:560px){.evday{padding:16px}.evitem{gap:10px}.evemo{font-size:20px}.evnav .pill{font-size:13px;padding:8px 12px}.evfilter{width:100%}.evfilter select{flex:1;max-width:none}}
 .evday.daily{background:var(--cream2);border-style:dashed}
 @media(max-width:1260px){nav.top ul{display:none}nav.top ul.open{display:flex;position:absolute;top:66px;left:0;right:0;background:var(--cream);flex-direction:column;padding:18px 6vw;gap:14px;border-bottom:1px solid var(--line)}.burger{display:block}.navtools{margin-left:auto}} /* 6 entrées de menu depuis l'ajout des Événements : ☰ sous 1260px */
+/* ===== événements sur la carte ===== */
+.evpin{width:34px;height:34px;border-radius:50%;background:#fff;border:3px solid var(--evc,var(--gold));display:grid;place-items:center;font-size:17px;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer;position:relative;z-index:2}
+.evpin i{position:absolute;top:-7px;right:-7px;background:var(--lacq);color:#fff;font-style:normal;font-size:11px;font-weight:700;border-radius:999px;min-width:18px;height:18px;display:grid;place-items:center;padding:0 4px}
+.evpop{padding:6px 0;border-bottom:1px solid var(--line)}
+.evpop b{display:block;font-size:14px;line-height:1.3}
+.evpop small{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+.evpopwhere{display:block;color:var(--mute);font-size:12px;margin-bottom:2px}
+.evtoday{display:flex;justify-content:space-between;align-items:center;gap:10px 16px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:0 0 14px;font-size:14px;color:var(--ink2)}
+.evtoday a{font-weight:600;color:var(--lacq);white-space:nowrap}
+.evmap{margin-bottom:26px}
+.evmapdays{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.evmap .mapbox{position:relative}
+.evmapcount{position:absolute;left:30px;top:30px;z-index:3;background:#fffe;border-radius:10px;padding:0 10px;font-size:13px;color:var(--ink2)}
+.evmapcount:empty{display:none}
+.evmapcount:not(:empty){padding:6px 10px}
+.maplibregl-popup{z-index:5}

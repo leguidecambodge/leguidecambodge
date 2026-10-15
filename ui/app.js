@@ -76,8 +76,8 @@ function loadMapLibre(){if(MAPLIBRE_READY)return MAPLIBRE_READY;
 const CAMBODIA_BOUNDS=[[102.1,10.15],[107.75,14.85]]; // [ouest,sud],[est,nord] — ordre lon,lat attendu par MapLibre
 const padBounds=([[w,s],[e,n]],p)=>{const dw=(e-w)*p,dn=(n-s)*p;return [[w-dw,s-dn],[e+dw,n+dn]]};
 const GESTURE_FR={"CooperativeGesturesHandler.WindowsHelpText":"Utilisez Ctrl + molette pour zoomer sur la carte","CooperativeGesturesHandler.MacHelpText":"Utilisez ⌘ + molette pour zoomer sur la carte","CooperativeGesturesHandler.MobileHelpText":"Utilisez deux doigts pour déplacer la carte"};
-let CURRENT_MAP=null,CURRENT_MARKERS={},ACTIVE_FILTER="",MAP_GEN=0;
-function removeCurrentMap(){if(CURRENT_MAP){try{CURRENT_MAP.remove()}catch(e){}CURRENT_MAP=null;CURRENT_MARKERS={}}}
+let CURRENT_MAP=null,CURRENT_MARKERS={},ACTIVE_FILTER="",MAP_GEN=0,CURRENT_ML=null,CURRENT_EVT_MARKERS=[];
+function removeCurrentMap(){if(CURRENT_MAP){try{CURRENT_MAP.remove()}catch(e){}CURRENT_MAP=null;CURRENT_MARKERS={};CURRENT_EVT_MARKERS=[]}}
 function applyMapFilter(){const e=EXPERIENCES.find(x=>x.id===ACTIVE_FILTER);Object.entries(CURRENT_MARKERS).forEach(([id,mk])=>{mk.getElement().classList.toggle("dim",!!e&&!e.d.includes(id))})}
 function initInteractiveMap(id){const el=document.getElementById(id);if(!el)return;ACTIVE_FILTER="";
  const myGen=++MAP_GEN; // annule les initialisations précédentes encore en attente (navigation rapide entre pages pendant le chargement)
@@ -89,7 +89,7 @@ function initInteractiveMap(id){const el=document.getElementById(id);if(!el)retu
   map.fitBounds(CAMBODIA_BOUNDS,{padding:6,animate:false});
   map.addControl(new ml.NavigationControl({showCompass:false}),"bottom-right");
   map.on("load",()=>{if(myGen!==MAP_GEN)return;map.setMinZoom(map.getZoom());map.setMaxBounds(padBounds(CAMBODIA_BOUNDS,.6))});
-  DEST.forEach(d=>{
+  if(el.dataset.mode!=="events")DEST.forEach(d=>{
    const left=d.lon>106.3||["kep","kandal"].includes(d.id);
    const wrap=document.createElement("div");wrap.className="gcpin";wrap.innerHTML=`<span class="pin"></span><b class="lbl${left?" l":""}">${shortName(d.name)}</b>`;
    const popup=new ml.Popup({offset:12,maxWidth:"240px",className:"gcpop"}).setHTML(`<div class="popc"><b>${d.name}</b> <span class="kh">${d.kh}</span><small>${d.tag}</small><a class="btn dark" href="#dest/${d.id}">Découvrir →</a></div>`);
@@ -98,7 +98,8 @@ function initInteractiveMap(id){const el=document.getElementById(id);if(!el)retu
    wrap.addEventListener("click",activate);wrap.addEventListener("mouseenter",activate);
    CURRENT_MARKERS[d.id]=mk});
   const dId=el.dataset.default,dMk=dId&&CURRENT_MARKERS[dId];if(dMk)dMk.getElement().classList.add("on");
-  applyMapFilter();CURRENT_MAP=map;
+  CURRENT_ML=ml;CURRENT_MAP=map;showEvtMarkers(el.dataset.day||evtToday());
+  applyMapFilter();
   setTimeout(()=>map.resize(),200)
  }).catch(()=>{el.classList.remove("loading");el.innerHTML=`<p style="padding:40px;text-align:center;color:var(--mute)">La carte n'a pas pu se charger. <a href="#explore">Voir la liste des provinces</a>.</p>`})}
 
@@ -106,7 +107,8 @@ function initInteractiveMap(id){const el=document.getElementById(id);if(!el)retu
 const KH_MONTHS=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
 const khTime=()=>{const k=new Date(Date.now()+7*36e5),p=v=>String(v).padStart(2,"0");return `${p(k.getUTCHours())}:${p(k.getUTCMinutes())}:${p(k.getUTCSeconds())}`};
 const khDate=()=>{const k=new Date(Date.now()+7*36e5);return `${k.getUTCDate()} ${KH_MONTHS[k.getUTCMonth()]} ${k.getUTCFullYear()}`};
-setInterval(()=>{const el=document.getElementById("khtime");if(el){const h=khTime();if(el.textContent!==h)el.textContent=h}
+setInterval(()=>{if(typeof EVT_LASTDAY!=="undefined"&&EVT_LASTDAY!==evtToday()){EVT_LASTDAY=evtToday();EVT_MAPDAY="";const r=(location.hash||"#home").slice(1).split("/")[0];if(["home","explore","events","map",""].includes(r))render(true)}
+ const el=document.getElementById("khtime");if(el){const h=khTime();if(el.textContent!==h)el.textContent=h}
  const ed=document.getElementById("khdate");if(ed){const d=khDate();if(ed.textContent!==d)ed.textContent=d}},1000);
 
 /* ===== structure commune ===== */
@@ -148,6 +150,7 @@ function home(){const m=new Date().getMonth();const seasons=["dry","dry","hot","
  <div class="stats"><div><b>${DEST.length}</b>provinces</div><div><b>${EXPERIENCES.length}</b>expériences</div><div><b>${TRIPS.length}</b>itinéraires</div><div><b>${PLACES_COUNT}</b>lieux à voir</div></div></div></header>
  <section class="s" id="map"><div class="wrap"><div class="shead"><div><span class="eyebrow">${t("map")}</span><h2>Touchez une province. Chacune a son histoire.</h2></div><p>Filtrez selon vos envies, puis ouvrez la fiche d'une province : lieux, cuisine, trésors cachés et itinéraires.</p></div>
  <div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.slice(0,9).map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div>
+ ${evtTodayBar()}
  <div class="mapwrap"><div class="mapbox"><div id="leafmap-home" class="leafmap loading" data-default="kampot" role="application" aria-label="Carte interactive du Cambodge"></div></div><div class="mappanel" id="mpanel">${panel(byId("kampot"))}</div></div></div></section>
  <section class="s" id="featured" style="padding-top:0"><div class="wrap"><div class="shead"><div><span class="eyebrow">À la une ce mois-ci</span><h2>Sept provinces, sept Cambodges très différents</h2></div><a class="link" href="#explore">Les 25 provinces</a></div>
  <div class="grid g3">${["siem-reap","kampot","mondulkiri","kratie","sihanoukville","battambang","koh-kong"].map((id,i)=>dcard(byId(id),i===0?"tall wide":i===3?"tall":"",i)).join("")}</div></div></section>
@@ -185,7 +188,7 @@ function tripCards(days,list){list=list||TRIPS.filter(tr=>tr.days===days||Math.a
 
 /* ===== explorer ===== */
 function explore(){return nav("explore")+`<section class="exphero"><div class="wrap"><span class="eyebrow">${t("explore")}</span><h1>Les 25 provinces</h1><p class="lead">On réduit souvent le Cambodge à deux villes. Voici tout le pays, région par région, avec la carte qui va avec.</p></div></section>
- <section class="s" style="padding-top:20px"><div class="wrap"><div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div><div class="mapwrap"><div class="mapbox"><div id="leafmap-explore" class="leafmap loading" data-default="ratanakiri" role="application" aria-label="Carte interactive du Cambodge"></div></div><div class="mappanel" id="mpanel">${panel(byId("ratanakiri"))}</div></div></div></section>
+ <section class="s" style="padding-top:20px"><div class="wrap"><div class="mapfilters chips"><button class="chip on" data-f="">Tout</button>${EXPERIENCES.map(e=>`<button class="chip" data-f="${e.id}">${e.name}</button>`).join("")}</div>${evtTodayBar()}<div class="mapwrap"><div class="mapbox"><div id="leafmap-explore" class="leafmap loading" data-default="ratanakiri" role="application" aria-label="Carte interactive du Cambodge"></div></div><div class="mappanel" id="mpanel">${panel(byId("ratanakiri"))}</div></div></div></section>
  ${REG_ORDER.map(r=>`<section class="s" style="padding-top:0"><div class="wrap"><div class="shead"><h2 style="font-size:34px">${REGIONS[r]}</h2></div><div class="grid g4">${DEST.filter(d=>d.region===r).map((d,i)=>dcard(d,"",i)).join("")}</div></div></section>`).join("")}`+footer()}
 
 /* ===== galerie photos & vidéos (fichiers du dossier photos/) ===== */
@@ -285,11 +288,29 @@ function bind(){
  document.querySelectorAll(".mt").forEach(b=>b.onclick=()=>lbOpen(MEDIA[b.closest(".mgrid").dataset.p],+b.dataset.i));
  document.querySelectorAll(".mbtn").forEach(b=>b.onclick=()=>{const [p,i]=b.dataset.pl.split(":");lbOpen(MEDIA[p].filter(x=>x.at&&x.at.includes(+i)),0)});
  const gm=$("[data-more]");if(gm)gm.onclick=()=>{document.querySelectorAll(".mgrid .mt[hidden]").forEach(t=>t.hidden=false);gm.remove()};
+ document.querySelectorAll("[data-evday]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-evday]").forEach(x=>x.classList.remove("on"));b.classList.add("on");EVT_MAPDAY=b.dataset.evday;const lm=$("#leafmap-events");if(lm)lm.dataset.day=EVT_MAPDAY;showEvtMarkers(EVT_MAPDAY)});
  const ep=$("#evprov");if(ep)ep.onchange=()=>{EVT_PROV=ep.value;try{localStorage.setItem("gc-evprov",EVT_PROV)}catch(e){}render(true)};
  bindForms()}
 
+/* ===== événements sur la carte (marqueurs du jour) ===== */
+function evtPts(e){if(e.pts)return e.pts;const d=e.ville!=="all"&&byId(e.ville);return d?[[d.lat,d.lon,d.name,true]]:[]}
+const evtWeekOff=day=>Math.round((evtDay(evtMonday(day))-evtDay(evtMonday(evtToday())))/6048e5);
+function showEvtMarkers(day){const ml=CURRENT_ML,map=CURRENT_MAP;if(!ml||!map)return;
+ CURRENT_EVT_MARKERS.forEach(m=>m.remove());CURRENT_EVT_MARKERS=[];
+ const groups={};
+ const onEvPage=map.getContainer().dataset.mode==="events";
+ evtOn(day).filter(e=>!onEvPage||evtKeep(e)).forEach(e=>evtPts(e).forEach(([lat,lon,place,approx])=>{const k=lat+","+lon;(groups[k]=groups[k]||{lat,lon,place,approx,list:[]}).list.push(e)}));
+ Object.values(groups).forEach(g=>{const e0=g.list[0];
+  const wrap=document.createElement("div");wrap.className="evpin ev-"+e0.cat;wrap.innerHTML=`<span>${e0.emoji}</span>${g.list.length>1?`<i>${g.list.length}</i>`:""}`;wrap.setAttribute("aria-label",g.list.map(e=>e.titre).join(", "));
+  const items=g.list.map(e=>`<div class="evpop"><b>${e.emoji} ${e.titre}</b>${e.heure?`<small>🕒 ${e.heure}</small>`:""}</div>`).join("");
+  const pop=new ml.Popup({offset:16,maxWidth:"240px",anchor:"bottom",className:"gcpop"}).setHTML(`<div class="popc"><small class="evpopwhere">📍 ${g.place}${g.approx?" (lieu exact non communiqué)":""}</small>${items}<a class="btn dark" href="#events/${evtWeekOff(day)}">Voir l'agenda →</a></div>`);
+  CURRENT_EVT_MARKERS.push(new ml.Marker({element:wrap,anchor:"center"}).setLngLat([g.lon,g.lat]).setPopup(pop).addTo(map));wrap.setAttribute("aria-label",g.list.map(e=>e.titre).join(", "));wrap.addEventListener("click",()=>map.easeTo({center:[g.lon,g.lat],offset:[0,60],duration:400}))});
+ const cnt=document.getElementById("evmapcount");if(cnt)cnt.textContent=CURRENT_EVT_MARKERS.length?"":"Aucun événement localisé ce jour-là."}
+/* bandeau « aujourd'hui » au-dessus des cartes */
+function evtTodayBar(){const td=evtToday(),list=evtOn(td),loc=list.filter(e=>evtPts(e).length),nat=list.filter(e=>e.ville==="all"&&!evtPts(e).length);
+ return `<div class="evtoday"><span>📅 <b>Aujourd'hui, ${evtFr(td)}</b> : ${loc.length?`${loc.length} événement${loc.length>1?"s":""} sur la carte (pastilles rondes)`:"aucun événement localisé"}${nat.length?` · ${nat.map(e=>e.emoji+" "+e.titre).join(", ")} dans tout le pays`:""}</span><a href="#events">Agenda de la semaine →</a></div>`}
 /* ===== événements de la semaine (données : data-events.js) ===== */
-let EVT_PROV="";try{EVT_PROV=localStorage.getItem("gc-evprov")||""}catch(e){}
+let EVT_PROV="",EVT_MAPDAY="",EVT_LASTDAY=evtToday();try{EVT_PROV=localStorage.getItem("gc-evprov")||""}catch(e){}
 const EVT_DAYS=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 const EVT_MONTHS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
 const evtFr=s=>{const d=evtDay(s);return d.getUTCDate()+(d.getUTCDate()===1?"er":"")+" "+EVT_MONTHS[d.getUTCMonth()]};
@@ -302,6 +323,7 @@ function evtItem(e,day){const c=EVT_CATS[e.cat]||["",""];let span="";
 function eventsPage(off){off=Math.max(-8,Math.min(60,off));
  const today=evtToday(),mon=evtMonday(today,off),sun=evtAdd(mon,6);
  const days=[0,1,2,3,4,5,6].map(i=>evtAdd(mon,i));
+ const mapDay=days.includes(EVT_MAPDAY)?EVT_MAPDAY:days.includes(today)?today:mon;
  const ys=[...new Set([mon.slice(0,4),sun.slice(0,4)])].filter(y=>!evtYearOk(y));
  const title=mon.slice(0,7)===sun.slice(0,7)?`Du lundi ${evtDay(mon).getUTCDate()} au dimanche ${evtFr(sun)} ${sun.slice(0,4)}`:`Du lundi ${evtFr(mon)}${mon.slice(0,4)!==sun.slice(0,4)?" "+mon.slice(0,4):""} au dimanche ${evtFr(sun)} ${sun.slice(0,4)}`;
  const blocks=days.map((d,i)=>{const items=evtOn(d).filter(e=>evtKeep(e)&&!(e.recurring&&e.days.length===7));const isT=d===today;
@@ -313,6 +335,8 @@ function eventsPage(off){off=Math.max(-8,Math.min(60,off));
  <div class="evbar"><div class="evnav"><a class="pill" href="#events/${off-1}">‹ Semaine précédente</a>${off?`<a class="pill" href="#events">Cette semaine</a>`:""}<a class="pill" href="#events/${off+1}">Semaine suivante ›</a></div>
  <label class="evfilter"><span>Province</span><select id="evprov"><option value="">Toutes les provinces</option>${DEST.map(d=>`<option value="${d.id}"${d.id===EVT_PROV?" selected":""}>${d.name}</option>`).join("")}</select></label></div>
  <h2 class="evweek">${title}</h2>
+ <div class="evmap"><div class="evmapdays chips" role="group" aria-label="Jour affiché sur la carte">${days.map((d,i)=>`<button class="chip${d===mapDay?" on":""}" data-evday="${d}">${EVT_DAYS[i].slice(0,3)}. ${evtDay(d).getUTCDate()}${d===today?" · auj.":""}</button>`).join("")}</div>
+ <div class="mapbox"><div id="leafmap-events" class="leafmap loading" data-mode="events" data-day="${mapDay}" role="application" aria-label="Carte des événements du jour"></div><p class="evmapcount" id="evmapcount"></p></div></div>
  ${ys.length?`<p class="evwarn">Les dates des fêtes lunaires de ${ys.join(" et ")} (Nouvel An khmer, Pchum Ben, fête des eaux…) ne sont pas encore publiées par le gouvernement : seuls les jours fériés à date fixe et les rendez-vous réguliers sont affichés.</p>`:""}
  <div class="evdays">${daily.length?`<article class="evday daily"><header><b>Tous les jours</b><span>de la semaine</span></header>${daily.map(e=>evtItem(e,mon)).join("")}</article>`:""}${blocks}</div>
  ${next.length?`<div class="shead" style="margin-top:60px"><div><span class="eyebrow">Plus loin</span><h2>Les prochains grands rendez-vous</h2></div></div><div class="grid g3">${next.map(e=>`<div class="box evnext ev-${e.cat}"><p class="evwhen">${evtFr(e.date)}${e.fin&&e.fin!==e.date?" – "+evtFr(e.fin):""} ${(e.fin||e.date).slice(0,4)}</p><h4>${e.emoji} ${e.titre}</h4><p>📍 ${evtPlace(e.ville)}</p></div>`).join("")}</div>`:""}
