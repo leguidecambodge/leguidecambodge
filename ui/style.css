@@ -409,3 +409,5 @@ body{top:0!important}
 .evmapcount:empty{display:none}
 .evmapcount:not(:empty){padding:6px 10px}
 .maplibregl-popup{z-index:5}
+.credit a{color:inherit;text-decoration:underline;text-underline-offset:2px}.credit{text-shadow:0 1px 3px rgba(0,0,0,.6);opacity:.8;max-width:calc(100% - 24px);text-align:right;line-height:1.4}
+.dhero .credit{top:78px;bottom:auto}

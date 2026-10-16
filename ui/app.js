@@ -28,7 +28,7 @@ function ph(o,mode){const u=`url('${o.src}')`;
  if(o.fit) return (mode==="card"||mode==="panel")
   ? `<div class="scene ph fit" style="background-image:${u}" role="img" aria-label="Photo"></div>`
   : `<div class="scene ph hy"><b style="background-image:${u}"></b><i style="background-image:${u}"></i></div>`;
- const cr=o.credit&&mode==="hero"?`<span class="credit">Photo : ${o.credit}</span>`:"";
+ const cr=o.credit&&(mode==="hero"||mode==="gal")?`<span class="credit">Photo : ${o.credit}</span>`:"";
  return `<div class="scene ph" style="background-image:${u};--pos:${o.pos||"center"}">${cr}</div>`}
 function vis(d,mode,seed){const p=PH[d.id];let o=null;
  if(p){if(mode==="gal0")o=p.gal&&p.gal[0];else if(mode==="gal1")o=p.gal&&p.gal[1];else if(mode==="hero")o=p.hero||p.card;else o=p.card}
