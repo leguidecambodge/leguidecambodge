@@ -211,7 +211,6 @@
     <button class="carte-filter-btn" data-type="hotel">🏨 Hôtels</button>
     <button class="carte-filter-btn" data-type="activite">🎭 Activités</button>
     <button class="carte-filter-btn" data-type="plage">🏖 Plages</button>
-    <button class="carte-filter-btn" data-type="scooter">🛵 Scooters</button>
     <button class="carte-filter-btn" data-type="urgence">🚨 Urgences</button>
     <button class="carte-filter-btn" data-type="hopital">🏥 Hôpitaux</button>
     <button class="carte-filter-btn" data-type="ambassade">🏛 Ambassades</button>
@@ -376,7 +375,7 @@ if (navbar) {
     {type:'temple', lat:13.4412, lng:103.8573, nom:'Angkor Thom – Bayon', desc:'Temple aux 216 visages de pierre souriants. Centre de l\'ancienne cité royale d\'Angkor Thom. Inclus dans le pass.'},
     {type:'temple', lat:13.4347, lng:103.8891, nom:'Ta Prohm', desc:'Temple envahi par la jungle. Rendu célèbre par Tomb Raider. Figuiers centenaires qui enlacent les pierres.'},
     {type:'temple', lat:13.5986, lng:103.9658, nom:'Banteay Srei', desc:'Temple en grès rose à 35 km de Siem Reap. Sculptures parmi les plus fines de l\'art khmer (XIe siècle).'},
-    {type:'temple', lat:13.5970, lng:104.2243, nom:'Beng Mealea', desc:'Temple du XIIe siècle entièrement englouti par la jungle. Moins touristique, atmosphère Indiana Jones.'},
+    {type:'temple', lat:13.4759, lng:104.2292, nom:'Beng Mealea', desc:'Temple du XIIe siècle entièrement englouti par la jungle. Moins touristique, atmosphère Indiana Jones.'},
     {type:'temple', lat:14.3907, lng:104.6809, nom:'Preah Vihear', desc:'⚠️ <strong>Fermé aux visiteurs étrangers</strong> depuis les combats frontaliers de 2025, qui l\'ont endommagé ; la zone frontalière (30 km) est formellement déconseillée par France Diplomatie. Temple UNESCO perché à 525 m sur une falaise de la chaîne des Dângrêk. Vue spectaculaire. Frontière thaïlandaise.'},
     /* RESTAURANTS */
     {type:'restaurant', lat:13.3565, lng:103.8644, nom:'Cuisine Wat Damnak', desc:'Gastronomie khmère de luxe · Siem Reap · 25–45 USD · Réservation conseillée.'},
@@ -394,9 +393,9 @@ if (navbar) {
     /* ACTIVITES */
     {type:'activite', lat:13.4100, lng:103.8645, nom:'Lever de soleil à Angkor', desc:'L\'expérience khmère par excellence. Arrivez 1h avant l\'aube. Pass Angkor requis (37$ / jour).'},
     {type:'activite', lat:13.0500, lng:103.9000, nom:'Lac Tonlé Sap', desc:'Le plus grand lac d\'Asie du Sud-Est (16 000 km² en saison des pluies). Villages flottants et oiseaux migrateurs.'},
-    {type:'activite', lat:13.0877, lng:103.1940, nom:'Train de bambou (Norry)', desc:'Expérience unique à Battambang. Plateforme de bambou motorisée sur rails. 5 USD aller-retour. Incontournable !'},
+    {type:'activite', lat:13.0186, lng:103.2432, nom:'Train de bambou (Norry)', desc:'Expérience unique à Battambang. Plateforme de bambou motorisée sur rails, sur un tronçon touristique reconstruit au sud-est de la ville. Environ 5 USD par personne.'},
     {type:'activite', lat:13.3620, lng:103.8560, nom:'Cours de cuisine khmère', desc:'Apprenez à cuisiner l\'Amok Trei et le Lok Lak. Visite du marché incluse. Nombreux cours à Siem Reap dès 25 USD.'},
-    {type:'activite', lat:12.5521, lng:106.0124, nom:'Dauphins de l\'Irrawaddy – Kampi', desc:'Observation des dauphins du Mékong à Kampi, 15 km au nord de Kratie. Espèce en danger critique d\'extinction.'},
+    {type:'activite', lat:12.6071, lng:106.0028, nom:'Dauphins de l\'Irrawaddy – Kampi', desc:'Observation des dauphins du Mékong à Kampi, 15 km au nord de Kratie. Espèce en danger critique d\'extinction.'},
     {type:'activite', lat:11.4906, lng:104.9012, nom:'Choeung Ek – Killing Fields', desc:'Mémorial du génocide khmer rouge (1975–1979). Site historique solennel, 15 km au sud de Phnom Penh. Entrée : 6 USD.'},
     /* PLAGES */
     {type:'plage', lat:10.7293, lng:103.2404, nom:'Long Beach – Koh Rong', desc:'4 km de sable blanc immaculé. Eau turquoise et bioluminescence la nuit. Ferry depuis Sihanoukville (45 min).'},
@@ -406,43 +405,41 @@ if (navbar) {
 
     /* ── TEMPLES & MONUMENTS SUPPLÉMENTAIRES ── */
     {type:'temple', lat:13.4270, lng:103.8528, nom:'Phnom Bakheng', desc:'Temple-montagne du IXe siècle. Point de vue panoramique sur Angkor au coucher du soleil. À 1,5 km d\'Angkor Wat.'},
-    {type:'temple', lat:13.4411, lng:103.8558, nom:'Preah Khan', desc:'Ancien centre universitaire bouddhiste. Galeries labyrinthiques et arbres géants. Moins fréquenté qu\'Angkor Wat. Pass Angkor inclus.'},
-    {type:'temple', lat:13.4656, lng:103.8741, nom:'Neak Pean', desc:'Temple bouddhiste du XIIe siècle sur une île artificielle. Piscine sacrée aux vertus thérapeutiques. Ambiance mystique.'},
-    {type:'temple', lat:13.4312, lng:103.8897, nom:'Banteay Kdei', desc:'Temple-monastère du XIIe siècle. Galeries ombragées idéales aux heures chaudes. Proche du bassin de Srah Srang.'},
-    {type:'temple', lat:13.4500, lng:103.9017, nom:'East Mebon', desc:'Temple à la gloire du dieu Shiva (Xe siècle). Éléphants de pierre aux angles. Anciennement entouré par l\'Est Baray.'},
-    {type:'temple', lat:13.4426, lng:103.9053, nom:'Pre Rup', desc:'Temple-montagne dédié à Shiva (961 ap. J.-C.). Briques rouges et latérite. Idéal pour les couchers de soleil depuis son sommet.'},
+    {type:'temple', lat:13.4619, lng:103.8716, nom:'Preah Khan', desc:'Ancien centre universitaire bouddhiste. Galeries labyrinthiques et arbres géants. Moins fréquenté qu\'Angkor Wat. Pass Angkor inclus.'},
+    {type:'temple', lat:13.4632, lng:103.8948, nom:'Neak Pean', desc:'Temple bouddhiste du XIIe siècle sur une île artificielle. Piscine sacrée aux vertus thérapeutiques. Ambiance mystique.'},
+    {type:'temple', lat:13.43, lng:103.8986, nom:'Banteay Kdei', desc:'Temple-monastère du XIIe siècle. Galeries ombragées idéales aux heures chaudes. Proche du bassin de Srah Srang.'},
+    {type:'temple', lat:13.4466, lng:103.9202, nom:'East Mebon', desc:'Temple à la gloire du dieu Shiva (Xe siècle). Éléphants de pierre aux angles. Anciennement entouré par l\'Est Baray.'},
+    {type:'temple', lat:13.435, lng:103.9206, nom:'Pre Rup', desc:'Temple-montagne dédié à Shiva (961 ap. J.-C.). Briques rouges et latérite. Idéal pour les couchers de soleil depuis son sommet.'},
     {type:'temple', lat:11.5749, lng:104.9280, nom:'Wat Phnom', desc:'Pagode fondatrice de Phnom Penh. Colline sacrée de 27 m. Singes, fontaines et bouddhisme vivant. Entrée : 1 USD.'},
-    {type:'temple', lat:11.5639, lng:104.9310, nom:'Monument de l\'Indépendance', desc:'Stupa commémoratif inauguré en 1958 par Sihanouk. Architecture khmère moderne. Illuminé la nuit. Entrée libre.'},
-    {type:'temple', lat:11.5642, lng:104.9227, nom:'Pagode d\'Argent (Palais Royal)', desc:'Sol de 5 329 carreaux d\'argent massif. Bouddha en or serti de 9 584 diamants. Tenue couverte obligatoire. 10 USD.'},
+    {type:'temple', lat:11.5564, lng:104.9282, nom:'Monument de l\'Indépendance', desc:'Stupa commémoratif inauguré en 1958 par Sihanouk. Architecture khmère moderne. Illuminé la nuit. Entrée libre.'},
+    {type:'temple', lat:11.5625, lng:104.9317, nom:'Pagode d\'Argent (Palais Royal)', desc:'Sol de 5 329 carreaux d\'argent massif. Bouddha en or serti de 9 584 diamants. Tenue couverte obligatoire. 10 USD.'},
     {type:'temple', lat:13.5740, lng:104.1098, nom:'Phnom Kulen — Montagne Sacrée', desc:'Montagne sacrée du royaume khmer. Rivière aux mille lingas, cascade et Bouddha couché géant. À 50 km de Siem Reap.'},
-    {type:'temple', lat:12.5833, lng:105.0333, nom:'Sambor Prei Kuk (UNESCO)', desc:'Complexe pré-angkorien du VIIe siècle. 3 groupes de temples dans la forêt. Classé UNESCO depuis 2017. Peu touristique.'},
-    {type:'temple', lat:12.9628, lng:103.0617, nom:'Phnom Banan', desc:'Temple du XIe siècle à 25 km de Battambang. 358 marches et vue imprenable sur rizières. En dehors des sentiers battus.'},
-    {type:'temple', lat:12.9789, lng:103.0049, nom:'Phnom Sampov — Grottes aux Chauves-souris', desc:'Temple rupestre + grottes de Killing Caves. Envol spectaculaire de 1,5 million de chauves-souris au coucher du soleil.'},
-    {type:'temple', lat:12.0012, lng:105.4713, nom:'Wat Nokor (Kampong Cham)', desc:'Ancien temple hindouiste du XIe siècle intégrant une pagode bouddhiste moderne. Syncrétisme unique. Entrée libre.'},
-    {type:'temple', lat:10.5818, lng:104.0196, nom:'Bokor Hill Station (Station Fantôme)', desc:'Ancienne station coloniale française à 1 080 m d\'altitude. Casino abandonné, brume et cathédrale en ruines. Atmosphère unique.'},
-    {type:'temple', lat:13.3585, lng:103.8501, nom:'Musée National d\'Angkor (Siem Reap)', desc:'La plus grande collection de statues khmères. 8 galeries thématiques. 15 USD. À côté de l\'Old Market. Incontournable avant Angkor.'},
-    {type:'temple', lat:11.5604, lng:104.9236, nom:'Musée National du Cambodge', desc:'Architecture en bois rouge. Plus belle collection de sculpture khmère du monde. 10 USD. Face au Palais Royal.'},
+    {type:'temple', lat:12.8724, lng:105.035, nom:'Sambor Prei Kuk (UNESCO)', desc:'Complexe pré-angkorien du VIIe siècle. 3 groupes de temples dans la forêt. Classé UNESCO depuis 2017. Peu touristique.'},
+    {type:'temple', lat:12.9512, lng:103.1336, nom:'Phnom Banan', desc:'Temple du XIe siècle à 25 km de Battambang. 358 marches et vue imprenable sur rizières. En dehors des sentiers battus.'},
+    {type:'temple', lat:13.0233, lng:103.0999, nom:'Phnom Sampov — Grottes aux Chauves-souris', desc:'Temple rupestre + grottes de Killing Caves. Envol spectaculaire de 1,5 million de chauves-souris au coucher du soleil.'},
+    {type:'temple', lat:12.0, lng:105.4391, nom:'Wat Nokor (Kampong Cham)', desc:'Ancien temple hindouiste du XIe siècle intégrant une pagode bouddhiste moderne. Syncrétisme unique. Entrée libre.'},
+    {type:'temple', lat:10.6243, lng:104.0265, nom:'Bokor Hill Station (Station Fantôme)', desc:'Ancienne station coloniale française à 1 080 m d\'altitude. Casino abandonné, brume et cathédrale en ruines. Atmosphère unique.'},
+    {type:'temple', lat:13.3664, lng:103.8595, nom:'Musée National d\'Angkor (Siem Reap)', desc:'La plus grande collection de statues khmères. 8 galeries thématiques. 15 USD. À côté de l\'Old Market. Incontournable avant Angkor.'},
+    {type:'temple', lat:11.5655, lng:104.9293, nom:'Musée National du Cambodge', desc:'Architecture en bois rouge. Plus belle collection de sculpture khmère du monde. 10 USD. Face au Palais Royal.'},
 
     /* ── ACTIVITÉS SUPPLÉMENTAIRES ── */
-    {type:'activite', lat:13.3588, lng:103.8538, nom:'Phare Circus (Siem Reap)', desc:'Spectacle acrobatique et danse khmer. ONG qui forme des jeunes défavorisés. 20–38 USD. Réservation conseillée. Le soir.'},
+    {type:'activite', lat:13.3588, lng:103.8538, nom:'Phare Circus (Siem Reap)', desc:'Spectacle acrobatique et danse khmer. ONG qui forme des jeunes défavorisés. Adulte 18–38 USD selon la place (enfant 10–18 USD). Tous les soirs à 20h. Réservation conseillée. Le soir.'},
     {type:'activite', lat:13.3655, lng:103.8497, nom:'Angkor Night Market', desc:'Marché nocturne artisanal. Soieries, sculptures, laques. Massages de pieds. Street food. Ambiance festive dès 18h. Entrée libre.'},
     {type:'activite', lat:13.3617, lng:103.8556, nom:'Pub Street — Siem Reap', desc:'Rue animée du centre-ville. Restaurants, bars, clubs. Happy hour 17h–19h. Street food cambodgien. Ambiance internationale.'},
-    {type:'activite', lat:13.3625, lng:103.8538, nom:'Massage Khmer Siem Reap', desc:'Massage khmer traditionnel ou aux herbes. 7–12 USD/heure. Old Market area. Prakar Pich, Frangipani, Seeing Hands.'},
+    {type:'activite', lat:13.3625, lng:103.8538, nom:'Massage Khmer Siem Reap', desc:'Massage khmer traditionnel ou aux herbes. 7–12 USD/heure. Old Market area. Par exemple Seeing Hands (masseurs malvoyants) ou le spa Frangipani.'},
     {type:'activite', lat:13.4050, lng:103.8630, nom:'Vélo dans les temples d\'Angkor', desc:'Location vélo : 2–3 USD/jour. Piste cyclable autour des temples. Idéal à l\'aube (moins de monde et moins chaud).'},
     {type:'activite', lat:13.3950, lng:103.8600, nom:'Quad & ATV autour d\'Angkor', desc:'Balade en quad à travers villages et rizières. Coucher de soleil sur les temples. 45–80 USD/circuit. Angkor ATV, Quad Adventure.'},
     {type:'activite', lat:13.3618, lng:103.8555, nom:'Old Market (Psah Chas) Siem Reap', desc:'Marché central historique. Épices, fruits tropicaux, artisanat. Ambiance locale authentique dès 6h. Centre de Siem Reap.'},
-    {type:'activite', lat:10.6085, lng:104.1800, nom:'Kayak sur la Rivière Kampot', desc:'Descente tranquille de la rivière Kampot. Location 3–5 USD/h. Mangroves, villages flottants et coucher de soleil. Très relaxant.'},
-    {type:'activite', lat:10.4942, lng:104.0608, nom:'Plantation de Poivre de Kampot', desc:'Visite de La Plantation : poivre blanc, noir, rouge. Dégustation et visite guidée 5 USD. Sur la route de Bokor.'},
+    {type:'activite', lat:10.6085, lng:104.1800, nom:'Kayak sur la Rivière Kampot', desc:'Descente tranquille de la rivière Kampot. Location 3–5 USD/h. Mangroves, berges de palmiers et coucher de soleil. Très relaxant.'},
     {type:'activite', lat:10.5818, lng:104.0190, nom:'Randonnée Parc National Bokor', desc:'Parc national de 1 581 km². Cascades Popokvil, jungle dense et faune sauvage. Moto conseillée. Vue imprenable sur le golfe.'},
     {type:'activite', lat:10.7300, lng:103.2378, nom:'Plongée & Snorkeling Koh Rong', desc:'Centre PADI sur l\'île. Récifs coralliens, tortues et poissons tropicaux. Baptême dès 35 USD. Island Diver, Scuba Nation.'},
-    {type:'activite', lat:10.7290, lng:103.2360, nom:'Bioluminescence nocturne Koh Rong', desc:'Tour en bateau la nuit pour voir le plancton bioluminescent. 12–18 USD/pers. Phénomène naturel extraordinaire (juil–oct idéal).'},
+    {type:'activite', lat:10.7290, lng:103.2360, nom:'Bioluminescence nocturne Koh Rong', desc:'Tour en bateau la nuit pour voir le plancton bioluminescent. 12–18 USD/pers. Phénomène naturel extraordinaire, plus visible par nuit sans lune et mer calme.'},
     {type:'activite', lat:13.7406, lng:107.0042, nom:'Lac Yak Loum (Ratanakiri)', desc:'Lac de cratère volcanique dans la jungle. Eau émeraude cristalline. Tribus indigènes Jaraï et Tampuan. À 5 km de Ban Lung.'},
     {type:'activite', lat:12.4590, lng:107.1900, nom:'Trekking & Éléphants — Mondulkiri', desc:'Randonnée dans la jungle avec les éléphants du Elephant Valley Project. Ethnies bunong. Cascades Bou Sra. 2–3 jours.'},
     {type:'activite', lat:12.4887, lng:106.0198, nom:'Balade à vélo — Kratie & Mékong', desc:'Location vélo 2 USD/jour. Île de Koh Trong (traversée en pirogue), pagodes et campagne khmère. Atmosphère hors du temps.'},
-    {type:'activite', lat:13.0965, lng:103.2028, nom:'Marché Nocturne Battambang', desc:'Le plus beau marché nocturne du Cambodge. Street food local, musique live, artisanat. Gratuit. Chaque soir à partir de 17h.'},
-    {type:'activite', lat:10.4790, lng:104.2910, nom:'Randonnée Parc National de Kep', desc:'Jungle dense à 5 min du centre. Sentiers balisés (3–8 km). Singes, lézards géants et orchidées sauvages. Entrée libre.'},
+    {type:'activite', lat:13.0965, lng:103.2028, nom:'Marché Nocturne Battambang', desc:'Marché de nuit au bord de la rivière Sangker : street food locale et petits stands. Accès libre, le soir.'},
+    {type:'activite', lat:10.4790, lng:104.2910, nom:'Randonnée Parc National de Kep', desc:'Jungle dense à 5 min du centre. Sentiers balisés (3–8 km). Singes, lézards géants et orchidées sauvages. Entrée : environ 1 USD.'},
     {type:'activite', lat:10.6095, lng:104.1795, nom:'Croisière coucher de soleil — Kampot', desc:'Bateau sur la rivière Kampot au coucher du soleil. Mangroves, cormorans et montagnes de Bokor en fond. 8–12 USD/pers.'},
-    {type:'activite', lat:11.4906, lng:104.9012, nom:'Choeung Ek – Killing Fields', desc:'Mémorial du génocide khmer rouge (1975–1979). Site historique solennel, 15 km au sud de Phnom Penh. Entrée : 6 USD.'},
     {type:'activite', lat:11.5490, lng:104.9205, nom:'Tuol Sleng (S-21) — Musée Génocide', desc:'Ancienne prison secrète des Khmers Rouges. 17 000 victimes. Mémorial incontournable pour comprendre l\'histoire. 5 USD.'},
     {type:'activite', lat:11.5650, lng:104.9295, nom:'Balade Tuk-Tuk nocturne Phnom Penh', desc:'Découvrez Phnom Penh la nuit en tuk-tuk. Riverside illuminé, marchés nocturnes. ~10–15 USD/h. Chauffeurs au Riverside Quay.'},
     {type:'activite', lat:11.5677, lng:104.9175, nom:'Marché Central (Psah Thmei)', desc:'Dôme art déco de 1937. Bijoux, électronique, épices, soieries. Ambiance khmer authentique. Ouvert 6h–18h. Entrée libre.'},
@@ -518,27 +515,13 @@ if (navbar) {
 
     /* ── LOCATION DE SCOOTERS ── */
     /* Siem Reap */
-    {type:'scooter', lat:13.3630, lng:103.8542, nom:'Lucky Lucky Moto Rental — Siem Reap', desc:'Location moto & scooter. 5–8 USD/jour. Automatiques et manuels. Dépôt passeport ou cash. Old Market area.'},
-    {type:'scooter', lat:13.3645, lng:103.8558, nom:'Angkor Moto — Siem Reap', desc:'Location scooter semi-automatique. 5–9 USD/jour. Casques fournis. Conseils d\'itinéraires pour les temples. Face au marché central.'},
-    {type:'scooter', lat:13.3620, lng:103.8535, nom:'Grasshopper Adventures (vélo + scooter)', desc:'Location vélos électriques, manuels et scooters. 3–8 USD/jour. Cartes des temples fournies. Circuits guidés disponibles.'},
     /* Phnom Penh */
-    {type:'scooter', lat:11.5658, lng:104.9272, nom:'Lucky Moto Rental — Phnom Penh', desc:'Location scooter fiable. 5–8 USD/jour. Automatiques Honda Wave. Dépôt 50 USD. Livraison hôtel possible. BKK1 area.'},
-    {type:'scooter', lat:11.5642, lng:104.9265, nom:'Happy Moto — Phnom Penh', desc:'Location moto semi-auto et manuelle. 4–7 USD/jour. Conseils de circulation. Casques homologués. Quartier Riverside.'},
-    {type:'scooter', lat:11.5690, lng:104.9170, nom:'Vanak Moto Rental — Phnom Penh', desc:'Grande sélection de scooters et motos. 5–10 USD/jour. Assurance possible. Réparations sur place. Orussey Market area.'},
     /* Battambang */
-    {type:'scooter', lat:13.0973, lng:103.2025, nom:'Gecko Moto — Battambang', desc:'Location scooter idéale pour le train de bambou et Phnom Banan. 4–7 USD/jour. Carte touristique fournie. Centre-ville.'},
-    {type:'scooter', lat:13.0985, lng:103.2038, nom:'Seng Hout Moto — Battambang', desc:'Scooters automatiques 110cc. 4–6 USD/jour. Ouvert 7h–20h. Dépôt simple. Proche gare de Battambang.'},
     /* Kampot */
-    {type:'scooter', lat:10.6108, lng:104.1778, nom:'Neak Moto — Kampot', desc:'Location scooter dans le centre de Kampot. 5–8 USD/jour. Idéal pour la plantation de poivre et Bokor. Old Market area.'},
-    {type:'scooter', lat:10.6118, lng:104.1785, nom:'Kampot Discover — Location Moto', desc:'Scooter semi-auto Honda. 5–7 USD/jour. Casques et ponchos pluie inclus. Conseils de routes et sentiers. Quartier riverside.'},
     /* Sihanoukville */
-    {type:'scooter', lat:10.6232, lng:103.5208, nom:'Sihanoukville Moto Rental', desc:'Location scooter pour rejoindre Otres Beach et les piers. 5–7 USD/jour. Attention au trafic dense. Départ à l\'aéroport.'},
     /* Kratie */
-    {type:'scooter', lat:12.4888, lng:106.0185, nom:'Moto Rental — Kratie', desc:'Location scooter pour l\'excursion à Kampi (dauphins) et l\'île de Koh Trong. 4–6 USD/jour. Market area. Pratique.'},
     /* Kampong Cham */
-    {type:'scooter', lat:11.9978, lng:105.4652, nom:'Moto Rental — Kampong Cham', desc:'Scooter pour rejoindre les collines de Phnom Pros & Phnom Srei et le Wat Nokor. 4–6 USD/jour. Centre-ville.'},
     /* Kep */
-    {type:'scooter', lat:10.4868, lng:104.3185, nom:'Kep Moto Rental', desc:'Scooter pour explorer la côte de Kep, le parc national et les îles (Koh Tonsay). 5–7 USD/jour. Près du marché aux crabes.'},
 
     /* ══════════ URGENCES ══════════ */
     {type:'urgence', lat:11.5620, lng:104.9170, nom:'🚨 Police Nationale — 117', desc:'<strong>Police :</strong> composer le <strong>117</strong><br><strong>Ambulance :</strong> composer le <strong>119</strong><br><strong>Pompiers :</strong> composer le <strong>118</strong><br><strong>Police touristique (ministère du Tourisme, 24h/24) :</strong> <strong>016 654 736</strong><br><strong>Équipe d\'intervention pour les étrangers :</strong> 031 201 2345<br>Numéros valables dans tout le pays.'},
