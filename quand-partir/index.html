@@ -38,7 +38,7 @@
       "description": "Le meilleur moment pour partir au Cambodge : météo mois par mois, saison sèche vs saison des pluies, températures et affluence touristique à Phnom Penh, Siem Reap, Kampot et Sihanoukville.",
       "inLanguage": "fr",
       "datePublished": "2026-04-01",
-      "dateModified": "2026-08-11",
+      "dateModified": "2026-10-17",
       "author": {"@type": "Organization", "name": "Le Guide Cambodge"},
       "publisher": {"@type": "Organization", "name": "Le Guide Cambodge", "url": "https://www.leguidecambodge.com/"},
       "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Angkor_Wat_at_sunset.JPG/1280px-Angkor_Wat_at_sunset.JPG"
@@ -359,18 +359,18 @@ if (navbar) {
 /* ── Calendrier Quand Partir ── */
 (function(){
   const months = [
-    {name:"Janvier",   short:"Jan", type:"ideal",      temp:"28°C", rain:"Très faible",  crowd:"Élevé",      desc:"Le mois le plus touristique et le plus sec. Températures agréables, ciels bleus. Idéal pour Angkor et les temples. Réservez hôtels et bus à l'avance car c'est le pic de la haute saison."},
-    {name:"Février",   short:"Fév", type:"ideal",      temp:"30°C", rain:"Très faible",  crowd:"Modéré",     desc:"Excellent mois pour voyager. Légèrement moins fréquenté que janvier, températures encore fraîches le matin. Parfait pour les randonnées à Mondulkiri ou Cardamomes."},
-    {name:"Mars",      short:"Mar", type:"ideal",      temp:"33°C", rain:"Faible",       crowd:"Modéré",     desc:"Début de la chaleur. Très bon pour la côte (Kampot, Kep, îles). Angkor encore agréable tôt le matin. Les flamboyants commencent à fleurir — magnifique !"},
-    {name:"Avril",     short:"Avr", type:"acceptable", temp:"35°C", rain:"Faible",       crowd:"Faible",     desc:"Khmer New Year (13-16 avril) : fête nationale, ambiance festive extraordinaire dans les villages. Chaleur intense. Évitez Angkor à midi. La côte devient la meilleure option."},
-    {name:"Mai",       short:"Mai", type:"pluie",      temp:"34°C", rain:"Modérée",      crowd:"Très faible",desc:"Début de la saison des pluies. Averses courtes l'après-midi. Le pays se verdoie, les rizières sont magnifiques. Budget réduit, très peu de touristes — une belle découverte."},
-    {name:"Juin",      short:"Jun", type:"pluie",      temp:"32°C", rain:"Élevée",       crowd:"Très faible",desc:"Pluies régulières mais rarement toute la journée. Campagne luxuriante. Certaines routes rurales peuvent être boueuses. Hôtels à prix réduits, accueil chaleureux."},
-    {name:"Juillet",   short:"Jul", type:"pluie",      temp:"31°C", rain:"Élevée",       crowd:"Très faible",desc:"Plein monsoon. Pluies importantes, surtout à l'ouest et au sud. Le lac Tonlé Sap commence à gonfler. Bon pour Phnom Penh et musées."},
-    {name:"Août",      short:"Aoû", type:"pluie",      temp:"31°C", rain:"Élevée",       crowd:"Très faible",desc:"Similaire à juillet. Le Cambodge vert à son maximum. Excellent mois pour un séjour authentique hors masse touristique."},
-    {name:"Septembre", short:"Sep", type:"pluie",      temp:"30°C", rain:"Très élevée",  crowd:"Très faible",desc:"Mois le plus pluvieux de l'année. Certaines routes rurales inondées. Le lac Tonlé Sap à son niveau maximal. Évitez si vous cherchez le beau temps."},
-    {name:"Octobre",   short:"Oct", type:"acceptable", temp:"29°C", rain:"Modérée",      crowd:"Faible",     desc:"Fin de saison des pluies. Fête des Eaux (Bon Om Touk) en fin de mois — festivité nationale inoubliable à Phnom Penh."},
-    {name:"Novembre",  short:"Nov", type:"ideal",      temp:"27°C", rain:"Faible",       crowd:"Modéré",     desc:"Le début de la haute saison. Températures rafraîchissantes, pluies rares. Idéal pour tous les circuits. Fête des Eaux début novembre, spectacle de bateaux sur le Tonlé Sap."},
-    {name:"Décembre",  short:"Déc", type:"ideal",      temp:"26°C", rain:"Très faible",  crowd:"Élevé",      desc:"Saison haute à son meilleur. Nuits fraîches, journées ensoleillées. Noël et Nouvel An très animés. La plus belle période pour découvrir Angkor."}
+    {name:"Janvier",   short:"Jan", type:"ideal",      temp:"max 32°C", rain:"Très faible",  crowd:"Élevé",      desc:"Le mois le plus touristique et le plus sec. Températures agréables, ciels bleus. Idéal pour Angkor et les temples. Réservez hôtels et bus à l'avance car c'est le pic de la haute saison."},
+    {name:"Février",   short:"Fév", type:"ideal",      temp:"max 33°C", rain:"Très faible",  crowd:"Modéré",     desc:"Excellent mois pour voyager. Légèrement moins fréquenté que janvier, températures encore fraîches le matin. Parfait pour les randonnées à Mondulkiri ou Cardamomes."},
+    {name:"Mars",      short:"Mar", type:"ideal",      temp:"max 35°C", rain:"Faible",       crowd:"Modéré",     desc:"Début de la chaleur. Très bon pour la côte (Kampot, Kep, îles). Angkor encore agréable tôt le matin. Les flamboyants commencent à fleurir — magnifique !"},
+    {name:"Avril",     short:"Avr", type:"acceptable", temp:"max 35°C", rain:"Faible",       crowd:"Faible",     desc:"Nouvel An khmer (mi-avril : 14-16 avril en 2026 et 2027) : fête nationale, ambiance festive extraordinaire dans les villages. Chaleur intense. Évitez Angkor à midi. La côte devient la meilleure option."},
+    {name:"Mai",       short:"Mai", type:"pluie",      temp:"max 35°C", rain:"Modérée",      crowd:"Très faible",desc:"Début de la saison des pluies. Averses courtes l'après-midi. Le pays se verdoie, les rizières sont magnifiques. Budget réduit, très peu de touristes — une belle découverte."},
+    {name:"Juin",      short:"Jun", type:"pluie",      temp:"max 34°C", rain:"Élevée",       crowd:"Très faible",desc:"Pluies régulières mais rarement toute la journée. Campagne luxuriante. Certaines routes rurales peuvent être boueuses. Hôtels à prix réduits, accueil chaleureux."},
+    {name:"Juillet",   short:"Jul", type:"pluie",      temp:"max 33°C", rain:"Élevée",       crowd:"Très faible",desc:"Plein monsoon. Pluies importantes, surtout à l'ouest et au sud. Le lac Tonlé Sap commence à gonfler. Bon pour Phnom Penh et musées."},
+    {name:"Août",      short:"Aoû", type:"pluie",      temp:"max 33°C", rain:"Élevée",       crowd:"Très faible",desc:"Similaire à juillet. Le Cambodge vert à son maximum. Excellent mois pour un séjour authentique hors masse touristique."},
+    {name:"Septembre", short:"Sep", type:"pluie",      temp:"max 32°C", rain:"Très élevée",  crowd:"Très faible",desc:"Mois le plus pluvieux de l'année. Certaines routes rurales inondées. Le lac Tonlé Sap à son niveau maximal. Évitez si vous cherchez le beau temps."},
+    {name:"Octobre",   short:"Oct", type:"acceptable", temp:"max 31°C", rain:"Encore élevée",      crowd:"Faible",     desc:"Fin de la saison des pluies, encore souvent arrosée. Pchum Ben (fête des ancêtres) tombe souvent fin septembre ou en octobre selon le calendrier lunaire."},
+    {name:"Novembre",  short:"Nov", type:"ideal",      temp:"max 31°C", rain:"En baisse",       crowd:"Modéré",     desc:"Le début de la haute saison. Températures plus douces, pluies de moins en moins fréquentes au fil du mois. Idéal pour tous les circuits. Fête des Eaux en novembre (23-25 nov. 2026, 12-14 nov. 2027), spectacle de bateaux sur le Tonlé Sap."},
+    {name:"Décembre",  short:"Déc", type:"ideal",      temp:"max 31°C", rain:"Très faible",  crowd:"Élevé",      desc:"Saison haute à son meilleur. Nuits fraîches, journées ensoleillées. Noël et Nouvel An très animés. La plus belle période pour découvrir Angkor."}
   ];
     const colorMap = {ideal:'#2A5C3F', acceptable:'#7A6010', pluie:'#7A1B24'};
   const bgMap   = {ideal:'rgba(42,92,63,.2)', acceptable:'rgba(122,96,16,.2)', pluie:'rgba(122,27,36,.2)'};
