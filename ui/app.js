@@ -24,12 +24,18 @@ function scene(type,seed=1){const p=PAL[type]||PAL.paddy;const id="g"+type+seed;
  return `<div class="scene"><svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[2]}" stop-opacity=".55"/><stop offset=".55" stop-color="${p[1]}"/><stop offset="1" stop-color="${p[0]}"/></linearGradient></defs><rect width="1000" height="600" fill="url(#${id})"/>${body}</svg></div>`}
 
 /* ===== photos réelles ===== */
-function ph(o,mode){const u=`url('${o.src}')`;
+/* cartes et galeries : image chargée seulement à l'approche de l'écran (data-bg → lazyBg) ; bandeaux : immédiat */
+function ph(o,mode){const u=`url('${o.src}')`,lz=mode==="card"||mode==="gal",bg=lz?`data-bg="${u}"`:`style="background-image:${u}"`;
  if(o.fit) return (mode==="card"||mode==="panel")
-  ? `<div class="scene ph fit" style="background-image:${u}" role="img" aria-label="Photo"></div>`
-  : `<div class="scene ph hy"><b style="background-image:${u}"></b><i style="background-image:${u}"></i></div>`;
+  ? `<div class="scene ph fit" ${bg} role="img" aria-label="Photo"></div>`
+  : `<div class="scene ph hy"><b ${bg}></b><i ${bg}></i></div>`;
  const cr=o.credit&&(mode==="hero"||mode==="gal")?`<span class="credit">Photo : ${o.credit}</span>`:"";
- return `<div class="scene ph" style="background-image:${u};--pos:${o.pos||"center"}">${cr}</div>`}
+ return lz?`<div class="scene ph" style="--pos:${o.pos||"center"}" ${bg}>${cr}</div>`:`<div class="scene ph" style="background-image:${u};--pos:${o.pos||"center"}">${cr}</div>`}
+let LZ=null;
+function lazyBg(){const els=document.querySelectorAll("[data-bg]");const show=e=>{e.style.backgroundImage=e.dataset.bg;e.removeAttribute("data-bg")};
+ if(!("IntersectionObserver" in window)){els.forEach(show);return}
+ LZ=LZ||new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){LZ.unobserve(x.target);show(x.target)}}),{rootMargin:"500px 0px"});
+ els.forEach(e=>LZ.observe(e))}
 function vis(d,mode,seed){const p=PH[d.id];let o=null;
  if(p){if(mode==="gal0")o=p.gal&&p.gal[0];else if(mode==="gal1")o=p.gal&&p.gal[1];else if(mode==="hero")o=p.hero||p.card;else o=p.card}
  return o?ph(o,mode.startsWith("gal")?"gal":mode):scene(d.scene,seed)}
@@ -280,7 +286,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 function bind(){
  document.querySelectorAll(".mapfilters .chip").forEach(c=>c.onclick=()=>{document.querySelectorAll(".mapfilters .chip").forEach(x=>x.classList.remove("on"));c.classList.add("on");ACTIVE_FILTER=c.dataset.f;applyMapFilter()});
  const lm=document.querySelector(".leafmap");if(lm)initInteractiveMap(lm.id);
- document.querySelectorAll("#dur button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#dur button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$("#tripgrid").innerHTML=tripCards(+b.dataset.d);affiliate($("#tripgrid"))});
+ document.querySelectorAll("#dur button").forEach(b=>b.onclick=()=>{document.querySelectorAll("#dur button").forEach(x=>x.classList.remove("on"));b.classList.add("on");$("#tripgrid").innerHTML=tripCards(+b.dataset.d);affiliate($("#tripgrid"));lazyBg()});
  document.querySelectorAll("[data-fav]").forEach(b=>b.onclick=ev=>{ev.preventDefault();ev.stopPropagation();const id=b.dataset.fav;FAV.has(id)?FAV.delete(id):FAV.add(id);try{localStorage.setItem("gc-fav",JSON.stringify([...FAV]))}catch(e){}render(true)});
  document.querySelectorAll(".ttoc a[data-go]").forEach(a=>a.onclick=ev=>{ev.preventDefault();const el=document.getElementById(a.dataset.go);el&&el.scrollIntoView({behavior:"smooth"})});
  const sb=$("#sbtn");if(sb)sb.onclick=()=>openSearch();const hs=$("#hsearch input");if(hs){hs.onfocus=()=>{openSearch(hs.value);hs.blur()}}
@@ -291,7 +297,7 @@ function bind(){
  const gm=$("[data-more]");if(gm)gm.onclick=()=>{document.querySelectorAll(".mgrid .mt[hidden]").forEach(t=>t.hidden=false);gm.remove()};
  document.querySelectorAll("[data-evday]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-evday]").forEach(x=>x.classList.remove("on"));b.classList.add("on");EVT_MAPDAY=b.dataset.evday;const lm=$("#leafmap-events");if(lm)lm.dataset.day=EVT_MAPDAY;showEvtMarkers(EVT_MAPDAY)});
  const ep=$("#evprov");if(ep)ep.onchange=()=>{EVT_PROV=ep.value;try{localStorage.setItem("gc-evprov",EVT_PROV)}catch(e){}render(true)};
- bindForms()}
+ bindForms();lazyBg()}
 
 /* ===== événements sur la carte (marqueurs du jour) ===== */
 function evtPts(e){if(e.pts)return e.pts;const d=e.ville!=="all"&&byId(e.ville);return d?[[d.lat,d.lon,d.name,true]]:[]}
