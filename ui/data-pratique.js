@@ -1,12 +1,13 @@
 /* ===== Contenus pratiques repris de l'ancien accueil (urgences, hôpitaux, ambassades, FAQ) ===== */
-const URGENCES=[["Police", "117"], ["Ambulance", "119"], ["Pompiers", "118"], ["Police Touriste", "012 942 484"]];
-const HOPITAUX=[["Royal Phnom Penh Hospital", "+855 23 991 000", "Urgences 24h/24 — Phnom Penh"], ["SOS International Clinic PP", "+855 23 216 911", "Médecins expatriés · Phnom Penh"], ["Naga Medical Clinic — Siem Reap", "+855 63 964 500", "Clinique internationale · 24h/24"], ["Calmette Hospital — Phnom Penh", "+855 23 426 948", "Hôpital public · Urgences"]];
-const AMBASSADES=[["🇫🇷", "Ambassade de France", "+855 23 430 020", "Urgence 24h/24 : +855 12 444 512"], ["🇩🇪", "Ambassade d'Allemagne", "+855 23 216 381", "76-78, Street 214 · Phnom Penh"], ["🇬🇧", "British Embassy", "+855 61 300 011", "Hors heures : +44 20 7008 5000"], ["🇺🇸", "U.S. Embassy", "+855 23 728 000", "#1 Street 96, Phnom Penh"], ["🇦🇺", "Australian Embassy", "+855 23 266 500", "Urgence hors heures : +61 2 6261 3305"], ["🇨🇭", "Agence Consulaire Suisse", "+855 23 218 305", "#50 Street 334, BKK1 · Phnom Penh"], ["🇧🇪", "Consulat Honoraire de Belgique", "+855 12 840 056", "N°28, Street 310 · Phnom Penh"], ["🇨🇦", "Ambassade du Canada", "+855 23 213 470", "Via Bangkok : +66 2 636 0540"], ["🇯🇵", "Ambassade du Japon", "+855 23 217 161", "#194 Street 514 · Phnom Penh"], ["🇰🇷", "Ambassade de Corée du Sud", "+855 23 211 900", "Street 214 · Phnom Penh"], ["🇳🇱", "Consulat Pays-Bas", "+855 23 981 200", "Urgence : +31 247 247 247"], ["🇨🇳", "Ambassade de Chine", "+855 23 720 920", "#256 Mao Tse Toung Blvd"]];
+const URGENCES=[["Police", "117"], ["Ambulance", "119"], ["Pompiers", "118"], ["Police touristique", "016 654 736"]];
+/* vérifiés le 2026-10-17 : AKP (ministère du Tourisme, 03/09/2026), sites officiels des ambassades, liste médicale de l'ambassade d'Australie */
+const HOPITAUX=[["Royal Phnom Penh Hospital", "+855 23 991 000", "Urgences 24h/24 : +855 23 991 222"], ["Raffles Medical — Phnom Penh", "+855 23 216 911", "Clinique internationale · #161, Street 51"], ["Royal Angkor International Hospital — Siem Reap", "+855 63 761 888", "Urgences 24h/24 : +855 12 235 888"], ["Calmette Hospital — Phnom Penh", "+855 23 426 948", "Hôpital public · Urgences 24h/24"]];
+const AMBASSADES=[["🇫🇷", "Ambassade de France", "+855 23 260 010", "Urgence (hors heures) : +855 12 591 209"], ["🇩🇪", "Ambassade d'Allemagne", "+855 23 216 381", "Urgence : +855 10 990 002"], ["🇬🇧", "British Embassy", "+855 61 300 011", "Hors heures : +44 20 7008 5000"], ["🇺🇸", "U.S. Embassy", "+855 23 728 000", "#1 Street 96, Phnom Penh"], ["🇦🇺", "Australian Embassy", "+855 23 266 500", "Urgence hors heures : +61 2 6261 3305"], ["🇨🇭", "Agence Consulaire Suisse", "+855 23 218 305", "#50 Street 334, BKK1 · Phnom Penh"], ["🇧🇪", "Consulat honoraire de Belgique", "+855 70 970 907", "Sur rendez-vous · urgence : ambassade à Bangkok +66 81 833 99 87"], ["🇨🇦", "Ambassade du Canada", "+855 99 430 811", "27-29, Street 75 · même numéro 24h/24"], ["🇯🇵", "Ambassade du Japon", "+855 23 217 161", "#194, boulevard Norodom · Phnom Penh"], ["🇰🇷", "Ambassade de Corée du Sud", "+855 23 211 900", "Urgence hors heures : +855 92 555 235"], ["🇳🇱", "Pays-Bas (ministère, 24h/24)", "+31 247 247 247", "Pas d'ambassade au Cambodge"], ["🇨🇳", "Ambassade de Chine", "+855 23 720 920", "#156, bd Mao Tse Toung · 24h/24 : +855 12 810 928"]];
 const NOTE_URGENCE="Souscrivez toujours une assurance voyage avant de partir · Enregistrez-vous sur Ariane (France) ou l'équivalent de votre pays.";
 const FAQ=[
 [
 "Faut-il un visa pour aller au Cambodge ?",
-"Oui, la plupart des nationalités ont besoin d'un visa. Il est disponible à l'arrivée ou via l'e-visa officiel ( evisa.gov.kh ) pour environ 35 USD, valable 30 jours. L'e-visa en ligne est plus rapide et évite les files d'attente."
+"Oui, sauf pour quelques pays d'Asie du Sud-Est : les Français, Belges et Suisses ont besoin d'un visa, même pour un court séjour. Deux options : l'e-visa officiel ( evisa.gov.kh , 36 USD, 30 jours de séjour) ou le visa à l'arrivée (30 USD en espèces). En avion, remplissez aussi la carte d'arrivée électronique gratuite ( arrival.gov.kh ) dans les 7 jours avant le vol."
 ],
 [
 "Est-il sûr de voyager au Cambodge ?",
@@ -42,7 +43,7 @@ const FAQ=[
 ],
 [
 "Quelle est la meilleure ville pour débuter son voyage ?",
-"Siem Reap est idéale pour débuter : aéroport international bien desservi et Angkor Wat à 20 minutes. Pour une immersion directe dans la culture khmère contemporaine, commencez par Phnom Penh."
+"Siem Reap est idéale pour débuter : aéroport international (SAI) bien desservi et temples d'Angkor à une vingtaine de minutes du centre-ville. Pour une immersion directe dans la culture khmère contemporaine, commencez par Phnom Penh."
 ],
 [
 "Combien de jours faut-il pour bien visiter le Cambodge ?",
