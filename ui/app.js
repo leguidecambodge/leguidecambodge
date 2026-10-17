@@ -169,7 +169,7 @@ function home(){const m=new Date().getMonth();const seasons=["dry","dry","hot","
  <section class="s" id="contact" style="padding-top:0"><div class="wrap"><div class="shead"><div><span class="eyebrow">Rester en contact</span><h2>Une question ? Une envie de recevoir nos bons plans ?</h2></div></div>
  <div class="forms">
  <div class="formbox"><h3>Restez informé, gratuitement</h3><p class="sub">Bons plans, guides exclusifs et nouveautés sur le Cambodge, directement dans votre boîte mail.</p>
- <form id="nl-form" novalidate aria-label="Inscription à la newsletter"><div class="row2"><div><label for="nl-prenom">Prénom</label><input id="nl-prenom" placeholder="Marie" autocomplete="given-name" maxlength="50" required></div><div><label for="nl-nom">Nom</label><input id="nl-nom" placeholder="Dupont" autocomplete="family-name" maxlength="50" required></div></div>
+ <form id="nl-form" novalidate aria-label="Inscription à la newsletter">
  <label for="nl-email">E-mail</label><input id="nl-email" type="email" placeholder="marie@exemple.com" autocomplete="email" maxlength="100" required>
  <input class="hp" id="nl-honey" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
  <label class="chk" for="nl-rgpd"><input type="checkbox" id="nl-rgpd"><span>J'accepte de recevoir la newsletter et les offres de Le Guide Cambodge. Je peux me désinscrire à tout moment. <a href="mentions-legales/">Politique de confidentialité</a></span></label>
@@ -382,9 +382,9 @@ function bindForms(){
   const err=m=>{ko.textContent=m;ko.style.display="block"};
   nf.onsubmit=e=>{e.preventDefault();ko.style.display="none";
    if($("#nl-honey").value)return;
-   const prenom=$("#nl-prenom").value.trim(),nom=$("#nl-nom").value.trim(),email=$("#nl-email").value.trim(),rgpd=$("#nl-rgpd").checked;
+   const email=$("#nl-email").value.trim(),rgpd=$("#nl-rgpd").checked;
    try{if(Date.now()-parseInt(sessionStorage.getItem("nl_last")||"0")<30000){err("⚠️ Veuillez patienter avant de soumettre à nouveau.");return}}catch(x){}
-   if(!prenom||!nom||!email||!rgpd){err("⚠️ Veuillez remplir tous les champs et cocher la case de consentement.");return}
+   if(!email||!rgpd){err("⚠️ Veuillez indiquer votre e-mail et cocher la case de consentement.");return}
    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){err("⚠️ Veuillez entrer une adresse e-mail valide (ex : marie@exemple.com).");return}
    try{sessionStorage.setItem("nl_last",Date.now().toString())}catch(x){}
    btn.disabled=true;const body=new FormData();body.append("EMAIL",email);body.append("email_address_check","");body.append("locale","fr");body.append("html_type","simple");
