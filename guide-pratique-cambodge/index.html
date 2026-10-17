@@ -38,7 +38,7 @@
       "description": "Tout pour préparer votre voyage au Cambodge : santé et vaccins, sécurité, SIM et internet, argent et budget. Le guide pratique complet pour voyager sereinement.",
       "inLanguage": "fr",
       "datePublished": "2026-04-01",
-      "dateModified": "2026-08-11",
+      "dateModified": "2026-10-17",
       "author": {"@type": "Organization", "name": "Le Guide Cambodge"},
       "publisher": {"@type": "Organization", "name": "Le Guide Cambodge", "url": "https://www.leguidecambodge.com/"},
       "image": "https://upload.wikimedia.org/wikipedia/commons/6/66/Phnom_penh_airport.JPG"
@@ -418,7 +418,7 @@
       <div class="conv-result"><span class="conv-flag">🇺🇸</span><span class="conv-label">Dollar</span><span class="conv-val" id="conv-usd">—</span></div>
       <div class="conv-result"><span class="conv-flag">🇰🇭</span><span class="conv-label">Riel</span><span class="conv-val" id="conv-khr">—</span></div>
     </div>
-    <p class="conv-note">Taux indicatifs : 1 USD ≈ 0,92 EUR · 1 USD ≈ 4 100 KHR — actualisez sur xe.com avant de partir</p>
+    <p class="conv-note">Taux indicatifs : 1 USD ≈ 0,89 EUR (octobre 2026) · 1 USD ≈ 4 100 KHR — actualisez sur xe.com avant de partir</p>
   </div>
 
 
@@ -451,7 +451,7 @@
         <strong>Meilleur taux :</strong> changez euros → dollars à l'aéroport ou dans les cambistes du marché (Phsar Thmei à Phnom Penh, Old Market à Siem Reap).<br><br>
         ❌ Hôtels : taux souvent mauvais<br>
         ✔ Cambistes locaux : taux proches du marché<br><br>
-        Taux actuel moyen : <strong>1 EUR ≈ 1,08–1,10 USD</strong>
+        Taux actuel moyen : <strong>1 EUR ≈ 1,12 USD (octobre 2026)</strong>
       </div>
     </div>
     <div class="info-card">
@@ -578,7 +578,7 @@ if (navbar) {
 
 /* Convertisseur de monnaie */
 (function(){
-  var rates = { EUR_USD:1.09, USD_EUR:0.92, KHR_USD:1/4100, USD_KHR:4100, EUR_KHR:4100*1.09, KHR_EUR:1/(4100*1.09) };
+  var rates = { EUR_USD:1.12, USD_EUR:0.89, KHR_USD:1/4100, USD_KHR:4100, EUR_KHR:4100*1.12, KHR_EUR:1/(4100*1.12) };
   function conv(amount, from){
     if(from==='USD') return { EUR:(amount*rates.USD_EUR).toFixed(2), USD:amount.toFixed(2), KHR:Math.round(amount*rates.USD_KHR).toLocaleString('fr-FR') };
     if(from==='EUR') return { EUR:amount.toFixed(2), USD:(amount*rates.EUR_USD).toFixed(2), KHR:Math.round(amount*rates.EUR_KHR).toLocaleString('fr-FR') };
