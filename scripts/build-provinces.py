@@ -108,6 +108,7 @@ def page(d):
     if d.get("alert"):
         alert = f'''<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité — frontière thaïlandaise</b><p>{esc(d["alert"])} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>'''
     hero = ph[0] if ph else None
+    preload = f'<link rel="preload" as="image" href="{esc(hero["src"])}" fetchpriority="high">\n' if hero else ""
     hero_html = (f'<img class="bg" src="{esc(hero["src"])}" alt="{esc(sn)}, Cambodge" fetchpriority="high">' + (f'<span class="credit">Photo : {hero["credit"]}</span>' if hero["credit"] else "")) if hero else ""
     gal = "".join(f'<figure><img src="{esc(o["src"])}" alt="{esc(sn)}, Cambodge" loading="lazy">' + (f'<figcaption>Photo : {o["credit"]}</figcaption>' if o["credit"] else "") + "</figure>" for o in ph[1:])
     half = (len(d["todo"]) + 1) // 2
@@ -119,7 +120,6 @@ def page(d):
 <html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
-{HEAD_SCRIPTS}
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
@@ -137,11 +137,12 @@ def page(d):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{preload}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../ui/style.css?v={CSS_V}">
 {PAGE_CSS}
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
+{HEAD_SCRIPTS}
 </head>
 <body>
 <!-- Page générée par scripts/build-provinces.py : ne pas modifier à la main, modifier les données puis relancer le script -->
