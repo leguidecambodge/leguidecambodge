@@ -1,0 +1,39 @@
+name: Régénère les pages province
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ui/data-provinces.js'
+      - 'ui/data-content.js'
+      - 'ui/photos.js'
+      - 'scripts/build-provinces.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-provinces:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Pillow (images de partage)
+        run: pip install pillow
+
+      - name: Générer les pages province
+        run: python3 scripts/build-provinces.py
+
+      - name: Committer et pousser si changement
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Aucun changement, rien à committer."
+            exit 0
+          fi
+          git config user.name "leguidecambodge"
+          git config user.email "leguidecambodge@gmail.com"
+          git add -A
+          git commit -m "chore: régénère les pages province à partir des données"
+          git push
