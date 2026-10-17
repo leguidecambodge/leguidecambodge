@@ -91,5 +91,21 @@ const GUIDES = {
  "battambang":[["Guide de Battambang","battambang/"]],
  "mondulkiri":[["Guide du Mondulkiri","mondulkiri/"]],
  "pursat":[["Guide de Pursat","pursat/"]],
- "banteay-meanchey":[["Poipet","poipet/"]]
+ "banteay-meanchey":[["Guide de Banteay Meanchey","banteay-meanchey/"],["Poipet","poipet/"]],
+ "koh-kong":[["Guide de Koh Kong","koh-kong/"]],
+ "ratanakiri":[["Guide de Ratanakiri","ratanakiri/"]],
+ "kratie":[["Guide de Kratie","kratie/"]],
+ "stung-treng":[["Guide de Stung Treng","stung-treng/"]],
+ "preah-vihear":[["Guide de Preah Vihear","preah-vihear/"]],
+ "kampong-thom":[["Guide de Kampong Thom","kampong-thom/"]],
+ "kampong-cham":[["Guide de Kampong Cham","kampong-cham/"]],
+ "takeo":[["Guide de Takeo","takeo/"]],
+ "kandal":[["Guide de Kandal","kandal/"]],
+ "kampong-speu":[["Guide de Kampong Speu","kampong-speu/"]],
+ "kampong-chhnang":[["Guide de Kampong Chhnang","kampong-chhnang/"]],
+ "pailin":[["Guide de Pailin","pailin/"]],
+ "oddar-meanchey":[["Guide de Oddar Meanchey","oddar-meanchey/"]],
+ "tbong-khmum":[["Guide de Tbong Khmum","tbong-khmum/"]],
+ "prey-veng":[["Guide de Prey Veng","prey-veng/"]],
+ "svay-rieng":[["Guide de Svay Rieng","svay-rieng/"]]
 };
