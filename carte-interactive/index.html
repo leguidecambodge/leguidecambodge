@@ -25,11 +25,11 @@
 <link rel="preload" as="image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Angkor_Wat_at_sunset.JPG/1280px-Angkor_Wat_at_sunset.JPG" fetchpriority="high">
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <style>
 .carte-search-wrap{max-width:1100px;margin:0 auto 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .carte-search{flex:1;min-width:200px;padding:9px 14px 9px 38px;background:rgba(44,21,7,.65);border:1px solid rgba(212,150,26,.22);border-radius:6px;color:var(--creme);font-size:.82rem;outline:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(212,150,26,.55)' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;}
-.carte-counter{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;color:rgba(212,150,26,.65);white-space:nowrap;}
+.carte-counter{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;color:#DDA422;white-space:nowrap;}
 .gc-popup-link{display:inline-block;margin-top:8px;padding:5px 12px;background:#DDA422;border-radius:4px;color:#fff!important;font-size:.65rem;letter-spacing:.05em;text-decoration:none;}
 .gc-popup-link:hover{background:#c48f1a;}
 #gc-map{height:640px;max-width:1100px;margin:0 auto;border:1px solid rgba(212,150,26,.2);border-radius:8px;position:relative;z-index:1;overflow:hidden;}
@@ -170,7 +170,7 @@
     <nav aria-label="Fil d'Ariane" style="margin-bottom:20px;">
       <ol style="display:flex;justify-content:center;gap:8px;list-style:none;font-size:.78rem;color:rgba(245,233,208,.6);flex-wrap:wrap;">
         <li><a href="../" style="color:var(--or);text-decoration:none;">Accueil</a></li>
-        <li style="color:rgba(245,233,208,.3);">›</li>
+        <li style="color:rgba(245,233,208,.62);">›</li>
         <li style="color:var(--creme);">Carte Interactive</li>
       </ol>
     </nav>
@@ -195,7 +195,7 @@
     <span class="section-label">✦ Explorer le Cambodge</span>
     <h2 class="section-title" id="carte-title">Carte <em>Interactive</em></h2>
     <div class="section-divider"></div>
-    <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.55);font-style:italic;">Toutes les villes, restaurants, hôtels et activités sur une seule carte</p>
+    <p style="margin-top:16px;font-size:1rem;color:rgba(245,233,208,.62);font-style:italic;">Toutes les villes, restaurants, hôtels et activités sur une seule carte</p>
   </div>
 
   <div class="carte-search-wrap fade-in">
@@ -232,22 +232,22 @@
     <a href="../itineraire-cambodge/" style="display:block;padding:24px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s;" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px;">🗺️</div>
       <div style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--creme);margin-bottom:6px;">Itinéraire Cambodge</div>
-      <div style="font-size:.8rem;color:rgba(245,233,208,.5);">7, 14 ou 21 jours — nos parcours conseillés</div>
+      <div style="font-size:.8rem;color:rgba(245,233,208,.62);">7, 14 ou 21 jours — nos parcours conseillés</div>
     </a>
     <a href="../budget-voyage-cambodge/" style="display:block;padding:24px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s;" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px;">💰</div>
       <div style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--creme);margin-bottom:6px;">Budget Voyage</div>
-      <div style="font-size:.8rem;color:rgba(245,233,208,.5);">Combien coûte un voyage au Cambodge</div>
+      <div style="font-size:.8rem;color:rgba(245,233,208,.62);">Combien coûte un voyage au Cambodge</div>
     </a>
     <a href="../transports/" style="display:block;padding:24px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s;" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px;">🚌</div>
       <div style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--creme);margin-bottom:6px;">Transports</div>
-      <div style="font-size:.8rem;color:rgba(245,233,208,.5);">Bus, bateau, avion et tuk-tuk</div>
+      <div style="font-size:.8rem;color:rgba(245,233,208,.62);">Bus, bateau, avion et tuk-tuk</div>
     </a>
     <a href="../angkor-wat/" style="display:block;padding:24px;background:rgba(44,21,7,.6);border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s;" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px;">🏯</div>
       <div style="font-family:'Cinzel',serif;font-size:.85rem;color:var(--creme);margin-bottom:6px;">Guide Angkor Wat</div>
-      <div style="font-size:.8rem;color:rgba(245,233,208,.5);">Le joyau de l'Empire Khmer</div>
+      <div style="font-size:.8rem;color:rgba(245,233,208,.62);">Le joyau de l'Empire Khmer</div>
     </a>
   </div>
 </section>
@@ -256,14 +256,14 @@
 
 <footer style="background:var(--fond-footer,#1E0E06);padding:40px 48px;text-align:center;border-top:1px solid rgba(212,150,26,.15);">
   <a href="../" style="font-family:'Cinzel',serif;font-size:1.1rem;color:var(--or);text-decoration:none;">🪷 Le Guide Cambodge</a>
-  <p style="margin-top:12px;font-size:.78rem;color:rgba(245,233,208,.35);">© 2026 Le Guide Cambodge — Contenu à but informatif.</p>
+  <p style="margin-top:12px;font-size:.78rem;color:rgba(245,233,208,.62);">© 2026 Le Guide Cambodge — Contenu à but informatif.</p>
   <nav aria-label="Liens footer" style="margin-top:14px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
-    <a href="../" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Accueil</a>
-    <a href="../angkor-wat/" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Angkor Wat</a>
-    <a href="../phnom-penh/" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Phnom Penh</a>
-    <a href="../visa-cambodge/" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Visa</a>
-    <a href="../budget-voyage-cambodge/" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Budget</a>
-    <a href="../#contact" style="font-size:.78rem;color:rgba(245,233,208,.4);text-decoration:none;">Contact</a>
+    <a href="../" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Accueil</a>
+    <a href="../angkor-wat/" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Angkor Wat</a>
+    <a href="../phnom-penh/" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Phnom Penh</a>
+    <a href="../visa-cambodge/" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Visa</a>
+    <a href="../budget-voyage-cambodge/" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Budget</a>
+    <a href="../#contact" style="font-size:.78rem;color:rgba(245,233,208,.62);text-decoration:none;">Contact</a>
   </nav>
 </footer>
 
