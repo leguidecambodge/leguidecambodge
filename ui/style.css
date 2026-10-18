@@ -148,7 +148,9 @@ section.s{padding:clamp(56px,8vw,110px) 0}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 @media(max-width:700px){.two{grid-template-columns:1fr}}
 .two ul{list-style:none;display:grid;gap:8px;color:var(--ink2);font-size:15px}
-.two ul li:before{content:"·";color:var(--gold);margin-right:10px;font-weight:700}
+.two ul li{position:relative;padding-left:16px}
+.two ul li:before{content:"·";color:var(--gold);font-weight:700;position:absolute;left:2px;top:0}
+@media(max-width:700px){.two{gap:8px}}
 .side{position:sticky;top:90px;display:flex;flex-direction:column;gap:16px;align-self:start}
 .box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
 .box h4{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:10px}
@@ -416,3 +418,13 @@ body{top:0!important}
 .secalert b{display:block;font-size:15px;margin-bottom:6px}
 .secalert p{font-size:15px;line-height:1.55;color:var(--ink2)}
 .secalert a{text-decoration:underline;text-underline-offset:2px}
+
+/* ===== en-tête des pages statiques (provinces + anciennes pages converties) ===== */
+.sp-top{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.sp-top .wrap{display:flex;align-items:center;gap:18px;height:62px;position:relative}
+.sp-top nav{display:flex;gap:18px;font-size:14px;font-weight:500;margin-left:auto;white-space:nowrap}
+.sp-top nav a{color:var(--ink2);padding:6px 0;border-bottom:2px solid transparent}
+.sp-top nav a:hover{color:var(--ink);border-color:var(--lacq)}
+.sp-burger{display:none;margin-left:auto;font-size:16px;line-height:1;min-width:40px;min-height:36px}
+@media(max-width:900px){.sp-burger{display:block}.sp-top nav{display:none}.sp-top nav.open{display:flex;flex-direction:column;gap:0;position:absolute;top:62px;left:-4vw;right:-4vw;background:var(--cream);padding:6px 6vw 12px;border-bottom:1px solid var(--line);box-shadow:0 14px 28px rgba(0,0,0,.08)}.sp-top nav.open a{padding:13px 0;font-size:16px;border-bottom:1px solid var(--line)}.sp-top nav.open a:last-child{border-bottom:0}}
+.sp-top + .dhero .credit{top:12px}

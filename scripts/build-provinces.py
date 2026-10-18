@@ -12,7 +12,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.leguidecambodge.com/"
-CSS_V = "25"
+CSS_V = "26"
 
 dump = subprocess.run(["node", "-e", r'''
 global.window={};const fs=require("fs");const r=f=>fs.readFileSync(f,"utf8");
@@ -66,10 +66,6 @@ HEAD_SCRIPTS = '''<script async src="https://pagead2.googlesyndication.com/pagea
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZGJTQPVHZJ');</script>'''
 
 PAGE_CSS = '''<style>
-.sp-top{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.sp-top .wrap{display:flex;align-items:center;gap:18px;height:62px}
-.sp-top nav{display:flex;gap:16px;overflow-x:auto;font-size:14px;margin-left:auto;white-space:nowrap}
-.sp-top nav a{color:var(--ink2)}
 .dhero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .sp-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:30px}
 .sp-gal figure{margin:0}.sp-gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);display:block}
@@ -77,14 +73,11 @@ PAGE_CSS = '''<style>
 .dhero .credit a{color:inherit;text-decoration:underline}
 .sp-cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0}
 .sp-near{display:flex;gap:10px;flex-wrap:wrap}.sp-near a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:#fff;font-size:14px}
-@media(max-width:700px){.sp-top nav{font-size:13px;gap:12px}.sp-top .logo span{display:none}}
 </style>'''
 
-COOKIE = '''<div id="cookie-banner" class="hidden" role="dialog" aria-label="Consentement cookies"><p>🍪 Ce site utilise des cookies pour améliorer votre expérience. <a href="../mentions-legales/">En savoir plus</a></p><div class="cookie-btns"><button class="cookie-btn accept" id="cookie-ok">Accepter</button><button class="cookie-btn" id="cookie-no">Refuser</button></div></div>
-<script>(function(){var b=document.getElementById("cookie-banner");try{if(localStorage.getItem("gc_consent"))return}catch(e){return}b.classList.remove("hidden");
-function u(v){if(typeof gtag==="function")gtag("consent","update",{ad_storage:v,analytics_storage:v})}
-document.getElementById("cookie-ok").onclick=function(){try{localStorage.setItem("gc_consent","accepted")}catch(e){}b.classList.add("hidden");u("granted")};
-document.getElementById("cookie-no").onclick=function(){try{localStorage.setItem("gc_consent","refused")}catch(e){}b.classList.add("hidden");u("denied")}})();</script>'''
+PARTIALS = os.path.join(ROOT, "scripts/partials")
+part = lambda n: open(os.path.join(PARTIALS, n), encoding="utf8").read().strip()
+COOKIE = part("cookie.html")
 
 def page(d):
     pid, name, sn = d["id"], d["name"], short(d["name"])
@@ -146,8 +139,7 @@ def page(d):
 </head>
 <body>
 <!-- Page générée par scripts/build-provinces.py : ne pas modifier à la main, modifier les données puis relancer le script -->
-<div class="sp-top"><div class="wrap"><a class="logo" href="../" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a>
-<nav aria-label="Navigation principale"><a href="../">Accueil</a><a href="../#explore">Explorer le Cambodge</a><a href="../#events">Événements</a><a href="../#trips">Itinéraires</a><a href="../#info">Infos pratiques</a></nav></div></div>
+{part("header.html")}
 <header class="dhero">{hero_html}<div class="wrap"><nav class="crumbs" aria-label="Fil d'Ariane"><a href="../">Accueil</a> / <a href="../#explore">Les 25 provinces</a> / {esc(REGIONS[d["region"]])}</nav><h1>{esc(sn)}</h1><div class="khname">{esc(d["kh"])}</div><p style="font-size:20px;max-width:50ch;margin-top:14px;opacity:.9">{esc(d["tag"])}</p></div></header>
 <main>
 <div class="wrap"><div class="facts"><div><small>Durée conseillée</small><b>{esc(d["duration"])}</b></div><div><small>Meilleure période</small><b>{esc(best_short(d))}</b></div><div><small>Région</small><b>{esc(REGIONS[d["region"]])}</b></div><div><small>Idéal pour</small><b style="font-size:15px">{" · ".join(esc(e["name"]) for e in exps[:3])}</b></div></div></div>
@@ -168,11 +160,7 @@ def page(d):
 <p class="sp-cta"><a class="btn dark" href="../#dest/{pid}">Voir {esc(sn)} sur la carte interactive</a><a class="btn" style="border:1px solid var(--line)" href="../#events">Les événements de la semaine</a></p>
 </div></div></div>
 </main>
-<footer><div class="wrap"><div class="cols"><div><div class="logo"><i></i>Le Guide Cambodge</div><p style="margin-top:12px;max-width:34ch">Le guide indépendant des 25 provinces du Cambodge : carte, itinéraires et conseils pratiques pour préparer votre voyage.</p></div>
-<div><h5>Explorer</h5><ul><li><a href="../#explore">Les 25 provinces</a></li><li><a href="../#trips">Itinéraires</a></li><li><a href="../#events">Événements</a></li></ul></div>
-<div><h5>Pratique</h5><ul><li><a href="../visa-cambodge/">Visa</a></li><li><a href="../budget-voyage-cambodge/">Budget</a></li><li><a href="../transports/">Transports</a></li></ul></div>
-<div><h5>À propos</h5><ul><li><a href="../mentions-legales/">Mentions légales</a></li><li><a href="../#contact">Contact</a></li></ul></div></div>
-<div class="legal"><span>© 2026 Le Guide Cambodge — Contenu à but informatif.</span></div></div></footer>
+{part("footer.html")}
 {COOKIE}
 </body>
 </html>

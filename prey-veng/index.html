@@ -22,12 +22,8 @@
 <link rel="preload" as="image" href="../photos/wm%20prey-veng%201.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../ui/style.css?v=25">
+<link rel="stylesheet" href="../ui/style.css?v=26">
 <style>
-.sp-top{position:sticky;top:0;z-index:50;background:rgba(246,241,232,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.sp-top .wrap{display:flex;align-items:center;gap:18px;height:62px}
-.sp-top nav{display:flex;gap:16px;overflow-x:auto;font-size:14px;margin-left:auto;white-space:nowrap}
-.sp-top nav a{color:var(--ink2)}
 .dhero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .sp-gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:30px}
 .sp-gal figure{margin:0}.sp-gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);display:block}
@@ -35,7 +31,6 @@
 .dhero .credit a{color:inherit;text-decoration:underline}
 .sp-cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0}
 .sp-near{display:flex;gap:10px;flex-wrap:wrap}.sp-near a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:#fff;font-size:14px}
-@media(max-width:700px){.sp-top nav{font-size:13px;gap:12px}.sp-top .logo span{display:none}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TouristDestination", "@id": "https://www.leguidecambodge.com/prey-veng/#destination", "name": "Prey Veng, Cambodge", "description": "Province rurale de riz et de basses terres du Mékong, rarement visitée, avec Ba Phnom, l'un des plus anciens sites sacrés du Cambodge, et Neak Loeung, dont les bacs du Mékong ont été remplacés par le pont Tsubasa.", "url": "https://www.leguidecambodge.com/prey-veng/", "image": "https://www.leguidecambodge.com/photos/og/prey-veng.jpg", "geo": {"@type": "GeoCoordinates", "latitude": 11.49, "longitude": 105.32}, "containedInPlace": {"@type": "Country", "name": "Cambodge"}, "includesAttraction": [{"@type": "TouristAttraction", "name": "La colline de Ba Phnom et l'ancien sanctuaire du Funan"}, {"@type": "TouristAttraction", "name": "Neak Loeung et le pont Tsubasa"}, {"@type": "TouristAttraction", "name": "Le lac de la ville de Prey Veng"}]}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.leguidecambodge.com/"}, {"@type": "ListItem", "position": 2, "name": "Prey Veng", "item": "https://www.leguidecambodge.com/prey-veng/"}]}]}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463726773327954" crossorigin="anonymous"></script>
@@ -45,7 +40,9 @@
 <body>
 <!-- Page générée par scripts/build-provinces.py : ne pas modifier à la main, modifier les données puis relancer le script -->
 <div class="sp-top"><div class="wrap"><a class="logo" href="../" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a>
-<nav aria-label="Navigation principale"><a href="../">Accueil</a><a href="../#explore">Explorer le Cambodge</a><a href="../#events">Événements</a><a href="../#trips">Itinéraires</a><a href="../#info">Infos pratiques</a></nav></div></div>
+<button class="sp-burger pill" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="sp-menu">☰</button>
+<nav id="sp-menu" aria-label="Navigation principale"><a href="../">Accueil</a><a href="../#explore">Explorer le Cambodge</a><a href="../#events">Événements</a><a href="../#trips">Itinéraires</a><a href="../#info">Infos pratiques</a></nav></div></div>
+<script>(function(){var b=document.querySelector(".sp-burger"),n=document.getElementById("sp-menu");if(!b||!n)return;b.addEventListener("click",function(){var o=n.classList.toggle("open");b.setAttribute("aria-expanded",o);b.textContent=o?"✕":"☰"})})();</script>
 <header class="dhero"><img class="bg" src="../photos/wm%20prey-veng%201.webp" alt="Prey Veng, Cambodge" fetchpriority="high"><span class="credit">Photo : <a href="https://commons.wikimedia.org/wiki/File:03-Mekong_River,_Cambodia-nX-05005.jpg" target="_blank" rel="noopener">PsamatheM</a>, CC BY-SA 4.0, Wikimedia Commons</span><div class="wrap"><nav class="crumbs" aria-label="Fil d'Ariane"><a href="../">Accueil</a> / <a href="../#explore">Les 25 provinces</a> / Plaines centrales</nav><h1>Prey Veng</h1><div class="khname">ព្រៃវែង</div><p style="font-size:20px;max-width:50ch;margin-top:14px;opacity:.9">Ba Phnom et les basses terres du Mékong</p></div></header>
 <main>
 <div class="wrap"><div class="facts"><div><small>Durée conseillée</small><b>Une demi-journée</b></div><div><small>Meilleure période</small><b>Décembre à février</b></div><div><small>Région</small><b>Plaines centrales</b></div><div><small>Idéal pour</small><b style="font-size:15px">Cambodge rural</b></div></div></div>
@@ -67,9 +64,10 @@
 </div></div></div>
 </main>
 <footer><div class="wrap"><div class="cols"><div><div class="logo"><i></i>Le Guide Cambodge</div><p style="margin-top:12px;max-width:34ch">Le guide indépendant des 25 provinces du Cambodge : carte, itinéraires et conseils pratiques pour préparer votre voyage.</p></div>
-<div><h5>Explorer</h5><ul><li><a href="../#explore">Les 25 provinces</a></li><li><a href="../#trips">Itinéraires</a></li><li><a href="../#events">Événements</a></li></ul></div>
-<div><h5>Pratique</h5><ul><li><a href="../visa-cambodge/">Visa</a></li><li><a href="../budget-voyage-cambodge/">Budget</a></li><li><a href="../transports/">Transports</a></li></ul></div>
-<div><h5>À propos</h5><ul><li><a href="../mentions-legales/">Mentions légales</a></li><li><a href="../#contact">Contact</a></li></ul></div></div>
+<div><h5>Destinations</h5><ul><li><a href="../#explore">Les 25 provinces</a></li><li><a href="../siem-reap/">Siem Reap</a></li><li><a href="../angkor-wat/">Angkor Wat</a></li><li><a href="../phnom-penh/">Phnom Penh</a></li><li><a href="../kampot/">Kampot</a></li><li><a href="../koh-rong/">Koh Rong</a></li></ul></div>
+<div><h5>Pratique</h5><ul><li><a href="../visa-cambodge/">Visa</a></li><li><a href="../budget-voyage-cambodge/">Budget</a></li><li><a href="../transports/">Transports</a></li><li><a href="../quand-partir/">Quand partir</a></li><li><a href="../hotels/">Hôtels</a></li><li><a href="../guide-pratique-cambodge/">Guide pratique</a></li></ul></div>
+<div><h5>Découvrir</h5><ul><li><a href="../itineraire-cambodge/">Itinéraires</a></li><li><a href="../histoire-cambodge/">Histoire</a></li><li><a href="../cuisine-khmere/">Cuisine khmère</a></li><li><a href="../lexique-khmer/">Lexique khmer</a></li><li><a href="../carte-interactive/">Carte interactive</a></li><li><a href="../blog/">Blog</a></li></ul></div>
+<div><h5>Le guide</h5><ul><li><a href="../a-propos/">À propos</a></li><li><a href="../mentions-legales/">Mentions légales</a></li><li><a href="../#contact">Contact</a></li></ul></div></div>
 <div class="legal"><span>© 2026 Le Guide Cambodge — Contenu à but informatif.</span></div></div></footer>
 <div id="cookie-banner" class="hidden" role="dialog" aria-label="Consentement cookies"><p>🍪 Ce site utilise des cookies pour améliorer votre expérience. <a href="../mentions-legales/">En savoir plus</a></p><div class="cookie-btns"><button class="cookie-btn accept" id="cookie-ok">Accepter</button><button class="cookie-btn" id="cookie-no">Refuser</button></div></div>
 <script>(function(){var b=document.getElementById("cookie-banner");try{if(localStorage.getItem("gc_consent"))return}catch(e){return}b.classList.remove("hidden");
