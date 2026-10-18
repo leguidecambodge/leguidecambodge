@@ -32,6 +32,9 @@
 .carte-counter{font-family:'Cinzel',serif;font-size:.6rem;letter-spacing:.08em;color:#DDA422;white-space:nowrap;}
 .gc-popup-link{display:inline-block;margin-top:8px;padding:5px 12px;background:#DDA422;border-radius:4px;color:#fff!important;font-size:.65rem;letter-spacing:.05em;text-decoration:none;}
 .gc-popup-link:hover{background:#c48f1a;}
+.gc-pin{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.35);}
+.gc-cluster{border-radius:50%;background:rgba(221,164,34,.92);border:3px solid rgba(255,255,255,.85);color:#2C1507;font-family:Georgia,serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.35);}
+#gc-map .maplibregl-popup-content{border-radius:8px;padding:10px 14px;}
 #gc-map{height:640px;max-width:1100px;margin:0 auto;border:1px solid rgba(212,150,26,.2);border-radius:8px;position:relative;z-index:1;overflow:hidden;}
 @media(max-width:640px){#gc-map{height:390px;}}
 </style>
@@ -304,59 +307,83 @@ if (navbar) {
   var mapEl = document.getElementById('gc-map');
   if(!mapEl) return;
 
-  /* Charger Google Maps + MarkerClusterer en lazy (viewport) */
+  /* Charger MapLibre GL en lazy (viewport) — tuiles OpenFreeMap : gratuit, sans clé ni compte */
   new IntersectionObserver(function(entries, obs){
     if(!entries[0].isIntersecting) return;
     obs.disconnect();
-    var s1 = document.createElement('script');
-    s1.src = 'https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js';
-    s1.onload = function(){
-      var s2 = document.createElement('script');
-      s2.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDH0RO1AJExSwhGP3JbH9ExWMg7D1BtBtw&callback=initGoogleMap&loading=async&language=fr';
-      document.head.appendChild(s2);
-    };
-    document.head.appendChild(s1);
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+    document.head.appendChild(l);
+    var s = document.createElement('script');
+    s.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+    s.onload = function(){ initCarte(window.maplibregl); };
+    s.onerror = function(){ mapEl.innerHTML = '<p style="padding:40px;text-align:center;color:rgba(245,233,208,.7);">La carte n\'a pas pu se charger. Rechargez la page pour réessayer.</p>'; };
+    document.head.appendChild(s);
   }, {rootMargin:'300px 0px', threshold:0}).observe(mapEl);
 
-  window.initGoogleMap = function(){
-  var map = new google.maps.Map(mapEl, {
-    center: {lat:12.1, lng:104.8},
-    zoom: 7,
-    gestureHandling: 'cooperative',
-    streetViewControl: false,
-    fullscreenControl: true,
-    mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR, position: google.maps.ControlPosition.TOP_LEFT}
+  var BOUNDS = [[102.3,10.3],[107.65,14.75]]; /* [ouest,sud],[est,nord] — ordre lon,lat attendu par MapLibre */
+
+  function initCarte(ml){
+  var map = new ml.Map({
+    container: mapEl,
+    style: 'https://tiles.openfreemap.org/styles/liberty',
+    bounds: BOUNDS,
+    fitBoundsOptions: {padding:10},
+    cooperativeGestures: true,
+    locale: {
+      'CooperativeGesturesHandler.WindowsHelpText':'Utilisez Ctrl + molette pour zoomer sur la carte',
+      'CooperativeGesturesHandler.MacHelpText':'Utilisez ⌘ + molette pour zoomer sur la carte',
+      'CooperativeGesturesHandler.MobileHelpText':'Utilisez deux doigts pour déplacer la carte'
+    },
+    attributionControl: {compact:true},
+    maplibreLogo: false
   });
+  map.addControl(new ml.NavigationControl({showCompass:false}), 'bottom-right');
+  map.addControl(new ml.FullscreenControl(), 'top-left');
   window.gcMap = map;
+  window.gcML = ml;
 
   /* ── Bouton Recentrer ── */
-  var resetBtn = document.createElement('button');
-  resetBtn.innerHTML = '⛶';
-  resetBtn.title = 'Recentrer sur le Cambodge';
-  resetBtn.style.cssText = 'margin:6px;width:40px;height:40px;background:#2C1507;border:2px solid rgba(212,150,26,.5);color:rgba(212,150,26,.9);font-size:1.1rem;cursor:pointer;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);';
-  resetBtn.onclick = function(){ map.setCenter({lat:12.1,lng:104.8}); map.setZoom(7); };
-  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(resetBtn);
+  map.addControl({
+    onAdd: function(){
+      var c = document.createElement('div');
+      c.className = 'maplibregl-ctrl';
+      var resetBtn = document.createElement('button');
+      resetBtn.type = 'button';
+      resetBtn.innerHTML = '⛶';
+      resetBtn.title = 'Recentrer sur le Cambodge';
+      resetBtn.setAttribute('aria-label', 'Recentrer sur le Cambodge');
+      resetBtn.style.cssText = 'width:40px;height:40px;background:#2C1507;border:2px solid rgba(212,150,26,.5);color:rgba(212,150,26,.9);font-size:1.1rem;cursor:pointer;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.3);';
+      resetBtn.onclick = function(){ map.fitBounds(BOUNDS, {padding:10}); };
+      c.appendChild(resetBtn);
+      return c;
+    },
+    onRemove: function(){}
+  }, 'top-right');
 
-  /* ── Icônes personnalisées (SVG emoji) ── */
-  function mkIcon(emoji, color){
-    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"><circle cx="18" cy="18" r="16" fill="'+color+'" stroke="rgba(255,255,255,0.8)" stroke-width="2"/><text x="18" y="23" text-anchor="middle" font-size="14">'+emoji+'</text></svg>';
-    return {url:'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg),scaledSize:new google.maps.Size(36,36),anchor:new google.maps.Point(18,18)};
-  }
-
+  /* ── Icônes personnalisées (pastille + emoji) ── */
   var ICONS = {
-    ville:      mkIcon('🏙','#2C1507'),
-    temple:     mkIcon('🏯','#8B1A1A'),
-    restaurant: mkIcon('🍽','#1A5C2C'),
-    hotel:      mkIcon('🏨','#1A3A5C'),
-    activite:   mkIcon('🎭','#5C2A1A'),
-    plage:      mkIcon('🏖','#1A4A5C'),
-    scooter:    mkIcon('🛵','#5C1A5C'),
-    bonplan:    mkIcon('⭐','#DDA422'),
-    urgence:    mkIcon('🚨','#CC0000'),
-    hopital:    mkIcon('🏥','#007A3D'),
-    ambassade:  mkIcon('🏛','#00308F')
+    ville:      ['🏙','#2C1507'],
+    temple:     ['🏯','#8B1A1A'],
+    restaurant: ['🍽','#1A5C2C'],
+    hotel:      ['🏨','#1A3A5C'],
+    activite:   ['🎭','#5C2A1A'],
+    plage:      ['🏖','#1A4A5C'],
+    scooter:    ['🛵','#5C1A5C'],
+    bonplan:    ['⭐','#DDA422'],
+    urgence:    ['🚨','#CC0000'],
+    hopital:    ['🏥','#007A3D'],
+    ambassade:  ['🏛','#00308F']
   };
-  window.gcIcons = ICONS;
+  function mkIcon(type){
+    var el = document.createElement('div');
+    el.className = 'gc-pin';
+    el.style.background = ICONS[type][1];
+    el.textContent = ICONS[type][0];
+    return el;
+  }
+  window.gcMkIcon = mkIcon;
 
   /* ── Données des marqueurs ── */
   var MARKERS = [
@@ -551,41 +578,84 @@ if (navbar) {
   /* ── Liens guides + compteur ── */
   var GUIDE_LINKS = {'Siem Reap':'../siem-reap/','Phnom Penh':'../phnom-penh/','Angkor Wat':'../angkor-wat/','Battambang':'../battambang/','Kampot':'../kampot/','Koh Rong':'../koh-rong/'};
   var counterEl = document.getElementById('carte-counter');
-  var iw = new google.maps.InfoWindow({maxWidth:290});
-  var allMarkers = [];
 
-  /* ── Créer marqueurs Google Maps ── */
-  MARKERS.forEach(function(m){
-    var gm = new google.maps.Marker({position:{lat:m.lat,lng:m.lng}, icon:ICONS[m.type], title:m.nom});
-    gm.addListener('click', function(){
-      var html = '<div style="padding:6px 2px 2px;">'
-               + '<div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:5px;">'+m.nom+'</div>'
-               + '<div style="font-size:.77rem;color:#555;line-height:1.6;max-width:240px;">'+m.desc+'</div>';
-      if(GUIDE_LINKS[m.nom]) html += '<a href="'+GUIDE_LINKS[m.nom]+'" target="_blank" class="gc-popup-link">📖 Voir le guide →</a>';
-      html += '</div>';
-      iw.setContent(html);
-      iw.open(map, gm);
-    });
-    allMarkers.push({data:m, gmarker:gm});
-  });
+  function popupHtml(m){
+    var html = '<div style="padding:6px 2px 2px;">'
+             + '<div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:5px;">'+m.nom+'</div>'
+             + '<div style="font-size:.77rem;color:#555;line-height:1.6;max-width:240px;">'+m.desc+'</div>';
+    if(GUIDE_LINKS[m.nom]) html += '<a href="'+GUIDE_LINKS[m.nom]+'" target="_blank" class="gc-popup-link">📖 Voir le guide →</a>';
+    return html + '</div>';
+  }
 
-  /* ── Rebuild (filtre + recherche) ── */
-  var currentFilter = 'tous', currentSearch = '', clusterer = null;
-  function rebuildMap(){
-    if(clusterer){ clusterer.clearMarkers(); clusterer = null; }
-    allMarkers.forEach(function(i){ i.gmarker.setMap(null); });
+  /* ── Regroupement (clusters) : source GeoJSON MapLibre + marqueurs HTML ── */
+  var currentFilter = 'tous', currentSearch = '';
+  function visibleFeatures(){
     var q = currentSearch.toLowerCase().trim();
-    var visible = [];
-    allMarkers.forEach(function(item){
-      var m = item.data;
+    var feats = [];
+    MARKERS.forEach(function(m, i){
       if(currentFilter !== 'tous' && m.type !== currentFilter) return;
       if(q && m.nom.toLowerCase().indexOf(q)===-1 && m.desc.toLowerCase().indexOf(q)===-1) return;
-      visible.push(item.gmarker);
+      feats.push({type:'Feature', properties:{i:i}, geometry:{type:'Point', coordinates:[m.lng, m.lat]}});
     });
-    clusterer = new markerClusterer.MarkerClusterer({map:map, markers:visible});
-    if(counterEl) counterEl.textContent = visible.length+' lieu'+(visible.length!==1?'x':'')+' affiché'+(visible.length!==1?'s':'');
+    return feats;
   }
-  rebuildMap();
+
+  var onScreen = {};
+  function refreshMarkers(){
+    var src = map.getSource('gc');
+    if(!src) return;
+    var next = {};
+    map.querySourceFeatures('gc').forEach(function(f){
+      var p = f.properties;
+      var key = p.cluster ? 'c'+p.cluster_id : 'p'+p.i;
+      if(next[key]) return; /* un même point peut revenir plusieurs fois (tuiles voisines) */
+      var mk = onScreen[key];
+      if(!mk){
+        if(p.cluster){
+          var el = document.createElement('div');
+          el.className = 'gc-cluster';
+          el.textContent = p.point_count;
+          var size = p.point_count < 10 ? 34 : p.point_count < 50 ? 42 : 50;
+          el.style.width = el.style.height = size+'px';
+          var cid = p.cluster_id, coords = f.geometry.coordinates;
+          el.addEventListener('click', function(){
+            var go = function(z){ map.easeTo({center:coords, zoom:z}); };
+            var r = src.getClusterExpansionZoom(cid, function(err, z){ if(!err) go(z); });
+            if(r && r.then) r.then(go);
+          });
+          mk = new ml.Marker({element:el}).setLngLat(coords);
+        } else {
+          var m = MARKERS[p.i];
+          var pin = mkIcon(m.type);
+          pin.title = m.nom;
+          mk = new ml.Marker({element:pin}).setLngLat([m.lng, m.lat])
+                 .setPopup(new ml.Popup({offset:18, maxWidth:'290px'}).setHTML(popupHtml(m)));
+        }
+        mk.addTo(map);
+      }
+      next[key] = mk;
+    });
+    Object.keys(onScreen).forEach(function(k){ if(!next[k]) onScreen[k].remove(); });
+    onScreen = next;
+  }
+
+  /* ── Rebuild (filtre + recherche) ── */
+  function rebuildMap(){
+    var src = map.getSource('gc');
+    if(!src) return;
+    var feats = visibleFeatures();
+    src.setData({type:'FeatureCollection', features:feats});
+    if(counterEl) counterEl.textContent = feats.length+' lieu'+(feats.length!==1?'x':'')+' affiché'+(feats.length!==1?'s':'');
+  }
+
+  map.on('load', function(){
+    map.addSource('gc', {type:'geojson', data:{type:'FeatureCollection', features:[]}, cluster:true, clusterMaxZoom:14, clusterRadius:40});
+    /* calque invisible : nécessaire pour que MapLibre charge la source et la rende interrogeable */
+    map.addLayer({id:'gc-points', type:'circle', source:'gc', paint:{'circle-radius':0, 'circle-opacity':0}});
+    map.on('sourcedata', function(e){ if(e.sourceId==='gc' && e.isSourceLoaded) refreshMarkers(); });
+    map.on('moveend', refreshMarkers);
+    rebuildMap();
+  });
 
   /* ── Filtres ── */
   document.querySelectorAll('.carte-filter-btn').forEach(function(btn){
@@ -606,7 +676,7 @@ if (navbar) {
       t = setTimeout(function(){ currentSearch = v; rebuildMap(); }, 250);
     });
   }
-  }; // fin initGoogleMap
+  } // fin initCarte
 
   function escapeHtml(str){
     var div = document.createElement('div');
@@ -618,17 +688,13 @@ if (navbar) {
     var section = document.getElementById('carte-interactive');
     if(section) section.scrollIntoView({behavior:'smooth', block:'start'});
     function doShow(){
-      var m = window.gcMap;
+      var m = window.gcMap, ml = window.gcML;
       if(!m){ setTimeout(doShow, 300); return; }
-      m.setCenter({lat:lat, lng:lng});
-      m.setZoom(15);
-      var icon = window.gcIcons && window.gcIcons.bonplan ? window.gcIcons.bonplan : undefined;
-      var marker = new google.maps.Marker({position:{lat:lat,lng:lng}, map:m, icon:icon});
-      var popup = new google.maps.InfoWindow({
-        content:'<div style="padding:4px 2px;"><div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:4px;">'+escapeHtml(titre)+'</div><div style="font-size:.75rem;color:#555;">'+escapeHtml(badge)+'</div></div>',
-        maxWidth:220
-      });
-      popup.open(m, marker);
+      m.flyTo({center:[lng, lat], zoom:15});
+      var popup = new ml.Popup({offset:18, maxWidth:'220px'})
+        .setHTML('<div style="padding:4px 2px;"><div style="font-family:Georgia,serif;font-size:.9rem;font-weight:700;color:#2C1507;margin-bottom:4px;">'+escapeHtml(titre)+'</div><div style="font-size:.75rem;color:#555;">'+escapeHtml(badge)+'</div></div>');
+      var marker = new ml.Marker({element:window.gcMkIcon('bonplan')}).setLngLat([lng, lat]).setPopup(popup).addTo(m);
+      marker.togglePopup();
     }
     setTimeout(doShow, 600);
   };
