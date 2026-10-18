@@ -39,10 +39,24 @@ DECOUVRIR = [("angkor", "Angkor"), ("angkor-wat", "Angkor Wat"), ("histoire-camb
              ("evenements", "Événements"), ("bons-plans", "Bons plans"), ("quartiers", "Quartiers"),
              ("photos-videos", "Photos & vidéos"), ("carte-interactive", "Carte interactive"), ("blog", "Blog")]
 
+# Barre de menu et bandeau identiques à ceux que dessine ui/app.js (nav() et home()) : la grande photo
+# s'affiche dès le HTML, sans attendre les scripts (vitesse d'affichage mesurée par Google, LCP),
+# et rien ne bouge quand ui/app.js remplace ce contenu.
+NAV = ('<nav class="top" aria-label="Navigation principale"><div class="wrap"><div class="brand">'
+       '<a class="logo" href="./" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a>'
+       '<div class="khwrap"><span class="khtime">&nbsp;</span><span class="khdate">&nbsp;</span></div></div>'
+       '<ul id="menu"><li><a href="./" class="on">Accueil</a></li><li><a href="#explore">Explorer le Cambodge</a></li>'
+       '<li><a href="evenements/">Événements</a></li><li><a href="activites/">Expériences</a></li>'
+       '<li><a href="itineraire-cambodge/">Itinéraires</a></li><li><a href="guide-pratique-cambodge/">Infos pratiques</a></li></ul>'
+       '<div class="navtools"><span class="pill">⌕<span class="sl"> Rechercher</span></span><span class="pill">♥ 0</span>'
+       '<span class="pill">🇫🇷 FR</span><span class="burger pill">☰</span></div></div></nav>')
+HERO_BLOCK = ('<header class="hero" id="top"><div class="scene ph" style="background-image:url(\'photos/angkor%208.webp\');--pos:50% 65%"></div>'
+              '<div class="wrap"><span class="eyebrow" style="color:var(--sand)">Royaume du Cambodge · 25 provinces</span>'
+              '<h1>Le Cambodge, <em style="white-space:nowrap">au-delà</em> des temples que vous connaissez.</h1>'
+              f'<p>{HERO}</p></div></header>')
+
 def build():
-    out = ['<main class="wrap" style="padding:48px 0 64px;max-width:900px">',
-           '<h1 style="font-size:clamp(34px,5vw,56px)">Le Cambodge, au-delà des temples que vous connaissez.</h1>',
-           f'<p class="lead" style="margin-top:16px">{HERO}</p>',
+    out = [NAV, HERO_BLOCK, '<main class="wrap" style="padding:48px 0 64px;max-width:900px">',
            '<p style="margin-top:14px">Le Guide Cambodge est un guide de voyage indépendant et gratuit, en français : '
            'les 25 provinces du pays, une carte interactive, des itinéraires, un agenda des événements et des conseils '
            'pratiques vérifiés auprès de sources officielles. <a href="a-propos/">En savoir plus sur le guide</a>.</p>',
