@@ -12,7 +12,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://www.leguidecambodge.com/"
-CSS_V = "24"
+CSS_V = "25"
 
 dump = subprocess.run(["node", "-e", r'''
 global.window={};const fs=require("fs");const r=f=>fs.readFileSync(f,"utf8");
