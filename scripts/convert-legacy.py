@@ -224,6 +224,8 @@ def build_legacy_css():
 .legacy .galerie-item-city,.legacy .lb-city{color:#F2D8A0}
 .legacy .galerie-item-caption,.legacy .lb-caption{color:rgba(255,255,255,.9)}
 .legacy #lightbox-prev,.legacy #lightbox-next{color:#fff}
+#evenements #cal-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))!important}
+@media(max-width:600px){#evenements #cal-grid{grid-template-columns:1fr!important}}
 .legacy .lhero{color:#fff}
 .legacy .lhero .section-label{color:#F2D8A0}
 .legacy .lhero .section-title,.legacy .lhero h1{color:#fff}
