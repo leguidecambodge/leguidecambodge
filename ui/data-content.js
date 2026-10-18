@@ -6,7 +6,7 @@ const EXPERIENCES = [
 {id:"jungle",name:"Jungle & trekking",kh:"ព្រៃ",d:["koh-kong","ratanakiri","mondulkiri","kampong-speu"],blurb:"Treks de plusieurs jours depuis Chi Phat, expéditions avec les rangers du Virachey, sentiers des gibbons à Keo Seima et ascension du Phnom Aural."},
 {id:"cycling",name:"Vélo",kh:"កង់",d:["battambang","kratie","kampong-cham","takeo","kandal","siem-reap","kampong-chhnang"],blurb:"Campagne de rizières plates, îles du Mékong sans voitures et petites routes de temples : le Cambodge est l'un des meilleurs pays d'Asie pour le vélo."},
 {id:"motorbike",name:"Voyages à moto",kh:"ម៉ូតូ",d:["mondulkiri","ratanakiri","kampot","preah-vihear","pursat","pailin","oddar-meanchey"],blurb:"Les pistes de terre rouge du nord-est, la route de montagne des Cardamomes jusqu'à Osoam, la boucle des karsts de Kampot à Kep, les boucles de temples du nord."},
-{id:"mekong",name:"Le Mékong",kh:"ទន្លេមេគង្គ",d:["kratie","stung-treng","kampong-cham","phnom-penh"],blurb:"Les dauphins de Kampi et d'Anlong Cheuteal, la forêt inondée de Stung Treng, les ponts de bambou, les séjours chez l'habitant sur les îles."},
+{id:"mekong",name:"Le Mékong",kh:"ទន្លេមេគង្គ",d:["kratie","stung-treng","kampong-cham","phnom-penh"],blurb:"Les dauphins d'Irrawaddy de Kampi, la forêt inondée de Stung Treng, les ponts de bambou, les séjours chez l'habitant sur les îles."},
 {id:"wildlife",name:"Faune sauvage",kh:"សត្វព្រៃ",d:["mondulkiri","ratanakiri","preah-vihear","stung-treng","banteay-meanchey","koh-kong"],blurb:"Sanctuaires d'éléphants éthiques, gibbons, doucs, ibis géant, grues antigones, dauphins d'Irrawaddy, calaos."},
 {id:"waterfalls",name:"Cascades",kh:"ទឹកធ្លាក់",d:["mondulkiri","ratanakiri","koh-kong","kampot","kampong-speu","stung-treng"],blurb:"Bou Sra, Ka Chanh, Tatai, Popokvil, Chambok et la Sopheakmit, où le Mékong s'étale sur plusieurs kilomètres, à la frontière du Laos."},
 {id:"food",name:"Gastronomie",kh:"ម្ហូប",d:["phnom-penh","kampot","kep","battambang","siem-reap"],blurb:"Le crabe au poivre de Kampot, l'amok, le num banh chok, le nem de Battambang, le café du Mondulkiri et les meilleures soupes de nouilles d'Asie du Sud-Est."},
@@ -55,11 +55,11 @@ const HIDDEN = [
 {t:"Prasat Bakan (Preah Khan de Kampong Svay)",p:"preah-vihear",s:"La plus vaste enceinte de l'empire d'Angkor, 5 km de côté, et vous y serez sans doute seul."},
 {t:"La cascade de Sopheakmit",p:"stung-treng",s:"La plus large cascade du Cambodge, à la frontière du Laos, rugissante en septembre."},
 {t:"Koh Kong Krao",p:"koh-kong",s:"La plus grande île du Cambodge : 100 km² de jungle et sept plages, sans aucun resort."},
-{t:"Les enceintes circulaires de Memot",p:"tbong-khmum",s:"Des habitats vieux de 4 000 ans, uniques en Asie du Sud-Est, au cœur des plantations d'hévéas."},
+{t:"Les enceintes circulaires de Memot",p:"tbong-khmum",s:"D'anciens villages de l'âge du fer, vieux d'environ 3 000 ans et entourés d'un fossé circulaire, au cœur des plantations d'hévéas."},
 {t:"Chhnok Tru à l'aube",p:"kampong-chhnang",s:"Une ville flottante de 10 000 habitants avec écoles, boutiques et pagodes, vue depuis une barque à rames."},
 {t:"Tmatboey",p:"preah-vihear",s:"Le meilleur endroit au monde pour voir l'ibis géant, oiseau national du Cambodge, depuis un lodge de village."},
 {t:"La Sea Forest, Mondulkiri",p:"mondulkiri",s:"Des collines vertes ondulées comme des vagues, enveloppées de brume avant 7 h du matin."},
-{t:"Wat Maha Leap",p:"tbong-khmum",s:"Une pagode entièrement en bois du XIXe siècle aux colonnes dorées, l'une des dernières de son genre."},
+{t:"Wat Maha Leap",p:"kampong-cham",s:"Une pagode entièrement en bois du XIXe siècle aux colonnes dorées, l'une des dernières de son genre."},
 {t:"Osoam",p:"pursat",s:"Un village de montagne des Cardamomes accessible par une piste, avec un lac, des cascades et un centre communautaire."}
 ];
 /* link = page détaillée déjà existante sur le site */

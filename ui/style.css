@@ -428,3 +428,4 @@ body{top:0!important}
 .sp-burger{display:none;margin-left:auto;font-size:16px;line-height:1;min-width:40px;min-height:36px}
 @media(max-width:900px){.sp-burger{display:block}.sp-top nav{display:none}.sp-top nav.open{display:flex;flex-direction:column;gap:0;position:absolute;top:62px;left:-4vw;right:-4vw;background:var(--cream);padding:6px 6vw 12px;border-bottom:1px solid var(--line);box-shadow:0 14px 28px rgba(0,0,0,.08)}.sp-top nav.open a{padding:13px 0;font-size:16px;border-bottom:1px solid var(--line)}.sp-top nav.open a:last-child{border-bottom:0}}
 .sp-top + .dhero .credit{top:12px}
+.dbody ul{padding-left:20px}.dbody .two ul,.dbody ul.plist{padding-left:0}
