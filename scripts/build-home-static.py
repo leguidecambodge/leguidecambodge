@@ -76,7 +76,7 @@ def build():
             out.append(f"<li>{link(slug, label)} — {esc(meta_desc(slug))}</li>")
         out.append("</ul>")
     out.append('<p style="margin-top:36px;font-size:14px;color:var(--mute)"><a href="a-propos/">À propos</a> · '
-               '<a href="mentions-legales/">Mentions légales</a> · <a href="mailto:leguidecambodge@gmail.com">leguidecambodge@gmail.com</a></p></main>')
+               '<a href="mentions-legales/">Mentions légales</a> · <a href="a-propos/">Contact</a></p></main>')
     return "".join(out)
 
 def main():
