@@ -1,7 +1,7 @@
 /* ===== PHOTOS DU SITE =====
    Pour ajouter une photo à une province : dossier `photos/` + une entrée ci-dessous.
    card = vignette des cartes · hero = grand bandeau de la fiche · gal = 2 photos de galerie
-   pos  = point focal (ex. "50% 40%") · fit:1 = photo entière sur fond brun (Battambang, Kampot : rendu validé)
+   pos  = point focal (ex. "50% 40%") · ppos = point focal propre au panneau de la carte (bandeau large), facultatif · fit:1 = photo entière sur fond brun (Battambang ; Kampot seulement pour son bandeau, sa vignette est recadrée depuis le 18/10)
    Les provinces sans entrée gardent une scène illustrée en attendant une photo. */
 const P = n => "photos/" + encodeURIComponent(n) + ".webp";
 const WM = "https://upload.wikimedia.org/wikipedia/commons/";
@@ -11,7 +11,7 @@ const PH = {
   home: {src:P("angkor 8"), pos:"50% 65%"},
   "siem-reap": {card:{src:P("angkor 8"),pos:"50% 60%"}, hero:{src:P("siem reap 2"),pos:"50% 55%"}, gal:[{src:P("angkor 7"),pos:"50% 60%"},{src:P("siem reap 6"),pos:"60% 40%"}]},
   "phnom-penh": {card:{src:P("phnom penh 4"),pos:"50% 50%"}, gal:[{src:P("phnom penh 3"),pos:"50% 35%"},{src:P("phnom penh 1"),pos:"50% 50%"}]},
-  "kampot": {card:{src:P("kampot 1"),fit:1}},
+  "kampot": {card:{src:P("kampot 1"),pos:"70% 8%",ppos:"75% 12%"}, hero:{src:P("kampot 1"),fit:1}},
   "battambang": {card:{src:P("battambang 4"),fit:1}},
   "sihanoukville": {card:{src:P("koh rong 4"),pos:"78% 50%"}, hero:{src:P("koh rong 4"),pos:"50% 65%"}, gal:[{src:P("koh rong 16"),pos:"50% 55%"},{src:P("koh rong 6"),pos:"50% 50%"}]},
   /* photos déjà utilisées sur l'ancien site (Wikimedia Commons) */

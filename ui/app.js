@@ -30,7 +30,8 @@ function ph(o,mode){const u=`url('${o.src}')`,lz=mode==="card"||mode==="gal",bg=
   ? `<div class="scene ph fit" ${bg} role="img" aria-label="Photo"></div>`
   : `<div class="scene ph hy"><b ${bg}></b><i ${bg}></i></div>`;
  const cr=o.credit&&(mode==="hero"||mode==="gal")?`<span class="credit">Photo : ${o.credit}</span>`:"";
- return lz?`<div class="scene ph" style="--pos:${o.pos||"center"}" ${bg}>${cr}</div>`:`<div class="scene ph" style="background-image:${u};--pos:${o.pos||"center"}">${cr}</div>`}
+ const pos=(mode==="panel"&&o.ppos)||o.pos||"center";
+ return lz?`<div class="scene ph" style="--pos:${pos}" ${bg}>${cr}</div>`:`<div class="scene ph" style="background-image:${u};--pos:${pos}">${cr}</div>`}
 let LZ=null;
 function lazyBg(){const els=document.querySelectorAll("[data-bg]");const show=e=>{e.style.backgroundImage=e.dataset.bg;e.removeAttribute("data-bg")};
  if(!("IntersectionObserver" in window)){els.forEach(show);return}
