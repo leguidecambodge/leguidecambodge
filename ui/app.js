@@ -87,11 +87,11 @@ function removeCurrentMap(){if(CURRENT_MAP){try{CURRENT_MAP.remove()}catch(e){}C
 function applyMapFilter(){const e=EXPERIENCES.find(x=>x.id===ACTIVE_FILTER);Object.entries(CURRENT_MARKERS).forEach(([id,mk])=>{mk.getElement().classList.toggle("dim",!!e&&!e.d.includes(id))})}
 function initInteractiveMap(id){const el=document.getElementById(id);if(!el)return;ACTIVE_FILTER="";
  const myGen=++MAP_GEN; // annule les initialisations précédentes encore en attente (navigation rapide entre pages pendant le chargement)
- loadMapLibre().then(ml=>{
+ Promise.all([loadMapLibre(),window.gcStyleGoogle?window.gcStyleGoogle():"https://tiles.openfreemap.org/styles/liberty"]).then(([ml,mapStyle])=>{
   if(myGen!==MAP_GEN||!document.body.contains(el))return;
   removeCurrentMap();
   el.innerHTML="";el.classList.remove("loading");
-  const map=new ml.Map({container:el,style:"https://tiles.openfreemap.org/styles/liberty",center:[104.9,12.55],zoom:6,cooperativeGestures:true,locale:GESTURE_FR,attributionControl:{compact:true},maplibreLogo:false});
+  const map=new ml.Map({container:el,style:mapStyle,center:[104.9,12.55],zoom:6,cooperativeGestures:true,locale:GESTURE_FR,attributionControl:{compact:true},maplibreLogo:false});
   map.fitBounds(CAMBODIA_BOUNDS,{padding:6,animate:false});
   map.addControl(new ml.NavigationControl({showCompass:false}),"bottom-right");
   map.on("load",()=>{if(myGen!==MAP_GEN)return;map.setMinZoom(map.getZoom());map.setMaxBounds(padBounds(CAMBODIA_BOUNDS,.6))});

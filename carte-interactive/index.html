@@ -26,6 +26,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
 <link rel="stylesheet" href="../assets/style.css?v=2">
+<script src="../ui/carte-google.js?v=1"></script>
 <style>
 .carte-search-wrap{max-width:1100px;margin:0 auto 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .carte-search{flex:1;min-width:200px;padding:9px 14px 9px 38px;background:rgba(44,21,7,.65);border:1px solid rgba(212,150,26,.22);border-radius:6px;color:var(--creme);font-size:.82rem;outline:none;transition:border-color .2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='rgba(212,150,26,.55)' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center;}
@@ -317,17 +318,19 @@ if (navbar) {
     document.head.appendChild(l);
     var s = document.createElement('script');
     s.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
-    s.onload = function(){ initCarte(window.maplibregl); };
+    s.onload = function(){
+      window.gcStyleGoogle().then(function(style){ initCarte(window.maplibregl, style); });
+    };
     s.onerror = function(){ mapEl.innerHTML = '<p style="padding:40px;text-align:center;color:rgba(245,233,208,.7);">La carte n\'a pas pu se charger. Rechargez la page pour réessayer.</p>'; };
     document.head.appendChild(s);
   }, {rootMargin:'300px 0px', threshold:0}).observe(mapEl);
 
   var BOUNDS = [[102.3,10.3],[107.65,14.75]]; /* [ouest,sud],[est,nord] — ordre lon,lat attendu par MapLibre */
 
-  function initCarte(ml){
+  function initCarte(ml, mapStyle){
   var map = new ml.Map({
     container: mapEl,
-    style: 'https://tiles.openfreemap.org/styles/liberty',
+    style: mapStyle,
     bounds: BOUNDS,
     fitBoundsOptions: {padding:10},
     cooperativeGestures: true,
