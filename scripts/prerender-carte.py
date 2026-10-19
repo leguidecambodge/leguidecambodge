@@ -19,7 +19,7 @@ parts = []
 for t, label in TYPES:
     L = [m for m in M if m["type"] == t]
     if not L: continue
-    lis = "".join(f'<li><b>{html.escape(m["nom"])}</b> — {m["desc"]}</li>' for m in L)  # desc : HTML de nos propres données
+    lis = "".join(f'<li><b>{html.escape(m["nom"])}</b> : {m["desc"]}</li>' for m in L)  # desc : HTML de nos propres données
     parts.append(f'<h3>{label} <small>({len(L)})</small></h3><ul>{lis}</ul>')
 block = ('<!--LIEUX--><details class="lieux"><summary>Voir les %d lieux de la carte sous forme de liste</summary>%s</details><!--/LIEUX-->'
          % (len(M), "".join(parts)))

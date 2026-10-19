@@ -1,7 +1,7 @@
 /* ===== Contenus pratiques repris de l'ancien accueil (urgences, hôpitaux, ambassades, FAQ) ===== */
 const URGENCES=[["Police", "117"], ["Ambulance", "119"], ["Pompiers", "118"], ["Police touristique", "016 654 736"]];
 /* vérifiés le 2026-10-17 : AKP (ministère du Tourisme, 03/09/2026), sites officiels des ambassades, liste médicale de l'ambassade d'Australie */
-const HOPITAUX=[["Royal Phnom Penh Hospital", "+855 23 991 000", "Urgences 24h/24 : +855 23 991 222"], ["Raffles Medical — Phnom Penh", "+855 23 216 911", "Clinique internationale · #161, Street 51"], ["Royal Angkor International Hospital — Siem Reap", "+855 63 761 888", "Urgences 24h/24 : +855 12 235 888"], ["Calmette Hospital — Phnom Penh", "+855 23 426 948", "Hôpital public · Urgences 24h/24"]];
+const HOPITAUX=[["Royal Phnom Penh Hospital", "+855 23 991 000", "Urgences 24h/24 : +855 23 991 222"], ["Raffles Medical : Phnom Penh", "+855 23 216 911", "Clinique internationale · #161, Street 51"], ["Royal Angkor International Hospital : Siem Reap", "+855 63 761 888", "Urgences 24h/24 : +855 12 235 888"], ["Calmette Hospital : Phnom Penh", "+855 23 426 948", "Hôpital public · Urgences 24h/24"]];
 const AMBASSADES=[["🇫🇷", "Ambassade de France", "+855 23 260 010", "Urgence (hors heures) : +855 12 591 209"], ["🇩🇪", "Ambassade d'Allemagne", "+855 23 216 381", "Urgence : +855 10 990 002"], ["🇬🇧", "British Embassy", "+855 61 300 011", "Hors heures : +44 20 7008 5000"], ["🇺🇸", "U.S. Embassy", "+855 23 728 000", "#1 Street 96, Phnom Penh"], ["🇦🇺", "Australian Embassy", "+855 23 266 500", "Urgence hors heures : +61 2 6261 3305"], ["🇨🇭", "Agence Consulaire Suisse", "+855 23 218 305", "#50 Street 334, BKK1 · Phnom Penh"], ["🇧🇪", "Consulat honoraire de Belgique", "+855 70 970 907", "Sur rendez-vous · urgence : ambassade à Bangkok +66 81 833 99 87"], ["🇨🇦", "Ambassade du Canada", "+855 99 430 811", "27-29, Street 75 · même numéro 24h/24"], ["🇯🇵", "Ambassade du Japon", "+855 23 217 161", "#194, boulevard Norodom · Phnom Penh"], ["🇰🇷", "Ambassade de Corée du Sud", "+855 23 211 900", "Urgence hors heures : +855 92 555 235"], ["🇳🇱", "Pays-Bas (ministère, 24h/24)", "+31 247 247 247", "Pas d'ambassade au Cambodge"], ["🇨🇳", "Ambassade de Chine", "+855 23 720 920", "#156, bd Mao Tse Toung · 24h/24 : +855 12 810 928"]];
 const NOTE_URGENCE="Souscrivez toujours une assurance voyage avant de partir · Enregistrez-vous sur Ariane (France) ou l'équivalent de votre pays.";
 const FAQ=[
@@ -15,7 +15,7 @@ const FAQ=[
 ],
 [
 "Quelle monnaie utiliser et comment payer ?",
-"Le dollar américain (USD) est accepté partout. Le riel cambodgien (KHR) est utilisé pour la monnaie rendue (1 USD ≈ 4 100 KHR en 2026). Les distributeurs sont disponibles dans toutes les grandes villes. Attention : les billets froissés ou abîmés sont refusés — gardez des dollars en bon état."
+"Le dollar américain (USD) est accepté partout. Le riel cambodgien (KHR) est utilisé pour la monnaie rendue (1 USD ≈ 4 100 KHR en 2026). Les distributeurs sont disponibles dans toutes les grandes villes. Attention : les billets froissés ou abîmés sont refusés, gardez des dollars en bon état."
 ],
 [
 "Combien coûte une entrée à Angkor Wat ?",
@@ -55,7 +55,7 @@ const FAQ=[
 ],
 [
 "Y a-t-il des zones à éviter au Cambodge ?",
-"Les zones rurales frontalières avec la Thaïlande (mines antipersonnel non encore déminées) nécessitent une vigilance — restez sur les chemins balisés. Dans les grandes villes, la prudence habituelle suffit."
+"Les zones rurales frontalières avec la Thaïlande (mines antipersonnel non encore déminées) nécessitent une vigilance, restez sur les chemins balisés. Dans les grandes villes, la prudence habituelle suffit."
 ],
 [
 "Comment éviter les arnaques touristiques ?",
@@ -75,10 +75,10 @@ const FAQ=[
 ],
 [
 "Le Cambodge est-il adapté aux végétariens/végans ?",
-"Oui, surtout dans les grandes villes. Dans les restaurants locaux, indiquez \"mein sach\" (sans viande) — attention, les bouillons contiennent souvent du poisson fermenté (prahok)."
+"Oui, surtout dans les grandes villes. Dans les restaurants locaux, indiquez \"mein sach\" (sans viande), attention, les bouillons contiennent souvent du poisson fermenté (prahok)."
 ],
 [
 "Quels souvenirs rapporter du Cambodge ?",
-"Les meilleurs souvenirs : poivre de Kampot (IGP), soie khmère tissée à la main, kramar (écharpe khmère), café cambodgien. Évitez les antiquités — l'export est interdit."
+"Les meilleurs souvenirs : poivre de Kampot (IGP), soie khmère tissée à la main, kramar (écharpe khmère), café cambodgien. Évitez les antiquités : l'export est interdit."
 ]
 ];

@@ -68,12 +68,12 @@ def build():
         for d in provs:
             name = d["name"].split(" &")[0]
             href = d["id"] + "/" if os.path.exists(os.path.join(ROOT, d["id"], "index.html")) else "#dest/" + d["id"]
-            out.append(f'<li><a href="{href}"><b>{esc(name)}</b></a> — {esc(d["tag"])}. {esc(first_sentence(d["intro"]))}</li>')
+            out.append(f'<li><a href="{href}"><b>{esc(name)}</b></a> : {esc(d["tag"])}. {esc(first_sentence(d["intro"]))}</li>')
         out.append("</ul>")
     for title, pages in (("Préparer votre voyage", PRATIQUE), ("Culture, temples et bonnes adresses", DECOUVRIR)):
         out.append(f'<h2 style="font-size:32px;margin:40px 0 8px">{title}</h2><ul style="display:grid;gap:8px;padding-left:18px">')
         for slug, label in pages:
-            out.append(f"<li>{link(slug, label)} — {esc(meta_desc(slug))}</li>")
+            out.append(f"<li>{link(slug, label)} : {esc(meta_desc(slug))}</li>")
         out.append("</ul>")
     out.append('<p style="margin-top:36px;font-size:14px;color:var(--mute)"><a href="a-propos/">À propos</a> · '
                '<a href="mentions-legales/">Mentions légales</a> · <a href="a-propos/">Contact</a></p></main>')

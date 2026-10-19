@@ -1,4 +1,4 @@
-/* ===== Le Guide Cambodge — application (design Kampuchea) ===== */
+/* ===== Le Guide Cambodge : application (design Kampuchea) ===== */
 "use strict";
 const $=s=>document.querySelector(s), byId=id=>DEST.find(d=>d.id===id);
 const norm=s=>String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
@@ -71,7 +71,7 @@ function mapSVG(small){const path=a=>a.map((p,i)=>(i?"L":"M")+PX(...p).join(" ")
  ${provs}</svg>`}
 function miniMap(d){const [x,y]=PX(d.lon,d.lat);return `<svg viewBox="0 0 880 760" style="width:100%" aria-hidden="true">${mapSVG(true).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")}<circle cx="${x}" cy="${y}" r="26" fill="#B8452B" opacity=".25"/><circle cx="${x}" cy="${y}" r="9" fill="#B8452B" stroke="#fff" stroke-width="3"/></svg>`}
 
-/* ===== vraie carte interactive (MapLibre GL + tuiles vectorielles OpenFreeMap — gratuit, sans clé, toujours nette)
+/* ===== vraie carte interactive (MapLibre GL + tuiles vectorielles OpenFreeMap, gratuit, sans clé, toujours nette)
    Rendu vectoriel (comme Google/Apple Maps) : contrairement à des tuiles-images, il reste net à tout zoom et sur tout écran (Retina inclus). ===== */
 let MAPLIBRE_READY=null;
 function loadMapLibre(){if(MAPLIBRE_READY)return MAPLIBRE_READY;
@@ -80,7 +80,7 @@ function loadMapLibre(){if(MAPLIBRE_READY)return MAPLIBRE_READY;
   const s=document.createElement("script");s.src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js";
   s.onload=()=>resolve(window.maplibregl);s.onerror=reject;document.head.appendChild(s)});
  return MAPLIBRE_READY}
-const CAMBODIA_BOUNDS=[[102.1,10.15],[107.75,14.85]]; // [ouest,sud],[est,nord] — ordre lon,lat attendu par MapLibre
+const CAMBODIA_BOUNDS=[[102.1,10.15],[107.75,14.85]]; // [ouest,sud],[est,nord], ordre lon,lat attendu par MapLibre
 const padBounds=([[w,s],[e,n]],p)=>{const dw=(e-w)*p,dn=(n-s)*p;return [[w-dw,s-dn],[e+dw,n+dn]]};
 const GESTURE_FR={"CooperativeGesturesHandler.WindowsHelpText":"Utilisez Ctrl + molette pour zoomer sur la carte","CooperativeGesturesHandler.MacHelpText":"Utilisez ⌘ + molette pour zoomer sur la carte","CooperativeGesturesHandler.MobileHelpText":"Utilisez deux doigts pour déplacer la carte"};
 let CURRENT_MAP=null,CURRENT_MARKERS={},ACTIVE_FILTER="",MAP_GEN=0,CURRENT_ML=null,CURRENT_EVT_MARKERS=[];
@@ -124,7 +124,7 @@ const SITE_PAGES=[["Histoire","histoire-cambodge/"],["Hôtels","hotels/"],["Vols
 function nav(active){return `<nav class="top" aria-label="Navigation principale"><div class="wrap"><div class="brand"><a class="logo" href="#home" aria-label="Le Guide Cambodge, accueil"><i></i>Le Guide<span style="font-weight:300;color:var(--mute)">&nbsp;Cambodge</span></a><div class="khwrap" title="Heure du Cambodge (UTC+7)"><span class="khtime" id="khtime">${khTime()}</span><span class="khdate" id="khdate">${khDate()}</span></div></div>
  <ul id="menu">${[["home","home"],["explore","explore"],["events","events"],["exp","exp"],["trips","trips"],["info","info"]].map(([k,r])=>`<li><a href="#${r}" class="${active===r?"on":""}">${t(k)}</a></li>`).join("")}</ul>
  <div class="navtools"><button class="pill" id="sbtn" title="${t("search")}" aria-label="${t("search")}">⌕<span class="sl"> ${t("search")}</span></button><a class="pill" href="#fav" aria-label="${t("fav")}">♥ ${FAV.size}</a>${langSwitcher()}<button class="burger pill" id="burger" aria-label="Menu">☰</button></div></div></nav>`}
-/* ===== sélecteur de langue (Google Translate — mêmes 12 langues que l'ancien site) ===== */
+/* ===== sélecteur de langue (Google Translate : mêmes 12 langues que l'ancien site) ===== */
 const LANGS=[["fr","🇫🇷","FR","Français"],["en","🇬🇧","EN","English"],["de","🇩🇪","DE","Deutsch"],["es","🇪🇸","ES","Español"],["zh-CN","🇨🇳","ZH","中文"],["km","🇰🇭","KH","ខ្មែរ"],["ru","🇷🇺","RU","Русский"],["ms","🇲🇾","MS","Melayu"],["vi","🇻🇳","VI","Tiếng Việt"],["pt","🇵🇹","PT","Português"],["tl","🇵🇭","TL","Filipino"],["ar","🇸🇦","AR","العربية"]];
 function langSwitcher(){return `<div class="langbar" id="langbar"><button class="pill" id="langtoggle" aria-label="Changer la langue" aria-expanded="false"><span id="langflag">🇫🇷</span> <span id="langcode">FR</span> <span class="langcaret">▾</span></button>
  <div class="langmenu" id="langmenu">${LANGS.map(([code,flag,short,name])=>`<button class="langopt${code==="fr"?" on":""}" data-lang="${code}" data-flag="${flag}" data-code="${short}">${flag} ${name}</button>`).join("")}</div></div>`}
@@ -222,7 +222,7 @@ function dest(id){const d=byId(id);if(!d)return home();const trips=TRIPS.filter(
  const sub=s=>`<h4 style="font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:10px">${s}</h4>`;
  return nav("explore")+`<header class="dhero">${vis(d,"hero",4)}<div class="wrap"><div class="crumbs"><a href="#home">Accueil</a> / <a href="#explore">Explorer</a> / ${REGIONS[d.region]}</div><h1>${d.name}</h1><div class="khname">${d.kh}</div><p style="font-size:20px;max-width:50ch;margin-top:14px;opacity:.9">${d.tag}</p></div></header>
  <div class="wrap"><div class="facts"><div><small>Durée conseillée</small><b>${d.duration}</b></div><div><small>Meilleure période</small><b>${bestShort(d)}</b></div><div><small>Région</small><b>${REGIONS[d.region]}</b></div><div><small>Idéal pour</small><b style="font-size:15px">${exps.slice(0,3).map(e=>e.name).join(" · ")}</b></div></div></div>
- ${d.alert?`<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité — frontière thaïlandaise</b><p>${d.alert} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>`:""}
+ ${d.alert?`<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité : frontière thaïlandaise</b><p>${d.alert} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>`:""}
  <div class="wrap"><div class="ttoc">${[["intro","Introduction"],["places","Lieux incontournables"],["todo","À faire"],...(gal?[["gallery","Galerie"]]:[]),["food","Cuisine"],["hidden","Trésors cachés"],["stay","Où dormir"],["getthere","Y aller"],["trips","Itinéraires"]].map(([k,l])=>`<a href="#dest/${d.id}" data-go="${k}">${l}</a>`).join("")}</div>
  <div class="dbody"><div>
  <h2 id="intro">Pourquoi aller à ${shortName(d.name)}</h2><p class="lead">${d.intro}</p>
@@ -251,7 +251,7 @@ function exp(id){const e=EXPERIENCES.find(x=>x.id===id);if(!e)return expList();c
 function tripsPage(){return nav("trips")+`<section class="exphero"><div class="wrap"><span class="eyebrow">${t("trips")}</span><h1>Quel voyage au Cambodge voulez-vous faire ?</h1><p class="lead">Choisissez une durée. Chaque itinéraire détaille les étapes jour par jour.</p></div></section><section class="s" style="padding-top:10px"><div class="wrap"><div class="dur" id="dur">${[3,5,7,10,14,21].map(n=>`<button data-d="${n}" class="${n===7?"on":""}">${n}<small>jours</small></button>`).join("")}</div><div class="grid g3" id="tripgrid">${tripCards(7)}</div><div class="shead" style="margin-top:60px"><h2>Tous les itinéraires</h2></div><div class="grid g3">${tripCards(0,TRIPS)}</div></div></section>`+footer()}
 function trip(id){const tr=TRIPS.find(x=>x.id===id);if(!tr)return tripsPage();
  return nav("trips")+`<header class="dhero" style="min-height:60vh">${pickVis(tr.route,"hero",11)}<div class="wrap"><div class="crumbs"><a href="#trips">Itinéraires</a> / ${tr.days} jours</div><h1>${tr.name}</h1><p style="font-size:19px;max-width:56ch;margin-top:14px">${tr.pitch}</p></div></header>
- ${(()=>{const al=tr.route.map(byId).filter(x=>x&&x.alert);return al.length?`<div class="wrap" style="margin-top:30px"><div class="secalert" role="alert"><b>⚠️ Sécurité — frontière thaïlandaise</b><p>Cet itinéraire passe par ${al.map(x=>`<a href="#dest/${x.id}">${x.name}</a>`).join(", ")}, en partie dans la bande de 30 km le long de la frontière thaïlandaise que France Diplomatie déconseille formellement (mise à jour du 21 septembre 2026). Les frontières terrestres avec la Thaïlande sont fermées depuis juin 2025. Adaptez le parcours et vérifiez la situation avant de partir.</p></div></div>`:""})()}<div class="wrap"><div class="dbody"><div><h2>Jour par jour</h2><ol class="plist">${tr.plan.map(p=>`<li>${p}</li>`).join("")}</ol><h2>Les provinces de cet itinéraire</h2><div class="grid g2">${tr.route.map((r,i)=>dcard(byId(r),"",i)).join("")}</div></div>
+ ${(()=>{const al=tr.route.map(byId).filter(x=>x&&x.alert);return al.length?`<div class="wrap" style="margin-top:30px"><div class="secalert" role="alert"><b>⚠️ Sécurité : frontière thaïlandaise</b><p>Cet itinéraire passe par ${al.map(x=>`<a href="#dest/${x.id}">${x.name}</a>`).join(", ")}, en partie dans la bande de 30 km le long de la frontière thaïlandaise que France Diplomatie déconseille formellement (mise à jour du 21 septembre 2026). Les frontières terrestres avec la Thaïlande sont fermées depuis juin 2025. Adaptez le parcours et vérifiez la situation avant de partir.</p></div></div>`:""})()}<div class="wrap"><div class="dbody"><div><h2>Jour par jour</h2><ol class="plist">${tr.plan.map(p=>`<li>${p}</li>`).join("")}</ol><h2>Les provinces de cet itinéraire</h2><div class="grid g2">${tr.route.map((r,i)=>dcard(byId(r),"",i)).join("")}</div></div>
  <aside class="side"><div class="box" style="padding:12px"><div class="minimap"><svg viewBox="0 0 880 760" style="width:100%" aria-hidden="true">${mapSVG(true).replace(/^<svg[^>]*>/,"").replace(/<\/svg>$/,"")}<polyline points="${tr.route.map(r=>PX(byId(r).lon,byId(r).lat).join(",")).join(" ")}" fill="none" stroke="#B8452B" stroke-width="4" stroke-dasharray="8 6"/>${tr.route.map((r,i)=>{const [x,y]=PX(byId(r).lon,byId(r).lat);return `<circle cx="${x}" cy="${y}" r="11" fill="#17201F" stroke="#fff" stroke-width="3"/><text x="${x}" y="${+y+4}" font-size="11" fill="#fff" text-anchor="middle">${i+1}</text>`}).join("")}</svg></div></div><div class="box"><h4>${tr.days} jours · ${tr.route.length} provinces</h4><p>Rythme : ${tr.days/tr.route.length>=3?"lent":tr.days/tr.route.length>=2?"équilibré":"soutenu"}. Meilleure période : ${bestShort(byId(tr.route[0]))}.</p></div></aside></div></div>`+footer()}
 
 /* ===== infos pratiques ===== */
@@ -271,7 +271,7 @@ function favPage(){const l=[...FAV].map(byId).filter(Boolean);return nav("")+`<s
 /* anciennes ancres de l'accueil (liens depuis les autres pages du site) */
 const LEGACY={contact:"contact",newsletter:"contact",villes:"featured",quartiers:"featured",hero:"top",vols:"practical",conseils:"practical","partir-france":"practical",transports:"practical"};
 function pageTitle(h){const n=h[0]==="dest"&&byId(h[1])?byId(h[1]).name+" : que voir, que faire, où dormir":h[0]==="exp"&&EXPERIENCES.find(x=>x.id===h[1])?EXPERIENCES.find(x=>x.id===h[1]).name+" au Cambodge":h[0]==="trip"&&TRIPS.find(x=>x.id===h[1])?"Itinéraire : "+TRIPS.find(x=>x.id===h[1]).name:h[0]==="explore"?"Les 25 provinces du Cambodge":h[0]==="exp"?"Explorer le Cambodge par expérience":h[0]==="trips"?"Itinéraires au Cambodge":h[0]==="info"?"Infos pratiques Cambodge":h[0]==="fav"?"Mes favoris":h[0]==="events"?"Événements de la semaine au Cambodge":"";
- return n?n+" — Le Guide Cambodge":SITE_TITLE}
+ return n?n+" : Le Guide Cambodge":SITE_TITLE}
 function render(keep){const h=(location.hash||"#home").slice(1).split("/");const app=$("#app");let html,goto=null;const y=window.scrollY;lbClose();
  if(!(h[0]==="home"||h[0]==="explore"||h[0]==="map"||LEGACY[h[0]])){MAP_GEN++;removeCurrentMap()}
  if(h[0]==="mentions"){location.replace("mentions-legales/");return}

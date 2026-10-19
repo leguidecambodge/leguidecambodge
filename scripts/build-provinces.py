@@ -107,7 +107,7 @@ def page(d):
     faq_html = (f'<h2>Questions fréquentes</h2><div class="sp-faq">' + "".join(f"<h3>{esc(q)}</h3><p>{esc(r)}</p>" for q, r in d["faq"]) + "</div>") if d.get("faq") else ""
     alert = ""
     if d.get("alert"):
-        alert = f'''<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité — frontière thaïlandaise</b><p>{esc(d["alert"])} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>'''
+        alert = f'''<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité : frontière thaïlandaise</b><p>{esc(d["alert"])} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>'''
     hero = ph[0] if ph else None
     preload = f'<link rel="preload" as="image" href="{esc(hero["src"])}" fetchpriority="high">\n' if hero else ""
     hero_html = (f'<img class="bg" src="{esc(hero["src"])}" alt="{esc(sn)}, Cambodge" fetchpriority="high">' + (f'<span class="credit">Photo : {hero["credit"]}</span>' if hero["credit"] else "")) if hero else ""
