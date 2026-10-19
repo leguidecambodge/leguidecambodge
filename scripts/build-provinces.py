@@ -88,7 +88,7 @@ def page(d):
     ph = photos(pid)
     og = og_image(pid, ph)
     title = f"{sn} (Cambodge) : que voir, que faire, où dormir"
-    desc = f"{sn}, province du Cambodge : {d['tag'][0].lower() + d['tag'][1:]}. Lieux incontournables, activités, cuisine, hébergement et comment s'y rendre."
+    desc = f"{sn}, province du Cambodge : {d['tag'][0].lower() + d['tag'][1:]}. Que voir, que faire, où manger, où dormir et comment s'y rendre."
     if len(desc) > 160: desc = desc[:157].rsplit(" ", 1)[0] + "…"
     url = f"{SITE}{pid}/"
     ld = {"@context": "https://schema.org", "@graph": [
@@ -155,11 +155,11 @@ def page(d):
 <div class="wrap"><div class="dbody" style="grid-template-columns:1fr"><div>
 <h2>Pourquoi aller à {esc(sn)}</h2><p class="lead">{esc(d["intro"])}</p>
 {about_html}
-<h2>Lieux incontournables</h2><ol class="plist">{"".join(f"<li><span>{esc(p)}</span></li>" for p in d["places"])}</ol>
+<h2>À voir</h2><ol class="plist">{"".join(f"<li><span>{esc(p)}</span></li>" for p in d["places"])}</ol>
 <h2>À faire</h2><div class="two"><ul>{li(d["todo"][:half])}</ul><ul>{li(d["todo"][half:])}</ul></div>
 {f'<div class="sp-gal">{gal}</div>' if gal else ""}
 <h2>Cuisine &amp; culture</h2><ul>{li(d["food"])}</ul>
-<h2>Trésors cachés</h2><ul>{li(d["hidden"])}</ul>
+<h2>Moins connus</h2><ul>{li(d["hidden"])}</ul>
 <h2>Où dormir</h2><ul class="plist" style="counter-reset:p">{"".join(f"<li>{esc(x)}</li>" for x in d["stay"])}</ul>
 <p class="sp-cta"><a class="btn dark" target="_blank" rel="sponsored noopener noreferrer" href="{booking}">Comparer les hébergements à {esc(sn)}</a></p><p class="tri" style="font-size:12px;color:var(--mute)">Lien partenaire Booking.com : sans surcoût pour vous.</p>
 <h2>Comment s'y rendre</h2><p class="lead" style="font-size:17px">{esc(d["getThere"])}</p>

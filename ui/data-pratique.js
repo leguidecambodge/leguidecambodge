@@ -43,7 +43,7 @@ const FAQ=[
 ],
 [
 "Quelle est la meilleure ville pour débuter son voyage ?",
-"Siem Reap est idéale pour débuter : aéroport international (SAI) bien desservi et temples d'Angkor à une vingtaine de minutes du centre-ville. Pour une immersion directe dans la culture khmère contemporaine, commencez par Phnom Penh."
+"Siem Reap est idéale pour débuter : aéroport international (SAI) bien desservi et temples d'Angkor à une vingtaine de minutes du centre-ville. Pour voir la culture khmère d'aujourd'hui, commencez par Phnom Penh."
 ],
 [
 "Combien de jours faut-il pour bien visiter le Cambodge ?",
