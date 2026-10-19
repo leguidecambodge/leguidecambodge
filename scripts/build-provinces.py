@@ -73,6 +73,8 @@ PAGE_CSS = '''<style>
 .dhero .credit a{color:inherit;text-decoration:underline}
 .sp-cta{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0}
 .sp-near{display:flex;gap:10px;flex-wrap:wrap}.sp-near a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;background:#fff;font-size:14px}
+.dbody p+p{margin-top:14px}
+.sp-faq h3{font-size:19px;margin:22px 0 6px}.sp-faq p{margin:0}
 </style>'''
 
 PARTIALS = os.path.join(ROOT, "scripts/partials")
@@ -97,6 +99,12 @@ def page(d):
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": SITE},
             {"@type": "ListItem", "position": 2, "name": sn, "item": url}]}]}
+    # contenus optionnels (data-provinces.js) : about = paragraphes « Bon à savoir », faq = [[question, réponse], …]
+    if d.get("faq"):
+        ld["@graph"].append({"@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in d["faq"]]})
+    about_html = (f'<h2>Bon à savoir sur {esc(sn)}</h2>' + "".join(f"<p>{esc(p)}</p>" for p in d["about"])) if d.get("about") else ""
+    faq_html = (f'<h2>Questions fréquentes</h2><div class="sp-faq">' + "".join(f"<h3>{esc(q)}</h3><p>{esc(r)}</p>" for q, r in d["faq"]) + "</div>") if d.get("faq") else ""
     alert = ""
     if d.get("alert"):
         alert = f'''<div class="wrap"><div class="secalert" role="alert"><b>⚠️ Sécurité — frontière thaïlandaise</b><p>{esc(d["alert"])} Source : <a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/conseils-par-pays-destination/cambodge/" target="_blank" rel="noopener">France Diplomatie</a>, mise à jour du 21 septembre 2026 ; la situation peut évoluer.</p></div></div>'''
@@ -146,6 +154,7 @@ def page(d):
 {alert}
 <div class="wrap"><div class="dbody" style="grid-template-columns:1fr"><div>
 <h2>Pourquoi aller à {esc(sn)}</h2><p class="lead">{esc(d["intro"])}</p>
+{about_html}
 <h2>Lieux incontournables</h2><ol class="plist">{"".join(f"<li><span>{esc(p)}</span></li>" for p in d["places"])}</ol>
 <h2>À faire</h2><div class="two"><ul>{li(d["todo"][:half])}</ul><ul>{li(d["todo"][half:])}</ul></div>
 {f'<div class="sp-gal">{gal}</div>' if gal else ""}
@@ -157,6 +166,7 @@ def page(d):
 <h3 style="font-size:22px;margin:26px 0 8px">Meilleure période</h3><p>{esc(d["best"])}</p>
 {f'<h2>Itinéraires qui passent par {esc(sn)}</h2><ul>{trips_html}</ul>' if trips_html else ""}
 {f'<h2>Provinces voisines</h2><div class="sp-near">{near}</div>' if near else ""}
+{faq_html}
 <p class="sp-cta"><a class="btn dark" href="../#dest/{pid}">Voir {esc(sn)} sur la carte interactive</a><a class="btn" style="border:1px solid var(--line)" href="../#events">Les événements de la semaine</a></p>
 </div></div></div>
 </main>
