@@ -235,7 +235,8 @@ def build_legacy_css():
 
 # ---------- pages ----------
 FONTS = '<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">'
-HEAD_SCRIPTS = '''<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463726773327954" crossorigin="anonymous"></script>
+HEAD_SCRIPTS = '''<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c="";try{c=localStorage.getItem("gc_consent")||""}catch(e){}var v=c==="accepted"?"granted":"denied";gtag("consent","default",{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v});if(v==="denied")(window.adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1})();</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463726773327954" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGJTQPVHZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZGJTQPVHZJ');</script>'''
 HEADER = open(os.path.join(ROOT, "scripts/partials/header.html"), encoding="utf8").read().strip()

@@ -142,7 +142,7 @@ function footer(){return `<footer><div class="wrap"><div class="cols"><div><div 
  <div><h5>Expériences</h5><ul>${EXPERIENCES.slice(0,8).map(e=>`<li><a href="#exp/${e.id}">${e.name}</a></li>`).join("")}</ul></div>
  <div><h5>Pratique</h5><ul>${INFO.slice(0,8).map(i=>`<li><a href="#info/${i.id}">${i.t}</a></li>`).join("")}</ul></div>
  <div><h5>Le guide</h5><ul>${FOOT_LINKS.map(([n,h])=>`<li><a href="${h}">${n}</a></li>`).join("")}</ul></div></div>
- <div class="legal"><div id="legal">© ${new Date().getFullYear()} Le Guide Cambodge · <a href="a-propos/">À propos</a> · <a href="mentions-legales/">Mentions légales</a> · <a href="mailto:leguidecambodge@gmail.com">leguidecambodge@gmail.com</a></div>
+ <div class="legal"><div id="legal">© ${new Date().getFullYear()} Le Guide Cambodge · <a href="a-propos/">À propos</a> · <a href="mentions-legales/">Mentions légales</a> · <a href="#" id="cookie-manage">Gérer les cookies</a> · <a href="mailto:leguidecambodge@gmail.com">leguidecambodge@gmail.com</a></div>
  <div>Transparence : certains liens de ce site (hôtels, vols, activités) sont des liens d'affiliation. Ils ne changent rien à votre prix et nous aident à financer le site.</div>
  <div class="tri">Tout le guide : ${SITE_PAGES.map(([n,h])=>`<a href="${h}">${n}</a>`).join(" · ")}</div></div></div></footer>`}
 const REG_ORDER=["north","tonle","central","mekong","plateau","cardamom","coast"];
@@ -403,11 +403,11 @@ function affiliate(root){root.querySelectorAll('a[href*="booking.com"]:not([data
 
 /* ===== cookies (RGPD) ===== */
 function cookies(){const b=$("#cookie-banner");if(!b)return;
- try{if(localStorage.getItem("gc_consent")){b.classList.add("hidden");return}}catch(e){b.classList.add("hidden");return}
- b.classList.remove("hidden");
- const upd=v=>{if(typeof gtag==="function")gtag("consent","update",{ad_storage:v,analytics_storage:v})};
- $("#cookie-ok").onclick=()=>{try{localStorage.setItem("gc_consent","accepted")}catch(e){}b.classList.add("hidden");upd("granted")};
- $("#cookie-no").onclick=()=>{try{localStorage.setItem("gc_consent","refused")}catch(e){}b.classList.add("hidden");upd("denied")}}
+ const upd=(k,v)=>{try{localStorage.setItem("gc_consent",k)}catch(e){}b.classList.add("hidden");if(typeof gtag==="function")gtag("consent","update",{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v})};
+ $("#cookie-ok").onclick=()=>upd("accepted","granted");
+ $("#cookie-no").onclick=()=>upd("refused","denied");
+ document.addEventListener("click",e=>{if(e.target.closest("#cookie-manage")){e.preventDefault();b.classList.remove("hidden")}});
+ try{b.classList.toggle("hidden",!!localStorage.getItem("gc_consent"))}catch(e){b.classList.add("hidden")}}
 
 /* ===== démarrage ===== */
 window.addEventListener("hashchange",()=>render());

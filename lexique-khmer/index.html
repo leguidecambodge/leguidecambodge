@@ -52,6 +52,7 @@
   ]
 }
 </script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}(function(){var c="";try{c=localStorage.getItem("gc_consent")||""}catch(e){}var v=c==="accepted"?"granted":"denied";gtag("consent","default",{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v});if(v==="denied")(window.adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1})();</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9463726773327954" crossorigin="anonymous"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGJTQPVHZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZGJTQPVHZJ');</script>
@@ -248,7 +249,7 @@
 <div><h5>Pratique</h5><ul><li><a href="../visa-cambodge/">Visa</a></li><li><a href="../budget-voyage-cambodge/">Budget</a></li><li><a href="../transports/">Transports</a></li><li><a href="../quand-partir/">Quand partir</a></li><li><a href="../hotels/">Hôtels</a></li><li><a href="../guide-pratique-cambodge/">Guide pratique</a></li></ul></div>
 <div><h5>Découvrir</h5><ul><li><a href="../itineraire-cambodge/">Itinéraires</a></li><li><a href="../histoire-cambodge/">Histoire</a></li><li><a href="../cuisine-khmere/">Cuisine khmère</a></li><li><a href="../lexique-khmer/">Lexique khmer</a></li><li><a href="../carte-interactive/">Carte interactive</a></li><li><a href="../blog/">Blog</a></li></ul></div>
 <div><h5>Le guide</h5><ul><li><a href="../a-propos/">À propos</a></li><li><a href="../mentions-legales/">Mentions légales</a></li><li><a href="../#contact">Contact</a></li></ul></div></div>
-<div class="legal"><span>© 2026 Le Guide Cambodge · Contenu à but informatif.</span></div></div></footer>
+<div class="legal"><span>© 2026 Le Guide Cambodge · Contenu à but informatif · <a href="#" id="cookie-manage">Gérer les cookies</a></span><span>Transparence : certains liens de ce site (hôtels, vols, activités) sont des liens d'affiliation. Ils ne changent rien à votre prix et nous aident à financer le site.</span></div></div></footer>
 
 <script>
 const hamburger = document.getElementById('hamburger');
@@ -304,10 +305,12 @@ if (navbar) {
   });
 })();
 </script>
-<div id="cookie-banner" class="hidden" role="dialog" aria-label="Consentement cookies"><p>🍪 Ce site utilise des cookies pour améliorer votre expérience. <a href="../mentions-legales/">En savoir plus</a></p><div class="cookie-btns"><button class="cookie-btn accept" id="cookie-ok">Accepter</button><button class="cookie-btn" id="cookie-no">Refuser</button></div></div>
-<script>(function(){var b=document.getElementById("cookie-banner");try{if(localStorage.getItem("gc_consent"))return}catch(e){return}b.classList.remove("hidden");
-function u(v){if(typeof gtag==="function")gtag("consent","update",{ad_storage:v,analytics_storage:v})}
-document.getElementById("cookie-ok").onclick=function(){try{localStorage.setItem("gc_consent","accepted")}catch(e){}b.classList.add("hidden");u("granted")};
-document.getElementById("cookie-no").onclick=function(){try{localStorage.setItem("gc_consent","refused")}catch(e){}b.classList.add("hidden");u("denied")}})();</script>
+<div id="cookie-banner" class="hidden" role="dialog" aria-label="Consentement cookies"><p>🍪 Ce site utilise des cookies pour mesurer son audience et afficher des publicités personnalisées, avec votre accord. <a href="../mentions-legales/">En savoir plus</a></p><div class="cookie-btns"><button class="cookie-btn accept" id="cookie-ok">Accepter</button><button class="cookie-btn" id="cookie-no">Refuser</button></div></div>
+<script>(function(){var b=document.getElementById("cookie-banner");
+function u(k,v){try{localStorage.setItem("gc_consent",k)}catch(e){}b.classList.add("hidden");if(typeof gtag==="function")gtag("consent","update",{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v})}
+document.getElementById("cookie-ok").onclick=function(){u("accepted","granted")};
+document.getElementById("cookie-no").onclick=function(){u("refused","denied")};
+document.addEventListener("click",function(e){if(e.target.closest("#cookie-manage")){e.preventDefault();b.classList.remove("hidden")}});
+try{if(localStorage.getItem("gc_consent"))return}catch(e){return}b.classList.remove("hidden")})();</script>
 </body>
 </html>
