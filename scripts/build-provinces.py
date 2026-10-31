@@ -50,6 +50,11 @@ def photos(pid):
         out.append({"src": src if src.startswith("http") else "../" + src, "local": None if src.startswith("http") else urllib.parse.unquote(src), "credit": o.get("credit", "")})
     return out
 
+def size_attrs(o):
+    if not o["local"]: return ""
+    with Image.open(os.path.join(ROOT, o["local"])) as im:
+        return f' width="{im.width}" height="{im.height}" style="height:auto"'
+
 def og_image(pid, ph):
     if not ph or not ph[0]["local"]: return SITE + "photos/og-accueil.jpg"
     os.makedirs(os.path.join(ROOT, "photos/og"), exist_ok=True)
@@ -112,7 +117,7 @@ def page(d):
     hero = ph[0] if ph else None
     preload = f'<link rel="preload" as="image" href="{esc(hero["src"])}" fetchpriority="high">\n' if hero else ""
     hero_html = (f'<img class="bg" src="{esc(hero["src"])}" alt="{esc(sn)}, Cambodge" fetchpriority="high">' + (f'<span class="credit">Photo : {hero["credit"]}</span>' if hero["credit"] else "")) if hero else ""
-    gal = "".join(f'<figure><img src="{esc(o["src"])}" alt="{esc(sn)}, Cambodge" loading="lazy">' + (f'<figcaption>Photo : {o["credit"]}</figcaption>' if o["credit"] else "") + "</figure>" for o in ph[1:])
+    gal = "".join(f'<figure><img src="{esc(o["src"])}"{size_attrs(o)} alt="{esc(sn)}, Cambodge" loading="lazy">' + (f'<figcaption>Photo : {o["credit"]}</figcaption>' if o["credit"] else "") + "</figure>" for o in ph[1:])
     half = (len(d["todo"]) + 1) // 2
     li = lambda xs: "".join(f"<li>{esc(x)}</li>" for x in xs)
     booking = CJ + urllib.parse.quote(f"https://www.booking.com/searchresults.fr.html?ss={urllib.parse.quote(sn + ', Cambodge')}", safe="")
