@@ -24,8 +24,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="https://commons.wikimedia.org/wiki/Special:FilePath/Tuk-tuk_in_Phnom_Penh.jpg?width=1280" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../ui/style.css?v=28">
-<link rel="stylesheet" href="../assets/legacy.css?v=3">
+<link rel="stylesheet" href="../ui/style.css?v=29">
+<link rel="stylesheet" href="../assets/legacy.css?v=4">
 
 <script type="application/ld+json">
 {
@@ -128,7 +128,7 @@
 
   <!-- Tabs transports -->
   <div style="max-width:1100px;margin:0 auto">
-    <div style="display:flex;gap:0;flex-wrap:wrap;border:1px solid rgba(212,150,26,.2);max-width:600px;margin:0 auto 40px;overflow:hidden" role="tablist">
+    <div style="display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--line);max-width:600px;margin:0 auto 40px;overflow:hidden" role="tablist">
       <button class="tr-tab active" data-tr="bus" style="flex:1;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">🚌 Bus</button>
       <button class="tr-tab" data-tr="bateau" style="flex:1;cursor:pointer;transition:all .2s;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:#fff;border:1px solid var(--line);color:var(--ink)">⛵ Bateau</button>
       <button class="tr-tab" data-tr="avion" style="flex:1;cursor:pointer;transition:all .2s;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:#fff;border:1px solid var(--line);color:var(--ink)">✈ Avion</button>
@@ -137,7 +137,7 @@
 
     <!-- BUS -->
     <div class="tr-panel" id="tr-bus" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <span style="font-size:1.8rem">🏆</span>
           <div>
@@ -156,7 +156,7 @@
         </div>
         <a href="https://www.giantibis.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Réserver →</a>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <span style="font-size:1.8rem">🚌</span>
           <div>
@@ -175,7 +175,7 @@
         </div>
         <a href="https://bookmebus.com/en/mekongexpress" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Réserver →</a>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <span style="font-size:1.8rem">🚐</span>
           <div>
@@ -198,7 +198,7 @@
 
     <!-- BATEAU -->
     <div class="tr-panel" id="tr-bateau" style="display:none;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">⛵</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Siem Reap ↔ Battambang</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">La traversée légendaire du Cambodge ! 5 à 8 h sur le lac Tonlé Sap et la rivière Sangker. Passage par des villages flottants et des rizières. Plus long, mais bien plus beau que le bus.</p>
@@ -211,7 +211,7 @@
         <div style="margin-top:12px;padding:10px;background:rgba(212,150,26,.07);border-left:3px solid var(--or);font-size:.8rem;color:var(--ink2)">⚠️ Uniquement quand les eaux sont hautes, environ d'août à février-mars : en saison sèche, le niveau est trop bas. Réservez à l'avance.</div>
         <a href="https://angkorexpressboat.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Réserver →</a>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🏖</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Sihanoukville ↔ Koh Rong</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Ferry Speed Boat depuis le port de Sihanoukville vers les îles de Koh Rong et Koh Rong Sanloem. Plusieurs départs par jour. Compagnies : GTVC, Buva Sea et d'autres.</p>
@@ -223,7 +223,7 @@
         </div>
         <a href="https://buvasea.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Réserver →</a>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🚤</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Phnom Penh ↔ Kratie</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Rejoignez Kratie et ses dauphins de l'Irrawaddy en bus (environ 5 à 6 h). Le bateau rapide Phnom Penh – Kratie ne circule plus depuis plus de dix ans. Route pittoresque longeant le fleuve.</p>
@@ -236,7 +236,7 @@
 
     <!-- AVION -->
     <div class="tr-panel" id="tr-avion" style="display:none;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">✈️</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Aéroport de Siem Reap (SAI)</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Le nouvel aéroport international de Siem Reap (inauguré 2023) remplace l'ancien REP. Depuis Paris, vols avec une escale (Doha, Bangkok, Singapour…), environ 14 h de trajet.</p>
@@ -247,7 +247,7 @@
           <a href="https://www.tkqlhce.com/click-101812079-12677526?url=https%3A%2F%2Fflights.booking.com%2Fflights%2FCDG-SAI%2F" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-block;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Booking.com →</a>
         </div>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🛬</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Aéroport de Phnom Penh : Techo (KTI)</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Principal hub international du Cambodge, ouvert en septembre 2025 à environ 20 km au sud du centre (il remplace l'ancien aéroport PNH). Vols via Bangkok (Thai Airways, Bangkok Airways), Doha (Qatar Airways), Kuala Lumpur (AirAsia). Hub pour vols intérieurs.</p>
@@ -258,7 +258,7 @@
           <a href="https://www.tkqlhce.com/click-101812079-12677526?url=https%3A%2F%2Fflights.booking.com%2Fflights%2FCDG-KTI%2F" target="_blank" rel="noopener noreferrer sponsored" style="display:inline-block;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Booking.com →</a>
         </div>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🛩</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Vols Intérieurs Cambodge</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Air Cambodia (compagnie nationale, ex-Cambodia Angkor Air) et Cambodia Airways assurent les liaisons domestiques. Phnom Penh ↔ Siem Reap le plus fréquent (45 min). Sihanoukville également desservi.</p>
@@ -272,7 +272,7 @@
 
     <!-- EN VILLE -->
     <div class="tr-panel" id="tr-ville" style="display:none;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">📱</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Grab & PassApp</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Les applications à installer. Prix fixes, GPS, paiement carte ou cash. <strong style="color:var(--ink)">Grab</strong> pour les voitures et motos, <strong style="color:var(--ink)">PassApp</strong> plus populaire pour les tuk-tuks cambodgiens.</p>
@@ -283,7 +283,7 @@
           <a href="https://www.passapptaxis.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">PassApp →</a>
         </div>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🛺</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Tuk-tuk traditionnel</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Le symbole du Cambodge ! Remorque à 2 places tirée par une moto. Idéal pour les balades touristiques. Négociez le prix avant de monter : ou utilisez PassApp pour éviter les discussions.</p>
@@ -291,7 +291,7 @@
         <div style="font-size:.82rem;padding:6px 0;display:flex;justify-content:space-between"><span style="color:var(--ink2)">Journée complète (avec chauffeur)</span><span style="color:var(--ink)">$20 – 30</span></div>
         <a href="https://www.passapptaxis.com/" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:14px;text-decoration:none;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;border-radius:999px;padding:11px 20px;background:var(--ink);color:var(--cream)">Réserver via PassApp →</a>
       </div>
-      <div style="background:#FFFFFF;border:1px solid rgba(212,150,26,.15);padding:26px">
+      <div style="background:#FFFFFF;border:1px solid var(--line);padding:26px">
         <div style="font-size:1.8rem;margin-bottom:12px">🚲</div>
         <h3 style="font-family:var(--serif);font-size:1rem;color:var(--ink);margin-bottom:8px">Vélo</h3>
         <p style="font-size:.88rem;color:var(--ink2);line-height:1.8;margin-bottom:14px">Idéal à Kampot, Battambang et autour d'Angkor Wat. Location de vélos disponible dans toutes les maisons d'hôtes. Plat, routes praticables, peu de circulation hors des grandes villes.</p>
@@ -343,32 +343,32 @@
     <div class="section-divider"></div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;max-width:960px;margin:0 auto" class="fade-in">
-    <a href="../scooters/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../scooters/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🛵</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Louer un scooter</div>
       <div style="font-size:.8rem;color:var(--ink2)">Prix, loueurs, sécurité</div>
     </a>
-    <a href="../vols/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../vols/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">✈️</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Vols</div>
       <div style="font-size:.8rem;color:var(--ink2)">Rejoindre le Cambodge</div>
     </a>
-    <a href="../koh-rong/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../koh-rong/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🏝️</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Koh Rong</div>
       <div style="font-size:.8rem;color:var(--ink2)">Plages et plancton lumineux</div>
     </a>
-    <a href="../battambang/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../battambang/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🎋</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Battambang</div>
       <div style="font-size:.8rem;color:var(--ink2)">Train de bambou, cirque, temples</div>
     </a>
-    <a href="../itineraire-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../itineraire-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🗺️</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Itinéraires</div>
       <div style="font-size:.8rem;color:var(--ink2)">7, 14 ou 21 jours</div>
     </a>
-    <a href="../visa-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../visa-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🛂</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Visa</div>
       <div style="font-size:.8rem;color:var(--ink2)">E-visa officiel et arrivée</div>

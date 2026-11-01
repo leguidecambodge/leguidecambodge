@@ -24,8 +24,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Angkor_Wat_at_sunset.JPG/1280px-Angkor_Wat_at_sunset.JPG" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=Noto+Sans+Khmer:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../ui/style.css?v=28">
-<link rel="stylesheet" href="../assets/legacy.css?v=3">
+<link rel="stylesheet" href="../ui/style.css?v=29">
+<link rel="stylesheet" href="../assets/legacy.css?v=4">
 <script src="../ui/carte-google.js?v=1"></script>
 <style>
 .carte-search-wrap{max-width:1100px;margin:0 auto 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -36,7 +36,7 @@
 .gc-pin{width:32px;height:32px;border-radius:50%;border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
 .gc-cluster{border-radius:50%;background:rgba(221,164,34,.92);border:3px solid rgba(255,255,255,.85);color:var(--ink);font-family:Georgia,serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12)}
 #gc-map .maplibregl-popup-content{border-radius:8px;padding:10px 14px}
-#gc-map{height:640px;max-width:1100px;margin:0 auto;border:1px solid rgba(212,150,26,.2);border-radius:8px;position:relative;z-index:1;overflow:hidden}
+#gc-map{height:640px;max-width:1100px;margin:0 auto;border:1px solid var(--line);border-radius:8px;position:relative;z-index:1;overflow:hidden}
 @media(max-width:640px){#gc-map{height:390px}}
 </style>
 
@@ -141,32 +141,32 @@
     <div class="section-divider"></div>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;max-width:960px;margin:0 auto" class="fade-in">
-    <a href="../itineraire-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../itineraire-cambodge/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🗺️</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Itinéraires</div>
       <div style="font-size:.8rem;color:var(--ink2)">7, 14 ou 21 jours</div>
     </a>
-    <a href="../siem-reap/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../siem-reap/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🏯</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Siem Reap</div>
       <div style="font-size:.8rem;color:var(--ink2)">Angkor, quartiers, restaurants</div>
     </a>
-    <a href="../kampot/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../kampot/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🌶️</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Kampot</div>
       <div style="font-size:.8rem;color:var(--ink2)">Poivre, Bokor, rivière</div>
     </a>
-    <a href="../mondulkiri/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../mondulkiri/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🐘</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Mondulkiri</div>
       <div style="font-size:.8rem;color:var(--ink2)">Éléphants, cascades, forêts</div>
     </a>
-    <a href="../kratie/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../kratie/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🐬</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Kratie</div>
       <div style="font-size:.8rem;color:var(--ink2)">Dauphins du Mékong</div>
     </a>
-    <a href="../koh-kong/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);text-decoration:none;transition:all .3s" class="hover-card">
+    <a href="../koh-kong/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);text-decoration:none;transition:all .3s" class="hover-card">
       <div style="font-size:1.8rem;margin-bottom:10px">🌿</div>
       <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">Koh Kong</div>
       <div style="font-size:.8rem;color:var(--ink2)">Mangroves et Cardamomes</div>

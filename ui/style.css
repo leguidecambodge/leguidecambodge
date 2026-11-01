@@ -1,4 +1,4 @@
-:root{--cream:#F6F1E8;--cream2:#EDE5D6;--ink:#17201F;--ink2:#3C4443;--mute:#5C605A;--line:#DDD5C4;--lacq:#B8452B;--gold:#C9A24A;--jade:#1E4D3B;--mek:#2F5D7C;--sand:#D9B98A;--serif:"Fraunces","Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:"Inter","Helvetica Neue",Arial,sans-serif;--kh:"Noto Sans Khmer","Khmer OS",sans-serif;--r:18px}
+:root{--cream:#F6F1E8;--cream2:#EDE5D6;--ink:#17201F;--ink2:#3C4443;--mute:#5C605A;--line:#C8BEAA;--field:#8F8778;--lacq:#B8452B;--gold:#C9A24A;--jade:#1E4D3B;--mek:#2F5D7C;--sand:#D9B98A;--serif:"Fraunces","Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:"Inter","Helvetica Neue",Arial,sans-serif;--kh:"Noto Sans Khmer","Khmer OS",sans-serif;--r:18px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -216,7 +216,7 @@ footer .legal a:hover{color:var(--ink)}
 .formbox h3{font-size:28px;margin-bottom:8px}
 .formbox p.sub{color:var(--ink2);font-size:14px;margin-bottom:18px}
 .formbox label{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:12px 0 6px}
-.formbox input,.formbox select,.formbox textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--cream);color:var(--ink);outline:0}
+.formbox input,.formbox select,.formbox textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--field);border-radius:12px;background:#fff;color:var(--ink);outline:0}
 .formbox input:focus,.formbox select:focus,.formbox textarea:focus{border-color:var(--ink)}
 .formbox textarea{min-height:110px;resize:vertical}
 .formbox .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -367,7 +367,7 @@ body{top:0!important}
 .evnav{display:flex;gap:8px;flex-wrap:wrap}
 .evnav .pill{background:#fff;font-size:14px;padding:9px 15px}
 .evfilter{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mute)}
-.evfilter select{font:inherit;font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;max-width:62vw}
+.evfilter select{font:inherit;font-size:14px;color:var(--ink);border:1px solid var(--field);border-radius:999px;padding:9px 14px;background:#fff;max-width:62vw}
 .evweek{font-size:clamp(24px,3vw,34px);margin-bottom:22px}
 .evwarn{background:#FFF6E0;border:1px solid var(--sand);border-radius:14px;padding:12px 16px;font-size:14px;color:var(--ink2);margin-bottom:20px}
 .evdays{display:grid;gap:14px}

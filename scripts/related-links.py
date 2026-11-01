@@ -97,7 +97,7 @@ RELATED = {
     "blog": ["itineraire-cambodge", "angkor-wat", "cuisine-khmere", "koh-rong", "kep", "visa-cambodge"],
 }
 
-CARD = ('    <a href="../{p}/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid rgba(212,150,26,.2);'
+CARD = ('    <a href="../{p}/" style="display:block;padding:24px;background:#FFFFFF;border:1px solid var(--line);'
         'text-decoration:none;transition:all .3s" class="hover-card">\n'
         '      <div style="font-size:1.8rem;margin-bottom:10px">{e}</div>\n'
         '      <div style="font-family:var(--serif);font-size:.85rem;color:var(--ink);margin-bottom:6px">{t}</div>\n'

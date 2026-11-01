@@ -17,7 +17,7 @@ Lancement unique :  python3 scripts/convert-legacy.py
 import glob, os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CSS_V = "26"
+CSS_V = "29"
 
 # ---------- conversion des couleurs ----------
 NUM = r"\s*([\d.]+)\s*"
