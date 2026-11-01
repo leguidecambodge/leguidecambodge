@@ -87,6 +87,10 @@ PARTIALS = os.path.join(ROOT, "scripts/partials")
 part = lambda n: open(os.path.join(PARTIALS, n), encoding="utf8").read().strip()
 COOKIE = part("cookie.html")
 
+# titre et description sur mesure, pour les pages que Google affiche déjà souvent
+META = {"pailin": ("Province de Pailin (Cambodge) : histoire, sites et sécurité",
+                   "La province de Pailin, à la frontière thaïlandaise : mines de saphirs, ancien bastion khmer rouge, Wat Phnom Yat. Que voir, accès et zone déconseillée.")}
+
 def page(d):
     pid, name, sn = d["id"], d["name"], short(d["name"])
     exps = [e for e in EXPS if pid in e["d"]]
@@ -96,6 +100,7 @@ def page(d):
     title = f"{sn} (Cambodge) : que voir, que faire, où dormir"
     desc = f"{sn}, province du Cambodge : {d['tag'][0].lower() + d['tag'][1:]}. Que voir, que faire, où manger, où dormir et comment s'y rendre."
     if len(desc) > 160: desc = desc[:157].rsplit(" ", 1)[0] + "…"
+    if pid in META: title, desc = META[pid]
     url = f"{SITE}{pid}/"
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "TouristDestination", "@id": url + "#destination", "name": f"{sn}, Cambodge", "description": d["intro"], "url": url,
