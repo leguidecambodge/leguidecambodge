@@ -7,7 +7,7 @@ const NOTE_URGENCE="Souscrivez toujours une assurance voyage avant de partir · 
 const FAQ=[
 [
 "Faut-il un visa pour aller au Cambodge ?",
-"Oui, sauf pour quelques pays d'Asie du Sud-Est : les Français, Belges et Suisses ont besoin d'un visa, même pour un court séjour. Deux options : l'e-visa officiel ( evisa.gov.kh , 36 USD, 30 jours de séjour) ou le visa à l'arrivée (30 USD en espèces). En avion, remplissez aussi la carte d'arrivée électronique gratuite ( arrival.gov.kh ) dans les 7 jours avant le vol."
+"Oui, sauf pour quelques pays d'Asie du Sud-Est : les Français, Belges et Suisses ont besoin d'un visa, même pour un court séjour. Deux options : l'e-visa officiel ( evisa.gov.kh , 30 USD plus d'éventuels frais de service, 30 jours de séjour) ou le visa à l'arrivée (30 USD en espèces). En avion, remplissez aussi la carte d'arrivée électronique gratuite ( arrival.gov.kh ) dans les 7 jours avant le vol."
 ],
 [
 "Est-il sûr de voyager au Cambodge ?",
