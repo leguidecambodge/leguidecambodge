@@ -16,6 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # page : (emoji, titre, sous-titre)
 CAT = {
     "siem-reap": ("🏯", "Siem Reap", "Angkor, quartiers, restaurants"),
+    "siem-reap-en-3-jours": ("🗓️", "Siem Reap en 3 jours", "Programme, pass et budget"),
     "angkor-wat": ("🛕", "Angkor Wat", "Billets, horaires, itinéraires"),
     "angkor": ("🗿", "Temples d'Angkor", "Bayon, Ta Prohm, Banteay Srei"),
     "phnom-penh": ("🏙️", "Phnom Penh", "Palais royal, Tuol Sleng, quartiers"),
@@ -63,9 +64,10 @@ CAT = {
 }
 
 RELATED = {
-    "siem-reap": ["angkor-wat", "angkor", "battambang", "kampong-thom", "preah-vihear", "scooters"],
-    "angkor-wat": ["siem-reap", "angkor", "kampong-thom", "preah-vihear", "histoire-cambodge", "meilleure-periode-cambodge"],
-    "angkor": ["angkor-wat", "siem-reap", "preah-vihear", "banteay-meanchey", "kampong-thom", "histoire-cambodge"],
+    "siem-reap": ["siem-reap-en-3-jours", "angkor-wat", "angkor", "battambang", "kampong-thom", "preah-vihear"],
+    "siem-reap-en-3-jours": ["angkor-wat", "angkor", "siem-reap", "hotels", "scooters", "securite-cambodge"],
+    "angkor-wat": ["siem-reap-en-3-jours", "siem-reap", "angkor", "kampong-thom", "preah-vihear", "histoire-cambodge"],
+    "angkor": ["siem-reap-en-3-jours", "angkor-wat", "siem-reap", "preah-vihear", "banteay-meanchey", "kampong-thom"],
     "phnom-penh": ["phnom-penh-en-3-jours", "kandal", "takeo", "kampot", "histoire-cambodge", "transports"],
     "phnom-penh-en-3-jours": ["phnom-penh", "histoire-cambodge", "quartiers", "kandal", "kampot", "securite-cambodge"],
     "kampot": ["kep", "takeo", "phnom-penh", "sihanoukville", "scooters", "cuisine-khmere"],
