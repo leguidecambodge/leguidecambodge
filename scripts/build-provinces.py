@@ -34,6 +34,8 @@ esc = html.escape
 short = lambda n: n.split(" &")[0]
 best_short = lambda d: re.split(r"\s\(", d["best"].split(".")[0].split(":")[0])[0].strip()
 CJ = "https://www.tkqlhce.com/click-101812079-12677526?url="
+# pages Booking vérifiées : la recherche « ?ss=ville » renvoie désormais vers l'accueil de Booking
+BOOKING = {"siem-reap":"city/kh/siemreab","phnom-penh":"city/kh/phnom-penh","kampot":"city/kh/kampot","kep":"city/kh/kep","sihanoukville":"city/kh/kampong-saom","koh-kong":"region/kh/koh-kong","mondulkiri":"region/kh/mondulkiri-province","ratanakiri":"region/kh/ratanakiri-province","battambang":"city/kh/batdambang","kratie":"city/kh/krong-kracheh","stung-treng":"city/kh/stoeng-treng","preah-vihear":"region/kh/preah-vihear-province","kampong-thom":"region/kh/kampong-thom-province","kampong-cham":"city/kh/kampong-cham","pursat":"region/kh/pursat-province","takeo":"region/kh/takeo-province","kandal":"city/kh/ta-khmau","kampong-speu":"region/kh/kampong-speu-province","kampong-chhnang":"city/kh/kampong-chhnang","pailin":"city/kh/pailin","banteay-meanchey":"city/kh/sisophon","oddar-meanchey":"city/kh/anlong-veng","tbong-khmum":"city/kh/suong","prey-veng":"city/kh/prey-veng","svay-rieng":"city/kh/svay-rieng"}
 
 def link_for(pid):
     """Lien vers le meilleur guide d'une province, depuis une page /<id>/."""
@@ -125,7 +127,7 @@ def page(d):
     gal = "".join(f'<figure><img src="{esc(o["src"])}"{size_attrs(o)} alt="{esc(sn)}, Cambodge" loading="lazy">' + (f'<figcaption>Photo : {o["credit"]}</figcaption>' if o["credit"] else "") + "</figure>" for o in ph[1:])
     half = (len(d["todo"]) + 1) // 2
     li = lambda xs: "".join(f"<li>{esc(x)}</li>" for x in xs)
-    booking = CJ + urllib.parse.quote(f"https://www.booking.com/searchresults.fr.html?ss={urllib.parse.quote(sn + ', Cambodge')}", safe="")
+    booking = CJ + urllib.parse.quote(f"https://www.booking.com/{BOOKING[pid]}.fr.html", safe="")
     near = "".join(f'<a href="{link_for(n)}">{esc(short(BYID[n]["name"]))}</a>' for n in d.get("nearby", []) if n in BYID)
     trips_html = "".join(f'<li><a href="../#trip/{t["id"]}">{esc(t["name"])}</a> · {t["days"]} jours</li>' for t in trips)
     return f'''<!DOCTYPE html>
